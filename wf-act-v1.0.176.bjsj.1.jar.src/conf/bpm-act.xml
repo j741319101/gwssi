@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+       
+    <!-- 流程引擎配置 -->
+    <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="databaseType" value="${jdbc.dbType}"/>
+        <property name="dbIdentityUsed" value="false"/>
+        <property name="history" value="none"/>
+        <property name="transactionManager" ref="abTransactionManager"/>
+        <property name="databaseSchemaUpdate" value=""/>
+        <property name="jobExecutorActivate" value="${activiti.jobExecutorActivate}"/>
+        <property name="idGenerator" ref="activitiIdGenerator"/>
+        <property name="processDefinitionCache" ref="activitiDefCache"/>
+        <property name="labelFontName" value="宋体"></property>
+        <property name="activityFontName" value="宋体"></property>
+        <property name="annotationFontName" value="宋体"></property>
+        <property name="eventListeners">
+            <list>
+                <ref bean="globalEventListener"/>
+            </list>
+        </property>
+    </bean>
+		
+    <bean id="activitiIdGenerator" class="cn.gwssi.ecloudbpm.wf.act.id.ActivitiIdGenerator">
+        <property name="idGenerator" ref="idGenerator"/>
+    </bean>
+
+    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
+    </bean>
+
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
+    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService"/>
+    <bean id="objectMapper" factory-bean="processEngine" factory-method="getManagementService"/>
+
+
+    <bean id="globalEventListener" class="cn.gwssi.ecloudbpm.wf.act.listener.GlobalEventListener">
+        <property name="handlers">
+            <map>
+                <entry key="TASK_CREATED" value="taskCreateListener"/>
+                <entry key="TASK_COMPLETED" value="taskCompleteListener"/>
+                <entry key="PROCESS_COMPLETED" value="instanceEndEventListener"/>
+                <entry key="PROCESS_STARTED" value="instanceStartEventListener"/>
+                <entry key="ACTIVITY_STARTED" value="activityStartedListener"/>
+                <entry key="ACTIVITY_COMPLETED" value="activityComplatedListener"/>
+                <entry key="SEQUENCEFLOW_TAKEN" value="sequenceFlowTakenListener"/>
+                <entry key="ACTIVITY_CANCELLED" value="activitiCancelledListener"/>
+                
+                <entry key="TIMER_FIRED" value="automaticTaskListener"/>
+                <entry key="JOB_EXECUTION_SUCCESS" value="jobExecutedListener"/>
+                <entry key="JOB_EXECUTION_FAILURE" value="jobExecutedListener"/>
+            </map>
+        </property>
+    </bean>
+</beans>

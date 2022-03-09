@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gwssi.ecloudbpm.form.dao.FormDefHistoryDao">
+    <resultMap id="FormDefHistory" type="cn.gwssi.ecloudbpm.form.model.FormDefHistory">
+        <id property="id" column="id_" jdbcType="VARCHAR"/>
+        <result property="formDefId" column="form_def_id_" jdbcType="VARCHAR"/>
+        <result property="name" column="name_" jdbcType="VARCHAR"/>
+        <result property="desc" column="desc_" jdbcType="VARCHAR"/>
+        <result property="modifyDesc" column="modify_desc_" jdbcType="VARCHAR"/>
+        <result property="boKey" column="bo_key_" jdbcType="VARCHAR"/>
+        <result property="boName" column="bo_name_" jdbcType="VARCHAR"/>
+        <result property="html" column="html_" jdbcType="CLOB"/>
+        <result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+        <result property="createUser" column="createUser" jdbcType="VARCHAR"/>
+        <result property="updateUser" column="updateUser" jdbcType="VARCHAR"/>
+        <result property="version" column="version_" jdbcType="NUMERIC"/>
+        <result property="delete" column="delete_" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <sql id="tableName">
+        form_def_history
+    </sql>
+
+    <sql id="forUpdate">
+        <if test="formDefId != null">
+            form_def_id_ = #{formDefId,jdbcType=VARCHAR},
+        </if>
+        <if test="name != null">
+            name_ = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="desc != null">
+            desc_ = #{desc,jdbcType=VARCHAR},
+        </if>
+        <if test="modifyDesc != null">
+            modify_desc_ = #{modifyDesc,jdbcType=VARCHAR},
+        </if>
+        <if test="boKey != null">
+            bo_key_ = #{boKey,jdbcType=VARCHAR},
+        </if>
+        <if test="boName != null">
+            bo_name_ = #{boName,jdbcType=VARCHAR},
+        </if>
+        <if test="html != null">
+            html_ = #{html,jdbcType=VARCHAR},
+        </if>
+        <if test="updateBy != null">
+            update_by_ = #{updateBy,jdbcType=VARCHAR},
+        </if>
+        <if test="delete != null">
+            delete_ = #{delete,jdbcType=NUMERIC},
+        </if>
+        update_time_ = now(),
+    </sql>
+
+    <insert id="create" parameterType="cn.gwssi.ecloudbpm.form.model.FormDefHistory">
+        INSERT INTO form_def_history
+        (id_,form_def_id_,name_,desc_,modify_desc_,bo_key_,bo_name_,html_,create_time_,create_by_,update_time_,update_by_,version_,delete_)
+        VALUES
+        (#{id,jdbcType=VARCHAR}, #{formDefId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR},#{modifyDesc,jdbcType=VARCHAR}, #{boKey,jdbcType=VARCHAR}, #{boName,jdbcType=VARCHAR}, #{html,jdbcType=CLOB}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{version,jdbcType=NUMERIC}, #{delete,jdbcType=NUMERIC})
+    </insert>
+
+    <select id="get" parameterType="java.lang.String" resultMap="FormDefHistory">
+        SELECT a.* FROM form_def_history a
+        WHERE
+            a.id_=#{id}
+    </select>
+
+    <select id="query" parameterType="java.util.Map" resultMap="FormDefHistory">
+        SELECT
+        <if test="resultType==null">
+            a.*
+        </if>
+        <if test="resultType=='withoutHtml'">
+            a.id_,a.form_def_id_,a.name_,a.desc_,a.modify_desc_,a.bo_key_,a.bo_name_,a.create_time_,a.create_by_,a.update_time_,a.update_by_,a.version_
+        </if>
+            FROM form_def_history a
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY a.id_ DESC
+        </if>
+    </select>
+
+    <update id="update" parameterType="cn.gwssi.ecloudbpm.form.model.FormDefHistory">
+        UPDATE form_def_history SET
+                            form_def_id_= #{formDefId,jdbcType=VARCHAR},
+                            name_= #{name,jdbcType=VARCHAR},
+                            desc_= #{desc,jdbcType=VARCHAR},
+                            modify_desc_= #{modifyDesc,jdbcType=VARCHAR},
+                            bo_key_= #{boKey,jdbcType=VARCHAR},
+                            bo_name_= #{boName,jdbcType=VARCHAR},
+                            html_= #{html,jdbcType=CLOB},
+                            update_time_= now(),
+                            update_by_= #{updateBy,jdbcType=VARCHAR},
+                            version_= #{version,jdbcType=NUMERIC},
+                            delete_= #{delete,jdbcType=NUMERIC}
+        WHERE
+            id_=#{id}
+    </update>
+    <delete id="remove" parameterType="java.lang.String">
+        UPDATE form_def_history SET
+                                    delete_= 1
+        WHERE
+            id_=#{id}
+    </delete>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.gwssi.ecloudbpm.form.model.FormDefHistory">
+        update
+        <include refid="tableName"/>
+        <set>
+            <include refid="forUpdate"/>
+        </set>
+        where id_ = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="getWithoutHtml" parameterType="java.lang.String" resultMap="FormDefHistory">
+        SELECT
+            a.id_,a.form_def_id_,a.name_,a.desc_,a.modify_desc_,a.bo_key_,a.bo_name_,a.create_time_,a.create_by_,a.update_time_,a.update_by_,a.version_
+        FROM form_def_history a
+        WHERE
+        a.id_=#{id}
+    </select>
+</mapper>

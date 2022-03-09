@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="wf-act-20210224-1" author="checker" failOnError="false">
+        <createTable tableName="ACT_GE_PROPERTY" remarks="属性数据表">
+            <column name="NAME_" type="varchar(64)" remarks="名称">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="VALUE_" type="varchar(300)" remarks="值"/>
+            <column name="REV_" type="int" remarks="乐观锁 Version(版本)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-2" author="checker" failOnError="false">
+        <createTable tableName="ACT_RE_DEPLOYMENT" remarks="部署信息表">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME_" type="varchar(255)" remarks="部署名称"/>
+            <column name="CATEGORY_" type="varchar(255)" remarks="分类"/>
+            <column name="TENANT_ID_" type="varchar(255)" remarks="分类"/>
+            <column name="DEPLOY_TIME_" type="TIMESTAMP(0)" remarks="部署时间"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-3" author="checker" failOnError="false">
+        <createTable tableName="ACT_GE_BYTEARRAY" remarks="二进制数据表，存储通用的流程定义和流程资源">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="乐观锁 Version(版本)"/>
+            <column name="NAME_" type="varchar(255)" remarks="部署的文件名称"/>
+            <column name="DEPLOYMENT_ID_" type="varchar(64)" remarks="部署表ID">
+                <constraints references="ACT_RE_DEPLOYMENT (ID_)" foreignKeyName="ACT_FK_BYTEARR_DEPL"/>
+            </column>
+            <column name="BYTES_" type="blob" remarks="部署文件"/>
+            <column name="GENERATED_" type="int" remarks="是否是引擎生成 0为用户生成，1为activiti生成"/>
+        </createTable>
+        <createIndex tableName="ACT_GE_BYTEARRAY" indexName="ACT_IDX_BYTEAR_DEPL">
+            <column name="DEPLOYMENT_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-4" author="checker" failOnError="false">
+        <createTable tableName="ACT_RE_MODEL" remarks="流程设计模型部署表">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="乐观锁"/>
+            <column name="NAME_" type="varchar(255)" remarks="名称"/>
+            <column name="KEY_" type="varchar(255)" remarks="KEY_"/>
+            <column name="CATEGORY_" type="varchar(255)" remarks="分类"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间	"/>
+            <column name="LAST_UPDATE_TIME_" type="TIMESTAMP(0)" remarks="最新修改时间"/>
+            <column name="VERSION_" type="int" remarks="版本"/>
+            <column name="META_INFO_" type="varchar(2000)" remarks="以json格式保存流程定义的信息"/>
+            <column name="DEPLOYMENT_ID_" type="varchar(64)" remarks="部署ID">
+                <constraints foreignKeyName="ACT_FK_MODEL_DEPLOYMENT" references="ACT_RE_DEPLOYMENT (ID_)"/>
+            </column>
+            <column name="EDITOR_SOURCE_VALUE_ID_" type="varchar(64)" remarks="EDITOR_SOURCE_VALUE_ID_">
+                <constraints foreignKeyName="ACT_FK_MODEL_SOURCE" references="ACT_GE_BYTEARRAY (ID_)"/>
+            </column>
+            <column name="EDITOR_SOURCE_EXTRA_VALUE_ID_" type="varchar(64)" remarks="EDITOR_SOURCE_EXTRA_VALUE_ID_">
+                <constraints foreignKeyName="ACT_FK_MODEL_SOURCE_EXTRA" references="ACT_GE_BYTEARRAY (ID_)"/>
+            </column>
+            <column name="TENANT_ID_" type="varchar(255)" remarks="TENANT_ID_"/>
+        </createTable>
+        <createIndex tableName="ACT_RE_MODEL" indexName="ACT_IDX_MODEL_SOURCE">
+            <column name="EDITOR_SOURCE_VALUE_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RE_MODEL" indexName="ACT_IDX_MODEL_SOURCE_EXTRA">
+            <column name="EDITOR_SOURCE_EXTRA_VALUE_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RE_MODEL" indexName="ACT_IDX_MODEL_DEPLOYMENT">
+            <column name="DEPLOYMENT_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-5" author="checker" failOnError="false">
+        <createTable tableName="ACT_RE_PROCDEF" remarks="流程定义数据表">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="版本"/>
+            <column name="CATEGORY_" type="varchar(255)" remarks="分类"/>
+            <column name="NAME_" type="varchar(255)" remarks="名称"/>
+            <column name="KEY_" type="varchar(255)" remarks="定义的KEY"/>
+            <column name="VERSION_" type="int" remarks="版本"/>
+            <column name="DEPLOYMENT_ID_" type="varchar(64)" remarks="部署表ID"/>
+            <column name="RESOURCE_NAME_" type="varchar(2000)" remarks="流程bpmn文件名称"/>
+            <column name="DGRM_RESOURCE_NAME_" type="varchar(4000)" remarks="流程图片名称"/>
+            <column name="DESCRIPTION_" type="varchar(2000)" remarks="描述"/>
+            <column name="HAS_START_FORM_KEY_" type="int" remarks="start节点是否存在formKey 0否 1是"/>
+            <column name="HAS_GRAPHICAL_NOTATION_" type="int" remarks="1 激活 2挂起"/>
+            <column name="SUSPENSION_STATE_" type="int" remarks="SUSPENSION_STATE_"/>
+            <column name="TENANT_ID_" type="varchar(255)" remarks="TENANT_ID_"/>
+        </createTable>
+        <createIndex tableName="ACT_RE_PROCDEF" indexName="ACT_UNIQ_PROCDEF" unique="true">
+            <column name="KEY_"/>
+            <column name="VERSION_"/>
+            <column name="TENANT_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-6" author="checker" failOnError="false">
+        <createTable tableName="ACT_RU_EXECUTION" remarks="流程设计模型部署表">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="乐观锁"/>
+            <column name="PROC_INST_ID_" type="varchar(64)" remarks="流程实例ID"/>
+            <column name="BUSINESS_KEY_" type="varchar(255)" remarks="业务主键ID"/>
+            <column name="PARENT_ID_" type="varchar(64)" remarks="父节点实例ID">
+                <constraints references="ACT_RU_EXECUTION (ID_)" foreignKeyName="ACT_FK_EXE_PARENT"/>
+            </column>
+            <column name="PROC_DEF_ID_" type="varchar(64)" remarks="流程定义ID">
+                <constraints foreignKeyName="ACT_FK_EXE_PROCDEF" references="ACT_RE_PROCDEF (ID_)"/>
+            </column>
+            <column name="SUPER_EXEC_" type="varchar(64)" remarks="SUPER_EXEC_">
+                <constraints foreignKeyName="ACT_FK_EXE_SUPER" references="ACT_RU_EXECUTION (ID_)"/>
+            </column>
+            <column name="ACT_ID_" type="varchar(255)" remarks="节点实例ID"/>
+            <column name="IS_ACTIVE_" type="int" remarks="是否存活"/>
+            <column name="IS_CONCURRENT_" type="int" remarks="是否并行"/>
+            <column name="IS_SCOPE_" type="int" remarks="IS_SCOPE_"/>
+            <column name="IS_EVENT_SCOPE_" type="int" remarks="IS_EVENT_SCOPE_"/>
+            <column name="SUSPENSION_STATE_" type="int" remarks="是否挂起"/>
+            <column name="CACHED_ENT_STATE_" type="int" remarks="CACHED_ENT_STATE_"/>
+            <column name="TENANT_ID_" type="varchar(255)" remarks="TENANT_ID_"/>
+            <column name="NAME_" type="varchar(255)" remarks="NAME_"/>
+            <column name="LOCK_TIME_" type="TIMESTAMP(0)" remarks="LOCK_TIME_"/>
+        </createTable>
+        <createIndex tableName="ACT_RU_EXECUTION" indexName="ACT_IDX_EXEC_BUSKEY">
+            <column name="BUSINESS_KEY_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_EXECUTION" indexName="ACT_IDX_EXE_PROCINST">
+            <column name="PROC_INST_ID_"></column>
+        </createIndex>
+        <createIndex tableName="ACT_RU_EXECUTION" indexName="ACT_IDX_EXE_PARENT">
+            <column name="PARENT_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_EXECUTION" indexName="ACT_IDX_EXE_SUPER">
+            <column name="SUPER_EXEC_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_EXECUTION" indexName="ACT_IDX_EXE_PROCDEF">
+            <column name="PROC_DEF_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-7" author="checker" failOnError="false">
+        <createTable tableName="ACT_RU_JOB" remarks="运行时定时任务数据表">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="乐观锁"/>
+            <column name="TYPE_" type="varchar(255)" remarks="类型"/>
+            <column name="LOCK_EXP_TIME_" type="TIMESTAMP(0)" remarks="锁定释放时间"/>
+            <column name="LOCK_OWNER_" type="varchar(255)" remarks="挂起者"/>
+            <column name="EXCLUSIVE_" type="int" remarks="EXCLUSIVE_"/>
+            <column name="EXECUTION_ID_" type="varchar(64)" remarks="执行实例ID"/>
+            <column name="PROCESS_INSTANCE_ID_" type="varchar(64)" remarks="流程实例ID"/>
+            <column name="PROC_DEF_ID_" type="varchar(64)" remarks="流程定义ID"/>
+            <column name="RETRIES_" type="int" remarks="RETRIES_"/>
+            <column name="EXCEPTION_STACK_ID_" type="varchar(64)" remarks="异常信息ID">
+                <constraints foreignKeyName="ACT_FK_JOB_EXCEPTION" references="ACT_GE_BYTEARRAY (ID_)"/>
+            </column>
+            <column name="EXCEPTION_MSG_" type="varchar(4000)" remarks="异常信息"/>
+            <column name="DUEDATE_" type="TIMESTAMP(0)" remarks="到期时间"/>
+            <column name="REPEAT_" type="varchar(255)" remarks="重复"/>
+            <column name="HANDLER_TYPE_" type="varchar(255)" remarks="处理类型"/>
+            <column name="HANDLER_CFG_" type="varchar(2000)" remarks="HANDLER_CFG_"/>
+            <column name="TENANT_ID_" type="varchar(255)" remarks="TENANT_ID_"/>
+        </createTable>
+        <createIndex tableName="ACT_RU_JOB" indexName="ACT_IDX_JOB_EXCEPTION">
+            <column name="EXCEPTION_STACK_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-8" author="checker" failOnError="false">
+        <createTable tableName="ACT_RU_TASK" remarks="运行时任务节点表">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="乐观锁"/>
+            <column name="EXECUTION_ID_" type="varchar(64)" remarks="执行实例ID">
+                <constraints foreignKeyName="ACT_FK_TASK_EXE" references="ACT_RU_EXECUTION (ID_)"/>
+            </column>
+            <column name="PROC_INST_ID_" type="varchar(64)" remarks="流程实例ID">
+                <constraints foreignKeyName="ACT_FK_TASK_PROCINST" references="ACT_RU_EXECUTION (ID_)"/>
+            </column>
+            <column name="PROC_DEF_ID_" type="varchar(64)" remarks="流程定义ID">
+                <constraints foreignKeyName="ACT_FK_TASK_PROCDEF" references="ACT_RE_PROCDEF (ID_)"/>
+            </column>
+            <column name="NAME_" type="varchar(255)" remarks="节点定义名称"/>
+            <column name="PARENT_TASK_ID_" type="varchar(64)" remarks="父节点实例ID"/>
+            <column name="DESCRIPTION_" type="varchar(2000)" remarks="节点定义描述"/>
+            <column name="TASK_DEF_KEY_" type="varchar(255)" remarks="节点定义的KEY"/>
+            <column name="OWNER_" type="varchar(255)" remarks="实际签收人"/>
+            <column name="ASSIGNEE_" type="varchar(255)" remarks="签收人或委托人"/>
+            <column name="DELEGATION_" type="varchar(64)" remarks="委托类型"/>
+            <column name="PRIORITY_" type="int" remarks="优先级别"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="DUE_DATE_" type="TIMESTAMP(0)" remarks="过期时间"/>
+            <column name="CATEGORY_" type="varchar(255)" remarks="CATEGORY_"/>
+            <column name="SUSPENSION_STATE_" type="int" remarks="是否挂起"/>
+            <column name="TENANT_ID_" type="varchar(255)" remarks="TENANT_ID_"/>
+            <column name="FORM_KEY_" type="varchar(255)" remarks="FORM_KEY_"/>
+        </createTable>
+        <createIndex tableName="ACT_RU_TASK" indexName="ACT_IDX_TASK_CREATE">
+            <column name="CREATE_TIME_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_TASK" indexName="ACT_IDX_TASK_EXEC">
+            <column name="EXECUTION_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_TASK" indexName="ACT_IDX_TASK_PROCINST">
+            <column name="PROC_INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_TASK" indexName="ACT_IDX_TASK_PROCDEF">
+            <column name="PROC_DEF_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-9-1" author="checker" failOnError="false">
+        <createIndex tableName="ACT_RU_TASK" indexName="ACT_IDX_TASK_PROCTASK">
+            <column name="PARENT_TASK_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-9" author="checker" failOnError="false">
+        <createTable tableName="ACT_RU_IDENTITYLINK" remarks="运行时任务节点表">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="乐观锁"/>
+            <column name="GROUP_ID_" type="varchar(255)" remarks="组ID"/>
+            <column name="TYPE_" type="varchar(255)" remarks="类型"/>
+            <column name="USER_ID_" type="varchar(255)" remarks="用户ID"/>
+            <column name="TASK_ID_" type="varchar(64)" remarks="节点实例ID">
+                <constraints foreignKeyName="ACT_FK_TSKASS_TASK" references="ACT_RU_TASK (ID_)"/>
+            </column>
+            <column name="PROC_INST_ID_" type="varchar(64)" remarks="流程实例ID">
+                <constraints foreignKeyName="ACT_FK_IDL_PROCINST" references="ACT_RU_EXECUTION (ID_)"/>
+            </column>
+            <column name="PROC_DEF_ID_" type="varchar(64)" remarks="流程定义ID">
+                <constraints foreignKeyName="ACT_FK_ATHRZ_PROCEDEF" references="ACT_RE_PROCDEF (ID_)"/>
+            </column>
+        </createTable>
+        <createIndex tableName="ACT_RU_IDENTITYLINK" indexName="ACT_IDX_IDENT_LNK_USER">
+            <column name="USER_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_IDENTITYLINK" indexName="ACT_IDX_IDENT_LNK_GROUP">
+            <column name="GROUP_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_IDENTITYLINK" indexName="ACT_IDX_TSKASS_TASK">
+            <column name="TASK_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_IDENTITYLINK" indexName="ACT_IDX_ATHRZ_PROCEDEF">
+            <column name="PROC_DEF_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_IDENTITYLINK" indexName="ACT_IDX_IDL_PROCINST">
+            <column name="PROC_INST_ID_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="wf-act-20210224-10" author="checker" failOnError="false">
+        <createTable tableName="ACT_RU_VARIABLE" remarks="运行时流程变量数据表">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="乐观锁"/>
+            <column name="TYPE_" type="varchar(255)" remarks="类型"/>
+            <column name="NAME_" type="varchar(255)" remarks="名称"/>
+            <column name="EXECUTION_ID_" type="varchar(64)" remarks="执行实例ID">
+                <constraints foreignKeyName="ACT_FK_VAR_EXE" references="ACT_RU_EXECUTION (ID_)"/>
+            </column>
+            <column name="PROC_INST_ID_" type="varchar(64)" remarks="流程实例ID">
+                <constraints foreignKeyName="ACT_FK_VAR_PROCINST" references="ACT_RU_EXECUTION(ID_)"/>
+            </column>
+            <column name="TASK_ID_" type="varchar(64)" remarks="节点实例ID"/>
+            <column name="BYTEARRAY_ID_" type="varchar(64)" remarks="字节表ID">
+                <constraints foreignKeyName="ACT_FK_VAR_BYTEARRAY" references="ACT_GE_BYTEARRAY (ID_)" />
+            </column>
+            <column name="DOUBLE_" type="float" remarks="DOUBLE_"/>
+            <column name="LONG_" type="int" remarks="LONG_"/>
+            <column name="TEXT_" type="varchar(4000)" remarks="TEXT_"/>
+            <column name="TEXT2_" type="varchar(4000)" remarks="TEXT2_"/>
+        </createTable>
+        <createIndex tableName="ACT_RU_VARIABLE" indexName="ACT_IDX_VARIABLE_TASK_ID">
+            <column name="TASK_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_VARIABLE" indexName="ACT_IDX_VAR_EXE">
+            <column name="EXECUTION_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_VARIABLE" indexName="ACT_IDX_VAR_PROCINST">
+            <column name="PROC_INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_VARIABLE" indexName="ACT_IDX_VAR_BYTEARRAY">
+            <column name="BYTEARRAY_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-11" author="checker" failOnError="false">
+        <createTable tableName="ACT_RU_EVENT_SUBSCR" remarks="事件表">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="乐观锁"/>
+            <column name="EVENT_TYPE_" type="varchar(255)" remarks="类型"/>
+            <column name="EVENT_NAME_" type="varchar(255)" remarks="名称"/>
+            <column name="EXECUTION_ID_" type="varchar(64)" remarks="执行实例ID">
+                <constraints foreignKeyName="ACT_FK_EVENT_EXEC" references="ACT_RU_EXECUTION(ID_)"/>
+            </column>
+            <column name="PROC_INST_ID_" type="varchar(64)" remarks="流程实例ID"/>
+            <column name="ACTIVITY_ID_" type="varchar(64)" remarks="活动实例ID"/>
+            <column name="CONFIGURATION_" type="varchar(255)" remarks="配置"/>
+            <column name="CREATED_" type="TIMESTAMP(0)" remarks="是否创建"/>
+            <column name="PROC_DEF_ID_" type="varchar(64)" remarks="PROC_DEF_ID_"/>
+            <column name="TENANT_ID_" type="varchar(255)" remarks="TENANT_ID_"/>
+        </createTable>
+        <createIndex tableName="ACT_RU_EVENT_SUBSCR" indexName="ACT_IDX_EVENT_SUBSCR_CONFIG_">
+            <column name="CONFIGURATION_"/>
+        </createIndex>
+        <createIndex tableName="ACT_RU_EVENT_SUBSCR" indexName="ACT_IDX_EVENT_SUBSCR">
+            <column name="EXECUTION_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-12" author="checker" failOnError="false">
+        <createTable tableName="ACT_EVT_LOG" remarks="ACT_EVT_LOG">
+            <column name="LOG_NR_" type="int" remarks="LOG_NR_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TYPE_" type="varchar(64)" remarks="类型"/>
+            <column name="EXECUTION_ID_" type="varchar(64)" remarks="执行实例ID	"/>
+            <column name="PROC_INST_ID_" type="varchar(64)" remarks="流程实例ID"/>
+            <column name="PROC_DEF_ID_" type="varchar(64)" remarks="PROC_DEF_ID_"/>
+            <column name="TASK_ID_" type="varchar(64)" remarks="活动实例ID"/>
+            <column name="TIME_STAMP_" type="TIMESTAMP(0)" remarks="TIME_STAMP_"/>
+            <column name="USER_ID_" type="varchar(255)" remarks="USER_ID_"/>
+            <column name="DATA_" type="blob" remarks="DATA_"/>
+            <column name="LOCK_OWNER_" type="varchar(255)" remarks="LOCK_OWNER_"/>
+            <column name="LOCK_TIME_" type="TIMESTAMP(0)" remarks="LOCK_TIME_"/>
+            <column name="IS_PROCESSED_" type="int" remarks="IS_PROCESSED_"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-13" author="checker" failOnError="false">
+        <createTable tableName="ACT_PROCDEF_INFO" remarks="ACT_PROCDEF_INFO">
+            <column name="ID_" type="varchar(64)" remarks="ID_">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REV_" type="int" remarks="乐观锁"/>
+            <column name="PROC_DEF_ID_" type="varchar(64)" remarks="PROC_DEF_ID_">
+                <constraints foreignKeyName="ACT_FK_INFO_PROCDEF" references="ACT_RE_PROCDEF (ID_)" unique="true"/>
+            </column>
+            <column name="INFO_JSON_ID_" type="varchar(64)" remarks="INFO_JSON_ID_">
+                <constraints foreignKeyName="ACT_FK_INFO_JSON_BA" references="ACT_GE_BYTEARRAY (ID_)"/>
+            </column>
+        </createTable>
+        <createIndex tableName="ACT_PROCDEF_INFO" indexName="ACT_IDX_PROCDEF_INFO_JSON">
+            <column name="INFO_JSON_ID_"/>
+        </createIndex>
+        <createIndex tableName="ACT_PROCDEF_INFO" indexName="ACT_IDX_PROCDEF_INFO_PROC">
+            <column name="PROC_DEF_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-14" author="checker" failOnError="false">
+        <createSequence sequenceName="act_evt_log_seq"/>
+    </changeSet>
+
+    <changeSet id="wf-act-20210224-15" author="checker" failOnError="false">
+        <sqlFile path="classpath:/db/changelog/changes/insert-data-wf-act.sql"/>
+    </changeSet>
+</databaseChangeLog>

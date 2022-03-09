@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/wf-act-0.2-SNAPSHOT.jar.src/wf-act-0.2-SNAPSHOT.pom" />
+        <option value="$PROJECT_DIR$/wf-api-0.2-SNAPSHOT.jar.src/wf-api-0.2-SNAPSHOT.pom" />
+        <option value="$PROJECT_DIR$/wf-core-0.2-SNAPSHOT.jar.src/wf-core-0.2-SNAPSHOT.pom" />
+        <option value="$PROJECT_DIR$/wf-plugin-0.2-SNAPSHOT.jar.src/wf-plugin-0.2-SNAPSHOT.pom" />
+        <option value="$PROJECT_DIR$/wf-plugin-biz-0.2-SNAPSHOT.jar.src/wf-plugin-biz-0.2-SNAPSHOT.pom" />
+        <option value="$PROJECT_DIR$/wf-rest-0.2-SNAPSHOT.jar.src/wf-rest-0.2-SNAPSHOT.pom" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

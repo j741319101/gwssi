@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BpmExecutionLinkDao">
+	<resultMap id="BpmExecutionLink" type="BpmExecutionLink">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="executionId" column="execution_id_" jdbcType="VARCHAR"/>
+		<result property="objId" column="obj_id_" jdbcType="VARCHAR"/>
+		<result property="type" column="type_" jdbcType="VARCHAR"/>
+		<result property="remark" column="remark_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+		<result property="version" column="version_" jdbcType="NUMERIC"/>
+	</resultMap>
+	
+	<insert id="create" parameterType="BpmExecutionLink">
+		INSERT INTO bpm_execution_link
+		(id_,execution_id_,obj_id_,type_,remark_,create_time_,create_by_,update_time_,update_by_,version_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{executionId,jdbcType=VARCHAR}, #{objId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{version,jdbcType=NUMERIC})
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmExecutionLink">
+		SELECT * FROM bpm_execution_link 
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BpmExecutionLink">
+		SELECT * FROM bpm_execution_link
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+	
+	<update id="update" parameterType="BpmExecutionLink">
+		UPDATE bpm_execution_link SET
+		execution_id_=#{executionId,jdbcType=VARCHAR},
+		obj_id_=#{objId,jdbcType=VARCHAR},
+		type_=#{type,jdbcType=VARCHAR},
+		remark_=#{remark,jdbcType=VARCHAR},
+		create_time_=#{createTime,jdbcType=TIMESTAMP},
+		create_by_=#{createBy,jdbcType=VARCHAR},
+		update_time_=#{updateTime,jdbcType=TIMESTAMP},
+		update_by_=#{updateBy,jdbcType=VARCHAR},
+		version_=#{version,jdbcType=NUMERIC}
+		WHERE
+		id_=#{id}
+	</update>
+	
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_execution_link 
+		WHERE
+		id_=#{id}
+	</delete>
+
+	<insert id="bulkCreate" parameterType="BpmExecutionLink">
+		INSERT INTO bpm_execution_link
+		(id_,execution_id_,obj_id_,type_,remark_,create_time_,create_by_,update_time_,update_by_,version_)
+		VALUES
+		<foreach collection="list" item="item" index="index" separator=",">
+			(
+			#{item.id,jdbcType=VARCHAR},
+			#{item.executionId,jdbcType=VARCHAR},
+			#{item.objId,jdbcType=VARCHAR},
+			#{item.type,jdbcType=VARCHAR},
+			#{item.remark,jdbcType=VARCHAR},
+			#{item.createTime,jdbcType=TIMESTAMP},
+			#{item.createBy,jdbcType=VARCHAR},
+			#{item.updateTime,jdbcType=TIMESTAMP},
+			#{item.updateBy,jdbcType=VARCHAR},
+			#{item.version,jdbcType=NUMERIC})
+		</foreach>
+	</insert>
+	
+	<insert id="bulkCreate" parameterType="BpmExecutionLink" databaseId="mysql">
+		INSERT INTO bpm_execution_link
+		(id_,execution_id_,obj_id_,type_,remark_,create_time_,create_by_,update_time_,update_by_,version_)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=","> 
+			(#{item.id,jdbcType=VARCHAR}, #{item.executionId,jdbcType=VARCHAR}, #{item.objId,jdbcType=VARCHAR}, #{item.type,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.createBy,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.updateBy,jdbcType=VARCHAR}, #{item.version,jdbcType=NUMERIC})
+		</foreach>
+	</insert>
+	
+	<delete id="bulkRemove" parameterType="java.lang.String">
+		DELETE FROM bpm_execution_link
+		WHERE id_ in 
+		<foreach collection="array" item="id" index="index" open="(" close=")" separator=",">  	#{id}  </foreach>
+	</delete>
+
+	<select id="getByParam" parameterType="java.util.Map" resultMap="BpmExecutionLink">
+		SELECT * FROM bpm_execution_link
+		WHERE 1 = 1 
+		<if test="executionId!=null">
+			and execution_id_ = #{executionId}
+		</if>
+		<if test="objId!=null">
+			and obj_id_ = #{objId}
+		</if>
+		<if test="type!=null">
+			and type_ = #{type}
+		</if>
+		<if test="remark!=null">
+			and remark_ = #{remark}
+		</if>
+	</select>
+	
+	<delete id="removeByParam" parameterType="java.util.Map">
+		DELETE FROM bpm_execution_link
+		WHERE 1 = 1 
+		<if test="executionId!=null">
+			and execution_id_ = #{executionId}
+		</if>
+		<if test="objId!=null">
+			and obj_id_ = #{objId}
+		</if>
+		<if test="type!=null">
+			and type_ = #{type}
+		</if>
+		<if test="remark!=null">
+			and remark_ = #{remark}
+		</if>
+	</delete>
+</mapper>

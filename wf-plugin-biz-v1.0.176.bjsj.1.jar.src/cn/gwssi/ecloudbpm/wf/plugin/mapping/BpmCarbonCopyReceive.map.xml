@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmCarbonCopyReceiveDao">
+
+    <resultMap id="BpmCarbonCopyReceive" type="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive">
+        <id property="id" column="id_" jdbcType="VARCHAR"/>
+        <result property="ccRecordId" column="cc_record_id" jdbcType="VARCHAR"/>
+        <result property="receiveUserId" column="receive_user_id" jdbcType="VARCHAR"/>
+        <result property="read" column="read_" jdbcType="TINYINT"/>
+        <result property="status" column="status_" jdbcType="VARCHAR"/>
+        <result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+        <result property="version" column="version_" jdbcType="NUMERIC"/>
+        <result property="type" column="type_" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive">
+		INSERT INTO bpm_plugin_carbon_copy_receive
+		(id_,cc_record_id,receive_user_id,read_,status_,create_by_,create_time_,update_by_,update_time_,version_,type_,receive_user_name_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{ccRecordId,jdbcType=VARCHAR}, #{receiveUserId,jdbcType=VARCHAR}, #{read,jdbcType=NUMERIC}, #{status,jdbcType=VARCHAR},
+		 #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP},
+		 #{version,jdbcType=NUMERIC}, #{type,jdbcType=VARCHAR},#{receiveUserName,jdbcType=VARCHAR}
+		 )
+	</insert>
+
+    <select id="get" parameterType="java.lang.String" resultMap="BpmCarbonCopyReceive">
+		SELECT * FROM bpm_plugin_carbon_copy_receive 
+		WHERE 
+		id_=#{id}
+	</select>
+
+    <select id="query" parameterType="java.util.Map" resultMap="BpmCarbonCopyReceive">
+        SELECT * FROM bpm_plugin_carbon_copy_receive
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY id_ DESC
+        </if>
+    </select>
+
+    <select id="query2" parameterType="java.util.Map" resultMap="BpmCarbonCopyReceive">
+        select a.* from bpm_plugin_carbon_copy_receive a INNER JOIN bpm_plugin_carbon_copy_record b on a.cc_record_id = b.id_
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY b.id_ DESC
+        </if>
+    </select>
+
+    <update id="update" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive">
+		UPDATE bpm_plugin_carbon_copy_receive SET
+		cc_record_id=#{ccRecordId,jdbcType=VARCHAR},
+		receive_user_id=#{receiveUserId,jdbcType=VARCHAR},
+		read_=#{read,jdbcType=NUMERIC},
+		status_=#{status,jdbcType=VARCHAR},
+		create_by_=#{createBy,jdbcType=VARCHAR},
+		create_time_=#{createTime,jdbcType=TIMESTAMP},
+		update_by_=#{updateBy,jdbcType=VARCHAR},
+		update_time_=#{updateTime,jdbcType=TIMESTAMP},
+		version_=#{version,jdbcType=NUMERIC},
+		type_=#{updateBy,jdbcType=VARCHAR}
+		WHERE
+		id_=#{id}
+	</update>
+
+    <delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_plugin_carbon_copy_receive
+		WHERE
+		id_=#{id}
+	</delete>
+
+    <delete id="removeByInstId" parameterType="java.lang.String">
+		delete from bpm_plugin_carbon_copy_receive where cc_record_id in
+            (select id_ from bpm_plugin_carbon_copy_record record where record.inst_id = #{instId})
+	</delete>
+
+    <insert id="createList" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive">
+        INSERT INTO bpm_plugin_carbon_copy_receive
+        (id_,cc_record_id,receive_user_id,read_,status_,create_by_,create_time_,update_by_,update_time_,version_,type_,receive_user_name_)
+        VALUES
+        <foreach collection="records" item="record" separator=",">
+            (#{record.id,jdbcType=VARCHAR}, #{record.ccRecordId,jdbcType=VARCHAR},
+            #{record.receiveUserId,jdbcType=VARCHAR}, #{record.read,jdbcType=NUMERIC}, #{record.status,jdbcType=VARCHAR},
+            #{record.createBy,jdbcType=VARCHAR}, #{record.createTime,jdbcType=TIMESTAMP},
+            #{record.updateBy,jdbcType=VARCHAR},
+            #{record.updateTime,jdbcType=TIMESTAMP}, #{record.version,jdbcType=NUMERIC},
+            #{record.type,jdbcType=VARCHAR},#{record.receiveUserName,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <update id="updateRead">
+        UPDATE
+            bpm_plugin_carbon_copy_receive
+        SET read_      = #{record.read,jdbcType=BOOLEAN},
+            status_      = 'read',
+            update_by_  = #{record.updateBy,jdbcType=VARCHAR},
+            update_time_ = #{record.updateTime,jdbcType=TIMESTAMP},
+            version_ = version_ + 1
+        WHERE 1=1
+        <if test="record.receiveUserId!= null">
+            AND receive_user_id = #{record.receiveUserId,jdbcType=VARCHAR}
+        </if>
+        AND id_ IN
+        <foreach collection="primaryKeys" item="primaryKey" open="(" separator="," close=")">
+             #{primaryKey,jdbcType=VARCHAR}
+        </foreach>
+        AND read_ = 0
+    </update>
+    <update id="updateReadByUser">
+        UPDATE
+        bpm_plugin_carbon_copy_receive
+        SET read_      = 1,
+        status_      = 'read',
+        version_ = version_ + 1
+        WHERE receive_user_id = #{userId,jdbcType=VARCHAR}
+    </update>
+	
+    <select id="listUserReceiveList" resultType="cn.gwssi.ecloudbpm.wf.plugin.vo.BpmUserReceiveCarbonCopyRecordVO">
+        SELECT
+                a.id_               AS id,
+                b.id_               AS recordId,
+                b.inst_id           AS instId,
+                b.subject           AS subject,
+                b.node_id           AS nodeid,
+                b.node_name         AS nodename,
+                b.task_id           AS taskid,
+                b.form_type         AS formType,
+                b.event_            AS event,
+                b.trigger_user_id   AS triggeruserid,
+                b.trigger_user_name AS triggerusername,
+                a.create_time_      AS receivetime,
+                a.read_             AS "read",
+                a.status_           AS "status",
+                b.content           AS "content",
+                a.receive_user_name_ AS receiveUserName,
+                a.update_time_      AS updateTime
+        FROM bpm_plugin_carbon_copy_receive a
+        INNER JOIN bpm_plugin_carbon_copy_record b ON b.id_ = a.cc_record_id
+        inner join bpm_instance inst on b.inst_id = inst.ID_ and inst.IS_TEST_DATA_ = 0
+        <where>
+            <if test="whereSql!=null">
+                and ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql==null">
+            ORDER BY id DESC
+        </if>
+    </select>
+</mapper>

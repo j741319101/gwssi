@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.gwssi.ecloud</groupId>
+        <artifactId>bus</artifactId>
+        <version>v1.0.176.bjsj.1</version>
+    </parent>
+    <artifactId>bus-core</artifactId>
+    <name>bus-core</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>base-db</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-beans</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-context</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-core</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>sys-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>org-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <artifactId>spring-context</artifactId>
+            <groupId>org.springframework</groupId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>bus-api</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>form-api</artifactId>
+        </dependency>
+
+        <!-- 语法解析引擎 -->
+        <dependency>
+            <groupId>cn.gwssi.infrastructure</groupId>
+            <artifactId>grammar-interpret</artifactId>
+        </dependency>
+    </dependencies>
+</project>

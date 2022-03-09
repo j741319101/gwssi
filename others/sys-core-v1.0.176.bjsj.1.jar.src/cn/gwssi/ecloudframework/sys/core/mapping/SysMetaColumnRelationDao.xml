@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.SysMetaColumnRelationDao">
+    <resultMap id="BaseResultMap" type="cn.gwssi.ecloudframework.sys.core.model.MetaColumnRelation">
+        <result column="ID_" jdbcType="VARCHAR" property="id"/>
+        <result column="META_ID_" jdbcType="VARCHAR" property="metaId"/>
+        <result column="COLUMN_ID_" jdbcType="VARCHAR" property="columnId"/>
+        <result column="TABLE_ID_" jdbcType="VARCHAR" property="tableId"/>
+        <result column="DEFAULT_VALUE_" jdbcType="VARCHAR" property="defaultValue"/>
+        <result column="DISPLAY_CONTROL_" jdbcType="VARCHAR" property="displayControl"/>
+        <result column="INPUT_VALID_" jdbcType="VARCHAR" property="inputValid"/>
+        <result column="CREATE_BY_" jdbcType="VARCHAR" property="createBy"/>
+        <result column="CREATE_USER_" jdbcType="VARCHAR" property="createUser"/>
+        <result column="CREATE_TIME_" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_BY_" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="UPDATE_USER_" jdbcType="VARCHAR" property="updateUser"/>
+        <result column="UPDATE_TIME_" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+
+    <sql id="tableName">
+        sys_meta_column_relation
+    </sql>
+
+    <sql id="Base_Column_List">
+        a.ID_, a.META_ID_, a.COLUMN_ID_,a.TABLE_ID_, a.DEFAULT_VALUE_, a.INPUT_VALID_,a.DISPLAY_CONTROL_,
+a.CREATE_BY_, a.CREATE_USER_,a.CREATE_TIME_, a.UPDATE_BY_, a.UPDATE_USER_,a.UPDATE_TIME_
+    </sql>
+    <sql id="forUpdate">
+        <if test="metaId != null">
+            META_ID_,
+        </if>
+        <if test="columnId != null">
+            COLUMN_ID_,
+        </if>
+        <if test="tableId != null">
+            TABLE_ID_,
+        </if>
+        <if test="defaultValue != null">
+            DEFAULT_VALUE_,
+        </if>
+        <if test="inputValid != null">
+            INPUT_VALID_,
+        </if>
+        <if test="updateBy != null">
+            UPDATE_BY_,
+        </if>
+        <if test="updateUser != null">
+            UPDATE_USER_,
+        </if>
+        <if test="updateTime != null">
+            UPDATE_TIME_,
+        </if>
+    </sql>
+    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.MetaColumnRelation">
+        insert into
+        <include refid="tableName"/>
+        (ID_, META_ID_, COLUMN_ID_,
+        TABLE_ID_, DEFAULT_VALUE_, DISPLAY_CONTROL_,
+        INPUT_VALID_, CREATE_BY_, CREATE_USER_,
+        CREATE_TIME_, UPDATE_BY_, UPDATE_USER_,
+        UPDATE_TIME_)
+        values (#{id,jdbcType=VARCHAR}, #{metaId,jdbcType=VARCHAR}, #{columnId,jdbcType=VARCHAR},
+        #{tableId,jdbcType=VARCHAR}, #{defaultValue,jdbcType=VARCHAR}, #{displayControl,jdbcType=VARCHAR},
+        #{inputValid,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR},
+        #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR},
+        #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>,
+        mc.name_,
+        bt.comment_,bt.group_name_,
+        bcc.type_
+        from
+        <include refid="tableName"/>
+        a
+        inner join sys_meta_column mc on mc.id_ = a.meta_id_
+        left join bus_table bt on bt.id_ = a.table_id_
+        left join bus_column_ctrl bcc on bcc.column_id_ = a.COLUMN_ID_
+        where a.ID_ = #{id,jdbcType=VARCHAR}
+        limit 1
+    </select>
+
+
+    <select id="query" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>,
+        mc.name_,
+        bt.comment_,bt.group_name_,
+        bcc.type_
+        from
+        <include refid="tableName"/>
+        a
+        inner join sys_meta_column mc on mc.id_ = a.meta_id_
+        left join bus_table bt on bt.id_ = a.table_id_
+        left join bus_column_ctrl bcc on bcc.column_id_ = a.COLUMN_ID_
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY a.ID_ DESC
+        </if>
+    </select>
+    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.MetaColumnRelation">
+        update
+        <include refid="tableName"/>
+        <set>
+            <include refid="forUpdate"/>
+        </set>
+        where id_ = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="remove" parameterType="java.lang.String">
+        delete from
+        <include refid="tableName"/>
+        where ID_ = #{id,jdbcType=VARCHAR}
+        limit 1
+    </update>
+</mapper>

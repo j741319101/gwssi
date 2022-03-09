@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.gwssi.ecloud</groupId>
+        <artifactId>workflow</artifactId>
+        <version>v1.0.176.bjsj.1</version>
+    </parent>
+    <artifactId>wf-rest</artifactId>
+    <description>工作流rest包</description>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>base-rest</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>form-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>base-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>bus-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>wf-plugin</artifactId>
+            <classifier></classifier> 
+        </dependency>
+
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>wf-plugin-biz</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+</project>

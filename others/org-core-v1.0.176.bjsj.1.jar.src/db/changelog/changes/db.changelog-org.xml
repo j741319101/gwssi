@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="org-20210310-1" author="xieshi" failOnError="false">
+        <createTable tableName="ORG_GROUP" remarks="组织机构表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME_" type="varchar(300)" remarks="名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PARENT_ID_" type="varchar(64)" remarks="父ID"/>
+            <column name="SN_" type="int" defaultValue="100" remarks="排序"/>
+            <column name="CODE_" type="varchar(300)" remarks="编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE_" type="varchar(192)" remarks="类型：0集团，1公司，3部门"/>
+            <column name="DESC_" type="varchar(1500)" remarks="描述"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+            <column name="PATH_" type="varchar(4000)" remarks="机构路径"/>
+            <column name="SIMPLE_" type="varchar(60)" remarks="简称"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="org-20210310-2" author="xieshi" failOnError="false">
+        <createTable tableName="ORG_RELATION" remarks="组织人员关系表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="GROUP_ID_" type="varchar(64)" remarks="组ID"/>
+            <column name="USER_ID_" type="varchar(64)" remarks="用户ID"/>
+            <column name="IS_MASTER_" type="int" defaultValue="0" remarks="0:默认组织，1：从组织"/>
+            <column name="STATUS_" type="int" defaultValue="1" remarks="状态：1启用，2禁用"/>
+            <column name="TYPE_" type="varchar(192)" remarks="类型：groupUser,userRole,postUser,groupManager"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+            <column name="SN_" type="int" remarks="排序"/>
+            <column name="HAS_CHILD_" type="varchar(192)" remarks="是否包含子集组织"/>
+        </createTable>
+        <createIndex tableName="ORG_RELATION" indexName="ORG_RELATION_UNIQUE" unique="true">
+            <column name="GROUP_ID_"/>
+            <column name="USER_ID_"/>
+            <column name="TYPE_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="org-20210310-3" author="xieshi" failOnError="false">
+        <createTable tableName="ORG_POST" remarks="岗位表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME_" type="varchar(300)" remarks="名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CODE_" type="varchar(300)" remarks="编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IS_CIVIL_SERVANT_" type="varchar(192)" remarks="是否公务员：1公务人员，2非公务员"/>
+            <column name="DESC_" type="varchar(1500)" remarks="描述"/>
+            <column name="LEVEL_" type="varchar(192)" remarks="公务员级别"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+            <column name="TYPE_" type="varchar(192)" remarks="类型"/>
+            <column name="ORG_ID_" type="varchar(64)" remarks="所属机构"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="org-20210310-4" author="xieshi" failOnError="false">
+        <createTable tableName="ORG_ROLE" remarks="角色表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME_" type="varchar(192)" remarks="名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ALIAS_" type="varchar(192)" remarks="编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ENABLED_" type="int" defaultValue="1" remarks="状态：0禁用，1启用"/>
+            <column name="DESCRIPTION" type="varchar(600)" remarks="描述"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+            <column name="TYPE_ID_" type="varchar(64)" remarks="分类ID"/>
+            <column name="TYPE_NAME_" type="varchar(192)" remarks="分类名字"/>
+            <column name="SN_" type="int" defaultValue="1" remarks="排序"/>
+            <column name="ORG_ID_" type="varchar(64)" remarks="所属机构"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="org-20210310-5" author="xieshi" failOnError="false">
+        <createTable tableName="ORG_USER" remarks="用户表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="FULLNAME_" type="varchar(300)" remarks="名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACCOUNT_" type="varchar(300)" remarks="账号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD_" type="varchar(300)" remarks="密码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL_" type="varchar(192)" remarks="邮箱"/>
+            <column name="MOBILE_" type="varchar(96)" remarks="手机号码"/>
+            <column name="WEIXIN_" type="varchar(192)" remarks="微信号"/>
+            <column name="ADDRESS_" type="varchar(1536)" remarks="地址"/>
+            <column name="PHOTO_" type="varchar(765)" remarks="头像"/>
+            <column name="SEX_" type="varchar(30)" remarks="性别：男，女，未知"/>
+            <column name="FROM_" type="varchar(192)" remarks="来源"/>
+            <column name="STATUS_" type="int" defaultValue="0" remarks="状态：0禁用，1正常"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+            <column name="SN_" type="int" defaultValue="1" remarks="排序"/>
+            <column name="TELEPHONE_" type="varchar(96)" remarks="座机号码"/>
+            <column name="ACTIVE_STATUS_" type="int" defaultValue="0" remarks="激活状态：0:未激活,1:激活"/>
+            <column name="SECRET_LEVEL_" type="int" remarks="密级：0无|1秘密|2机密|3机密增强|4绝密"/>
+            <column name="TYPE_" type="varchar(96)" defaultValue="1" remarks="类型：1普通用户，2管理员"/>
+            <column name="DESC_" type="varchar(1000)" remarks="描述"/>
+        </createTable>
+        <createIndex tableName="ORG_USER" indexName="ACCOUNT" unique="true">
+            <column name="ACCOUNT_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="org-20210310-6" author="xieshi" failOnError="false">
+        <sqlFile path="classpath:/db/changelog/changes/insert-data-org-custom.sql"/>
+    </changeSet>
+    <changeSet id="org-20210626-7" author="xieshi" failOnError="false">
+        <sql>
+            alter table ORG_user modify sn_ INT;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

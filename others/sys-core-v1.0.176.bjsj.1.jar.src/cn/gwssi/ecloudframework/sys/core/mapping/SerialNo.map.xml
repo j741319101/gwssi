@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.SerialNoDao">
+    <resultMap id="SerialNo" type="cn.gwssi.ecloudframework.sys.core.model.SerialNo">
+        <id property="id" column="id_" jdbcType="VARCHAR"/>
+        <result property="name" column="name_" jdbcType="VARCHAR"/>
+        <result property="alias" column="alias_" jdbcType="VARCHAR"/>
+        <result property="regulation" column="regulation_" jdbcType="VARCHAR"/>
+        <result property="genType" column="gen_type_" jdbcType="NUMERIC"/>
+        <result property="noLength" column="no_length_" jdbcType="NUMERIC"/>
+        <result property="curDate" column="cur_date_" jdbcType="VARCHAR"/>
+        <result property="initValue" column="init_value_" jdbcType="NUMERIC"/>
+        <result property="curValue" column="cur_value_" jdbcType="NUMERIC"/>
+        <result property="step" column="step_" jdbcType="NUMERIC"/>
+        <result property="typeId" column="type_id_" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="columns">
+		id_,name_,alias_,regulation_,gen_type_,no_length_,cur_date_,init_value_,cur_value_,step_,type_id_,create_time_,create_by_,update_time_,update_by_
+	</sql>
+
+    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.SerialNo">
+		INSERT INTO sys_serialno
+		(id_,name_,alias_,regulation_,gen_type_,no_length_,cur_date_,init_value_,cur_value_,step_,type_id_,create_time_,create_by_,update_time_,update_by_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, #{regulation,jdbcType=VARCHAR}, #{genType,jdbcType=NUMERIC}, #{noLength,jdbcType=NUMERIC}, #{curDate,jdbcType=VARCHAR}, #{initValue,jdbcType=NUMERIC}, #{curValue,jdbcType=NUMERIC}, #{step,jdbcType=NUMERIC}
+        , #{typeId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR})
+	</insert>
+
+    <select id="get" parameterType="java.lang.String" resultMap="SerialNo">
+		SELECT * FROM sys_serialno 
+		WHERE 
+		id_=#{id}
+	</select>
+
+    <select id="query" parameterType="java.util.Map" resultMap="SerialNo">
+        SELECT * FROM sys_serialno
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY id_ DESC
+        </if>
+    </select>
+
+    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.SerialNo">
+		UPDATE sys_serialno SET
+		name_=#{name,jdbcType=VARCHAR},
+		alias_=#{alias,jdbcType=VARCHAR},
+		regulation_=#{regulation,jdbcType=VARCHAR},
+		gen_type_=#{genType,jdbcType=NUMERIC},
+		no_length_=#{noLength,jdbcType=NUMERIC},
+		cur_date_=#{curDate,jdbcType=VARCHAR},
+		init_value_=#{initValue,jdbcType=NUMERIC},
+		cur_value_=#{curValue,jdbcType=NUMERIC},
+		step_=#{step,jdbcType=NUMERIC},
+        type_id_=#{typeId,jdbcType=VARCHAR},
+        update_time_=now(),
+        update_by_=#{updateBy,jdbcType=VARCHAR}
+		WHERE
+		id_=#{id}
+	</update>
+
+    <update id="updByAlias" parameterType="cn.gwssi.ecloudframework.sys.core.model.SerialNo">
+		UPDATE sys_serialno SET
+		cur_date_=#{curDate,jdbcType=VARCHAR},
+		cur_value_=#{newCurValue,jdbcType=NUMERIC}
+		WHERE alias_=#{alias,jdbcType=VARCHAR}
+		and cur_value_=#{curValue,jdbcType=NUMERIC}
+	</update>
+
+    <delete id="remove" parameterType="java.lang.String">
+		DELETE FROM sys_serialno 
+		WHERE
+		id_=#{id}
+	</delete>
+
+
+    <select id="isAliasExisted" resultType="java.lang.Integer">
+        select count(*) from sys_serialno where alias_=#{alias}
+        <if test="id!=null">AND id_ !=#{id}</if>
+    </select>
+
+    <!-- start getByAlias  -->
+    <select id="getByAlias" parameterType="String" resultMap="SerialNo">
+        SELECT
+        <include refid="columns"/>
+        FROM sys_serialno
+        WHERE
+        alias_=#{alias}
+    </select>
+    <!-- end getByAlias  -->
+
+</mapper>

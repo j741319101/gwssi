@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BpmInstanceDao">
+	<resultMap id="BpmInstance" type="BpmInstanceVO">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="subject" column="subject_" jdbcType="VARCHAR"/>
+		<result property="defId" column="def_id_" jdbcType="VARCHAR"/>
+		<result property="actDefId" column="act_def_id_" jdbcType="VARCHAR"/>
+		<result property="defKey" column="def_key_" jdbcType="VARCHAR"/>
+		<result property="defName" column="def_name_" jdbcType="VARCHAR"/>
+		<result property="bizKey" column="biz_key_" jdbcType="VARCHAR"/>
+		<result property="status" column="status_" jdbcType="VARCHAR"/>
+		<result property="endTime" column="end_time_" jdbcType="TIMESTAMP"/>
+		<result property="duration" column="duration_" jdbcType="NUMERIC"/>
+		<result property="typeId" column="type_id_" jdbcType="VARCHAR"/>
+		<result property="actInstId" column="act_inst_id_" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="creator" column="creator_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="createOrgId" column="create_org_id_" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+		<result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+		<result property="isFormmal" column="is_formmal_" jdbcType="VARCHAR"/>
+		<result property="parentInstId" column="parent_inst_id_" jdbcType="VARCHAR"/>
+		<result property="isForbidden" column="is_forbidden_" jdbcType="NUMERIC"/>
+		<result property="dataMode" column="data_mode_" jdbcType="VARCHAR"/>
+		<result property="supportMobile" column="support_mobile_" jdbcType="NUMERIC"/>
+		<result property="superNodeId" column="super_node_id_" jdbcType="VARCHAR"/>
+		<result property="taskNames" column="task_names_" jdbcType="VARCHAR"/>
+		<result property="nodeTypeKey" column="node_type_key_" jdbcType="VARCHAR"/>
+		<result property="nodeTypeName" column="node_type_name_" jdbcType="VARCHAR"/>
+		<result property="taskInfo" column="task_info_" jdbcType="VARCHAR"/>
+		<result property="isTestData" column="is_test_data_" jdbcType="NUMERIC"/>
+	</resultMap>
+	
+	<insert id="create" parameterType="BpmInstance">
+		INSERT INTO bpm_instance
+		(id_,subject_,def_id_,act_def_id_,def_key_,def_name_,biz_key_,status_,end_time_,duration_,
+			type_id_,act_inst_id_,create_by_,creator_,create_time_,create_org_id_,update_by_,update_time_,
+			is_formmal_,parent_inst_id_,is_forbidden_,data_mode_,support_mobile_,super_node_id_,
+			is_test_data_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{defId,jdbcType=VARCHAR}, #{actDefId,jdbcType=VARCHAR}, #{defKey,jdbcType=VARCHAR}, #{defName,jdbcType=VARCHAR}, #{bizKey,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{endTime,jdbcType=TIMESTAMP}, #{duration,jdbcType=NUMERIC},
+		#{typeId,jdbcType=VARCHAR}, #{actInstId,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createOrgId,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP},
+		#{isFormmal,jdbcType=VARCHAR}, #{parentInstId,jdbcType=VARCHAR}, #{isForbidden,jdbcType=NUMERIC}, #{dataMode,jdbcType=VARCHAR}, #{supportMobile,jdbcType=NUMERIC}, #{superNodeId,jdbcType=VARCHAR},
+		#{isTestData,jdbcType=NUMERIC}
+		)
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmInstance">
+		SELECT * FROM bpm_instance 
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="getByPId"  parameterType="java.util.Map" resultMap="BpmInstance">
+		SELECT * FROM bpm_instance 
+		WHERE 
+		parent_inst_id_=#{parentInstId}
+	</select>
+	
+	<select id="getByActInstId"  parameterType="java.util.Map" resultMap="BpmInstance">
+		SELECT * FROM bpm_instance 
+		WHERE 
+		act_inst_id_=#{actInstId}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BpmInstance">
+		SELECT * FROM bpm_instance
+		<where>
+			is_test_data_ = 0
+			<if test="whereSql!=null">
+				and ${whereSql}
+			</if>
+			<if test="orgIds!=null">
+				and DEF_ID_ in (select id_ from bpm_definition where org_id_ in
+				<foreach collection="orgIds" item="orgId" index="index" open="(" close=")" separator=",">
+					#{orgId}
+				</foreach>
+				)
+			</if>
+			<if test="orgId!=null">
+				and DEF_ID_ in (select id_ from bpm_definition where org_id_ =#{orgId})
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+
+	<select id="listInstTaskJson" parameterType="java.util.Map" resultMap="BpmInstance">
+		SELECT inst.* ,
+			(SELECT listagg(task.ID_ || '@' ||  task.NAME_ || '@' || task.ASSIGNEE_NAMES_|| '@' || task.CREATE_TIME_|| '@' || task.TASK_TYPE_|| '@' || task.STATUS_,'￥,')
+				WITHIN GROUP(ORDER BY task.id_) FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') task_info_
+		FROM bpm_instance inst
+		<where>
+			inst.status_ not in ('draft','discard') and inst.is_test_data_ = 0
+			<if test="whereSql!=null">
+				and ${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+
+	<select id="listInstTaskJson" parameterType="java.util.Map" resultMap="BpmInstance" databaseId="highgo">
+		SELECT inst.* ,
+		(SELECT array_to_string(ARRAY(SELECT unnest(array_agg(task.ID_ || '@' ||  task.NAME_ || '@' || task.ASSIGNEE_NAMES_|| '@' || task.CREATE_TIME_|| '@' || task.TASK_TYPE_|| '@' || task.STATUS_))), '￥')
+			FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') task_info_
+		FROM bpm_instance inst
+		<where>
+			inst.status_ not in ('draft','discard') and inst.is_test_data_ = 0
+			<if test="whereSql!=null">
+				and ${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+
+	<select id="listInstTaskJson" parameterType="java.util.Map" resultMap="BpmInstance" databaseId="mysql">
+		SELECT inst.* ,
+		(SELECT GROUP_CONCAT(task.ID_ || '@' ||  task.NAME_ || '@' || task.ASSIGNEE_NAMES_|| '@' || task.CREATE_TIME_|| '@' || task.TASK_TYPE_|| '@' || task.STATUS_ ||'￥')
+			FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') task_info_
+		FROM bpm_instance inst
+		<where>
+			inst.status_ not in ('draft','discard') and inst.is_test_data_ = 0
+			<if test="whereSql!=null">
+				and ${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+
+	<select id="listInstTaskJson" parameterType="java.util.Map" resultMap="BpmInstance" databaseId="drds">
+		SELECT inst.* ,
+		(SELECT GROUP_CONCAT(task.ID_ || '@' ||  task.NAME_ || '@' || task.ASSIGNEE_NAMES_|| '@' || task.CREATE_TIME_|| '@' || task.TASK_TYPE_|| '@' || task.STATUS_ ||'￥')
+		FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') task_info_
+		FROM bpm_instance inst
+		<where>
+			inst.status_ not in ('draft','discard') and inst.is_test_data_ = 0
+			<if test="whereSql!=null">
+				and ${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+
+	<select id="listInstTaskJson" parameterType="java.util.Map" resultMap="BpmInstance" databaseId="kingbase">
+		SELECT inst.* ,
+		(SELECT WM_CONCAT(task.ID_ || '@' ||  task.NAME_ || '@' || task.ASSIGNEE_NAMES_|| '@' || task.CREATE_TIME_|| '@' || task.TASK_TYPE_|| '@' || task.STATUS_ ||'￥')
+		FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') task_info_
+		FROM bpm_instance inst
+		<where>
+			inst.status_ not in ('draft','discard') and inst.is_test_data_ = 0
+			<if test="whereSql!=null">
+				and ${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+
+	<update id="update" parameterType="BpmInstance">
+		UPDATE bpm_instance SET
+		subject_=#{subject,jdbcType=VARCHAR},
+		def_id_=#{defId,jdbcType=VARCHAR},
+		act_def_id_=#{actDefId,jdbcType=VARCHAR},
+		def_key_=#{defKey,jdbcType=VARCHAR},
+		def_name_=#{defName,jdbcType=VARCHAR},
+		biz_key_=#{bizKey,jdbcType=VARCHAR},
+		status_=#{status,jdbcType=VARCHAR},
+		end_time_=#{endTime,jdbcType=TIMESTAMP},
+		duration_=#{duration,jdbcType=NUMERIC},
+		type_id_=#{typeId,jdbcType=VARCHAR},
+		act_inst_id_=#{actInstId,jdbcType=VARCHAR},
+		create_by_=#{createBy,jdbcType=VARCHAR},
+		creator_=#{creator,jdbcType=VARCHAR},
+		create_time_=#{createTime,jdbcType=TIMESTAMP},
+		create_org_id_=#{createOrgId,jdbcType=VARCHAR},
+		update_by_=#{updateBy,jdbcType=VARCHAR},
+		update_time_=#{updateTime,jdbcType=TIMESTAMP},
+		is_formmal_=#{isFormmal,jdbcType=VARCHAR},
+		parent_inst_id_=#{parentInstId,jdbcType=VARCHAR},
+		is_forbidden_=#{isForbidden,jdbcType=NUMERIC},
+		data_mode_=#{dataMode,jdbcType=VARCHAR},
+		support_mobile_=#{supportMobile,jdbcType=NUMERIC},
+		super_node_id_=#{superNodeId,jdbcType=VARCHAR}
+		WHERE
+		id_=#{id}
+	</update>
+	<update id="updateStatus" parameterType="java.util.Map">
+		update bpm_instance set STATUS_ = #{status,jdbcType=VARCHAR} where ID_ in
+		<foreach collection="ids" index="index" item="instId" open="(" separator="," close=")">#{instId}</foreach>
+		and CREATE_BY_ = '${userId}' and STATUS_ in ('draft','discard')
+	</update>
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_instance 
+		WHERE
+		id_=#{id}
+	</delete>
+
+	<select id="getApplyList" parameterType="java.util.Map" resultMap="BpmInstance">
+		SELECT inst.* ,node.key_ node_type_key_ , node.name_ node_type_name_  FROM
+		(SELECT inst1.*,(SELECT listagg(task.name_,',') WITHIN GROUP(ORDER BY task.ID_) FROM bpm_task task
+		  WHERE inst1.id_ = task.inst_id_ AND task.task_type_ != 'SIGN') task_names_
+		FROM bpm_instance inst1 ) inst
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		<if test="supportMobile">
+			inner join bpm_definition def on inst.def_id_ = def.id_ and def.support_mobile_ = '1'
+		</if>
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+			and inst.create_by_ = #{userId}
+			and inst.is_test_data_ = 0
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+
+	<select id="getApplyList" parameterType="java.util.Map" resultMap="BpmInstance" databaseId="highgo">
+		SELECT inst.* ,node.key_ node_type_key_ , node.name_ node_type_name_  FROM
+			(SELECT inst1.*,
+				(SELECT  array_to_string(ARRAY(SELECT unnest(array_agg(task.name_))), ',')
+			 FROM bpm_task task
+			 WHERE inst1.id_ = task.inst_id_ AND task.task_type_ != 'SIGN') task_names_
+		FROM bpm_instance inst1 ) inst
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		<if test="supportMobile">
+			inner join bpm_definition def on inst.def_id_ = def.id_ and def.support_mobile_ = '1'
+		</if>
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+			and inst.create_by_ = #{userId}
+			and inst.is_test_data_ = 0
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+
+	<select id="getApplyList" parameterType="java.util.Map" resultMap="BpmInstance" databaseId="mysql">
+		SELECT inst.*,node.key_ node_type_key_ , node.name_ node_type_name_ FROM
+		(SELECT inst1.*,(SELECT GROUP_CONCAT(task.name_) FROM bpm_task task WHERE inst1.id_ = task.inst_id_ AND task.task_type_ != 'SIGN') task_names_ FROM bpm_instance inst1 ) inst
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		<if test="supportMobile">
+			inner join bpm_definition def on inst.def_id_ = def.id_ and def.support_mobile_ = '1'
+		</if>
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+			and inst.create_by_ = #{userId}
+			and inst.is_test_data_ = 0
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+
+	<select id="getApplyList" parameterType="java.util.Map" resultMap="BpmInstance" databaseId="kingbase">
+		SELECT inst.*,node.key_ node_type_key_ , node.name_ node_type_name_ FROM
+		(SELECT inst1.*,(SELECT WM_CONCAT(task.name_) FROM bpm_task task WHERE inst1.id_ = task.inst_id_ AND task.task_type_ != 'SIGN') task_names_ FROM bpm_instance inst1 ) inst
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		<if test="supportMobile">
+			inner join bpm_definition def on inst.def_id_ = def.id_ and def.support_mobile_ = '1'
+		</if>
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+			and inst.create_by_ = #{userId}
+			and inst.is_test_data_ = 0
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+
+	<select id="getApproveHistoryList" parameterType="java.util.Map" resultType="BpmTaskApprove">
+		select
+			inst.id_ id,
+			inst.subject_ subject,
+			inst.def_name_ defName,
+			inst.status_ status,
+			inst.creator_ creator,
+			inst.create_time_ createTime,
+			end_time_ endTime,
+			duration_ duration,
+			inst.type_id_ typeId,
+			o.task_name_ nodeName,
+			o.task_key_ nodeId,
+			o.approve_time_ approveTime,
+			o.status_ approveStatus,
+			node.NAME_ nodeTypeName,
+			node.KEY_ nodeTypeKey,
+			o.dur_ms_ durMs,
+			o.TASK_ID_ taskId
+		from bpm_task_opinion o INNER JOIN bpm_instance inst on o.inst_id_ = inst.id_
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		<if test="supportMobile">
+			inner join bpm_definition def on inst.def_id_ = def.id_ and def.support_mobile_ = '1'
+		</if>
+		where o.status_ not in ('start','skip','end') and o.approver_ = #{approver}
+		and inst.is_test_data_ = 0
+		<if test="whereSql!=null">
+			and ${whereSql}
+		</if>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY o.id_ DESC
+		</if>
+	</select>
+
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="BpmTaskApproveVO">
+		select
+		inst.id_ id,
+		inst.subject_ subject,
+		inst.def_name_ defName,
+		inst.status_ status,
+		inst.creator_ creator,
+		inst.create_time_ createTime,
+		inst.END_TIME_ endTime,
+		inst.duration_ duration,
+		inst.type_id_ typeId,
+		(SELECT regexp_replace(listagg(task.name_,',') WITHIN GROUP(ORDER BY task.ID_),'([^,]+)(,\1)*(,|$)','\1\3') FROM bpm_task task WHERE inst.id_ = task.inst_id_ AND task.task_type_ not in ('SIGN','ADD_SIGN')) taskNames,
+		(SELECT regexp_replace(listagg(task.assignee_names_,',') WITHIN GROUP(ORDER BY task.id_),'([^,]+)(,\1)*(,|$)','\1\3') FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') taskUsers,
+		(select io.STATUS_ from bpm_task_opinion io where io.inst_id_ = inst.id_  and io.status_ not in ('start','skip','end') order by create_time_ desc limit 0,1 ) lastStatus,
+		(select o.DUR_MS_ || '@' || o.STATUS_ || '@' || o.APPROVE_TIME_ from BPM_TASK_OPINION o where o.INST_ID_ = inst.ID_ and o.APPROVER_ = #{approver} order by o.CREATE_TIME_ desc limit 0,1) nodeName
+		from BPM_INSTANCE inst
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		where exists (select 1 from BPM_TASK_OPINION opt
+			where inst.id_ = opt.inst_id_ and opt.APPROVER_ = #{approver} and opt.status_ not in ('skip','end')
+				<if test="approverTime!=null">
+					and opt.APPROVE_TIME_ &gt;= #{approverTime}
+				</if>
+				<if test="approverTimeEnd!=null">
+					and opt.APPROVE_TIME_ &lt;= #{approverTimeEnd}
+				</if>
+			)
+		and inst.is_test_data_ = 0
+		<if test="whereSql!=null">
+			and ${whereSql}
+		</if>
+		<if test="taskUsers!=null or taskNames!=null">
+			and exists (select 1 from bpm_task bpmtask where bpmtask.inst_id_ = inst.id_
+			<if test="taskUsers!=null">
+				and bpmtask.assignee_names_ like '%${taskUsers}%'
+			</if>
+			<if test="taskNames!=null">
+				and bpmtask.name_ like '%${taskNames}%'
+			</if>
+			)
+		</if>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="BpmTaskApproveVO" databaseId="mysql">
+		select
+			inst.id_ id,
+			inst.subject_ subject,
+			inst.def_name_ defName,
+			inst.status_ status,
+			inst.creator_ creator,
+			inst.create_time_ createTime,
+			inst.END_TIME_ endTime,
+			inst.duration_ duration,
+			inst.type_id_ typeId,
+			(SELECT GROUP_CONCAT(distinct task.name_) FROM bpm_task task WHERE inst.id_ = task.inst_id_ AND task.task_type_ not in ('SIGN','ADD_SIGN')) taskNames,
+			(SELECT GROUP_CONCAT(distinct task.assignee_names_) FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') taskUsers,
+			(select io.STATUS_ from bpm_task_opinion io where io.inst_id_ = inst.id_  and io.status_ not in ('start','skip','end') order by create_time_ desc limit 0,1 ) lastStatus,
+			(select o.DUR_MS_ || '@' || o.STATUS_ || '@' || o.APPROVE_TIME_ from BPM_TASK_OPINION o where o.INST_ID_ = inst.ID_ and o.APPROVER_ = #{approver} order by o.CREATE_TIME_ desc limit 0,1) nodeName
+		from BPM_INSTANCE inst
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		where exists (select 1 from BPM_TASK_OPINION opt
+			where inst.id_ = opt.inst_id_ and opt.APPROVER_ = #{approver} and opt.status_ not in ('skip','end')
+		<if test="approverTime!=null">
+			and opt.APPROVE_TIME_ &gt;= #{approverTime}
+		</if>
+		<if test="approverTimeEnd!=null">
+			and opt.APPROVE_TIME_ &lt;= #{approverTimeEnd}
+		</if>
+		)
+		and inst.is_test_data_ = 0
+		<if test="whereSql!=null">
+			and ${whereSql}
+		</if>
+		<if test="taskUsers!=null or taskNames!=null">
+			and exists (select 1 from bpm_task bpmtask where bpmtask.inst_id_ = inst.id_
+			<if test="taskUsers!=null">
+				and bpmtask.assignee_names_ like '%${taskUsers}%'
+			</if>
+			<if test="taskNames!=null">
+				and bpmtask.name_ like '%${taskNames}%'
+			</if>
+			)
+		</if>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="BpmTaskApproveVO" databaseId="drds">
+		select
+			inst.id_ id,
+			inst.subject_ subject,
+			inst.def_name_ defName,
+			inst.status_ status,
+			inst.creator_ creator,
+			inst.create_time_ createTime,
+			inst.END_TIME_ endTime,
+			inst.duration_ duration,
+			inst.type_id_ typeId,
+			(SELECT GROUP_CONCAT(distinct task.name_) FROM bpm_task task WHERE inst.id_ = task.inst_id_ AND task.task_type_ not in ('SIGN','ADD_SIGN')) taskNames,
+			(SELECT GROUP_CONCAT(distinct task.assignee_names_) FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') taskUsers,
+			(select io.STATUS_ from bpm_task_opinion io where io.inst_id_ = inst.id_  and io.status_ not in ('start','skip','end') order by create_time_ desc limit 0,1 ) lastStatus,
+			(select o.DUR_MS_ || '@' || o.STATUS_ || '@' || o.APPROVE_TIME_ from BPM_TASK_OPINION o where o.INST_ID_ = inst.ID_ and o.APPROVER_ = #{approver} order by o.CREATE_TIME_ desc limit 0,1) nodeName
+		from BPM_INSTANCE inst
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		where exists (select 1 from BPM_TASK_OPINION opt
+			where inst.id_ = opt.inst_id_ and opt.APPROVER_ = #{approver} and opt.status_ not in ('skip','end')
+		<if test="approverTime!=null">
+			and opt.APPROVE_TIME_ &gt;= #{approverTime}
+		</if>
+		<if test="approverTimeEnd!=null">
+			and opt.APPROVE_TIME_ &lt;= #{approverTimeEnd}
+		</if>
+		)
+		and inst.is_test_data_ = 0
+		<if test="whereSql!=null">
+			and ${whereSql}
+		</if>
+		<if test="taskUsers!=null or taskNames!=null">
+			and exists (select 1 from bpm_task bpmtask where bpmtask.inst_id_ = inst.id_
+			<if test="taskUsers!=null">
+				and bpmtask.assignee_names_ like '%${taskUsers}%'
+			</if>
+			<if test="taskNames!=null">
+				and bpmtask.name_ like '%${taskNames}%'
+			</if>
+			)
+		</if>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="BpmTaskApproveVO" databaseId="kingbase">
+		select
+		inst.id_ id,
+		inst.subject_ subject,
+		inst.def_name_ defName,
+		inst.status_ status,
+		inst.creator_ creator,
+		inst.create_time_ createTime,
+		inst.END_TIME_ endTime,
+		inst.duration_ duration,
+		inst.type_id_ typeId,
+		(SELECT WM_CONCAT(distinct task.name_) FROM bpm_task task WHERE inst.id_ = task.inst_id_ AND task.task_type_ not in ('SIGN','ADD_SIGN')) taskNames,
+		(SELECT WM_CONCAT(distinct task.assignee_names_) FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') taskUsers,
+		(select io.STATUS_ from bpm_task_opinion io where io.inst_id_ = inst.id_  and io.status_ not in ('start','skip','end') order by create_time_ desc limit 0,1 ) lastStatus,
+		(select o.DUR_MS_ || '@' || o.STATUS_ || '@' || o.APPROVE_TIME_ from BPM_TASK_OPINION o where o.INST_ID_ = inst.ID_ and o.APPROVER_ = #{approver} order by o.CREATE_TIME_ desc limit 0,1) nodeName
+		from BPM_INSTANCE inst
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		where exists (select 1 from BPM_TASK_OPINION opt
+			where inst.id_ = opt.inst_id_ and opt.APPROVER_ = #{approver} and opt.status_ not in ('skip','end')
+		<if test="approverTime!=null">
+			and opt.APPROVE_TIME_ &gt;= #{approverTime}
+		</if>
+		<if test="approverTimeEnd!=null">
+			and opt.APPROVE_TIME_ &lt;= #{approverTimeEnd}
+		</if>
+		)
+		and inst.is_test_data_ = 0
+		<if test="whereSql!=null">
+			and ${whereSql}
+		</if>
+		<if test="taskUsers!=null or taskNames!=null">
+			and exists (select 1 from bpm_task bpmtask where bpmtask.inst_id_ = inst.id_
+			<if test="taskUsers!=null">
+				and bpmtask.assignee_names_ like '%${taskUsers}%'
+			</if>
+			<if test="taskNames!=null">
+				and bpmtask.name_ like '%${taskNames}%'
+			</if>
+			)
+		</if>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="BpmTaskApproveVO" databaseId="highgo">
+		select
+			inst.id_ id,
+			inst.subject_ subject,
+			inst.def_name_ defName,
+			inst.status_ status,
+			inst.creator_ creator,
+			inst.create_time_ createTime,
+			inst.END_TIME_ endTime,
+			inst.duration_ duration,
+			inst.type_id_ typeId,
+			(SELECT array_to_string(array_agg(task.name_),',')
+				FROM bpm_task task WHERE inst.id_ = task.inst_id_ AND task.task_type_ not in ('SIGN','ADD_SIGN')) taskNames,
+			(SELECT array_to_string(array_agg(task.assignee_names_),',')
+				FROM bpm_task task WHERE task.inst_id_ = inst.id_ and task.task_type_ != 'SIGN_SOURCE') taskUsers,
+			(select io.STATUS_ from bpm_task_opinion io where io.inst_id_ = inst.id_  and io.status_ not in ('start','skip','end') order by create_time_ desc limit 0,1 ) lastStatus,
+			(select o.DUR_MS_ || '@' || o.STATUS_ || '@' || o.APPROVE_TIME_ from BPM_TASK_OPINION o where o.INST_ID_ = inst.ID_ and o.APPROVER_ = #{approver} order by o.CREATE_TIME_ desc limit 0,1) nodeName
+		from BPM_INSTANCE inst
+		LEFT JOIN SYS_TREE_NODE node on inst.TYPE_ID_ = node.ID_
+		where exists (select 1 from BPM_TASK_OPINION opt
+			where inst.id_ = opt.inst_id_ and opt.APPROVER_ = #{approver} and opt.status_ not in ('skip','end')
+		<if test="approverTime!=null">
+			and opt.APPROVE_TIME_ &gt;= #{approverTime}
+		</if>
+		<if test="approverTimeEnd!=null">
+			and opt.APPROVE_TIME_ &lt;= #{approverTimeEnd}
+		</if>
+		)
+		and inst.is_test_data_ = 0
+		<if test="whereSql!=null">
+			and ${whereSql}
+		</if>
+		<if test="taskUsers!=null or taskNames!=null">
+			and exists (select 1 from bpm_task bpmtask where bpmtask.inst_id_ = inst.id_
+			<if test="taskUsers!=null">
+				and bpmtask.assignee_names_ like '%${taskUsers}%'
+			</if>
+			<if test="taskNames!=null">
+				and bpmtask.name_ like '%${taskNames}%'
+			</if>
+			)
+		</if>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+
+	<select id="getInstNum"  parameterType="java.util.Map" resultType="java.util.HashMap" >
+		select def_num.*, def.NAME_ from
+		   (select * from (select DEF_ID_, count(1) NUM from BPM_INSTANCE WHERE IS_TEST_DATA_ = 0 group by DEF_ID_ order by NUM desc) where rownum &lt; 6) def_num, BPM_DEFINITION def
+		where def_num.DEF_ID_ = def.ID_
+		union
+		select 'all', (select count(1) from BPM_INSTANCE) WHERE IS_TEST_DATA_ = 0 NUM, 'all' from dual
+	</select>
+
+	<select id="getInstNum"  parameterType="java.util.Map" resultType="java.util.HashMap" databaseId="mysql">
+		select def_num.*, def.NAME_ from
+		   (select * from (select DEF_ID_, count(1) NUM from BPM_INSTANCE WHERE IS_TEST_DATA_ = 0 group by DEF_ID_ order by NUM desc) num limit 0,5) def_num, BPM_DEFINITION def
+		where def_num.DEF_ID_ = def.ID_
+		union
+		select 'all', (select count(1) from BPM_INSTANCE WHERE IS_TEST_DATA_ = 0) NUM, 'all'
+	</select>
+
+	<select id="getInstIdByBusId" parameterType="java.lang.String" resultType="java.util.HashMap"  >
+		select * from BPM_BUS_LINK  where BIZ_ID_ = #{busId}
+	</select>
+
+	<select id="getApplyListTypeCount" parameterType="java.util.Map" resultType="BpmTypeTreeCountVO">
+		SELECT  inst.def_key_ as id, min(def.type_id_) as parentId, min(def.name_) as name, count(*) as count FROM bpm_instance inst
+		inner join bpm_definition def on inst.def_id_ = def.id_ <if test="supportMobile"> and def.support_mobile_ = '1' </if>
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+			and inst.create_by_ = #{userId} and inst.status_ != 'draft'
+			and inst.is_test_data_ = 0
+		</where>
+		GROUP BY inst.def_key_
+	</select>
+	
+	<!-- mysql低于1.5.8 移除min函数 ,若1.5.8 可以改为  any_value 函数-->
+	<select id="getApproveHistoryListTypeCount" parameterType="java.util.Map" resultType="BpmTypeTreeCountVO">
+		SELECT  inst.def_key_ as id, min(def.type_id_) as parentId, min(def.name_) as name, count(*) as count FROM bpm_task_opinion o INNER JOIN bpm_instance inst on o.inst_id_ = inst.id_
+		inner join bpm_definition def on inst.def_id_ = def.id_ <if test="supportMobile"> and def.support_mobile_ = '1' </if>
+		where o.status_ not in ('start','skip','end') and o.approver_ = #{approver} and inst.is_test_data_ = 0
+		<if test="whereSql!=null">
+			and ${whereSql}
+		</if>
+		GROUP BY inst.def_key_
+	</select>
+	<select id="getInstanceStatusStatis" parameterType="java.lang.String"  resultType="java.util.HashMap" >
+		SELECT
+		  (SELECT COUNT(1) FROM BPM_TASK TASK WHERE TASK.INST_ID_ = #{instId} AND TASK.TASK_TYPE_ != 'SIGN_SOURCE') todoTaskNum,
+		  (SELECT COUNT(1) FROM BPM_TASK_OPINION OPINION WHERE OPINION.INST_ID_=  #{instId} AND OPINION.STATUS_ != 'AWAITING_CHECK') doneTaskNum,
+		  (SELECT COUNT(1) FROM BPM_PLUGIN_CARBON_COPY_RECEIVE RECEIVE , BPM_PLUGIN_CARBON_COPY_RECORD RECORD
+			WHERE RECEIVE.CC_RECORD_ID = RECORD.ID_ AND RECORD.INST_ID =  #{instId} AND RECEIVE.READ_ = '0') receiveUnReadNum,
+		  (SELECT COUNT(1) FROM BPM_PLUGIN_CARBON_COPY_RECEIVE RECEIVE , BPM_PLUGIN_CARBON_COPY_RECORD RECORD
+			WHERE RECEIVE.CC_RECORD_ID = RECORD.ID_ AND RECORD.INST_ID =  #{instId} AND RECEIVE.READ_ = '1') receiveReadNum,
+		  (SELECT COUNT(1) FROM BPM_PLUGIN_REMINDER_LOG REMINDER WHERE REMINDER.INSTANCE_ID_ = #{instId}) reminderNum
+		FROM DUAL
+	</select>
+</mapper>

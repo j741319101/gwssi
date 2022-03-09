@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gwssi.ecloudbpm.form.dao.FormDefDao">
+    <resultMap id="FormDef" type="cn.gwssi.ecloudbpm.form.model.FormDef">
+        <id property="id" column="id_" jdbcType="VARCHAR"/>
+        <result property="type" column="type_" jdbcType="VARCHAR"/>
+        <result property="key" column="key_" jdbcType="VARCHAR"/>
+        <result property="name" column="name_" jdbcType="VARCHAR"/>
+        <result property="desc" column="desc_" jdbcType="VARCHAR"/>
+        <result property="modifyDesc" column="modify_desc_" jdbcType="VARCHAR"/>
+        <result property="groupId" column="group_id_" jdbcType="VARCHAR"/>
+        <result property="groupName" column="group_name_" jdbcType="VARCHAR"/>
+        <result property="boKey" column="bo_key_" jdbcType="VARCHAR"/>
+        <result property="boName" column="bo_name_" jdbcType="VARCHAR"/>
+        <result property="html" column="html_" jdbcType="CLOB"/>
+        <result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+        <result property="version" column="version_" jdbcType="NUMERIC"/>
+        <result property="delete" column="delete_" jdbcType="NUMERIC"/>
+        <result property="orgId" column="org_id_" jdbcType="VARCHAR"/>
+        <result property="createUser" column="createUser" jdbcType="VARCHAR"/>
+        <result property="updateUser" column="updateUser" jdbcType="VARCHAR"/>
+        <result property="lockTime" column="lock_time_" jdbcType="TIMESTAMP"/>
+        <result property="lockBy" column="lock_by_" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="tableName">
+        form_def
+    </sql>
+
+    <sql id="forUpdate">
+        <if test="type != null">
+            type_ = #{type,jdbcType=VARCHAR},
+        </if>
+        <if test="key != null">
+            key_ = #{key,jdbcType=VARCHAR},
+        </if>
+        <if test="name != null">
+            name_ = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="desc != null">
+            desc_ = #{desc,jdbcType=VARCHAR},
+        </if>
+        <if test="modifyDesc != null">
+            modify_desc_ = #{modifyDesc,jdbcType=VARCHAR},
+        </if>
+        <if test="groupId != null">
+            group_id_ = #{groupId,jdbcType=VARCHAR},
+        </if>
+        <if test="groupName != null">
+            group_name_ = #{groupName,jdbcType=VARCHAR},
+        </if>
+        <if test="boKey != null">
+            bo_key_ = #{boKey,jdbcType=VARCHAR},
+        </if>
+        <if test="boName != null">
+            bo_name_ = #{boName,jdbcType=VARCHAR},
+        </if>
+        <if test="html != null">
+            html_ = #{html,jdbcType=VARCHAR},
+        </if>
+        <if test="updateBy != null">
+            update_by_ = #{updateBy,jdbcType=VARCHAR},
+        </if>
+        update_time_ = now(),
+        <if test="delete != null">
+            delete_ = #{delete,jdbcType=NUMERIC},
+        </if>
+        <if test="version != null">
+            version_ = #{version,jdbcType=NUMERIC},
+        </if>
+        <if test="lockBy != null">
+            lock_by_ = #{lockBy,jdbcType=VARCHAR},
+        </if>
+        <if test="lockTime != null">
+            lock_time_ = now(),
+        </if>
+    </sql>
+
+    <insert id="create" parameterType="cn.gwssi.ecloudbpm.form.model.FormDef">
+        INSERT INTO form_def
+        (id_, type_, key_, name_, desc_, modify_desc_, group_id_, group_name_, bo_key_, bo_name_, html_, create_time_,
+         create_by_, update_time_, update_by_, version_, delete_, org_id_)
+        VALUES (#{id,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+                #{desc,jdbcType=VARCHAR}, #{modifyDesc,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR},
+                #{groupName,jdbcType=VARCHAR}, #{boKey,jdbcType=VARCHAR}, #{boName,jdbcType=VARCHAR},
+                #{html,jdbcType=CLOB}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR},
+                #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{version,jdbcType=NUMERIC},
+                #{delete,jdbcType=NUMERIC}, #{orgId,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="get" parameterType="java.lang.String" resultMap="FormDef">
+        SELECT * FROM form_def
+        WHERE
+            id_=#{id}
+    </select>
+
+    <select id="query" parameterType="java.util.Map" resultMap="FormDef">
+        SELECT
+        id_,type_,key_,name_,desc_,modify_desc_,group_id_,group_name_,bo_key_,bo_name_,create_time_,create_by_,update_time_,update_by_,version_,delete_,org_id_,lock_by_,lock_time_
+        FROM form_def
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY id_ DESC
+        </if>
+    </select>
+
+    <select id="queryWithBo" parameterType="java.util.Map" resultType="java.util.HashMap" databaseId="mysql">
+        SELECT a.id_ id,a.type_ type,a.key_ 'key',a.name_ 'name',a.desc_ 'desc',a.modify_desc_ modifyDesc,a.group_id_
+        groupId,a.group_name_ groupName,
+        a.bo_key_ boKey,a.bo_name_ boName,a.create_time_ createTime,a.create_by_ createBy,a.update_time_
+        updateTime,a.update_by_ updateBy,
+        a.version_ version,a.delete_ 'delete',a.org_id_ orgId,a.lock_by_ as lockBy,a.lock_time_ as lockTime,b.persistence_type_ persistenceType FROM form_def a inner
+        join bus_object b on a.bo_key_ = b.key_
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY a.id_ DESC
+        </if>
+    </select>
+
+    <select id="queryWithBo" parameterType="java.util.Map" resultType="java.util.HashMap">
+        SELECT a.id_ "id",a.type_ "type",a.key_ "key",a.name_ "name",a.desc_ "desc",a.modify_desc_ "modifyDesc",a.group_id_
+        "groupId",a.group_name_ "groupName",
+        a.bo_key_ "boKey",a.bo_name_ "boName",a.create_time_ "createTime",a.create_by_ "createBy",a.update_time_
+        "updateTime",a.update_by_ "updateBy",
+        a.version_ "version",a.delete_ "delete",a.org_id_ orgId,a.lock_by_ as lockBy,a.lock_time_ as lockTime,b.persistence_type_ "persistenceType" FROM form_def a
+        inner join bus_object b on a.bo_key_ = b.key_
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY a.id_ DESC
+        </if>
+    </select>
+    <select id="queryWithBo" parameterType="java.util.Map" resultType="java.util.HashMap" databaseId="highgo">
+        SELECT a.id_ "id",a.type_ "type",a.key_ "key",a.name_ "name",a.desc_ "desc",a.modify_desc_ "modifyDesc",a.group_id_
+        "groupId",a.group_name_ "groupName",
+        a.bo_key_ "boKey",a.bo_name_ "boName",a.create_time_ "createTime",a.create_by_ "createBy",a.update_time_
+        "updateTime",a.update_by_ "updateBy",
+        a.version_ "version",a.delete_ "delete",a.org_id_ orgId,a.lock_by_ as lockBy,a.lock_time_ as lockTime,b.persistence_type_ "persistenceType" FROM form_def a
+        inner join bus_object b on a.bo_key_ = b.key_
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY a.id_ DESC
+        </if>
+    </select>
+
+    <update id="update" parameterType="cn.gwssi.ecloudbpm.form.model.FormDef">
+        UPDATE form_def
+        SET type_= #{type,jdbcType=VARCHAR},
+            key_= #{key,jdbcType=VARCHAR},
+            name_= #{name,jdbcType=VARCHAR},
+            desc_= #{desc,jdbcType=VARCHAR},
+            modify_desc_= #{modifyDesc,jdbcType=VARCHAR},
+            group_id_= #{groupId,jdbcType=VARCHAR},
+            group_name_= #{groupName,jdbcType=VARCHAR},
+            bo_key_= #{boKey,jdbcType=VARCHAR},
+            bo_name_= #{boName,jdbcType=VARCHAR},
+            html_= #{html,jdbcType=CLOB},
+            update_time_= now(),
+            update_by_= #{updateBy,jdbcType=VARCHAR},
+            version_= #{version,jdbcType=NUMERIC},
+            delete_= #{delete,jdbcType=NUMERIC},
+            org_id_= #{orgId,jdbcType=VARCHAR}
+        WHERE id_ = #{id}
+    </update>
+    <update id="updateFormDef" parameterType="cn.gwssi.ecloudbpm.form.model.FormDef">
+        UPDATE form_def
+        SET type_= #{type,jdbcType=VARCHAR},
+            key_= #{key,jdbcType=VARCHAR},
+            name_= #{name,jdbcType=VARCHAR},
+            desc_= #{desc,jdbcType=VARCHAR},
+            modify_desc_= #{modifyDesc,jdbcType=VARCHAR},
+            group_id_= #{groupId,jdbcType=VARCHAR},
+            group_name_= #{groupName,jdbcType=VARCHAR},
+            bo_key_= #{boKey,jdbcType=VARCHAR},
+            bo_name_= #{boName,jdbcType=VARCHAR},
+            update_time_= now(),
+            update_by_= #{updateBy,jdbcType=VARCHAR},
+            version_= #{version,jdbcType=NUMERIC}
+        WHERE id_ = #{id}
+    </update>
+    <delete id="remove" parameterType="java.lang.String">
+        DELETE
+        FROM form_def
+        WHERE id_ = #{id}
+    </delete>
+
+    <select id="getByKey" parameterType="java.lang.String" resultMap="FormDef">
+        SELECT * FROM form_def
+        WHERE key_ = #{key,jdbcType=VARCHAR}
+    </select>
+    <select id="getFormNumByTree" parameterType="java.util.Map" resultType="java.util.HashMap">
+        select NAME_, SN_ NUM
+        from sys_tree_node
+        where TREE_ID_ = '20000002960002'
+          and PARENT_ID_ = '0'
+    </select>
+
+    <update id="updateByPrimaryKeySelective"
+            parameterType="cn.gwssi.ecloudbpm.form.model.FormDef">
+        update
+        <include refid="tableName"/>
+        <set>
+            <include refid="forUpdate"/>
+        </set>
+        where id_ = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="getWithoutHtml" parameterType="java.lang.String" resultMap="FormDef">
+        SELECT
+            a.id_,a.type_,a.key_,a.name_,a.desc_,a.modify_desc_,a.group_id_,a.group_name_,a.bo_key_,a.bo_name_,a.create_time_,a.create_by_,a.update_time_,a.update_by_,a.version_,a.delete_,a.org_id_,lock_by_,lock_time_
+        FROM form_def a
+        WHERE
+            a.id_=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="sys-20210301-1"  author="wy" failOnError="false">
+        <createTable tableName="C_HOLIDAY_CONF" remarks="节假日配置表">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(255)" remarks="节日名"/>
+            <column name="SYSTEM_" type="VARCHAR(255)" remarks="系统"/>
+            <column name="YEAR_" type="int" remarks="年份"/>
+            <column name="STARTDAY_" type="date" remarks="开始日期"/>
+            <column name="ENDDAY_" type="date" remarks="结束日期"/>
+            <column name="TYPE_" type="VARCHAR(255)" remarks="分类"/>
+            <column name="REMARK_" type="VARCHAR(500)" remarks="描述"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-2" author="wy" failOnError="false">
+        <createTable tableName="C_SCHEDULE" remarks="日程表">
+            <column name="ID_" type="VARCHAR(64)" remarks="ID">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TITLE_" type="VARCHAR(1500)" remarks="标题"/>
+            <column name="DESC_" type="VARCHAR(3900)" remarks="描述"/>
+            <column name="TASK_URL_" type="VARCHAR(765)" remarks="任务链接"/>
+            <column name="TYPE_" type="VARCHAR(192)" remarks="类型"/>
+            <column name="OPEN_TYPE_" type="VARCHAR(192)" remarks="任务打开方式"/>
+            <column name="OWNER_" type="VARCHAR(192)" remarks="所属人id"/>
+            <column name="OWNER_NAME_" type="VARCHAR(192)" remarks="所属人名称"/>
+            <column name="PARTICIPANT_NAMES_" type="VARCHAR(3000)" remarks="参与者们（名称）"/>
+            <column name="START_TIME_" type="TIMESTAMP(0)" remarks="开始日期"/>
+            <column name="END_TIME_" type="TIMESTAMP(0)" remarks="结束日期"/>
+            <column name="ACTUAL_START_TIME_" type="TIMESTAMP(0)" remarks="实际开始日期"/>
+            <column name="COMPLETE_TIME_" type="TIMESTAMP(0)" remarks="完成时间"/>
+            <column name="RATE_PROGRESS_" type="INT" remarks="进度"/>
+            <column name="SUBMITTER_" type="VARCHAR(192)" remarks="提交人id"/>
+            <column name="SUBMITNAMER_" type="VARCHAR(192)" remarks="提交人名称"/>
+            <column name="REMARK_" type="VARCHAR(1500)" remarks="描述信息"/>
+            <column name="ISLOCK_" type="VARCHAR(30)" remarks="行锁"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="VARCHAR(192)" remarks="创建人id"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="VARCHAR(192)" remarks="更新人id"/>
+            <column name="DELETE_FLAG_" type="VARCHAR(30)" remarks="删除标记"/>
+            <column name="REV_" type="INT" remarks="版本"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-3" author="wy" failOnError="false">
+        <createTable tableName="C_SCHEDULE_BIZ" remarks="日程业务关联表">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="SCHEDULE_ID_" type="VARCHAR(64)" remarks="日程id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BIZ_ID_" type="VARCHAR(64)" remarks="业务id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FROM_" type="VARCHAR(64)" remarks="来源">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex indexName="IDX_SYS_SCHEDULE_BIZ_BIZ" tableName="C_SCHEDULE_BIZ">
+            <column name="BIZ_ID_"/>
+        </createIndex>
+        <createIndex indexName="IDX_SYS_SCHEDULE_BIZ_SCHEDULE" tableName="C_SCHEDULE_BIZ">
+            <column name="SCHEDULE_ID_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="sys-20210301-4" author="wy" failOnError="false">
+        <createTable tableName="C_SCHEDULE_PARTICIPANT" remarks="日程参与者">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="SCHEDULE_ID_" type="VARCHAR(64)" remarks="日程id"/>
+            <column name="PARTICIPANTOR_NAME_" type="VARCHAR(255)" remarks="参与者名字"/>
+            <column name="PARTICIPANTOR_" type="VARCHAR(64)" remarks="参与者id"/>
+            <column name="RATE_PROGRESS_" type="int" remarks="ilka完成比例"/>
+            <column name="SUBMIT_COMMENT_" type="VARCHAR(500)" remarks="ilka提交注释"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="ACTUAL_START_TIME_" type="TIMESTAMP(0)" remarks="ilka实际开始时间"/>
+            <column name="COMPLETE_TIME_" type="TIMESTAMP(0)" remarks="ilka完成时间"/>
+        </createTable>
+        <createIndex indexName="IDX_SYS_SCHEDULE_PARTICIPANT_PARTICIPANTOR" tableName="C_SCHEDULE_PARTICIPANT">
+            <column name="PARTICIPANTOR_"/>
+        </createIndex>
+        <createIndex indexName="IDX_SYS_SCHEDULE_PARTICIPANT_SCHEDULE_" tableName="C_SCHEDULE_PARTICIPANT">
+            <column name="SCHEDULE_ID_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="sys-20210301-5" author="wy" failOnError="false">
+        <createTable tableName="C_WORK_CALENDAR">
+            <column name="ID_" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="DAY_" type="date"/>
+            <column name="ISWORKDAY_" type="VARCHAR(20)"/>
+            <column name="TYPE_" type="VARCHAR(255)"/>
+            <column name="SYSTEM_" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-6" author="wy" failOnError="false">
+        <createTable tableName="SYS_AUTHORIZATION" remarks="通用资源授权配置">
+            <column name="RIGHTS_ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="RIGHTS_OBJECT_" type="VARCHAR(64)" remarks="授权对象表分区用">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RIGHTS_TARGET_" type="VARCHAR(64)" remarks="授权目标ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RIGHTS_TYPE_" type="VARCHAR(64)" remarks="权限类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RIGHTS_IDENTITY_" type="VARCHAR(64)" remarks="授权标识">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RIGHTS_IDENTITY_NAME_" type="VARCHAR(255)" remarks="标识名字">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RIGHTS_PERMISSION_CODE_" type="VARCHAR(125)" remarks="授权code=identity+type">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RIGHTS_CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RIGHTS_CREATE_BY_" type="VARCHAR(64)" remarks="创建人id">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex indexName="IDX_SYS_AUTHORIZATION_PERMISSION_CODE_" tableName="SYS_AUTHORIZATION">
+            <column name="RIGHTS_PERMISSION_CODE_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="sys-20210301-7" author="wy" failOnError="false">
+        <createTable tableName="SYS_CONNECT_RECORD" remarks="公共业务关联记录">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TYPE_" type="VARCHAR(64)" remarks="类型"/>
+            <column name="SOURCE_ID_" type="VARCHAR(64)" remarks="源id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TARGET_ID_" type="VARCHAR(64)" remarks="关联id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOTICE" type="VARCHAR(500)" remarks="提示信息"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-8" author="wy" failOnError="false">
+        <createTable tableName="SYS_DATA_DICT" remarks="数据字典表">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="PARENT_ID_" type="VARCHAR(64)" remarks="上级id"/>
+            <column name="KEY_" type="VARCHAR(255)" remarks="key">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(255)" remarks="字典名">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DICT_KEY_" type="VARCHAR(255)" remarks="字典key">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE_ID_" type="VARCHAR(64)" remarks="分组id"/>
+            <column name="SN_" type="int" remarks="排序"/>
+            <column name="DICT_TYPE_" type="VARCHAR(10)" remarks="dict/node字典项">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DELETE_FLAG_" type="VARCHAR(1)" remarks="是否删除"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="VARCHAR(64)" remarks="创建人id"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="VARCHAR(64)" remarks="更新人id"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-9" author="wy" failOnError="false">
+        <createTable tableName="SYS_DATA_SOURCE">
+            <column name="ID_" type="VARCHAR(64)" remarks="数据源">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="KEY_" type="VARCHAR(64)" remarks="别名">
+                <constraints unique="true"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(64)" remarks="数据源名称"/>
+            <column name="DESC_" type="VARCHAR(256)" remarks="数据源的描述"/>
+            <column name="DB_TYPE_" type="VARCHAR(64)" remarks="数据库的类型"/>
+            <column name="CLASS_PATH_" type="VARCHAR(100)" remarks="数据源全路径"/>
+            <column name="ATTRIBUTES_JSON_" type="${clob.type}" remarks="属性配置"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-10" author="wy" failOnError="false">
+        <createTable tableName="SYS_DATA_SOURCE_DEF" remarks="数据源模板">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(64)" remarks="数据源名称"/>
+            <column name="CLASS_PATH_" type="VARCHAR(100)" remarks="数据源全路径"/>
+            <column name="ATTRIBUTES_JSON_" type="${clob.type}" remarks="属性配置"/>
+        </createTable>
+        <createIndex indexName="IDX_SYS_DATA_SOURCE_DEF_CLASS_PATH" tableName="sys_data_source_def">
+            <column name="class_path_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="sys-20210301-11" author="wy" failOnError="false">
+        <createTable tableName="SYS_FILE" remarks="系统附件表">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(500)" remarks="附件名"/>
+            <column name="UPLOADER_" type="VARCHAR(128)" remarks="上传器"/>
+            <column name="PATH_" type="VARCHAR(256)" remarks="存储位置"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="VARCHAR(64)" remarks="创建人id"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="VARCHAR(64)" remarks="更新人id"/>
+            <column name="VERSION_" type="int" remarks="版本号"/>
+            <column name="DELETE_" type="int" remarks="逻辑删除标记"/>
+            <column name="REMARK_" type="VARCHAR(64)" remarks="备注"/>
+            <column name="type_" type="int" remarks="文件类型 0 内部文件 1 外部图片"/>
+            <column name="INST_ID_" type="VARCHAR(64)" remarks="流程实例id"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-12" author="wy" failOnError="false">
+        <createTable tableName="SYS_PROPERTIES" remarks="系统属性">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(64)" remarks="属性名称"/>
+            <column name="ALIAS_" type="VARCHAR(64)" remarks="别名"/>
+            <column name="GROUP_" type="VARCHAR(64)" remarks="分组"/>
+            <column name="VALUE_" type="VARCHAR(500)" remarks="值"/>
+            <column name="ENCRYPT_" type="int" remarks="是否加密"/>
+            <column name="UPDATE_BY_" type="VARCHAR(64)" remarks="更新人id"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="CREATE_BY_" type="VARCHAR(64)" remarks="创建人id"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="DESCRIPTION_" type="VARCHAR(500)" remarks="描述"/>
+            <column name="ENVIRONMENT_" type="VARCHAR(64)" remarks="环境信息"/>
+            <column name="type_id_" type="varchar(64)" remarks="分类id"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-13" author="wy" failOnError="false">
+        <createTable tableName="SYS_SCRIPT" remarks="常用脚本">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(128)" remarks="脚本名称"/>
+            <column name="SCRIPT_" type="${clob.type}" remarks="脚本"/>
+            <column name="CATEGORY_" type="VARCHAR(128)" remarks="脚本分类"/>
+            <column name="MEMO_" type="VARCHAR(512)" remarks="备注"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-14" author="wy" failOnError="false">
+        <createTable tableName="SYS_SERIALNO" remarks="流水号生成">
+            <column name="ID_" type="VARCHAR(192)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(192)" remarks="名称"/>
+            <column name="ALIAS_" type="VARCHAR(60)" remarks="别名"/>
+            <column name="REGULATION_" type="VARCHAR(384)" remarks="规则"/>
+            <column name="GEN_TYPE_" type="INT" remarks="生成类型"/>
+            <column name="NO_LENGTH_" type="INT" remarks="流水号长度"/>
+            <column name="CUR_DATE_" type="VARCHAR(60)" remarks="当前日期"/>
+            <column name="INIT_VALUE_" type="INT" remarks="初始值"/>
+            <column name="CUR_VALUE_" type="INT" remarks="当前值"/>
+            <column name="STEP_" type="INT" remarks="步长"/>
+            <column name="type_id_" type="varchar(64)" remarks="分类id"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+        </createTable>
+        <createIndex indexName="IDX_SYS_SERIALNO_UNI_ALIAS_VAL" tableName="sys_serialno">
+            <column name="ALIAS_"/>
+            <column name="CUR_VALUE_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="sys-20210301-15" author="wy" failOnError="false">
+        <createTable tableName="SYS_TREE" remarks="系统树">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="KEY_" type="VARCHAR(64)" remarks="别名">
+                <constraints unique="true"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(256)" remarks="名称"/>
+            <column name="DESC_" type="VARCHAR(256)" remarks="描述"/>
+            <column name="SYSTEM_" type="int" remarks="是否系统内置树"/>
+            <column name="MULTI_SELECT" type="int" remarks="是否支持多选（0：否  1：是）"/>
+            <column name="ICON_SHOW" type="int" remarks="是否显示图标（0：否  1：是）"/>
+            <column name="DRAG" type="int" remarks="是否支持拖拽（0：否  1：是）"/>
+            <column name="LEAF_STORE" type="int" remarks="是否只允许叶子节点存储数据（0：否  1：是）"/>
+            <column name="ENABLE_EDIT" type="int" remarks="是否可编辑（0：否  1：是）"/>
+            <column name="type_id_" type="varchar(64)" remarks="分类id"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-16" author="wy" failOnError="false">
+        <createTable tableName="SYS_TREE_NODE" remarks="系统树节点">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="KEY_" type="VARCHAR(64)" remarks="别名"/>
+            <column name="NAME_" type="VARCHAR(128)" remarks="名字"/>
+            <column name="DESC_" type="VARCHAR(256)" remarks="描述"/>
+            <column name="TREE_ID_" type="VARCHAR(64)" remarks="所属树id"/>
+            <column name="PARENT_ID_" type="VARCHAR(64)" remarks="父id"/>
+            <column name="PATH_" type="VARCHAR(512)" remarks="路径 eg；pppid.ppid.pid"/>
+            <column name="SN_" type="int" remarks="排序号"/>
+            <column name="ICON_" type="VARCHAR(255)" remarks="图标"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="VARCHAR(50)" remarks="创建人id"/>
+            <column name="APPLICATION_NAME_" type="VARCHAR(50)" remarks="所属应用"/>
+        </createTable>
+        <createIndex indexName="IDX_SYS_TREE_NODE_UNI_KEY_TREE" tableName="sys_tree_node" unique="true">
+            <column name="KEY_"/>
+            <column name="TREE_ID_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="sys-20210301-17" author="wy" failOnError="false">
+        <createTable tableName="SYS_WORKBENCH_LAYOUT" remarks="工作台布局">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="PANEL_ID_" type="VARCHAR(255)" remarks="面板id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CUST_WIDTH_" type="int" remarks="自定义宽"/>
+            <column name="CUST_HEIGHT_" type="int" remarks="自定义高"/>
+            <column name="SN_" type="int" remarks="排序"/>
+            <column name="USER_ID_" type="VARCHAR(64)" remarks="用户id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210301-18" author="wy" failOnError="false">
+        <createTable tableName="SYS_WORKBENCH_PANEL" remarks="工作台面板">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="ALIAS_" type="VARCHAR(255)" remarks="标识">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(255)" remarks="名字">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE_" type="VARCHAR(64)" remarks="类型"/>
+            <column name="DESC_" type="VARCHAR(500)" remarks="描述"/>
+            <column name="DATA_TYPE_" type="VARCHAR(64)" remarks="数据类型"/>
+            <column name="DATA_SOURCE_" type="VARCHAR(255)" remarks="数据来源"/>
+            <column name="AUTO_REFRESH_" type="int" remarks="自动刷新"/>
+            <column name="WIDTH_" type="int" remarks="宽"/>
+            <column name="HEIGHT_" type="int" remarks="高"/>
+            <column name="DISPLAY_CONTENT_" type="${clob.type}" remarks="展示内容"/>
+            <column name="MORE_URL_" type="VARCHAR(255)" remarks="更多链接"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="VARCHAR(64)" remarks="创建人id"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="VARCHAR(64)" remarks="更新人id"/>
+            <column name="DELETE_FLAG_" type="VARCHAR(10)" remarks="删除标记"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210416-19" author="wy" failOnError="false">
+        <createTable tableName="DB_UPLOADER" remarks="文件表">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="BYTES_" type="BLOB" remarks="文件内容">
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210907-1" author="wy" failOnError="false">
+        <createTable tableName="SYS_META_COLUMN" remarks="元数据行">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="GROUP_ID_" type="VARCHAR(64)" remarks="系统分类树的 分组id"/>
+            <column name="NAME_" type="VARCHAR(128)" remarks="显示名"/>
+            <column name="KEY_" type="VARCHAR(256)" remarks="字段名"/>
+            <column name="TYPE_" type="VARCHAR(64)" remarks="数据类型"/>
+            <column name="LENGTH_" type="int" remarks="存放长度"/>
+            <column name="DECIMAL_" type="int" remarks="数据精度"/>
+            <column name="DEFAULT_VALUE_" type="VARCHAR(255)" remarks="默认值"/>
+            <column name="INPUT_VALID_" type="VARCHAR(255)" remarks="输入值"/>
+            <column name="COMMENT_" type="VARCHAR(255)" remarks="说明"/>
+            <column name="DISPLAY_CONTROL_" type="VARCHAR(255)" remarks="显示控件"/>
+            <column name="PROMPT_" type="VARCHAR(255)" remarks="辅助提示"/>
+            <column name="ENABLED_" type="int" remarks="启停状态 1可用 0不可用"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="VARCHAR(64)" remarks="创建人id"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="VARCHAR(64)" remarks="更新人id"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sys-20210907-2" author="wy" failOnError="false">
+        <createTable tableName="SYS_META_COLUMN" remarks="元数据血缘">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="META_ID_" type="VARCHAR(64)" remarks="元数据行的id"/>
+            <column name="COLUMN_ID_" type="VARCHAR(64)" remarks="字段id"/>
+            <column name="TABLE_ID_" type="VARCHAR(64)" remarks="实体id"/>
+            <column name="DEFAULT_VALUE_" type="VARCHAR(255)" remarks="默认值"/>
+            <column name="INPUT_VALID_" type="VARCHAR(255)" remarks="输入值"/>
+            <column name="DISPLAY_CONTROL_" type="VARCHAR(255)" remarks="显示控件"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="VARCHAR(64)" remarks="创建人id"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="VARCHAR(64)" remarks="更新人id"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="sys-20211112-1" author="lxy" failOnError="false">
+        <createTable tableName="SYS_AUDIT_PARAM" remarks="审计参数设置">
+            <column name="ID_" type="VARCHAR(64)" remarks="id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME_" type="VARCHAR(150)" remarks="参数名"/>
+            <column name="ALIAS_" type="VARCHAR(100)" remarks="别名"/>
+            <column name="VALUE_" type="VARCHAR(150)" remarks="值"/>
+            <column name="REMARK_" type="VARCHAR(150)" remarks="备注"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="VARCHAR(64)" remarks="创建人id"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="VARCHAR(64)" remarks="更新人id"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="wy"  id="sys-data_init_1-202103123-1" failOnError="false">
+        <sqlFile path="classpath:/db/changelog/changes/insert-data-sys-data_init_1.sql" />
+    </changeSet>
+</databaseChangeLog>

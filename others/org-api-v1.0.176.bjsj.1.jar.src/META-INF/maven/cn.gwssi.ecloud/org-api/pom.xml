@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.gwssi.ecloud</groupId>
+        <artifactId>org</artifactId>
+        <version>v1.0.176.bjsj.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>org-api</artifactId>
+    <description>组织架构API</description>
+    <dependencies>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>base-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

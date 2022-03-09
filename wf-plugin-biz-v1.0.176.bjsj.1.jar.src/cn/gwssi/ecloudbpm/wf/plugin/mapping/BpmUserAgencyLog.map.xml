@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmUserAgencyLogDao">
+
+    <resultMap id="BpmUserAgencyLog" type="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmUserAgencyLog">
+        <id column="id_" jdbcType="VARCHAR" property="id" />
+        <result column="config_id_" jdbcType="VARCHAR" property="configId" />
+        <result column="flow_instance_id_" jdbcType="VARCHAR" property="flowInstanceId" />
+        <result column="task_id_" jdbcType="VARCHAR" property="taskId" />
+        <result column="task_node_id_" jdbcType="VARCHAR" property="taskNodeId" />
+        <result column="task_node_name_" jdbcType="VARCHAR" property="taskNodeName" />
+        <result column="create_by_" jdbcType="VARCHAR" property="createBy" />
+        <result column="create_time_" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="create_org_id_" jdbcType="VARCHAR" property="createOrgId" />
+        <result column="update_by_" jdbcType="VARCHAR" property="updateBy" />
+        <result column="update_time_" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="rev_" jdbcType="INTEGER" property="rev" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id_, config_id_, flow_instance_id_, task_id_, task_node_id_, task_node_name_, create_by_,
+      create_time_, create_org_id_, update_by_, update_time_, rev_
+    </sql>
+
+    <insert id="insertSelective" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmUserAgencyLog">
+        insert into bpm_user_agency_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id_,
+            </if>
+            <if test="configId != null">
+                config_id_,
+            </if>
+            <if test="flowInstanceId != null">
+                flow_instance_id_,
+            </if>
+            <if test="taskId != null">
+                task_id_,
+            </if>
+            <if test="taskNodeId != null">
+                task_node_id_,
+            </if>
+            <if test="taskNodeName != null">
+                task_node_name_,
+            </if>
+            <if test="createBy != null">
+                create_by_,
+            </if>
+            <if test="createTime != null">
+                create_time_,
+            </if>
+            <if test="createOrgId != null">
+                create_org_id_,
+            </if>
+            <if test="updateBy != null">
+                update_by_,
+            </if>
+            <if test="updateTime != null">
+                update_time_,
+            </if>
+            <if test="rev != null">
+                rev_,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="configId != null">
+                #{configId,jdbcType=VARCHAR},
+            </if>
+            <if test="flowInstanceId != null">
+                #{flowInstanceId,jdbcType=VARCHAR},
+            </if>
+            <if test="taskId != null">
+                #{taskId,jdbcType=VARCHAR},
+            </if>
+            <if test="taskNodeId != null">
+                #{taskNodeId,jdbcType=VARCHAR},
+            </if>
+            <if test="taskNodeName != null">
+                #{taskNodeName,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy != null">
+                #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createOrgId != null">
+                #{createOrgId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateBy != null">
+                #{updateBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rev != null">
+                #{rev,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmUserAgencyLog">
+        update bpm_user_agency_log
+        <set>
+            <if test="configId != null">
+                config_id_ = #{configId,jdbcType=VARCHAR},
+            </if>
+            <if test="flowInstanceId != null">
+                flow_instance_id_ = #{flowInstanceId,jdbcType=VARCHAR},
+            </if>
+            <if test="taskId != null">
+                task_id_ = #{taskId,jdbcType=VARCHAR},
+            </if>
+            <if test="taskNodeId != null">
+                task_node_id_ = #{taskNodeId,jdbcType=VARCHAR},
+            </if>
+            <if test="taskNodeName != null">
+                task_node_name_ = #{taskNodeName,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy != null">
+                create_by_ = #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time_ = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createOrgId != null">
+                create_org_id_ = #{createOrgId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateBy != null">
+                update_by_ = #{updateBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time_ = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rev != null">
+                rev_ = #{rev,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id_ = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="removeByConfigIds" parameterType="string">
+        DELETE FROM bpm_user_agency_log WHERE config_id_ IN
+        <foreach collection="configIds" item="configId" open="(" separator="," close=")">
+            #{configId,jdbcType=VARCHAR}
+        </foreach>
+    </delete>
+
+    <select id="get" resultMap="BpmUserAgencyLog" parameterType="string">
+        SELECT
+            <include refid="Base_Column_List" />
+        FROM
+            bpm_user_agency_log
+        WHERE id_ = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="query" resultMap="BpmUserAgencyLog">
+        SELECT
+          <include refid="Base_Column_List" />
+        FROM bpm_user_agency_log
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY id_ DESC
+        </if>
+    </select>
+    
+    <select id="selectBpmUserAgencyLogList" resultType="cn.gwssi.ecloudbpm.wf.plugin.vo.BpmUserAgencyLogVO">
+      SELECT
+             bual.id_                   AS  id,
+             bual.flow_instance_id_     AS  flowInstanceId,
+             bual.create_time_          AS  createTime,
+             bi.subject_                AS  flowInstanceName,
+             bto.approver_name_         AS  approverName,
+             bto.approve_time_          AS  approveTime,
+             bto.status_				AS  approveStatus,
+             bto.assign_info_			AS  assignInfo,
+             bto.task_id_				AS  taskId,
+             bto.task_key_              AS  taskKey,
+             bto.task_name_             AS  taskName,
+             bual.config_id_            AS  configId,
+             config.CONFIG_USER_ID_     AS  configUserId,
+             config.TARGET_USER_NAME_   AS  targetUserName
+      FROM bpm_user_agency_log bual
+             INNER JOIN bpm_instance bi ON bi.id_ = bual.flow_instance_id_
+             INNER JOIN bpm_task_opinion bto ON bto.task_id_ = bual.task_id_
+             INNER JOIN BPM_USER_AGENCY_CONFIG config on config.ID_ = bual.CONFIG_ID_
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+      </where>
+      <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+      </if>
+      <if test="orderBySql==null">
+            ORDER BY bual.id_ DESC
+      </if>
+    </select>
+</mapper>

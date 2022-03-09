@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="wf-plugin-biz" />
+        <module name="wf-rest" />
+        <module name="wf-core" />
+        <module name="wf-plugin" />
+        <module name="wf-act" />
+        <module name="wf-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wf" target="1.5" />
+      <module name="wf-act" target="1.5" />
+      <module name="wf-api" target="1.5" />
+      <module name="wf-core" target="1.5" />
+      <module name="wf-plugin" target="1.5" />
+      <module name="wf-plugin-biz" target="1.5" />
+      <module name="wf-rest" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dstz.bpm.core.dao.TaskIdentityLinkDao">
+    <resultMap id="TaskIdentityLink" type="com.dstz.bpm.core.model.TaskIdentityLink">
+        <id property="id" column="id_" jdbcType="VARCHAR"/>
+        <result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
+        <result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
+        <result property="type" column="type_" jdbcType="VARCHAR"/>
+        <result property="identityName" column="identity_name_" jdbcType="VARCHAR"/>
+        <result property="identity" column="identity_" jdbcType="VARCHAR"/>
+        <result property="permissionCode" column="permission_code_" jdbcType="VARCHAR"/>
+        <result property="taskType" column="task_type_" jdbcType="VARCHAR"/>
+        <result property="checkStatus" column="check_status_" jdbcType="VARCHAR"/>
+        <result property="checkTime" column="check_time_" jdbcType="TIMESTAMP"/>
+        <result property="orgId" column="org_id_" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="create" parameterType="com.dstz.bpm.core.model.TaskIdentityLink">
+		INSERT INTO bpm_task_identitylink
+		(id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{instId,jdbcType=VARCHAR},
+		    #{type,jdbcType=VARCHAR}, #{identityName,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR},
+		    #{permissionCode,jdbcType=VARCHAR}, #{taskType,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR})
+	</insert>
+
+    <insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.TaskIdentityLink" databaseId="mysql">
+        insert into bpm_task_identitylink (id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
+        values
+        <foreach collection="list" item="identityLink" index="index" separator=",">
+            ( #{identityLink.id,jdbcType=VARCHAR},
+            #{identityLink.taskId,jdbcType=VARCHAR},
+            #{identityLink.instId,jdbcType=VARCHAR},
+            #{identityLink.type,jdbcType=VARCHAR},
+            #{identityLink.identityName,jdbcType=VARCHAR},
+            #{identityLink.identity,jdbcType=VARCHAR},
+            #{identityLink.permissionCode,jdbcType=VARCHAR},
+            #{identityLink.taskType,jdbcType=VARCHAR},
+            #{identityLink.orgId,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.TaskIdentityLink" databaseId="drds">
+        insert into bpm_task_identitylink (id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
+        values
+        <foreach collection="list" item="identityLink" index="index" separator=",">
+            ( #{identityLink.id,jdbcType=VARCHAR},
+            #{identityLink.taskId,jdbcType=VARCHAR},
+            #{identityLink.instId,jdbcType=VARCHAR},
+            #{identityLink.type,jdbcType=VARCHAR},
+            #{identityLink.identityName,jdbcType=VARCHAR},
+            #{identityLink.identity,jdbcType=VARCHAR},
+            #{identityLink.permissionCode,jdbcType=VARCHAR},
+            #{identityLink.taskType,jdbcType=VARCHAR},
+            #{identityLink.orgId,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.TaskIdentityLink" databaseId="kingbase">
+        insert into bpm_task_identitylink (id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
+        values
+        <foreach collection="list" item="identityLink" index="index" separator=",">
+            ( #{identityLink.id,jdbcType=VARCHAR},
+            #{identityLink.taskId,jdbcType=VARCHAR},
+            #{identityLink.instId,jdbcType=VARCHAR},
+            #{identityLink.type,jdbcType=VARCHAR},
+            #{identityLink.identityName,jdbcType=VARCHAR},
+            #{identityLink.identity,jdbcType=VARCHAR},
+            #{identityLink.permissionCode,jdbcType=VARCHAR},
+            #{identityLink.taskType,jdbcType=VARCHAR},
+            #{identityLink.orgId,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.TaskIdentityLink">
+        insert into bpm_task_identitylink (id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
+        SELECT A.* FROM (
+        <foreach collection="list" index="index" item="identityLink" separator="UNION ALL">
+            SELECT
+            #{identityLink.id,jdbcType=VARCHAR} id_,
+            #{identityLink.taskId,jdbcType=VARCHAR} task_id_,
+            #{identityLink.instId,jdbcType=VARCHAR} inst_id_,
+            #{identityLink.type,jdbcType=VARCHAR} type_,
+            #{identityLink.identityName,jdbcType=VARCHAR} identity_name_,
+            #{identityLink.identity,jdbcType=VARCHAR} identity_,
+            #{identityLink.permissionCode,jdbcType=VARCHAR} permission_code_,
+            #{identityLink.taskType,jdbcType=VARCHAR} task_type_,
+            #{identityLink.orgId,jdbcType=VARCHAR} org_id_ FROM dual
+        </foreach>
+        )A
+    </insert>
+    <select id="get" parameterType="java.lang.String" resultMap="TaskIdentityLink">
+		SELECT * FROM bpm_task_identitylink 
+		WHERE 
+		id_=#{id}
+	</select>
+
+    <select id="query" parameterType="java.util.Map" resultMap="TaskIdentityLink">
+        SELECT * FROM bpm_task_identitylink
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY id_ DESC
+        </if>
+    </select>
+
+    <update id="update" parameterType="com.dstz.bpm.core.model.TaskIdentityLink">
+		UPDATE bpm_task_identitylink SET
+		task_id_=#{taskId,jdbcType=VARCHAR},
+		type_=#{type,jdbcType=VARCHAR},
+		identity_name_=#{identityName,jdbcType=VARCHAR},
+		identity_=#{identity,jdbcType=VARCHAR},
+		permission_code_=#{permissionCode,jdbcType=VARCHAR},
+		task_type_=#{taskType,jdbcType=VARCHAR},
+        org_id_=#{orgId,jdbcType=VARCHAR}
+		WHERE
+		id_=#{id}
+	</update>
+    <update id="updateCheckState" parameterType="java.util.Map">
+        UPDATE bpm_task_identitylink SET
+        check_status_ = '0',
+        check_time_ = SYSDATE
+        <where>
+            ${whereSql} and check_status_ = '1'
+        </where>
+
+    </update>
+
+    <update id="updateCheckState" parameterType="java.util.Map" databaseId="mysql">
+        UPDATE bpm_task_identitylink SET
+        check_status_ = '0',
+        check_time_ = now()
+        <where>
+            ${whereSql} and check_status_ = '1'
+        </where>
+    </update>
+
+    <update id="updateCheckState" parameterType="java.util.Map" databaseId="kingbase">
+        UPDATE bpm_task_identitylink SET
+        check_status_ = '0',
+        check_time_ = now()
+        <where>
+            ${whereSql} and check_status_ = '1'
+        </where>
+    </update>
+
+    <update id="updateCheckState" parameterType="java.util.Map" databaseId="drds">
+        UPDATE bpm_task_identitylink SET
+        check_status_ = '0',
+        check_time_ = now()
+        <where>
+            ${whereSql} and check_status_ = '1'
+        </where>
+    </update>
+
+    <delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_task_identitylink 
+		WHERE
+		id_=#{id}
+	</delete>
+
+    <delete id="removeByTaskId" parameterType="java.lang.String">
+		DELETE FROM bpm_task_identitylink 
+		WHERE
+		task_id_=#{taskId}
+	</delete>
+
+    <delete id="removeByInstId" parameterType="java.lang.String">
+		DELETE FROM bpm_task_identitylink 
+		WHERE
+		inst_id_=#{instId}
+	</delete>
+
+    <select id="queryTaskIdentityCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT count(*) FROM bpm_task_identitylink  WHERE  task_id_=#{taskId}
+	</select>
+
+    <select id="queryInstanceIdentityCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT count(*) FROM bpm_task_identitylink  WHERE  inst_id_=#{instId}
+	</select>
+
+    <select id="checkUserOperatorPermission" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT count(*) FROM bpm_task_identitylink
+        WHERE permission_code_ in
+        <foreach collection="rights" item="r" separator="," open="(" close=")">#{r,jdbcType=VARCHAR}</foreach>
+        <if test="taskId != null">and task_id_=#{taskId}</if>
+        <if test="instanceId != null">and inst_id_=#{instanceId}</if>
+    </select>
+
+    <select id="getByTaskId" parameterType="java.lang.String" resultMap="TaskIdentityLink">
+		SELECT * FROM bpm_task_identitylink 
+		WHERE 
+		task_id_ = #{taskId}
+	</select>
+    <select id="getByTaskIdAndUserId" parameterType="java.lang.String" resultMap="TaskIdentityLink">
+		SELECT * FROM bpm_task_identitylink
+		WHERE
+		task_id_ = #{taskId} and IDENTITY_ = #{userId}
+	</select>
+
+</mapper>

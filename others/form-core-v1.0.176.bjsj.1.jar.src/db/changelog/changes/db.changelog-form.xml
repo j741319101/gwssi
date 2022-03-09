@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="form-20210310-1" author="xieshi" failOnError="false">
+        <createTable tableName="FORM_CUST_DIALOG" remarks="自定义对话框表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="key_" type="varchar(64)" remarks="别名"/>
+            <column name="name_" type="varchar(128)" remarks="名字">
+                <constraints nullable="false"/>
+            </column>
+            <column name="desc_" type="varchar(256)" remarks="描述"/>
+            <column name="modify_desc_" type="${clob.type}" remarks="描述"/>
+            <column name="style_" type="varchar(32)" remarks="显示类型"/>
+            <column name="ds_key_" type="varchar(64)" remarks="数据源别名"/>
+            <column name="ds_name_" type="varchar(128)" remarks="数据源名字"/>
+            <column name="obj_type_" type="varchar(32)" remarks="对象类型"/>
+            <column name="obj_name_" type="varchar(64)" remarks="对象名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="page_" type="int" remarks="是否分页"/>
+            <column name="page_size_" type="int" remarks="分页大小"/>
+            <column name="width_" type="int" remarks="弹出框的宽度"/>
+            <column name="height_" type="int" remarks="弹出框的高度"/>
+            <column name="system_" type="int" remarks="是否系统内置"/>
+            <column name="multiple_" type="int" remarks="是否多选"/>
+            <column name="tree_config_json_" type="${clob.type}" remarks="树形的配置信息，json字段"/>
+            <column name="display_fields_json_" type="${clob.type}" remarks="显示字段"/>
+            <column name="condition_fields_json_" type="${clob.type}" remarks="条件字段的json"/>
+            <column name="return_fields_json_" type="${clob.type}" remarks="返回字段json"/>
+            <column name="sort_fields_json_" type="${clob.type}" remarks="排序字段"/>
+            <column name="data_source_" type="varchar(64)" remarks="数据来源"/>
+            <column name="primary_table_config_json_" type="${clob.type}" remarks="主表配置"/>
+            <column name="data_relation_" type="varchar(64)" remarks="数据关系-单表(singleTable)、主子表(doubleTable)"/>
+            <column name="dialog_layout_" type="varchar(64)" remarks="对话框结构:左右(leftRight)、上下(upDown)"/>
+            <column name="other_config_json_" type="${clob.type}" remarks="其他配置"/>
+            <column name="type_id_" type="varchar(64)" remarks="分类id"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+        </createTable>
+        <createIndex tableName="FORM_CUST_DIALOG" indexName="FORM_CUST_DIALOG_KEY" unique="true">
+            <column name="key_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="form-20210310-2" author="xieshi" failOnError="false">
+        <createTable tableName="FORM_CUSTOM_CONF" remarks="表单自定义配置表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="FORM_KEY_" type="varchar(50)" remarks="表单key">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONF_" type="${clob.type}" remarks="自定义表单配置">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modify_desc_" type="${clob.type}" remarks="描述"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="form-20210310-3" author="xieshi" failOnError="false">
+        <createTable tableName="FORM_DEF" remarks="表单定义表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type_" type="varchar(64)" remarks="分类（pc/mobile）">
+                <constraints nullable="false"/>
+            </column>
+            <column name="key_" type="varchar(64)" remarks="key"/>
+            <column name="name_" type="varchar(128)" remarks="名字"/>
+            <column name="desc_" type="varchar(256)" remarks="描述"/>
+            <column name="group_id_" type="varchar(64)" remarks="分组id"/>
+            <column name="group_name_" type="varchar(128)" remarks="分组名称"/>
+            <column name="bo_key_" type="varchar(64)" remarks="业务对象key"/>
+            <column name="bo_name_" type="varchar(128)" remarks="业务对象名称"/>
+            <column name="html_" type="${clob.type}" remarks="html"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(64)" remarks="创建人ID"/>
+            <column name="creator_" type="varchar(128)" remarks="创建人名字"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(64)" remarks="更新人ID"/>
+            <column name="updator_" type="varchar(128)" remarks="更新人名字"/>
+            <column name="version_" type="int" remarks="版本号"/>
+            <column name="delete_" type="int" remarks="逻辑删除标记"/>
+            <column name="ORG_ID_" type="varchar(192)" remarks="机构id"/>
+            <column name="LOCK_TIME_" type="TIMESTAMP(0)" remarks="锁定时间"/>
+            <column name="LOCK_BY_" type="varchar(64)" remarks="锁定人ID"/>
+        </createTable>
+        <createIndex tableName="FORM_DEF" indexName="FORM_DEF_KEY" unique="true">
+            <column name="key_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="form-20210310-4" author="xieshi" failOnError="false">
+        <createTable tableName="FORM_TEMPLATE" remarks="表单模版表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name_" type="varchar(128)" remarks="模板名称"/>
+            <column name="form_type_" type="varchar(64)" remarks="表单类型（pc/mobile/vuepc）"/>
+            <column name="type_" type="varchar(32)" remarks="模板类型"/>
+            <column name="html_" type="${clob.type}" remarks="模板内容"/>
+            <column name="desc_" type="varchar(400)" remarks="模板描述"/>
+            <column name="editable_" type="int" remarks="是否可以编辑"/>
+            <column name="key_" type="varchar(32)" remarks="别名"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="form-20210310-5" author="xieshi" failOnError="false">
+        <sqlFile path="classpath:/db/changelog/changes/insert-data-form.sql"/>
+    </changeSet>
+    <changeSet id="form-20210507-6" author="xieshi" failOnError="false">
+        <createTable tableName="FORM_DEF_HISTORY" remarks="表单定义历史表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="form_def_id_" type="varchar(64)" remarks="表单定义id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name_" type="varchar(128)" remarks="名字"/>
+            <column name="desc_" type="varchar(256)" remarks="描述"/>
+            <column name="modify_desc_" type="${clob.type}" remarks="描述"/>
+            <column name="bo_key_" type="varchar(64)" remarks="业务对象key"/>
+            <column name="bo_name_" type="varchar(128)" remarks="业务对象名称"/>
+            <column name="html_" type="${clob.type}" remarks="html"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(64)" remarks="创建人ID"/>
+            <column name="creator_" type="varchar(128)" remarks="创建人名字"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(64)" remarks="更新人ID"/>
+            <column name="updator_" type="varchar(128)" remarks="更新人名字"/>
+            <column name="delete_" type="int" remarks="逻辑删除标记"/>
+        </createTable>
+        <createIndex tableName="FORM_DEF" indexName="FORM_DEF_KEY" unique="true">
+            <column name="key_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="form-20210728-1" author="xieshi" failOnError="false">
+        <createTable tableName="FORM_CUSTOM_CONF_HISTORY" remarks="表单自定义配置历史表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="form_custom_conf_id_" type="varchar(64)" remarks="表单自定义配置ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONF_" type="${clob.type}" remarks="自定义表单配置">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modify_desc_" type="${clob.type}" remarks="描述"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="bus-20210310-1" author="xieshi" failOnError="false">
+        <createTable tableName="BUS_COLUMN_CTRL" remarks="字段控件表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="column_id_" type="varchar(64)" remarks="对应字段的ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE_" type="varchar(192)" remarks="控件类型"/>
+            <column name="config_" type="varchar(768)" remarks="控件配置"/>
+            <column name="valid_rule_" type="varchar(768)" remarks="验证规则"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+        </createTable>
+        <createIndex tableName="BUS_COLUMN_CTRL" indexName="BUS_COLUMN_CTRL_COLUMN_ID" unique="true">
+            <column name="column_id_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="bus-20210310-2" author="xieshi" failOnError="false">
+        <createTable tableName="BUS_COLUMN" remarks="业务字段表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="table_id_" type="varchar(64)" remarks="表id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="key_" type="varchar(64)" remarks="别名">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name_" type="varchar(64)" remarks="名字">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_" type="varchar(64)" remarks="类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="length_" type="int" remarks="长度">
+                <constraints nullable="false"/>
+            </column>
+            <column name="decimal_" type="int" remarks="小数点">
+                <constraints nullable="false"/>
+            </column>
+            <column name="required_" type="int" remarks="是否必填">
+                <constraints nullable="false"/>
+            </column>
+            <column name="primary_" type="int" remarks="是否主键">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_value_" type="varchar(128)" remarks="默认值"/>
+            <column name="comment_" type="varchar(256)" remarks="注释"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+            <column name="search_flag_" type="int" remarks="是否主键"/>
+            <column name="METADATA_ID_" type="varchar(64)" remarks="元数据id"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="bus-20210310-3" author="xieshi" failOnError="false">
+        <createTable tableName="BUS_OBJECT" remarks="业务对象表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="KEY_" type="varchar(196)" remarks="key"/>
+            <column name="NAME_" type="varchar(196)" remarks="名字"/>
+            <column name="DESC_" type="varchar(500)" remarks="描述"/>
+            <column name="RELATION_JSON_" type="${clob.type}" remarks="relation字段用来持久化入库的字符串字段"/>
+            <column name="GROUP_ID_" type="varchar(196)" remarks="分组id"/>
+            <column name="GROUP_NAME_" type="varchar(196)" remarks="分组名称"/>
+            <column name="PERSISTENCE_TYPE_" type="varchar(196)" remarks="持久化类型"/>
+            <column name="PER_TYPE_CONFIG_" type="varchar(786)" remarks="持久化类型的配置项"/>
+            <column name="OVERALL_ARRANGEMENT_" type="${clob.type}" remarks="总体布置图"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+            <column name="DIAGRAM_JSON_" type="${clob.type}" remarks="图表Json"/>
+            <column name="save_index_" type="varchar(255)" remarks="保存索引"/>
+            <column name="ORG_ID_" type="varchar(192)" remarks="机构id"/>
+        </createTable>
+        <createIndex tableName="BUS_OBJECT" indexName="BUS_OBJECT_KEY" unique="true">
+            <column name="key_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="bus-20210310-4" author="xieshi" failOnError="false">
+        <createTable tableName="BUS_PERMISSION" remarks="bo权限表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="bo_key_" type="varchar(128)" remarks="boKey"/>
+            <column name="obj_type_" type="varchar(64)" remarks="配置这个权限的对象，可以是表单，流程，或流程节点">
+                <constraints nullable="false"/>
+            </column>
+            <column name="obj_val_" type="varchar(128)" remarks="能获取到配置权限的对象的唯一值 通常是key 或 id
+            可以是自定义的
+            例如 某个流程的某个节点，可以是 流程key.nodeKey
+            这样的格式"/>
+            <column name="bus_obj_map_json_" type="${clob.type}" remarks="busObjMap的json数据"/>
+            <column name="rights_json_" type="${clob.type}" remarks="rights的json数据"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+            <column name="def_id_" type="varchar(64)" remarks="流程定义id">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="BUS_PERMISSION" indexName="BUS_PERMISSION_1" unique="true">
+            <column name="obj_type_"/>
+            <column name="obj_val_"/>
+            <column name="def_id_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="bus-20210310-5" author="xieshi" failOnError="false">
+        <createTable tableName="BUS_TABLE" remarks="业务表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="key_" type="varchar(64)" remarks="业务表key"/>
+            <column name="name_" type="varchar(64)" remarks="表名"/>
+            <column name="comment_" type="varchar(256)" remarks="描述"/>
+            <column name="ds_key_" type="varchar(64)" remarks="数据源的别名"/>
+            <column name="ds_name_" type="varchar(128)" remarks="数据源名称"/>
+            <column name="group_id_" type="varchar(64)" remarks="分组id"/>
+            <column name="group_name_" type="varchar(128)" remarks="分组名称"/>
+            <column name="external_" type="int" remarks="是否外部表"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+            <column name="ORG_ID_" type="varchar(192)" remarks="机构id"/>
+        </createTable>
+        <createIndex tableName="BUS_TABLE" indexName="BUS_TABLE_KEY" unique="true">
+            <column name="key_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="bus-20210310-6" author="xieshi" failOnError="false">
+        <createTable tableName="BUS_TABLE_DIAGRAM" remarks="实体图表">
+            <column name="ID_" type="varchar(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="diagram_json_" type="${clob.type}" remarks="实体展示图"/>
+            <column name="group_id_" type="varchar(64)" remarks="分组id"/>
+            <column name="group_name_" type="varchar(128)" remarks="分组名称"/>
+            <column name="CREATE_TIME_" type="TIMESTAMP(0)" remarks="创建时间"/>
+            <column name="CREATE_BY_" type="varchar(192)" remarks="创建人"/>
+            <column name="UPDATE_TIME_" type="TIMESTAMP(0)" remarks="更新时间"/>
+            <column name="UPDATE_BY_" type="varchar(192)" remarks="更新人"/>
+        </createTable>
+    </changeSet>
+<!--    <changeSet id="bus-20210310-7" author="xieshi" failOnError="false">-->
+<!--        <sqlFile path="classpath:/db/changelog/changes/insert-data-form.sql"/>-->
+<!--    </changeSet>-->
+</databaseChangeLog>

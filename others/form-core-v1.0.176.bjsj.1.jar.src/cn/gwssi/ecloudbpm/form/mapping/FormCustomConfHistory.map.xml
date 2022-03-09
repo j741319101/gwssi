@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gwssi.ecloudbpm.form.dao.FormCustomConfHistoryDao">
+    <resultMap id="FormCustomConfHistory" type="cn.gwssi.ecloudbpm.form.model.FormCustomConfHistory">
+        <id property="id" column="id_" jdbcType="VARCHAR"/>
+        <result property="formCustomConfId" column="form_custom_conf_id_" jdbcType="VARCHAR"/>
+        <result property="conf" column="conf_" jdbcType="VARCHAR"/>
+        <result property="modifyDesc" column="modify_desc_" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="tableName">
+        form_custom_conf_history
+    </sql>
+
+    <sql id="forUpdate">
+        <if test="formCustomConfId != null">
+            form_custom_conf_id_ = #{formCustomConfId,jdbcType=VARCHAR},
+        </if>
+        <if test="conf != null">
+            conf_ = #{conf,jdbcType=VARCHAR},
+        </if>
+        <if test="modifyDesc != null">
+            modify_desc_ = #{modifyDesc,jdbcType=VARCHAR},
+        </if>
+        <if test="updateBy != null">
+            update_by_ = #{updateBy,jdbcType=VARCHAR},
+        </if>
+        update_time_ = now(),
+    </sql>
+
+    <insert id="create" parameterType="cn.gwssi.ecloudbpm.form.model.FormCustomConfHistory">
+        INSERT INTO
+        <include refid="tableName"/>
+        (id_,form_custom_conf_id_,conf_,modify_desc_,create_time_,create_by_,update_time_,update_by_)
+        VALUES
+        (#{id,jdbcType=VARCHAR}, #{formCustomConfId,jdbcType=VARCHAR}, #{conf,jdbcType=VARCHAR},#{modifyDesc,jdbcType=VARCHAR},
+        #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP},
+        #{updateBy,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="get" parameterType="java.lang.String" resultMap="FormCustomConfHistory">
+        SELECT * FROM
+        <include refid="tableName"/>
+        WHERE
+        id_=#{id}
+    </select>
+
+    <select id="query" parameterType="java.util.Map" resultMap="FormCustomConfHistory">
+        SELECT
+        <if test="resultType==null">
+            tformCustomConfHistory.*
+        </if>
+        <if test="resultType=='withoutHtml'">
+            tformCustomConfHistory.id_,tformCustomConfHistory.form_custom_conf_id_,tformCustomConfHistory.modify_desc_,
+            tformCustomConfHistory.create_time_,tformCustomConfHistory.create_by_,tformCustomConfHistory.update_time_,tformCustomConfHistory.update_by_
+        </if>
+        FROM <include refid="tableName"/>
+        tformCustomConfHistory
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY id_ DESC
+        </if>
+    </select>
+
+    <update id="update" parameterType="cn.gwssi.ecloudbpm.form.model.FormCustomConfHistory">
+        UPDATE
+        <include refid="tableName"/>
+        SET
+        form_custom_conf_id_=#{formCustomConfId,jdbcType=VARCHAR},
+        conf_=#{conf,jdbcType=VARCHAR},
+        modify_desc_=#{modifyDesc,jdbcType=VARCHAR},
+        update_time_=now(),
+        update_by_=#{updateBy,jdbcType=VARCHAR}
+        WHERE
+        id_=#{id}
+    </update>
+
+    <delete id="remove" parameterType="java.lang.String">
+        DELETE FROM
+        <include refid="tableName"/>
+        WHERE
+        id_=#{id}
+    </delete>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.gwssi.ecloudbpm.form.model.FormCustomConfHistory">
+        update
+        <include refid="tableName"/>
+        <set>
+            <include refid="forUpdate"/>
+        </set>
+        where id_ = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>

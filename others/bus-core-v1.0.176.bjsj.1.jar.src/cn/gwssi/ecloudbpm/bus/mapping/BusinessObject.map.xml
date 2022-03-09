@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gwssi.ecloudbpm.bus.dao.BusinessObjectDao">
+    <resultMap id="BusinessObject" type="cn.gwssi.ecloudbpm.bus.model.BusinessObject">
+        <id property="id" column="id_" jdbcType="VARCHAR"/>
+        <result property="key" column="key_" jdbcType="VARCHAR"/>
+        <result property="name" column="name_" jdbcType="VARCHAR"/>
+        <result property="desc" column="desc_" jdbcType="VARCHAR"/>
+        <result property="relationJson" column="relation_json_" jdbcType="CLOB"/>
+        <result property="diagramJson" column="diagram_json_" jdbcType="CLOB"/>
+        <result property="groupId" column="group_id_" jdbcType="VARCHAR"/>
+        <result property="groupName" column="group_name_" jdbcType="VARCHAR"/>
+        <result property="persistenceType" column="persistence_type_" jdbcType="VARCHAR"/>
+        <result property="perTypeConfig" column="per_type_config_" jdbcType="VARCHAR"/>
+     	<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+        <result property="saveIndex" column="save_index_" jdbcType="NUMERIC"/>
+        <result property="orgId" column="org_id_" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="create" parameterType="cn.gwssi.ecloudbpm.bus.model.BusinessObject">
+		INSERT INTO bus_object
+		(id_,key_,name_,desc_,relation_json_,group_id_,group_name_,persistence_type_,per_type_config_,create_time_,create_by_,update_time_,update_by_,diagram_json_,save_index_,org_id_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{relationJson,jdbcType=CLOB}, #{groupId,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{persistenceType,jdbcType=VARCHAR}, #{perTypeConfig,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR},#{diagramJson,jdbcType=CLOB},#{saveIndex,jdbcType=NUMERIC},#{orgId,jdbcType=VARCHAR})
+	</insert>
+
+    <select id="get" parameterType="java.lang.String" resultMap="BusinessObject">
+		SELECT * FROM bus_object 
+		WHERE 
+		id_=#{id}
+	</select>
+
+    <select id="query" parameterType="java.util.Map" resultMap="BusinessObject">
+        <if test="resultType==null">
+            SELECT *
+        </if>
+        <if test="resultType=='withoutDiagramJson'">
+            SELECT id_,key_,name_,desc_,relation_json_,group_id_,group_name_,persistence_type_,per_type_config_,create_time_,create_by_,update_time_,update_by_,save_index_,org_id_
+        </if>
+        FROM bus_object
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY id_ DESC
+        </if>
+    </select>
+    <select id="listJsonByKey"  parameterType="java.util.Map" resultMap="BusinessObject">
+        select * from bus_object bo where bo.id_ in (
+            select DISTINCT o.id_ from bus_object o , bus_table t where INSTR(o.relation_json_,'"'|| t.key_ || '"' ) > 0
+            <if test="tableKey != null">
+                and t.key_ = #{tableKey}
+            </if>
+            <if test="tableGroupKey != null">
+                and t.group_id_ = #{tableGroupKey}
+            </if>
+        )
+    </select>
+    <select id="listJsonByKey"  parameterType="java.util.Map" resultMap="BusinessObject" databaseId="mysql">
+        select * from bus_object bo where bo.id_ in (
+        select DISTINCT o.id_ from bus_object o , bus_table t where INSTR(o.relation_json_,CONCAT('"',CONCAT(t.key_,'"')) ) > 0
+        <if test="tableKey != null">
+            and t.key_ = #{tableKey}
+        </if>
+        <if test="tableGroupKey != null">
+            and t.group_id_ = #{tableGroupKey}
+        </if>
+        )
+    </select>
+    <update id="update" parameterType="cn.gwssi.ecloudbpm.bus.model.BusinessObject">
+		UPDATE bus_object SET
+		key_=#{key,jdbcType=VARCHAR},
+		name_=#{name,jdbcType=VARCHAR},
+		desc_=#{desc,jdbcType=VARCHAR},
+		relation_json_=#{relationJson,jdbcType=CLOB},
+		group_id_=#{groupId,jdbcType=VARCHAR},
+		group_name_=#{groupName,jdbcType=VARCHAR},
+		persistence_type_=#{persistenceType,jdbcType=VARCHAR},
+		per_type_config_=#{perTypeConfig,jdbcType=VARCHAR},
+		update_time_=#{updateTime,jdbcType=TIMESTAMP},
+		update_by_=#{updateBy,jdbcType=VARCHAR},
+		diagram_json_=#{diagramJson,jdbcType=CLOB},
+		save_index_=#{saveIndex,jdbcType=NUMERIC},
+		org_id_= #{orgId,jdbcType=VARCHAR}
+		WHERE
+		id_=#{id}
+	</update>
+    <update id="updateDiagramJson" parameterType="java.util.Map">
+		UPDATE bus_object SET
+		diagram_json_=#{diagramJson,jdbcType=CLOB}
+		WHERE
+		id_=#{id}
+	</update>
+    <delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bus_object 
+		WHERE
+		id_=#{id}
+	</delete>
+	
+	 <update id="updateOverallArrangementByCode" parameterType="java.util.Map">
+		UPDATE bus_object SET
+		overall_arrangement_ = #{overallArrangement,jdbcType=VARCHAR}
+		WHERE
+		key_=#{boCode}
+	</update>
+	
+	 <select id="getOverallArrangementByCode" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT overall_arrangement_ FROM bus_object  WHERE key_=#{boCode}
+	</select>
+    <select id="countByTypeId" resultType="java.lang.Integer">
+        select count(*) from bus_object where group_id_ = #{typeId}
+    </select>
+</mapper>

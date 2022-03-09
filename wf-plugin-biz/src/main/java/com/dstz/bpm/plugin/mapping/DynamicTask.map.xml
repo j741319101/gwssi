@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.DynamicTaskDao">
+	<resultMap id="DynamicTask" type="com.dstz.bpm.plugin.core.model.DynamicTask">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
+		<result property="actExecutionId" column="act_execution_id_" jdbcType="VARCHAR"/>
+		<result property="nodeId" column="node_id_" jdbcType="VARCHAR"/>
+		<result property="currentIndex" column="current_index_" jdbcType="NUMERIC"/>
+		<result property="identityNode" column="identity_node_" jdbcType="VARCHAR"/>
+		<result property="status" column="status_" jdbcType="VARCHAR"/>
+		<result property="isParallel" column="is_parallel_" jdbcType="NUMERIC"/>
+		<result property="ammount" column="ammount_" jdbcType="NUMERIC"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<insert id="create" parameterType="com.dstz.bpm.plugin.core.model.DynamicTask">
+		INSERT INTO bpm_plugin_dynamic_task
+		(id_,inst_id_,act_execution_id_,node_id_,current_index_,identity_node_,status_,is_parallel_,ammount_,create_time_,update_time_,create_by_,update_by_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{instId,jdbcType=VARCHAR}, #{actExecutionId,jdbcType=VARCHAR}, #{nodeId,jdbcType=VARCHAR}, #{currentIndex,jdbcType=NUMERIC}, #{identityNode,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{isParallel,jdbcType=NUMERIC}, #{ammount,jdbcType=NUMERIC}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="DynamicTask">
+		SELECT * FROM bpm_plugin_dynamic_task 
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="DynamicTask">
+		SELECT * FROM bpm_plugin_dynamic_task
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+	
+	<update id="update" parameterType="com.dstz.bpm.plugin.core.model.DynamicTask">
+		UPDATE bpm_plugin_dynamic_task SET
+		inst_id_=#{instId,jdbcType=VARCHAR},
+		act_execution_id_=#{actExecutionId,jdbcType=VARCHAR},
+		node_id_=#{nodeId,jdbcType=VARCHAR},
+		current_index_=#{currentIndex,jdbcType=NUMERIC},
+		identity_node_=#{identityNode,jdbcType=VARCHAR},
+		status_=#{status,jdbcType=VARCHAR},
+		is_parallel_=#{isParallel,jdbcType=NUMERIC},
+		ammount_=#{ammount,jdbcType=NUMERIC},
+		create_time_=#{createTime,jdbcType=TIMESTAMP},
+		update_time_=#{updateTime,jdbcType=TIMESTAMP},
+		create_by_=#{createBy,jdbcType=VARCHAR},
+		update_by_=#{updateBy,jdbcType=VARCHAR}
+		WHERE
+		id_=#{id}
+	</update>
+	
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_plugin_dynamic_task 
+		WHERE
+		id_=#{id}
+	</delete>
+	
+	
+	
+	<insert id="bulkCreate" parameterType="com.dstz.bpm.plugin.core.model.DynamicTask" databaseId="mysql">
+		INSERT INTO bpm_plugin_dynamic_task
+		(id_,inst_id_,act_execution_id_,node_id_,current_index_,identity_node_,status_,is_parallel_,ammount_,create_time_,update_time_,create_by_,update_by_)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=","> 
+			(#{item.id,jdbcType=VARCHAR}, #{item.instId,jdbcType=VARCHAR}, #{item.actExecutionId,jdbcType=VARCHAR}, #{item.nodeId,jdbcType=VARCHAR}, #{item.currentIndex,jdbcType=NUMERIC}, #{item.identityNode,jdbcType=VARCHAR}, #{item.status,jdbcType=VARCHAR}, #{item.isParallel,jdbcType=NUMERIC}, #{item.ammount,jdbcType=NUMERIC}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.createBy,jdbcType=VARCHAR}, #{item.updateBy,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+	
+	<delete id="bulkRemove" parameterType="java.lang.String">
+		DELETE FROM bpm_plugin_dynamic_task
+		WHERE id_ in 
+		<foreach collection="array" item="id" index="index" open="(" close=")" separator=",">  	#{id}  </foreach>
+	</delete>
+	
+</mapper>

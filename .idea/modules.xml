@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/wf.iml" filepath="$PROJECT_DIR$/wf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wf-act/wf-act.iml" filepath="$PROJECT_DIR$/wf-act/wf-act.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wf-api/wf-api.iml" filepath="$PROJECT_DIR$/wf-api/wf-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wf-core/wf-core.iml" filepath="$PROJECT_DIR$/wf-core/wf-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wf-plugin/wf-plugin.iml" filepath="$PROJECT_DIR$/wf-plugin/wf-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wf-plugin-biz/wf-plugin-biz.iml" filepath="$PROJECT_DIR$/wf-plugin-biz/wf-plugin-biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wf-rest/wf-rest.iml" filepath="$PROJECT_DIR$/wf-rest/wf-rest.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.gwssi.ecloud</groupId>
+        <artifactId>workflow</artifactId>
+        <version>v1.0.176.bjsj.1</version>
+    </parent>
+    <artifactId>wf-plugin</artifactId>
+    <description>工作流插件</description>
+    <dependencies>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>wf-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>wf-core</artifactId>
+            <classifier></classifier> 
+        </dependency>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>base-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>base-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>base-db</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>bus-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>sys-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>form-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.gwssi.ecloud</groupId>
+            <artifactId>org-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+    </dependencies>
+      <build>
+        <plugins>
+            <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin> -->
+<!--    		<plugin>-->
+<!--                <groupId>com.github.wvengen</groupId>-->
+<!--                <artifactId>proguard-maven-plugin</artifactId>-->
+<!--		     </plugin>-->
+        </plugins>
+    </build>
+</project>

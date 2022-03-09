@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gwssi.ecloudbpm.wf.core.dao.BpmDefinitionDao">
+	<resultMap id="BpmDefinition" type="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="name" column="name_" jdbcType="VARCHAR"/>
+		<result property="key" column="key_" jdbcType="VARCHAR"/>
+		<result property="desc" column="desc_" jdbcType="VARCHAR"/>
+		<result property="typeId" column="type_id_" jdbcType="VARCHAR"/>
+		<result property="status" column="status_" jdbcType="VARCHAR"/>
+		<result property="actDefId" column="act_def_id_" jdbcType="VARCHAR"/>
+		<result property="actModelId" column="act_model_id_" jdbcType="VARCHAR"/>
+		<result property="actDeployId" column="act_deploy_id_" jdbcType="VARCHAR"/>
+		<result property="version" column="version_" jdbcType="NUMERIC"/>
+		<result property="mainDefId" column="main_def_id_" jdbcType="VARCHAR"/>
+		<result property="isMain" column="is_main_" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="createOrgId" column="create_org_id_" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+		<result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+		<result property="supportMobile" column="support_mobile_" jdbcType="NUMERIC"/>
+		<result property="defSetting" column="def_setting_" jdbcType="CLOB"/>
+		<result property="rev" column="rev_" jdbcType="NUMERIC"/>
+		<result property="contentId" column="content_id_" jdbcType="VARCHAR"/>
+		<result property="contentDes" column="content_des_" jdbcType="VARCHAR"/>
+		<result property="orgId" column="org_id_" jdbcType="VARCHAR"/>
+		<result property="order" column="order_" jdbcType="NUMERIC"/>
+		<result property="lockTime" column="lock_time_" jdbcType="TIMESTAMP"/>
+		<result property="lockBy" column="lock_by_" jdbcType="VARCHAR"/>
+	</resultMap>
+	<resultMap id="BpmDefinitionVO" type="cn.gwssi.ecloudbpm.wf.core.vo.BpmDefinitionVO">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="name" column="name_" jdbcType="VARCHAR"/>
+		<result property="key" column="key_" jdbcType="VARCHAR"/>
+		<result property="desc" column="desc_" jdbcType="VARCHAR"/>
+		<result property="typeId" column="type_id_" jdbcType="VARCHAR"/>
+		<result property="status" column="status_" jdbcType="VARCHAR"/>
+		<result property="actDefId" column="act_def_id_" jdbcType="VARCHAR"/>
+		<result property="actModelId" column="act_model_id_" jdbcType="VARCHAR"/>
+		<result property="actDeployId" column="act_deploy_id_" jdbcType="VARCHAR"/>
+		<result property="version" column="version_" jdbcType="NUMERIC"/>
+		<result property="mainDefId" column="main_def_id_" jdbcType="VARCHAR"/>
+		<result property="isMain" column="is_main_" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="createOrgId" column="create_org_id_" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+		<result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+		<result property="supportMobile" column="support_mobile_" jdbcType="NUMERIC"/>
+		<result property="defSetting" column="def_setting_" jdbcType="CLOB"/>
+		<result property="rev" column="rev_" jdbcType="NUMERIC"/>
+		<result property="nodeTypeKey" column="node_type_key_" jdbcType="VARCHAR"/>
+		<result property="nodeTypeName" column="node_type_name_" jdbcType="VARCHAR"/>
+		<result property="contentId" column="content_id_" jdbcType="VARCHAR"/>
+		<result property="contentDes" column="content_des_" jdbcType="VARCHAR"/>
+		<result property="order" column="order_" jdbcType="NUMERIC"/>
+		<result property="lockTime" column="lock_time_" jdbcType="TIMESTAMP"/>
+		<result property="lockBy" column="lock_by_" jdbcType="VARCHAR"/>
+	</resultMap>
+	<sql id="columns">
+		id_,name_,def_setting_,key_,desc_,type_id_,status_,act_def_id_,act_model_id_,act_deploy_id_,version_,main_def_id_,
+		is_main_,create_by_,create_time_,create_org_id_,update_by_,update_time_,support_mobile_,rev_,content_id_,content_des_,
+		org_id_,order_,lock_time_,lock_by_
+	</sql>
+
+	<sql id="columnsWithoutSettings">
+		bpm_definition.id_,bpm_definition.name_,bpm_definition.key_,bpm_definition.desc_,bpm_definition.type_id_,bpm_definition.status_,
+		bpm_definition.act_def_id_,bpm_definition.act_model_id_,bpm_definition.act_deploy_id_,bpm_definition.version_,bpm_definition.main_def_id_,
+		bpm_definition.is_main_,bpm_definition.create_by_,bpm_definition.create_time_,bpm_definition.create_org_id_,bpm_definition.update_by_,
+		bpm_definition.update_time_,bpm_definition.support_mobile_,bpm_definition.rev_,bpm_definition.content_id_,bpm_definition.content_des_,
+		bpm_definition.org_id_,bpm_definition.order_,bpm_definition.lock_time_,bpm_definition.lock_by_
+	</sql>
+
+	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+		INSERT INTO bpm_definition
+		(id_,name_,key_,desc_,type_id_,status_,act_def_id_,act_model_id_,act_deploy_id_,version_,main_def_id_,is_main_,
+		 create_by_,create_time_,create_org_id_,update_by_,update_time_,support_mobile_,def_setting_,rev_,content_id_,
+		 content_des_,org_id_,order_)
+		VALUES
+		(#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{typeId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{actDefId,jdbcType=VARCHAR}, #{actModelId,jdbcType=VARCHAR}, #{actDeployId,jdbcType=VARCHAR}, #{version,jdbcType=NUMERIC}, #{mainDefId,jdbcType=VARCHAR}, #{isMain,jdbcType=VARCHAR},
+		 #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createOrgId,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{supportMobile,jdbcType=NUMERIC}, #{defSetting,jdbcType=CLOB},1,#{contentId,jdbcType=VARCHAR},
+		 #{contentDes,jdbcType=VARCHAR},#{orgId,jdbcType=VARCHAR},#{order,jdbcType=NUMERIC})
+	</insert>
+
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT * FROM bpm_definition
+		WHERE
+			id_=#{id}
+	</select>
+
+	<select id="query" parameterType="java.util.Map" resultMap="BpmDefinition">
+		SELECT <include refid="columnsWithoutSettings"/>
+		FROM bpm_definition
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+
+	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+		UPDATE bpm_definition SET
+		<if test="name!=null">
+			name_=#{name,jdbcType=VARCHAR},
+		</if>
+		<if test="key!=null">
+			key_=#{key,jdbcType=VARCHAR},
+		</if>
+		<if test="desc!=null">
+			desc_=#{desc,jdbcType=VARCHAR},
+		</if>
+		<if test="typeId!=null">
+			type_id_=#{typeId,jdbcType=VARCHAR},
+		</if>
+		<if test="status!=null">
+			status_=#{status,jdbcType=VARCHAR},
+		</if>
+		<if test="actDefId!=null">
+			act_def_id_=#{actDefId,jdbcType=VARCHAR},
+		</if>
+		<if test="actModelId!=null">
+			act_model_id_=#{actModelId,jdbcType=VARCHAR},
+		</if>
+		<if test="actDeployId!=null">
+			act_deploy_id_=#{actDeployId,jdbcType=VARCHAR},
+		</if>
+		<if test="version!=null">
+			version_=#{version,jdbcType=NUMERIC},
+		</if>
+		<if test="mainDefId!=null">
+			main_def_id_=#{mainDefId,jdbcType=VARCHAR},
+		</if>
+		<if test="isMain!=null">
+			is_main_=#{isMain,jdbcType=VARCHAR},
+		</if>
+		<if test="createBy!=null">
+			create_by_=#{createBy,jdbcType=VARCHAR},
+		</if>
+		<if test="createTime!=null">
+			create_time_=#{createTime,jdbcType=TIMESTAMP},
+		</if>
+		<if test="createOrgId!=null">
+			create_org_id_=#{createOrgId,jdbcType=VARCHAR},
+		</if>
+		<if test="updateBy!=null">
+			update_by_=#{updateBy,jdbcType=VARCHAR},
+		</if>
+		<if test="updateTime!=null">
+			update_time_=#{updateTime,jdbcType=TIMESTAMP},
+		</if>
+		<if test="supportMobile!=null">
+			support_mobile_=#{supportMobile,jdbcType=NUMERIC},
+		</if>
+		<if test="defSetting!=null">
+			def_setting_=#{defSetting,jdbcType=CLOB},
+		</if>
+		<if test="contentId!=null">
+			content_id_=#{contentId,jdbcType=VARCHAR},
+		</if>
+		<if test="contentDes!=null">
+			content_des_=#{contentDes,jdbcType=VARCHAR},
+		</if>
+		<if test="orgId!=null">
+			org_id_= #{orgId,jdbcType=VARCHAR},
+		</if>
+		<if test="order!=null">
+			order_= #{order,jdbcType=VARCHAR},
+		</if>
+		<if test="lockBy!=null">
+			lock_by_=#{lockBy,jdbcType=VARCHAR},
+		</if>
+		<if test="lockTime!=null">
+			lock_time_=#{lockTime,jdbcType=TIMESTAMP},
+		</if>
+		rev_= #{rev,jdbcType=NUMERIC}+1
+		WHERE
+		id_=#{id} and rev_ = #{rev}
+	</update>
+
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_definition
+		WHERE
+			id_=#{id}
+	</delete>
+
+	<select id="getMainByDefKey"  parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT <include refid="columns"/> FROM bpm_definition
+		WHERE  key_=#{key} and IS_MAIN_='Y'
+	</select>
+
+	<select id="getDefByActModelId"  parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT <include refid="columns"/> FROM bpm_definition
+		WHERE  act_model_id_=#{actModelId}
+	</select>
+
+	<select id="getByActDefId"  parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT <include refid="columns"/> FROM bpm_definition
+		WHERE  act_def_id_=#{actDefId}
+	</select>
+
+
+	<select id="getByKey"  parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT <include refid="columns"/>
+		FROM bpm_definition
+		WHERE
+		key_=#{key}
+	</select>
+
+	<update id="updateActResourceEntity" parameterType="java.util.Map">
+		update ACT_GE_BYTEARRAY
+		set
+			BYTES_ = #{bpmnBytes, jdbcType=BLOB}
+		where DEPLOYMENT_ID_ = #{deploymentId} and NAME_=#{resName}
+	</update>
+
+
+	<update id="updateForMainVersion" parameterType="java.util.Map">
+		update bpm_definition set is_main_ = 'N', MAIN_DEF_ID_ = #{newDefId}
+		where key_ = #{key} and id_ != #{mainDefId}
+	</update>
+
+	<select id="getMyDefinitionList" parameterType="java.util.Map" resultMap="BpmDefinitionVO">
+		SELECT  DISTINCT <include refid="columnsWithoutSettings"/> , node.KEY_ node_type_key_,node.NAME_ node_type_name_ FROM bpm_definition
+		${rightsSql}
+		LEFT JOIN SYS_TREE_NODE node on node.ID_ = bpm_definition.TYPE_ID_
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+			and is_main_ = 'Y'
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+
+	<select id="getDefNumByTree" parameterType="java.util.Map" resultType="java.util.HashMap">
+		select NAME_ ,SN_ NUM from sys_tree_node where TREE_ID_ = '20000008980001' and PARENT_ID_ = '0'
+	</select>
+
+	<select id="getFlowMaxVersion"  parameterType="java.lang.String" resultType="java.lang.Integer">
+		select max(version_)
+		FROM bpm_definition
+		WHERE
+			key_=#{key}
+	</select>
+
+	<select id="countByKey" resultType="boolean" parameterType="string">
+		SELECT COUNT(*) FROM bpm_definition WHERE key_ = #{key,jdbcType=VARCHAR}
+	</select>
+	<update id="lock" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+		UPDATE bpm_definition SET
+            lock_by_ = #{lockBy},
+            lock_time_ = now()
+        WHERE
+		id_=#{id}
+	</update>
+	<update id="unlock" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+		UPDATE bpm_definition SET
+			lock_by_ = ''
+		WHERE
+		id_=#{id}
+	</update>
+</mapper>

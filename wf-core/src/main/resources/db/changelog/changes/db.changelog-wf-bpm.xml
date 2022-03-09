@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="wf-bpm-20210224-1" author="checker" failOnError="false">
+        <createTable tableName="BPM_BUS_LINK" remarks="流程实例与业务数据关系表">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="DEF_ID_" remarks="流程定义id" type="varchar(64)"/>
+            <column name="INST_ID_" remarks="流程实例id" type="varchar(64)"/>
+            <column name="BIZ_ID_" remarks="业务实例id" type="varchar(64)"/>
+            <column name="BIZ_CODE_" remarks="业务对象code" type="varchar(64)"/>
+        </createTable>
+        <createIndex tableName="BPM_BUS_LINK" indexName="BPM_IDX_BUSLINK_INSTID">
+            <column name="INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_BUS_LINK" indexName="BPM_IDX_BUSLINK_BIZID">
+            <column name="BIZ_ID_"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="wf-bpm-20210224-2" author="checker" failOnError="false">
+        <createTable tableName="BPM_DEFINITION" remarks="流程定义表">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME_" remarks="流程定义名称" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="KEY_" remarks="流程定义key" type="varchar(64)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="DESC_" remarks="描述" type="varchar(500)"/>
+            <column name="TYPE_ID_" remarks="分类id" type="varchar(64)"/>
+            <column name="STATUS_" remarks="流程定义状态" type="varchar(40)"/>
+            <column name="ACT_DEF_ID_" remarks="act流程定义id" type="varchar(64)"/>
+            <column name="ACT_MODEL_ID_" remarks="act流程设计模型id" type="varchar(64)"/>
+            <column name="ACT_DEPLOY_ID_" remarks="act部署id" type="varchar(64)"/>
+            <column name="VERSION_" remarks="版本" type="int"/>
+            <column name="MAIN_DEF_ID_" remarks="主版本定义id" type="varchar(64)"/>
+            <column name="IS_MAIN_" remarks="是否是主版本" type="varchar(1)"/>
+            <column name="CREATE_BY_" remarks="创建人" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="创建时间" type="TIMESTAMP(0)"/>
+            <column name="CREATE_ORG_ID_" remarks="创建人所在的组织id" type="varchar(64)"/>
+            <column name="UPDATE_BY_" remarks="更新人" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="更新时间" type="TIMESTAMP(0)"/>
+            <column name="SUPPORT_MOBILE_" remarks="是否支持移动端" type="int"/>
+            <column name="DEF_SETTING_" remarks="流程定义" type="${clob.type}"/>
+            <column name="REV_" remarks="乐观锁" type="int"/>
+            <column name="CONTENT_DES_" remarks="归档描述" type="varchar(255)"/>
+            <column name="CONTENT_ID_" remarks="归档路径id" type="varchar(64)"/>
+            <column name="ORG_ID_" remarks="组织id" type="varchar(64)"/>
+            <column name="LOCK_TIME_" type="TIMESTAMP(0)" remarks="锁定时间"/>
+            <column name="LOCK_BY_" type="varchar(64)" remarks="锁定人ID"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-2-1" author="checker" failOnError="false">
+        <addColumn tableName="BPM_DEFINITION">
+            <column name="order_" type="int" remarks="排序"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-3" author="checker" failOnError="false">
+        <createTable tableName="BPM_INSTANCE" remarks="流程实例表">
+            <column name="ID_" remarks="ID" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="SUBJECT_" remarks="标题" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEF_ID_" remarks="流程定义id" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACT_DEF_ID_" remarks="act定义id" type="varchar(64)"/>
+            <column name="DEF_KEY_" remarks="流程定义key" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEF_NAME_" remarks="流程定义名称" type="varchar(128)"/>
+            <column name="BIZ_KEY_" remarks="数据模型key" type="varchar(64)"/>
+            <column name="STATUS_" remarks="流程实例状态" type="varchar(40)"/>
+            <column name="END_TIME_" remarks="结束时间" type="TIMESTAMP(0)"/>
+            <column name="DURATION_" remarks="耗时" type="int"/>
+            <column name="TYPE_ID_" remarks="分类id" type="varchar(64)"/>
+            <column name="ACT_INST_ID_" remarks="act流程实例id" type="varchar(64)"/>
+            <column name="CREATE_BY_" remarks="发起人" type="varchar(64)"/>
+            <column name="CREATOR_" remarks="发起人名称" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="发起时间" type="TIMESTAMP(0)"/>
+            <column name="CREATE_ORG_ID_" remarks="发起人所在组织" type="varchar(64)"/>
+            <column name="UPDATE_BY_" remarks="更新人名称" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="更新时间" type="TIMESTAMP(0)"/>
+            <column name="IS_FORMMAL_" remarks="是否正式数据" type="varchar(1)"/>
+            <column name="PARENT_INST_ID_" remarks="父流程id" type="varchar(64)"/>
+            <column name="IS_FORBIDDEN_" remarks="是否被禁止" type="varchar(1)"/>
+            <column name="DATA_MODE_" remarks="DATA_MODE_" type="varchar(20)"/>
+            <column name="SUPPORT_MOBILE_" remarks="SUPPORT_MOBILE_" type="int"/>
+            <column name="SUPER_NODE_ID_" remarks="SUPER_NODE_ID_" type="varchar(64)"/>
+            <column name="IS_TEST_DATA_" remarks="是否是测试数据" type="int" defaultValueNumeric="0"/>
+        </createTable>
+        <createIndex tableName="BPM_INSTANCE" indexName="IDX_PROINST_BPMINSTID">
+            <column name="ACT_INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_INSTANCE" indexName="IDX_PROINST_PARENTID">
+            <column name="PARENT_INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_INSTANCE" indexName="IDX_PROINST_BIZKEY">
+            <column name="BIZ_KEY_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-3-1" author="checker" failOnError="false">
+        <modifyDataType tableName="BPM_INSTANCE" columnName="SUBJECT_" newDataType="varchar(4000)"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-3-2" author="checker" failOnError="false">
+        <addNotNullConstraint tableName="BPM_INSTANCE" columnName="CREATE_ORG_ID_"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-4" author="checker" failOnError="false">
+        <createTable tableName="BPM_TASK" remarks="流程任务表">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME_" remarks="节点名称" type="varchar(64)"/>
+            <column name="SUBJECT_" remarks="流程实例标题" type="varchar(128)"/>
+            <column name="INST_ID_" remarks="流程实例id" type="varchar(64)"/>
+            <column name="TASK_ID_" remarks="任务id，保存会签父任务等" type="varchar(64)"/>
+            <column name="ACT_INST_ID_" remarks="act流程实例id" type="varchar(64)"/>
+            <column name="ACT_EXECUTION_ID_" remarks="执行流id" type="varchar(64)"/>
+            <column name="NODE_ID_" remarks="节点ID" type="varchar(64)"/>
+            <column name="DEF_ID_" remarks="流程定义id" type="varchar(64)"/>
+            <column name="ASSIGNEE_ID_" remarks="候选人id" type="varchar(64)"/>
+            <column name="ASSIGNEE_NAMES_" remarks="候选人名称" type="varchar(500)"/>
+            <column name="STATUS_" remarks="任务状态" type="varchar(64)"/>
+            <column name="PRIORITY_" remarks="任务优先级" type="int"/>
+            <column name="DUE_TIME_" remarks="DUE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="TASK_TYPE_" remarks="任务类型" type="varchar(64)"/>
+            <column name="PARENT_ID_" remarks="PARENT_ID_" type="varchar(64)"/>
+            <column name="TYPE_ID_" remarks="分类id" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="SUPPORT_MOBILE_" remarks="SUPPORT_MOBILE_" type="int"/>
+            <column name="BACK_NODE_" remarks="BACK_NODE_" type="varchar(192)"/>
+        </createTable>
+        <createIndex tableName="BPM_TASK" indexName="IDX_BPMTASK_INSTID">
+            <column name="INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_TASK" indexName="IDX_BPMTASK_TASKID">
+            <column name="TASK_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_TASK" indexName="IDX_BPMTASK_PARENTID">
+            <column name="PARENT_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_TASK" indexName="IDX_BPMTASK_USERID">
+            <column name="ASSIGNEE_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-4-1" author="checker" failOnError="false">
+        <modifyDataType tableName="BPM_TASK" columnName="SUBJECT_" newDataType="varchar(4000)"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-4-2" author="checker" failOnError="false">
+        <modifyDataType tableName="BPM_TASK" columnName="ASSIGNEE_NAMES_" newDataType="varchar(4000)"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-4-3" author="checker" failOnError="false">
+       <addColumn tableName="BPM_TASK">
+           <column name="ASSIGNEE_NAMES_1" type="${clob.type}"/>
+       </addColumn>
+        <sql>
+            UPDATE BPM_TASK set ASSIGNEE_NAMES_1 = ASSIGNEE_NAMES_ WHERE 1=1
+        </sql>
+        <dropColumn tableName="BPM_TASK" columnName="ASSIGNEE_NAMES_"/>
+        <renameColumn tableName="BPM_TASK" oldColumnName="ASSIGNEE_NAMES_1" newColumnName="ASSIGNEE_NAMES_"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-5" author="checker" failOnError="false">
+        <createTable tableName="BPM_TASK_IDENTITYLINK" remarks="流程任务候选人表">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TASK_ID_" remarks="任务id，保存会签父任务等" type="varchar(64)"/>
+            <column name="INST_ID_" remarks="流程实例id" type="varchar(64)"/>
+            <column name="TYPE_" remarks="类型(user,post,org,role)" type="varchar(10)"/>
+            <column name="IDENTITY_NAME_" remarks="候选人名称" type="varchar(255)"/>
+            <column name="IDENTITY_" remarks="候选人ID" type="varchar(64)"/>
+            <column name="PERMISSION_CODE_" remarks="候选人信息" type="varchar(125)"/>
+            <column name="CHECK_STATUS_" remarks="任务已读标识(1:未读，0：已读)" type="varchar(1)"/>
+            <column name="CHECK_TIME_" remarks="查看时间" type="TIMESTAMP(0)"/>
+            <column name="TASK_TYPE_" remarks="任务类型" type="varchar(10)"/>
+        </createTable>
+        <createIndex tableName="BPM_TASK_IDENTITYLINK" indexName="IDX_IDENTITYLINK_TASKID">
+            <column name="TASK_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_TASK_IDENTITYLINK" indexName="IDX_IDENTITYLINK_INSTID">
+            <column name="INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_TASK_IDENTITYLINK" indexName="IDX_IDENTITYLINK_PERM_CODE_">
+            <column name="PERMISSION_CODE_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-5-1" author="checker" failOnError="false">
+        <modifyDataType tableName="BPM_TASK_IDENTITYLINK" columnName="IDENTITY_NAME_" newDataType="varchar(255)"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-5-2" author="checker" failOnError="false">
+        <addColumn tableName="BPM_TASK_IDENTITYLINK">
+            <column name="org_id_" type="varchar(64)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-6" author="checker" failOnError="false">
+        <createTable tableName="BPM_TASK_OPINION" remarks="流程任务审批意见表">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="INST_ID_" remarks="流程实例id" type="varchar(64)"/>
+            <column name="SUP_INST_ID_" remarks="父流程实例id" type="varchar(64)"/>
+            <column name="TASK_ID_" remarks="任务id，保存会签父任务等" type="varchar(64)"/>
+            <column name="TASK_KEY_" remarks="任务节点ID nodeId" type="varchar(64)"/>
+            <column name="TASK_NAME_" remarks="节点名称名称" type="varchar(255)"/>
+            <column name="SIGN_ID_" remarks="会签节点主任务id" type="varchar(64)"/>
+            <column name="TRACE_" remarks="多实例执行流，意见线路" type="varchar(64)"/>
+            <column name="ASSIGN_INFO_" remarks="候选人信息" type="varchar(2000)"/>
+            <column name="APPROVER_" remarks="审核人" type="varchar(64)"/>
+            <column name="APPROVER_NAME_" remarks="审核人名称" type="varchar(64)"/>
+            <column name="APPROVE_TIME_" remarks="审核时间" type="TIMESTAMP(0)"/>
+            <column name="OPINION_" remarks="审核意见" type="${clob.type}"/>
+            <column name="STATUS_" remarks="审核状态" type="varchar(64)"/>
+            <column name="FORM_ID_" remarks="FORM_ID_" type="varchar(64)"/>
+            <column name="CREATE_BY_" remarks="创建人id" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="创建时间" type="TIMESTAMP(0)"/>
+            <column name="DUR_MS_" remarks="耗时" type="int"/>
+            <column name="VERSION_" remarks="版本" type="varchar(20)"/>
+            <column name="APPROVER_ORG_ID_" remarks="org查看权限" type="varchar(64)"/>
+            <column name="ACT_EXECUTION_ID_" remarks="执行流id" type="varchar(64)"/>
+        </createTable>
+        <createIndex tableName="BPM_TASK_OPINION" indexName="IDX_OPINION_SUPINSTID">
+            <column name="TASK_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_TASK_OPINION" indexName="IDX_OPINION_TASK">
+            <column name="INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_TASK_OPINION" indexName="IDX_OPINION_INSTID">
+            <column name="SUP_INST_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-6-1" author="checker" failOnError="false">
+        <modifyDataType tableName="BPM_TASK_OPINION" columnName="ASSIGN_INFO_" newDataType="varchar(4000)"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-6-2" author="checker" failOnError="false">
+        <addColumn tableName="BPM_TASK_OPINION">
+            <column name="ASSIGN_INFO_1" type="${clob.type}"/>
+        </addColumn>
+        <sql>
+            UPDATE BPM_TASK_OPINION set ASSIGN_INFO_1 = ASSIGN_INFO_ WHERE 1=1
+        </sql>
+        <dropColumn tableName="BPM_TASK_OPINION" columnName="ASSIGN_INFO_"/>
+        <renameColumn tableName="BPM_TASK_OPINION" oldColumnName="ASSIGN_INFO_1" newColumnName="ASSIGN_INFO_"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-6-3" author="checker" failOnError="false">
+        <renameColumn tableName="BPM_TASK_OPINION" oldColumnName="APPROVER_ORG_ID_" newColumnName="task_org_id_" remarks="任务所属机构"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-7" author="checker" failOnError="false">
+        <createTable tableName="BPM_TASK_STACK" remarks="流程任务执行堆栈表">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TASK_ID_" remarks="任务id" type="varchar(64)"/>
+            <column name="INST_ID_" remarks="流程实例id" type="varchar(64)"/>
+            <column name="PARENT_ID_" remarks="父记录" type="varchar(64)"/>
+            <column name="NODE_ID_" remarks="节点id" type="varchar(64)"/>
+            <column name="NODE_NAME_" remarks="节点名称" type="varchar(255)"/>
+            <column name="START_TIME_" remarks="开始时间" type="TIMESTAMP(0)"/>
+            <column name="END_TIME" remarks="结束时间" type="TIMESTAMP(0)"/>
+            <column name="IS_MULITI_TASK_" remarks="是否是多实例任务" type="int"/>
+            <column name="NODE_TYPE_" remarks="任务类型" type="varchar(64)"/>
+            <column name="ACTION_NAME_" remarks="审核状态" type="varchar(64)"/>
+            <column name="TRACE_" remarks="路径" type="varchar(64)"/>
+        </createTable>
+        <createIndex tableName="BPM_TASK_STACK" indexName="IDX_EXESTACK_INSTID">
+            <column name="INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_TASK_STACK" indexName="IDX_EXESTACK_TASKID">
+            <column name="TASK_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_TASK_STACK" indexName="IDX_EXESTACK_PARINSTID">
+            <column name="PARENT_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-8" author="checker" failOnError="false">
+        <createTable tableName="BPM_SUBMIT_DATA_LOG" remarks="业务对象数据提交日志">
+            <column name="ID" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TASK_ID_" remarks="任务id" type="varchar(64)"/>
+            <column name="INST_ID_" remarks="流程实例id" type="varchar(64)"/>
+            <column name="DATA" remarks="数据" type="${clob.type}"/>
+            <column name="DESTINATION" remarks="DESTINATION" type="varchar(255)"/>
+            <column name="EXTENDCONF" remarks="EXTENDCONF" type="varchar(500)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-9" author="checker" failOnError="false">
+        <createTable tableName="BPM_PLUGIN_REMINDER_TRIGGER" remarks="流程催办触发">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TASK_ID_" remarks="任务id" type="varchar(64)"/>
+            <column name="REMINDER_DESC_" remarks="REMINDER_DESC_" type="varchar(255)"/>
+            <column name="BEFORE_SCRIPT_" remarks="前置脚本" type="varchar(500)"/>
+            <column name="MSG_TYPE_" remarks="通知类型" type="varchar(20)"/>
+            <column name="HTML_MSG_" remarks="富文本" type="varchar(1000)"/>
+            <column name="IS_CALC_WORKDAY_" remarks="按工作日计算" type="int"/>
+            <column name="IS_URGENT_" remarks="加急" type="int"/>
+            <column name="MAX_REMINDER_TIMES" remarks="催办次数" type="int"/>
+            <column name="REMINDER_TIMES_" remarks="已催办次数" type="int"/>
+            <column name="REMINDER_CYCLE_" remarks="催办间隔" type="int"/>
+            <column name="DUEDATE_" remarks="截至日期" type="TIMESTAMP(0)"/>
+        </createTable>
+
+        <createIndex tableName="BPM_PLUGIN_REMINDER_TRIGGER" indexName="IDX_REMINDER_TRIGGER_TASK_ID_">
+            <column name="TASK_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_PLUGIN_REMINDER_TRIGGER" indexName="IDX_REMINDER_TRIGGER_DUEDATE_">
+            <column name="DUEDATE_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-10" author="checker" failOnError="false">
+        <createTable tableName="BPM_PLUGIN_REMINDER_LOG" remarks="流程催办日志">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="INSTANCE_ID_" remarks="流程实例id" type="varchar(64)"/>
+            <column name="REMINDER_TITLE_" remarks="REMINDER_TITLE_" type="varchar(255)"/>
+            <column name="SUBJECT_" remarks="SUBJECT_" type="varchar(500)"/>
+            <column name="NODE_ID_" remarks="NODE_ID_" type="varchar(64)"/>
+            <column name="NODE_NAME_" remarks="NODE_NAME_" type="varchar(64)"/>
+            <column name="MSG_TYPE_" remarks="MSG_TYPE_" type="varchar(64)"/>
+            <column name="REMINDER_USERS_" remarks="REMINDER_USERS_" type="varchar(500)"/>
+            <column name="REMINDER_USERIDS_" remarks="REMINDER_USERIDS_" type="varchar(500)"/>
+            <column name="REMINDER_DATE_" remarks="REMINDER_DATE_" type="TIMESTAMP(0)"/>
+            <column name="EXTEND_" remarks="EXTEND_" type="varchar(500)"/>
+            <column name="FROM_USERS_" remarks="FROM_USERS_" type="varchar(500)"/>
+            <column name="FROM_USERIDS_" remarks="FROM_USERIDS_" type="varchar(500)"/>
+            <column name="FEEDBACK_" remarks="FEEDBACK_" type="varchar(500)"/>
+            <column name="STATUE_" remarks="STATUE_" type="varchar(1)"/>
+            <column name="IS_URGENT_" remarks="IS_URGENT_" type="varchar(1)"/>
+            <column name="TASK_ID_" remarks="TASK_ID_" type="varchar(64)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-10-1" author="checker" failOnError="false">
+        <modifyDataType tableName="BPM_PLUGIN_REMINDER_LOG" columnName="SUBJECT_" newDataType="varchar(4000)"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-11" author="checker" failOnError="false">
+        <createTable tableName="BPM_USER_AGENCY_CONFIG" remarks="业务流程用户代理配置">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="START_DATETIME_" remarks="开始时间" type="TIMESTAMP(0)"/>
+            <column name="END_DATETIME_" remarks="结束时间" type="TIMESTAMP(0)"/>
+            <column name="AGENCY_FLOW_KEY_" remarks="代理流程key" type="varchar(1000)"/>
+            <column name="AGENCY_FLOW_NAME_" remarks="代理流程名称" type="varchar(1000)"/>
+            <column name="CONFIG_USER_ID_" remarks="委托人id" type="varchar(64)"/>
+            <column name="TARGET_USER_ID_" remarks="代理人id" type="varchar(1000)"/>
+            <column name="TARGET_USER_NAME_" remarks="代理人名称" type="varchar(1000)"/>
+            <column name="REMINDER_USERIDS_" remarks="REMINDER_USERIDS_" type="varchar(500)"/>
+            <column name="ENABLE_" remarks="生效" type="int"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="CREATE_ORG_ID_" remarks="CREATE_ORG_ID_" type="varchar(64)"/>
+            <column name="UPDATE_BY_" remarks="UPDATE_BY_" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="UPDATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="REV_" remarks="REV_" type="int"/>
+            <column name="COMMENT_" remarks="COMMENT_" type="varchar(200)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-11-1" author="checker" failOnError="false">
+        <modifyDataType tableName="BPM_USER_AGENCY_CONFIG" columnName="AGENCY_FLOW_KEY_" newDataType="varchar(4000)"/>
+        <modifyDataType tableName="BPM_USER_AGENCY_CONFIG" columnName="AGENCY_FLOW_NAME_" newDataType="varchar(4000)"/>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-12" author="checker" failOnError="false">
+        <createTable tableName="BPM_USER_AGENCY_LOG" remarks="业务流程用户代理日志">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CONFIG_ID_" remarks="配置id" type="varchar(64)"/>
+            <column name="FLOW_INSTANCE_ID_" remarks="流程实例id" type="varchar(64)"/>
+            <column name="TASK_ID_" remarks="任务id" type="varchar(64)"/>
+            <column name="TASK_NODE_ID_" remarks="任务节点定义id" type="varchar(64)"/>
+            <column name="TASK_NODE_NAME_" remarks="节点名称" type="varchar(64)"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="CREATE_ORG_ID_" remarks="CREATE_ORG_ID_" type="varchar(64)"/>
+            <column name="UPDATE_BY_" remarks="UPDATE_BY_" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="UPDATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="REV_" remarks="REV_" type="int"/>
+        </createTable>
+        <createIndex tableName="BPM_USER_AGENCY_LOG" indexName="IDX_USER_AGENCY_LOG_CONFIG_ID_">
+            <column name="CONFIG_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_USER_AGENCY_LOG" indexName="IDX_USER_AGENCY_LOG_INST_ID_">
+            <column name="FLOW_INSTANCE_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_USER_AGENCY_LOG" indexName="IDX_USER_AGENCY_LOG_TASK_ID_">
+            <column name="TASK_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-13" author="checker" failOnError="false">
+        <createTable tableName="BPM_PLUGIN_CARBON_COPY_RECEIVE" remarks="业务流程插件抄送接收">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CC_RECORD_ID" remarks="抄送记录id" type="varchar(64)"/>
+            <column name="RECEIVE_USER_ID" remarks="接收人id" type="varchar(64)"/>
+            <column name="READ_" remarks="是否已读" type="int"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="CREATE_ORG_ID_" remarks="CREATE_ORG_ID_" type="varchar(64)"/>
+            <column name="UPDATE_BY_" remarks="UPDATE_BY_" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="UPDATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="VERSION_" remarks="更新版本" type="int"/>
+            <column name="TYPE_" remarks="TYPE_" type="varchar(10)"/>
+            <column name="STATUS_" remarks="抄送审批状态" type="varchar(10)"/>
+            <column name="RECEIVE_USER_NAME_" remarks="接收人名称" type="varchar(64)"/>
+        </createTable>
+
+        <createIndex tableName="BPM_PLUGIN_CARBON_COPY_RECEIVE" indexName="IDX_CARBON_COPY_RECEIVE_USER_ID">
+            <column name="RECEIVE_USER_ID"/>
+        </createIndex>
+        <createIndex tableName="BPM_PLUGIN_CARBON_COPY_RECEIVE" indexName="IDX_CARBON_COPY_RECEIVE_RECORD_ID">
+            <column name="CC_RECORD_ID"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-14" author="checker" failOnError="false">
+        <createTable tableName="BPM_PLUGIN_CARBON_COPY_RECORD" remarks="业务流程插件抄送记录">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="INST_ID" remarks="流程实例编号" type="varchar(64)"/>
+            <column name="TASK_ID" remarks="任务编号" type="varchar(64)"/>
+            <column name="NODE_ID" remarks="流程节点" type="varchar(64)"/>
+            <column name="NODE_NAME" remarks="流程节点名称" type="varchar(64)"/>
+            <column name="FORM_TYPE" remarks="抄送表单类型" type="varchar(255)"/>
+            <column name="EVENT_" remarks="事件" type="varchar(100)"/>
+            <column name="TRIGGER_USER_ID" remarks="触发用户" type="varchar(64)"/>
+            <column name="TRIGGER_USER_NAME" remarks="触发用户名称" type="varchar(255)"/>
+            <column name="SUBJECT" remarks="标题" type="varchar(255)"/>
+            <column name="CONTENT" remarks="备注" type="${clob.type}"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="UPDATE_BY_" remarks="UPDATE_BY_" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="UPDATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="VERSION_" remarks="更新版本" type="int"/>
+        </createTable>
+
+        <createIndex tableName="BPM_PLUGIN_CARBON_COPY_RECORD" indexName="IDX_CARBON_COPY_RECORD_INST_ID">
+            <column name="INST_ID"/>
+        </createIndex>
+        <createIndex tableName="BPM_PLUGIN_CARBON_COPY_RECORD" indexName="IDX_CARBON_COPY_RECORD_TASK_ID">
+            <column name="TASK_ID"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-15" author="checker" failOnError="false">
+        <createTable tableName="BPM_LEADER_TASK_LOG" remarks="领导任务记录表">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="INST_ID_" remarks="流程实例编号" type="varchar(64)"/>
+            <column name="TASK_ID_" remarks="任务编号" type="varchar(64)"/>
+            <column name="FLAG_" remarks="标识 0：未呈送，1：呈送，2：返回到秘书" type="varchar(1)"/>
+            <column name="TYPE_" remarks="类型 1：待办，2：抄送" type="varchar(1)"/>
+            <column name="LEADER_ID_" remarks="领导id" type="varchar(64)"/>
+            <column name="LEADER_NAME_" remarks="领导名称" type="varchar(64)"/>
+            <column name="APPROVER_ID_" remarks="处理人id" type="varchar(64)"/>
+            <column name="APPROVER_NAME_" remarks="处理人名称" type="varchar(64)"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="UPDATE_BY_" remarks="UPDATE_BY_" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="UPDATE_TIME_" type="TIMESTAMP(0)"/>
+        </createTable>
+
+        <createIndex tableName="BPM_LEADER_TASK_LOG" indexName="IDX_LEADER_TASK_LOG_INST_ID">
+            <column name="INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_LEADER_TASK_LOG" indexName="IDX_LEADER_TASK_LOG_TASK_ID">
+            <column name="TASK_ID_"/>
+        </createIndex>
+
+        <createIndex tableName="BPM_LEADER_TASK_LOG" indexName="IDX_LEADER_TASK_LOG_LEADER_ID_">
+            <column name="LEADER_ID_"/>
+        </createIndex>
+
+        <createIndex tableName="BPM_LEADER_TASK_LOG" indexName="IDX_LEADER_TASK_LOG_APPROVER_ID">
+            <column name="APPROVER_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-15-1" author="checker" failOnError="false">
+        <addColumn tableName="BPM_LEADER_TASK_LOG">
+            <column name="STATUS_" type="varchar(20)" remarks="running,end"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-15-2" author="checker" failOnError="false">
+        <addColumn tableName="BPM_LEADER_TASK_LOG">
+            <column name="ORG_ID_" type="varchar(64)" remarks="机构id">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-16" author="checker" failOnError="false">
+        <createTable tableName="BPM_LEADER_OPTION_LOG" remarks="领导任务意见表">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="INST_ID_" remarks="流程实例编号" type="varchar(64)"/>
+            <column name="TASK_ID_" remarks="任务编号" type="varchar(64)"/>
+            <column name="LEADER_ID_" remarks="领导id" type="varchar(64)"/>
+            <column name="LEADER_NAME_" remarks="领导名称" type="varchar(64)"/>
+            <column name="SECRETARY_ID_" remarks="处理人id" type="varchar(64)"/>
+            <column name="SECRETARY_NAME_" remarks="处理人名称" type="varchar(64)"/>
+            <column name="OPTION_" remarks="意见" type="varchar(500)"/>
+            <column name="TYPE_" remarks="类型 1：秘书意见，2：领导意见" type="varchar(1)"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="UPDATE_BY_" remarks="UPDATE_BY_" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="UPDATE_TIME_" type="TIMESTAMP(0)"/>
+        </createTable>
+        <createIndex tableName="BPM_LEADER_OPTION_LOG" indexName="IDX_LEADER_OPTION_LOG_INST_ID">
+            <column name="INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_LEADER_OPTION_LOG" indexName="IDX_LEADER_OPTION_LOG_TASK_ID">
+            <column name="TASK_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_LEADER_OPTION_LOG" indexName="IDX_LEADER_OPTION_LOG_LEADER_ID_">
+            <column name="LEADER_ID_"/>
+        </createIndex>
+
+        <createIndex tableName="BPM_LEADER_OPTION_LOG" indexName="IDX_LEADER_OPTION_LOG_SECRETARY_ID">
+            <column name="SECRETARY_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-17" author="checker" failOnError="false">
+        <createTable tableName="BPM_PLUGIN_DYNAMIC_TASK" remarks="动态任务记录表">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="INST_ID_" remarks="流程实例编号" type="varchar(64)"/>
+            <column name="ACT_EXECUTION_ID_" remarks="执行流编号" type="varchar(64)"/>
+            <column name="NODE_ID_" remarks="节点ID" type="varchar(64)"/>
+            <column name="CURRENT_INDEX_" remarks="当前索引" type="int"/>
+            <column name="IDENTITY_NODE_" remarks="候选人信息" type="${clob.type}"/>
+            <column name="STATUS_" remarks="状态" type="varchar(10)"/>
+            <column name="IS_PARALLEL_" remarks="并行" type="int"/>
+            <column name="AMMOUNT_" remarks="任务数" type="int"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="UPDATE_BY_" remarks="UPDATE_BY_" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="UPDATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="TASK_ID_" remarks="TASK_ID_" type="varchar(64)"/>
+        </createTable>
+
+        <createIndex tableName="BPM_PLUGIN_DYNAMIC_TASK" indexName="IDX_DYNAMIC_TASK_INST_ID">
+            <column name="INST_ID_"/>
+        </createIndex>
+        <createIndex tableName="BPM_PLUGIN_DYNAMIC_TASK" indexName="IDX_DYNAMIC_TASK_EXECUTION_ID">
+            <column name="ACT_EXECUTION_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-18" author="checker" failOnError="false">
+        <createTable tableName="BPM_TASK_TEST_LOG" remarks="流程测试记录">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="INST_ID_" remarks="流程实例编号" type="varchar(64)"/>
+            <column name="TYPE_" remarks="类型" type="varchar(20)"/>
+            <column name="PARAMS_" remarks="参数" type="varchar(4000)"/>
+            <column name="RESULT_" remarks="结果" type="varchar(20)"/>
+            <column name="TRACE_LOG_" remarks="执行堆栈" type="varchar(4000)"/>
+            <column name="SCRIPT_LOG_" remarks="脚本输出" type="varchar(4000)"/>
+            <column name="EXCEPTIONS_" remarks="异常" type="varchar(4000)"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="UPDATE_BY_" remarks="UPDATE_BY_" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="UPDATE_TIME_" type="TIMESTAMP(0)"/>
+        </createTable>
+
+        <createIndex tableName="BPM_TASK_TEST_LOG" indexName="IDX_TASK_TEST_LOG_INST_ID">
+            <column name="INST_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210224-18-1" author="checker" failOnError="false">
+        <dropTable tableName="BPM_TASK_TEST_LOG"/>
+        <createTable tableName="BPM_TASK_TEST_LOG" remarks="流程测试记录">
+            <column name="ID_" type="varchar(64)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="INST_ID_" remarks="流程实例编号" type="varchar(64)"/>
+            <column name="TYPE_" remarks="类型" type="varchar(20)"/>
+            <column name="PARAMS_" remarks="参数" type="varchar(4000)"/>
+            <column name="RESULT_" remarks="结果" type="varchar(20)"/>
+            <column name="TRACE_LOG_" remarks="执行堆栈" type="varchar(4000)"/>
+            <column name="SCRIPT_LOG_" remarks="脚本输出" type="varchar(4000)"/>
+            <column name="EXCEPTIONS_" remarks="异常" type="varchar(4000)"/>
+            <column name="CREATE_BY_" remarks="CREATE_BY_" type="varchar(64)"/>
+            <column name="CREATE_TIME_" remarks="CREATE_TIME_" type="TIMESTAMP(0)"/>
+            <column name="UPDATE_BY_" remarks="UPDATE_BY_" type="varchar(64)"/>
+            <column name="UPDATE_TIME_" remarks="UPDATE_TIME_" type="TIMESTAMP(0)"/>
+        </createTable>
+        <createIndex tableName="BPM_TASK_TEST_LOG" indexName="IDX_TASK_TEST_LOG_INST_ID">
+            <column name="INST_ID_"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="wf-bpm-20210409-1" author="checker" dbms="mysql" failOnError="false">
+        <sqlFile path="classpath:/db/changelog/changes/insert-data-wf-bpm.sql"/>
+    </changeSet>
+</databaseChangeLog>

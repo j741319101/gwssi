@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.SysMetaColumnDao">
+    <resultMap id="BaseResultMap" type="cn.gwssi.ecloudframework.sys.core.model.MetaColumn">
+        <result column="ID_" property="id" jdbcType="VARCHAR"/>
+        <result column="GROUP_ID_" property="groupId" jdbcType="VARCHAR"/>
+        <result column="NAME_" property="name" jdbcType="VARCHAR"/>
+        <result column="KEY_" property="key" jdbcType="VARCHAR"/>
+        <result column="TYPE_" property="type" jdbcType="VARCHAR"/>
+        <result column="LENGTH_" property="length" jdbcType="INTEGER"/>
+        <result column="DECIMAL_" property="decimal" jdbcType="INTEGER"/>
+        <result column="ENABLED_" property="enabled" jdbcType="INTEGER"/>
+        <result column="DEFAULT_VALUE_" property="defaultValue" jdbcType="VARCHAR"/>
+        <result column="INPUT_VALID_" property="inputValid" jdbcType="VARCHAR"/>
+        <result column="COMMENT_" property="comment" jdbcType="VARCHAR"/>
+        <result column="DISPLAY_CONTROL_" property="displayControl" jdbcType="VARCHAR"/>
+        <result column="PROMPT_" property="prompt" jdbcType="VARCHAR"/>
+        <result column="CREATE_BY_" property="createBy" jdbcType="VARCHAR"/>
+        <result column="CREATE_USER_" property="createUser" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME_" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_BY_" property="updateBy" jdbcType="VARCHAR"/>
+        <result column="UPDATE_USER_" property="updateUser" jdbcType="VARCHAR"/>
+        <result column="UPDATE_TIME_" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="tableName">
+        sys_meta_column
+    </sql>
+
+    <sql id="Base_Column_List">
+        ID_, GROUP_ID_, NAME_,KEY_, TYPE_, LENGTH_,DECIMAL_,ENABLED_, DEFAULT_VALUE_, INPUT_VALID_,COMMENT_,
+DISPLAY_CONTROL_, PROMPT_,CREATE_BY_, CREATE_USER_, CREATE_TIME_, UPDATE_BY_, UPDATE_USER_, UPDATE_TIME_
+    </sql>
+
+    <sql id="forUpdate">
+        <if test="groupId != null">
+            GROUP_ID_ = #{groupId,jdbcType=VARCHAR},
+        </if>
+        <if test="name != null">
+            NAME_ = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="key != null">
+            KEY_ = #{key,jdbcType=VARCHAR},
+        </if>
+        <if test="type != null">
+            TYPE_ =#{type,jdbcType=VARCHAR},
+        </if>
+        <if test="length != null">
+            LENGTH_ = #{length,jdbcType=INTEGER},
+        </if>
+        <if test="decimal != null">
+            DECIMAL_ =#{decimal,jdbcType=INTEGER},
+        </if>
+        <if test="enabled != null">
+            ENABLED_ =#{enabled,jdbcType=INTEGER},
+        </if>
+        <if test="defaultValue != null">
+            DEFAULT_VALUE_ = #{defaultValue,jdbcType=VARCHAR},
+        </if>
+        <if test="inputValid != null">
+            INPUT_VALID_= #{inputValid,jdbcType=VARCHAR},
+        </if>
+        <if test="comment != null">
+            COMMENT_ = #{comment,jdbcType=VARCHAR},
+        </if>
+        <if test="displayControl != null">
+            DISPLAY_CONTROL_ = #{displayControl,jdbcType=VARCHAR},
+        </if>
+        <if test="prompt != null">
+            PROMPT_ = #{prompt,jdbcType=VARCHAR},
+        </if>
+        <if test="updateBy != null">
+            UPDATE_BY_ = #{updateBy,jdbcType=VARCHAR},
+        </if>
+        <if test="updateUser != null">
+            UPDATE_USER_ = #{updateUser,jdbcType=VARCHAR},
+        </if>
+        <if test="updateTime != null">
+            UPDATE_TIME_ = #{updateTime,jdbcType=TIMESTAMP}
+        </if>
+    </sql>
+
+
+    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.MetaColumn">
+        insert into
+        <include refid="tableName"/>
+        (ID_, GROUP_ID_, NAME_,
+        KEY_, TYPE_, LENGTH_,
+        DECIMAL_,ENABLED_, DEFAULT_VALUE_, INPUT_VALID_,
+        COMMENT_, DISPLAY_CONTROL_, PROMPT_,
+        CREATE_BY_, CREATE_USER_, CREATE_TIME_,
+        UPDATE_BY_, UPDATE_USER_, UPDATE_TIME_)
+        values (#{id,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+        #{key,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{length,jdbcType=INTEGER},
+        #{decimal,jdbcType=INTEGER},#{enabled,jdbcType=INTEGER}, #{defaultValue,jdbcType=VARCHAR},
+        #{inputValid,jdbcType=VARCHAR},
+        #{comment,jdbcType=VARCHAR}, #{displayControl,jdbcType=VARCHAR}, #{prompt,jdbcType=VARCHAR},
+        #{createBy,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+        #{updateBy,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        a.ID_, a.GROUP_ID_, a.NAME_,a.KEY_, a.TYPE_, a.LENGTH_,a.DECIMAL_,a.ENABLED_, a.DEFAULT_VALUE_, a.INPUT_VALID_,a.COMMENT_,
+        a.DISPLAY_CONTROL_, a.PROMPT_,a.CREATE_BY_, a.CREATE_USER_, a.CREATE_TIME_, a.UPDATE_BY_, a.UPDATE_USER_, a.UPDATE_TIME_
+        ,b.name_ as groupName
+        from
+        <include refid="tableName"/> a
+        left join sys_tree_node b on a.GROUP_ID_ = b.ID_
+        where a.ID_ = #{id,jdbcType=VARCHAR}
+        limit 1
+    </select>
+
+    <select id="query" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="tableName"/>
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY ID_ DESC
+        </if>
+    </select>
+
+    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.MetaColumn">
+        update
+        <include refid="tableName"/>
+        <set>
+            <include refid="forUpdate"/>
+        </set>
+        where ID_ = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateStatus">
+        update
+        <include refid="tableName"/>
+        set ENABLED_ = #{enabled,jdbcType=INTEGER}
+        where ID_ = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateGroupId">
+        update
+        <include refid="tableName"/>
+        set GROUP_ID_ = #{groupId,jdbcType=INTEGER}
+        where ID_ = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <update id="remove" parameterType="java.lang.String">
+        delete from
+        <include refid="tableName"/>
+        where ID_ = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>
