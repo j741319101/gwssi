@@ -20,19 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.activiti.bpmn.model.Activity;
-import org.activiti.bpmn.model.CallActivity;
-import org.activiti.bpmn.model.EndEvent;
-import org.activiti.bpmn.model.ExclusiveGateway;
-import org.activiti.bpmn.model.FlowElement;
-import org.activiti.bpmn.model.InclusiveGateway;
-import org.activiti.bpmn.model.MultiInstanceLoopCharacteristics;
-import org.activiti.bpmn.model.ParallelGateway;
-import org.activiti.bpmn.model.SequenceFlow;
-import org.activiti.bpmn.model.ServiceTask;
-import org.activiti.bpmn.model.StartEvent;
-import org.activiti.bpmn.model.SubProcess;
-import org.activiti.bpmn.model.UserTask;
+import org.activiti.bpmn.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -118,71 +106,56 @@ public class BpmDefNodeHandler {
 
 
     private BaseBpmNodeDef getNodeDef(BpmNodeDef parentNodeDef, FlowElement flowElement, DefaultBpmProcessDef bpmProcessDef) {
-        BaseBpmNodeDef object = null;
+        BaseBpmNodeDef nodeDef = null;
         if (flowElement instanceof Activity) {
-            String multi = getNodeDefLoop((Activity) flowElement);
-
+            String multi = this.getNodeDefLoop((Activity)flowElement);
             if (flowElement instanceof UserTask) {
                 if (multi == null) {
                     UserTaskNodeDef userTaskDef = new UserTaskNodeDef();
-                    UserTaskNodeDef userTaskNodeDef = userTaskDef;
-                    userTaskNodeDef.setType(NodeType.USERTASK);
-
+                    nodeDef = userTaskDef;
+                    userTaskDef.setType(NodeType.USERTASK);
                 }
-
-
             } else if (flowElement instanceof ServiceTask) {
-                ServiceTaskNodeDef serviceTaskNodeDef = new ServiceTaskNodeDef();
-                serviceTaskNodeDef.setType(NodeType.SERVICETASK);
-
+                nodeDef = new ServiceTaskNodeDef();
+                ((BaseBpmNodeDef)nodeDef).setType(NodeType.SERVICETASK);
             } else if (flowElement instanceof CallActivity) {
-
                 CallActivityNodeDef callNodeDef = new CallActivityNodeDef();
-                CallActivity call = (CallActivity) flowElement;
+                CallActivity call = (CallActivity)flowElement;
                 String flowKey = call.getCalledElement();
                 callNodeDef.setType(NodeType.CALLACTIVITY);
                 callNodeDef.setFlowKey(flowKey);
-
-                CallActivityNodeDef callActivityNodeDef = callNodeDef;
-
-
+                nodeDef = callNodeDef;
             } else if (flowElement instanceof SubProcess) {
                 SubProcessNodeDef subProcessDef = new SubProcessNodeDef();
-
-                SubProcessNodeDef subProcessNodeDef = subProcessDef;
-                subProcessNodeDef.setNodeId(flowElement.getId());
-                subProcessNodeDef.setName(flowElement.getName());
-                subProcessNodeDef.setParentBpmNodeDef(parentNodeDef);
-
-                subProcessDef.setBpmProcessDef((BpmProcessDef) bpmProcessDef);
-                SubProcess subProcess = (SubProcess) flowElement;
-
-                handSubProcess((BaseBpmNodeDef) subProcessNodeDef, subProcess, bpmProcessDef);
+                nodeDef = subProcessDef;
+                subProcessDef.setNodeId(flowElement.getId());
+                subProcessDef.setName(flowElement.getName());
+                subProcessDef.setParentBpmNodeDef(parentNodeDef);
+                subProcessDef.setBpmProcessDef(bpmProcessDef);
+                SubProcess subProcess = (SubProcess)flowElement;
+                this.handSubProcess(subProcessDef, subProcess, bpmProcessDef);
             }
         } else if (flowElement instanceof StartEvent) {
-            object = new BaseBpmNodeDef();
-            object.setType(NodeType.START);
+            nodeDef = new BaseBpmNodeDef();
+            ((BaseBpmNodeDef)nodeDef).setType(NodeType.START);
         } else if (flowElement instanceof EndEvent) {
-            object = new BaseBpmNodeDef();
-            object.setType(NodeType.END);
-        } else if (flowElement instanceof org.activiti.bpmn.model.Gateway) {
-            object = new GateWayBpmNodeDef();
-
+            nodeDef = new BaseBpmNodeDef();
+            ((BaseBpmNodeDef)nodeDef).setType(NodeType.END);
+        } else if (flowElement instanceof Gateway) {
+            nodeDef = new GateWayBpmNodeDef();
             if (flowElement instanceof ParallelGateway) {
-                object.setType(NodeType.PARALLELGATEWAY);
-
+                ((BaseBpmNodeDef)nodeDef).setType(NodeType.PARALLELGATEWAY);
             } else if (flowElement instanceof InclusiveGateway) {
-                object.setType(NodeType.INCLUSIVEGATEWAY);
-
+                ((BaseBpmNodeDef)nodeDef).setType(NodeType.INCLUSIVEGATEWAY);
             } else if (flowElement instanceof ExclusiveGateway) {
-                object.setType(NodeType.EXCLUSIVEGATEWAY);
+                ((BaseBpmNodeDef)nodeDef).setType(NodeType.EXCLUSIVEGATEWAY);
             }
         }
 
-        object.setParentBpmNodeDef(parentNodeDef);
-        object.setNodeId(flowElement.getId());
-        object.setName(flowElement.getName());
-        return (BaseBpmNodeDef) object;
+        ((BaseBpmNodeDef)nodeDef).setParentBpmNodeDef(parentNodeDef);
+        ((BaseBpmNodeDef)nodeDef).setNodeId(flowElement.getId());
+        ((BaseBpmNodeDef)nodeDef).setName(flowElement.getName());
+        return (BaseBpmNodeDef)nodeDef;
     }
 
 
