@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.org.api.model.dto;
+/*     */ package com.dstz.org.api.model.dto;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IUser;
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IUserRole;
+/*     */ import com.dstz.org.api.model.IUser;
+/*     */ import com.dstz.org.api.model.IUserRole;
 /*     */ import java.util.Date;
 /*     */ import java.util.List;
 /*     */ 

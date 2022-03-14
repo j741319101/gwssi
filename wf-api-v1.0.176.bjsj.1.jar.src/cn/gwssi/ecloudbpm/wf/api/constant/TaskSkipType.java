@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.constant;
+/*    */ package com.dstz.bpm.api.constant;
 /*    */ 
 /*    */ public enum TaskSkipType {
 /*  4 */   NO_SKIP("noSkip", "不跳过"),

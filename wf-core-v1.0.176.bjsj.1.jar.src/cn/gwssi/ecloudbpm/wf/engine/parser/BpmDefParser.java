@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.engine.parser;
+package com.dstz.bpm.engine.parser;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
-interface BpmDefParser<D extends cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmDef> {
+interface BpmDefParser<D extends com.dstz.bpm.api.engine.plugin.def.BpmDef> {
   Object parseDef(D paramD, String paramString);
   
   void parse(D paramD, JSONObject paramJSONObject);

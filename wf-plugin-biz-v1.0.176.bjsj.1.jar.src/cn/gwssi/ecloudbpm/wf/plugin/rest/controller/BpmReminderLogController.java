@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.rest.controller;
+/*    */ package com.dstz.bpm.plugin.rest.controller;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmReminderLogManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderLog;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-/*    */ import cn.gwssi.ecloudframework.base.db.model.page.PageResult;
-/*    */ import cn.gwssi.ecloudframework.base.rest.BaseController;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmReminderLogManager;
+/*    */ import com.dstz.bpm.plugin.core.model.BpmReminderLog;
+/*    */ import com.dstz.base.api.query.QueryFilter;
+/*    */ import com.dstz.base.db.model.page.PageResult;
+/*    */ import com.dstz.base.rest.BaseController;
 /*    */ import java.util.List;
 /*    */ import javax.annotation.Resource;
 /*    */ import javax.servlet.http.HttpServletRequest;

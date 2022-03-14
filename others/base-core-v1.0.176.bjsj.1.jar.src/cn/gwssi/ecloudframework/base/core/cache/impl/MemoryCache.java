@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.cache.impl;
+/*    */ package com.dstz.base.core.cache.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.BaseStatusCode;
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*    */ import cn.gwssi.ecloudframework.base.core.cache.ICache;
+/*    */ import com.dstz.base.api.constant.BaseStatusCode;
+/*    */ import com.dstz.base.api.exception.BusinessException;
+/*    */ import com.dstz.base.core.cache.ICache;
 /*    */ import java.util.Collection;
 /*    */ import java.util.Map;
 /*    */ import java.util.concurrent.ConcurrentHashMap;

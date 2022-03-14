@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudframework.sys.core.manager.impl;
+/*    */ package com.dstz.sys.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.dao.SysConnectRecordDao;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.SysConnectRecordManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.model.SysConnectRecord;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
+/*    */ import com.dstz.sys.core.dao.SysConnectRecordDao;
+/*    */ import com.dstz.sys.core.manager.SysConnectRecordManager;
+/*    */ import com.dstz.sys.core.model.SysConnectRecord;
 /*    */ import java.util.List;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.usercalc.script.def;
+/*    */ package com.dstz.bpm.plugin.usercalc.script.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractUserCalcPluginDef;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractUserCalcPluginDef;
 /*    */ import org.hibernate.validator.constraints.NotEmpty;
 /*    */ 
 /*    */ 

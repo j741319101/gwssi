@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.model.def;
+/*    */ package com.dstz.bpm.api.model.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.ScriptType;
+/*    */ import com.dstz.bpm.api.constant.ScriptType;
 /*    */ 
 /*    */ 
 /*    */ 

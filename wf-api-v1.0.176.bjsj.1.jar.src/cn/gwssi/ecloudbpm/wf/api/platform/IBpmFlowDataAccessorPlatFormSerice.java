@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.api.platform;
+package com.dstz.bpm.api.platform;
 
-import cn.gwssi.ecloudbpm.wf.api.engine.data.result.BpmFlowData;
+import com.dstz.bpm.api.engine.data.result.BpmFlowData;
 
 public interface IBpmFlowDataAccessorPlatFormSerice {
   BpmFlowData getStartFlowData(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Boolean paramBoolean);

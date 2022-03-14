@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudframework.sys.core.manager;
+package com.dstz.sys.core.manager;
 
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.sys.api.model.calendar.Schedule;
-import cn.gwssi.ecloudframework.sys.api.model.calendar.ScheduleHistory;
-import cn.gwssi.ecloudframework.sys.core.model.ParticipantScheduleDO;
+import com.dstz.base.manager.Manager;
+import com.dstz.sys.api.model.calendar.Schedule;
+import com.dstz.sys.api.model.calendar.ScheduleHistory;
+import com.dstz.sys.core.model.ParticipantScheduleDO;
 import java.util.Date;
 import java.util.List;
 

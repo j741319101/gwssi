@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.model;
+/*    */ package com.dstz.sys.api.model;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
+/*    */ import com.dstz.base.core.model.BaseModel;
 /*    */ import org.hibernate.validator.constraints.NotEmpty;
 /*    */ 
 /*    */ 

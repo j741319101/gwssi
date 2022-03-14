@@ -1,10 +1,10 @@
-package cn.gwssi.ecloudbpm.wf.core.dao;
+package com.dstz.bpm.core.dao;
 
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTask;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTypeTreeCountVO;
-import cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskVO;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.bpm.core.model.BpmTask;
+import com.dstz.bpm.core.model.BpmTypeTreeCountVO;
+import com.dstz.bpm.core.vo.BpmTaskVO;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.dao.BaseDao;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;

@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.action.batchHandler;
+/*    */ package com.dstz.bpm.engine.action.batchHandler;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.BatchActionType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.FlowBatchRequestParam;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.FlowRequestParam;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefualtTaskActionCmd;
+/*    */ import com.dstz.bpm.api.constant.BatchActionType;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.FlowBatchRequestParam;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.FlowRequestParam;
+/*    */ import com.dstz.bpm.engine.action.cmd.DefualtTaskActionCmd;
 /*    */ import java.util.Map;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 

@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.validate.validator;
+/*    */ package com.dstz.base.core.validate.validator;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.validate.annotation.CheckCase;
-/*    */ import cn.gwssi.ecloudframework.base.core.validate.constant.CaseMode;
+/*    */ import com.dstz.base.core.validate.annotation.CheckCase;
+/*    */ import com.dstz.base.core.validate.constant.CaseMode;
 /*    */ import java.lang.annotation.Annotation;
 /*    */ import javax.validation.ConstraintValidator;
 /*    */ import javax.validation.ConstraintValidatorContext;

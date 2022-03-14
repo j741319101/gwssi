@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.manager.impl;
+/*    */ package com.dstz.bpm.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.core.dao.BpmExecutionLinkDao;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmExecutionLinkManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmExecutionLink;
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
+/*    */ import com.dstz.bpm.core.dao.BpmExecutionLinkDao;
+/*    */ import com.dstz.bpm.core.manager.BpmExecutionLinkManager;
+/*    */ import com.dstz.bpm.core.model.BpmExecutionLink;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
 /*    */ import java.util.HashMap;
 /*    */ import java.util.List;
 /*    */ import java.util.Map;

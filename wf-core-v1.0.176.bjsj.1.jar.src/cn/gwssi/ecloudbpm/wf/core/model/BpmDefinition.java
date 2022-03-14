@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.core.model;
+/*     */ package com.dstz.bpm.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.def.IBpmDefinition;
+/*     */ import com.dstz.bpm.api.model.def.IBpmDefinition;
 /*     */ import com.alibaba.fastjson.annotation.JSONField;
 /*     */ import io.swagger.annotations.ApiModel;
 /*     */ import io.swagger.annotations.ApiModelProperty;

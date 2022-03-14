@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.core.dao.BpmDefinitionDao">
-	<resultMap id="BpmDefinition" type="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+<mapper namespace="com.dstz.bpm.core.dao.BpmDefinitionDao">
+	<resultMap id="BpmDefinition" type="com.dstz.bpm.core.model.BpmDefinition">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="name" column="name_" jdbcType="VARCHAR"/>
 		<result property="key" column="key_" jdbcType="VARCHAR"/>
@@ -29,7 +29,7 @@
 		<result property="lockTime" column="lock_time_" jdbcType="TIMESTAMP"/>
 		<result property="lockBy" column="lock_by_" jdbcType="VARCHAR"/>
 	</resultMap>
-	<resultMap id="BpmDefinitionVO" type="cn.gwssi.ecloudbpm.wf.core.vo.BpmDefinitionVO">
+	<resultMap id="BpmDefinitionVO" type="com.dstz.bpm.core.vo.BpmDefinitionVO">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="name" column="name_" jdbcType="VARCHAR"/>
 		<result property="key" column="key_" jdbcType="VARCHAR"/>
@@ -72,7 +72,7 @@
 		bpm_definition.org_id_,bpm_definition.order_,bpm_definition.lock_time_,bpm_definition.lock_by_
 	</sql>
 
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+	<insert id="create" parameterType="com.dstz.bpm.core.model.BpmDefinition">
 		INSERT INTO bpm_definition
 		(id_,name_,key_,desc_,type_id_,status_,act_def_id_,act_model_id_,act_deploy_id_,version_,main_def_id_,is_main_,
 		 create_by_,create_time_,create_org_id_,update_by_,update_time_,support_mobile_,def_setting_,rev_,content_id_,
@@ -105,7 +105,7 @@
 		</if>
 	</select>
 
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+	<update id="update" parameterType="com.dstz.bpm.core.model.BpmDefinition">
 		UPDATE bpm_definition SET
 		<if test="name!=null">
 			name_=#{name,jdbcType=VARCHAR},
@@ -258,14 +258,14 @@
 	<select id="countByKey" resultType="boolean" parameterType="string">
 		SELECT COUNT(*) FROM bpm_definition WHERE key_ = #{key,jdbcType=VARCHAR}
 	</select>
-	<update id="lock" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+	<update id="lock" parameterType="com.dstz.bpm.core.model.BpmDefinition">
 		UPDATE bpm_definition SET
             lock_by_ = #{lockBy},
             lock_time_ = now()
         WHERE
 		id_=#{id}
 	</update>
-	<update id="unlock" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition">
+	<update id="unlock" parameterType="com.dstz.bpm.core.model.BpmDefinition">
 		UPDATE bpm_definition SET
 			lock_by_ = ''
 		WHERE

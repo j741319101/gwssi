@@ -1,12 +1,12 @@
-package cn.gwssi.ecloudbpm.wf.core.dao;
+package com.dstz.bpm.core.dao;
 
-import cn.gwssi.ecloudbpm.wf.core.model.BpmInstance;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskApprove;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTypeTreeCountVO;
-import cn.gwssi.ecloudbpm.wf.core.vo.BpmInstanceVO;
-import cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskApproveVO;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.bpm.core.model.BpmInstance;
+import com.dstz.bpm.core.model.BpmTaskApprove;
+import com.dstz.bpm.core.model.BpmTypeTreeCountVO;
+import com.dstz.bpm.core.vo.BpmInstanceVO;
+import com.dstz.bpm.core.vo.BpmTaskApproveVO;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.dao.BaseDao;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Param;

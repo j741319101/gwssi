@@ -1,10 +1,10 @@
-package cn.gwssi.ecloudframework.org.api.service;
+package com.dstz.org.api.service;
 
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.api.response.impl.PageResultDto;
-import cn.gwssi.ecloudframework.org.api.model.IGroup;
-import cn.gwssi.ecloudframework.org.api.model.dto.BpmOrgDTO;
-import cn.gwssi.ecloudframework.org.api.model.dto.GroupQueryDTO;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.api.response.impl.PageResultDto;
+import com.dstz.org.api.model.IGroup;
+import com.dstz.org.api.model.dto.BpmOrgDTO;
+import com.dstz.org.api.model.dto.GroupQueryDTO;
 import java.util.List;
 import java.util.Map;
 

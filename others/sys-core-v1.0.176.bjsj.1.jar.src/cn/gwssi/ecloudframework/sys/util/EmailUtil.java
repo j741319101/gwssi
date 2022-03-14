@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.sys.util;
+/*    */ package com.dstz.sys.util;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.util.PropertyUtil;
+/*    */ import com.dstz.base.core.util.PropertyUtil;
 /*    */ import cn.hutool.core.collection.CollUtil;
 /*    */ import cn.hutool.extra.mail.MailAccount;
 /*    */ import cn.hutool.extra.mail.MailUtil;

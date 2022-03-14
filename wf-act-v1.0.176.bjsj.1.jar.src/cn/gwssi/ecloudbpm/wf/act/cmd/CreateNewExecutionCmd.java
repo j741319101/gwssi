@@ -1,10 +1,10 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.act.cmd;
+/*     */ package com.dstz.bpm.act.cmd;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.exception.BpmStatusCode;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
+/*     */ import com.dstz.bpm.api.exception.BpmStatusCode;
+/*     */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*     */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.core.util.AppUtil;
 /*     */ import cn.hutool.core.collection.CollectionUtil;
 /*     */ import java.io.Serializable;
 /*     */ import java.util.Collections;

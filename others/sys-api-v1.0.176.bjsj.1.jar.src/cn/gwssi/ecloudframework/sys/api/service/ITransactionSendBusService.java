@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.api.service;
+package com.dstz.sys.api.service;
 
-import cn.gwssi.ecloudframework.sys.api.model.mq.RocketTransactionMessageDto;
+import com.dstz.sys.api.model.mq.RocketTransactionMessageDto;
 
 public interface ITransactionSendBusService {
   void handleBus(RocketTransactionMessageDto paramRocketTransactionMessageDto) throws Exception;

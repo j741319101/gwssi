@@ -1,7 +1,7 @@
 /*    */ package cn.gwssi.ecloudbpm.bus.model;
 /*    */ 
 /*    */ import cn.gwssi.ecloudbpm.bus.api.model.IBusColumnCtrl;
-/*    */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
+/*    */ import com.dstz.base.core.model.BaseModel;
 /*    */ import org.hibernate.validator.constraints.NotEmpty;
 /*    */ 
 /*    */ 

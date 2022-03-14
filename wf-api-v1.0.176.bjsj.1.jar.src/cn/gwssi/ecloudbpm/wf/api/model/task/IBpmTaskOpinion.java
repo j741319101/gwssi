@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.model.task;
+package com.dstz.bpm.api.model.task;
 
 import java.util.Date;
 

@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.core.dao;
+package com.dstz.bpm.core.dao;
 
-import cn.gwssi.ecloudbpm.wf.core.model.TaskIdentityLink;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.bpm.core.model.TaskIdentityLink;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.dao.BaseDao;
 import java.util.List;
 import java.util.Set;
 import org.apache.ibatis.annotations.Param;

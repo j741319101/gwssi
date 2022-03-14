@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.util;
+/*     */ package com.dstz.base.core.util;
 /*     */ 
 /*     */ import cn.hutool.core.util.ArrayUtil;
 /*     */ import java.util.Collections;

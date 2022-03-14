@@ -2,8 +2,8 @@
 /*     */ 
 /*     */ import cn.gwssi.ecloudbpm.bus.api.model.ISqlRule;
 /*     */ import cn.gwssi.ecloudbpm.bus.api.model.ISqlRuleParam;
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.ColumnType;
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.DbType;
+/*     */ import com.dstz.base.api.constant.ColumnType;
+/*     */ import com.dstz.base.api.constant.DbType;
 /*     */ import java.text.ParseException;
 /*     */ import java.text.SimpleDateFormat;
 /*     */ import org.apache.commons.lang3.StringUtils;

@@ -1,10 +1,10 @@
-package cn.gwssi.ecloudbpm.wf.core.manager;
+package com.dstz.bpm.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmDefinitionDuplicateDTO;
-import cn.gwssi.ecloudbpm.wf.core.vo.BpmDefinitionVO;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.core.model.BpmDefinition;
+import com.dstz.bpm.core.model.BpmDefinitionDuplicateDTO;
+import com.dstz.bpm.core.vo.BpmDefinitionVO;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.manager.Manager;
 import java.io.File;
 import java.io.InputStream;
 import java.util.List;

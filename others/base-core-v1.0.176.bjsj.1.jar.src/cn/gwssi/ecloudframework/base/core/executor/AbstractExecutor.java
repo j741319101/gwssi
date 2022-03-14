@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.executor;
+/*    */ package com.dstz.base.core.executor;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.executor.Executor;
-/*    */ import cn.gwssi.ecloudframework.base.api.executor.ExecutorType;
-/*    */ import cn.gwssi.ecloudframework.base.api.executor.checker.ExecutorChecker;
-/*    */ import cn.gwssi.ecloudframework.base.core.executor.checker.ExecutorCheckerService;
-/*    */ import cn.gwssi.ecloudframework.base.core.executor.checker.FreeExecutorChecker;
+/*    */ import com.dstz.base.api.executor.Executor;
+/*    */ import com.dstz.base.api.executor.ExecutorType;
+/*    */ import com.dstz.base.api.executor.checker.ExecutorChecker;
+/*    */ import com.dstz.base.core.executor.checker.ExecutorCheckerService;
+/*    */ import com.dstz.base.core.executor.checker.FreeExecutorChecker;
 /*    */ import java.util.List;
 /*    */ 
 /*    */ 

@@ -1,14 +1,14 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.action.handler.instance;
+/*    */ package com.dstz.bpm.engine.action.handler.instance;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.InstanceStatus;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.BaseActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.handler.BuiltinActionHandler;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.bpm.api.constant.ActionType;
+/*    */ import com.dstz.bpm.api.constant.InstanceStatus;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.BaseActionCmd;
+/*    */ import com.dstz.bpm.api.engine.action.handler.BuiltinActionHandler;
+/*    */ import com.dstz.bpm.api.model.inst.IBpmInstance;
+/*    */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*    */ import com.dstz.bpm.api.model.task.IBpmTask;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import org.apache.commons.lang3.StringUtils;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 

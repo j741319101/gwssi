@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.util;
+/*    */ package com.dstz.bpm.core.util;
 /*    */ 
 /*    */ import java.io.ByteArrayInputStream;
 /*    */ import java.io.InputStream;

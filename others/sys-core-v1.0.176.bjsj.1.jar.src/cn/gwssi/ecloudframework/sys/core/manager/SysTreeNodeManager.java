@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudframework.sys.core.manager;
+package com.dstz.sys.core.manager;
 
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.sys.api.model.SysNodeOrderParam;
-import cn.gwssi.ecloudframework.sys.core.model.SysTreeNode;
+import com.dstz.base.manager.Manager;
+import com.dstz.sys.api.model.SysNodeOrderParam;
+import com.dstz.sys.core.model.SysTreeNode;
 import java.util.List;
 import java.util.Map;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;

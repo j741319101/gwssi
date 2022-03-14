@@ -1,9 +1,9 @@
-/*     */ package cn.gwssi.ecloudframework.sys.core.model;
+/*     */ package com.dstz.sys.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.JsonUtil;
-/*     */ import cn.gwssi.ecloudframework.sys.api.model.ISysDataSource;
-/*     */ import cn.gwssi.ecloudframework.sys.core.model.def.SysDataSourceDefAttribute;
+/*     */ import com.dstz.base.core.model.BaseModel;
+/*     */ import com.dstz.base.core.util.JsonUtil;
+/*     */ import com.dstz.sys.api.model.ISysDataSource;
+/*     */ import com.dstz.sys.core.model.def.SysDataSourceDefAttribute;
 /*     */ import java.util.List;
 /*     */ import javax.validation.Valid;
 /*     */ import javax.validation.constraints.NotNull;

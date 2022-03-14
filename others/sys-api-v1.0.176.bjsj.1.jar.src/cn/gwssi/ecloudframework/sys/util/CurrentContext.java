@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.sys.util;
+/*    */ package com.dstz.sys.util;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.context.ICurrentContext;
-/*    */ import cn.gwssi.ecloudframework.org.api.model.IGroup;
-/*    */ import cn.gwssi.ecloudframework.org.api.model.IUser;
+/*    */ import com.dstz.base.api.context.ICurrentContext;
+/*    */ import com.dstz.org.api.model.IGroup;
+/*    */ import com.dstz.org.api.model.IUser;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 
 /*    */ 

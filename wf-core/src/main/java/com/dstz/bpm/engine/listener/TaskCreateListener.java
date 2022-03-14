@@ -246,7 +246,7 @@ import org.activiti.engine.delegate.DelegateTask;
 /* 245 */       if ("user".equals(bpmIdentity.getType())) {
 /* 246 */         results.add(bpmIdentity); continue;
 /*     */       } 
-/* 248 */       List<IUser> users = this.userService.getUserListByGroup(bpmIdentity.getType(), bpmIdentity.getId());
+/* 248 */       List<IUser> users = (List<IUser>)this.userService.getUserListByGroup(bpmIdentity.getType(), bpmIdentity.getId());
 /* 249 */       for (IUser user : users) {
 /* 250 */         results.add(new DefaultIdentity(user));
 /*     */       }

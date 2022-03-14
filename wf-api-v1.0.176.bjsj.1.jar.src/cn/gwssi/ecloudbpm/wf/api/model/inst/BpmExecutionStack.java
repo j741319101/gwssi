@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.model.inst;
+package com.dstz.bpm.api.model.inst;
 
 import java.util.Date;
 

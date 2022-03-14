@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.event;
+package com.dstz.bpm.api.engine.event;
 
 public interface BpmActivitiDefCache {
   void clearLocal();

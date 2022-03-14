@@ -1,18 +1,18 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.engine.action.handler.instance;
+/*     */ package com.dstz.bpm.engine.action.handler.instance;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.act.service.ActInstanceService;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.InstanceStatus;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.NodeType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.BaseActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.CallActivityNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmInstanceManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmInstance;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefaultInstanceActionCmd;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
+/*     */ import com.dstz.bpm.act.service.ActInstanceService;
+/*     */ import com.dstz.bpm.api.constant.ActionType;
+/*     */ import com.dstz.bpm.api.constant.InstanceStatus;
+/*     */ import com.dstz.bpm.api.constant.NodeType;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.BaseActionCmd;
+/*     */ import com.dstz.bpm.api.model.inst.IBpmInstance;
+/*     */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*     */ import com.dstz.bpm.api.model.nodedef.impl.CallActivityNodeDef;
+/*     */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*     */ import com.dstz.bpm.core.manager.BpmInstanceManager;
+/*     */ import com.dstz.bpm.core.model.BpmInstance;
+/*     */ import com.dstz.bpm.engine.action.cmd.DefaultInstanceActionCmd;
+/*     */ import com.dstz.base.api.exception.BusinessException;
 /*     */ import cn.hutool.core.collection.CollectionUtil;
 /*     */ import com.alibaba.fastjson.JSONArray;
 /*     */ import com.alibaba.fastjson.JSONObject;
@@ -83,7 +83,7 @@
 /*  83 */             BpmNodeDef inComeNode = null;
 /*  84 */             List<BpmNodeDef> incomeBpmNodeDefs = bpmNodeDef.getIncomeNodes();
 /*  85 */             BpmNodeDef parentNodeDef = bpmNodeDef.getParentBpmNodeDef();
-/*  86 */             if (parentNodeDef != null && parentNodeDef instanceof cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.SubProcessNodeDef) {
+/*  86 */             if (parentNodeDef != null && parentNodeDef instanceof com.dstz.bpm.api.model.nodedef.impl.SubProcessNodeDef) {
 /*  87 */               incomeBpmNodeDefs = parentNodeDef.getIncomeNodes();
 /*     */             }
 /*     */             

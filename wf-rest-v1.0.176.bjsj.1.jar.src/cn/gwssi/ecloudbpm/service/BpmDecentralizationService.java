@@ -1,8 +1,8 @@
 /*    */ package cn.gwssi.ecloudbpm.service;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.org.api.context.ICurrentContext;
-/*    */ import cn.gwssi.ecloudframework.org.api.model.IUser;
-/*    */ import cn.gwssi.ecloudframework.sys.api.platform.ISysPropertiesPlatFormService;
+/*    */ import com.dstz.org.api.context.ICurrentContext;
+/*    */ import com.dstz.org.api.model.IUser;
+/*    */ import com.dstz.sys.api.platform.ISysPropertiesPlatFormService;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.slf4j.Logger;
 /*    */ import org.slf4j.LoggerFactory;

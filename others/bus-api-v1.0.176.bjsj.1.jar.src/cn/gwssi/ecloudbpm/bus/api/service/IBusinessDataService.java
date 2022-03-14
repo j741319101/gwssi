@@ -3,7 +3,7 @@ package cn.gwssi.ecloudbpm.bus.api.service;
 import cn.gwssi.ecloudbpm.bus.api.model.IBusinessData;
 import cn.gwssi.ecloudbpm.bus.api.model.IBusinessObject;
 import cn.gwssi.ecloudbpm.bus.api.model.IBusinessPermission;
-import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
+import com.dstz.base.api.exception.BusinessException;
 import com.alibaba.fastjson.JSONObject;
 
 public interface IBusinessDataService {

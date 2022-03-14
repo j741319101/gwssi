@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.act.listener;
+/*    */ package com.dstz.bpm.act.listener;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
+/*    */ import com.dstz.base.core.util.AppUtil;
 /*    */ import java.util.HashMap;
 /*    */ import java.util.Map;
 /*    */ import org.activiti.engine.delegate.event.ActivitiEvent;

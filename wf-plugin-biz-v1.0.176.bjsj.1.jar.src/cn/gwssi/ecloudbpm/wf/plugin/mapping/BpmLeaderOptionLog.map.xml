@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmLeaderOptionLogDao">
-	<resultMap id="BpmLeaderOptionLog" type="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmLeaderOptionLog">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.BpmLeaderOptionLogDao">
+	<resultMap id="BpmLeaderOptionLog" type="com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
 		<result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
@@ -18,7 +18,7 @@
 
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmLeaderOptionLog">
+	<insert id="create" parameterType="com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog">
 		INSERT INTO bpm_leader_option_log
 		(id_,
 		task_id_,
@@ -71,7 +71,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmLeaderOptionLog">
+	<update id="update" parameterType="com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog">
 		UPDATE bpm_leader_option_log
 		<set>
 			<if test="taskId != null">

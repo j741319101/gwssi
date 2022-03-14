@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.form.manager;
 
 import cn.gwssi.ecloudbpm.form.model.FormBusSet;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 
 public interface FormBusSetManager extends Manager<String, FormBusSet> {
   FormBusSet getByFormKey(String paramString);

@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.model.task;
+package com.dstz.bpm.api.model.task;
 
 public interface BpmTaskCandidate {
   String getId();

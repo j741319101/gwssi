@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.engine.parser.flow;
+package com.dstz.bpm.engine.parser.flow;
 
-import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
-import cn.gwssi.ecloudbpm.wf.engine.parser.BaseBpmDefParser;
+import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
+import com.dstz.bpm.engine.parser.BaseBpmDefParser;
 
 public abstract class AbsFlowParse<T> extends BaseBpmDefParser<T, DefaultBpmProcessDef> {}
 

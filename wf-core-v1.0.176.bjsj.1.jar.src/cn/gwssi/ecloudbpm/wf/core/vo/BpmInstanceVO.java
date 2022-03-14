@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.vo;
+/*    */ package com.dstz.bpm.core.vo;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmInstance;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmTask;
+/*    */ import com.dstz.bpm.core.model.BpmInstance;
+/*    */ import com.dstz.bpm.core.model.BpmTask;
 /*    */ import java.util.List;
 /*    */ 
 /*    */ public class BpmInstanceVO

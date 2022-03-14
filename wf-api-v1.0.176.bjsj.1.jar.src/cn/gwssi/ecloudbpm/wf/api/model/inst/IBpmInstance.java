@@ -1,4 +1,4 @@
-/*   */ package cn.gwssi.ecloudbpm.wf.api.model.inst;
+/*   */ package com.dstz.bpm.api.model.inst;
 /*   */ import io.swagger.annotations.ApiModel;
 /*   */ import io.swagger.annotations.ApiModelProperty;
 /*   */ import java.util.Date;

@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.org.sync.orm;
+/*    */ package com.dstz.org.sync.orm;
 /*    */ 
 /*    */ import com.alibaba.fastjson.annotation.JSONField;
 /*    */ 

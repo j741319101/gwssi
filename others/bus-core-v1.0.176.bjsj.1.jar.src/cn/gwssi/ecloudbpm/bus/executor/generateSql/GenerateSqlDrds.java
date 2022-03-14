@@ -1,11 +1,11 @@
 /*    */ package cn.gwssi.ecloudbpm.bus.executor.generateSql;
 /*    */ 
 /*    */ import cn.gwssi.ecloudbpm.bus.model.BusinessTable;
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.DbType;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
-/*    */ import cn.gwssi.ecloudframework.base.db.datasource.DbContextHolder;
-/*    */ import cn.gwssi.ecloudframework.base.db.model.table.Table;
-/*    */ import cn.gwssi.ecloudframework.base.db.tableoper.GenerateSqlByDbType;
+/*    */ import com.dstz.base.api.constant.DbType;
+/*    */ import com.dstz.base.core.util.StringUtil;
+/*    */ import com.dstz.base.db.datasource.DbContextHolder;
+/*    */ import com.dstz.base.db.model.table.Table;
+/*    */ import com.dstz.base.db.tableoper.GenerateSqlByDbType;
 /*    */ import java.util.Map;
 /*    */ import org.apache.commons.lang3.StringUtils;
 /*    */ import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.base.api.request;
+/*    */ package com.dstz.base.api.request;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.query.FieldSort;
+/*    */ import com.dstz.base.api.query.FieldSort;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.List;
 /*    */ 

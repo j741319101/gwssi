@@ -1,9 +1,9 @@
 /*    */ package cn.gwssi.ecloudbpm.platform;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.CarbonCopyStatus;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.platform.IBpmCarbonCopyPlatFormService;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmCarbonCopyReceiveManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive;
+/*    */ import com.dstz.bpm.api.constant.CarbonCopyStatus;
+/*    */ import com.dstz.bpm.api.platform.IBpmCarbonCopyPlatFormService;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmCarbonCopyReceiveManager;
+/*    */ import com.dstz.bpm.plugin.core.model.BpmCarbonCopyReceive;
 /*    */ import java.util.Arrays;
 /*    */ import java.util.Date;
 /*    */ import java.util.Set;

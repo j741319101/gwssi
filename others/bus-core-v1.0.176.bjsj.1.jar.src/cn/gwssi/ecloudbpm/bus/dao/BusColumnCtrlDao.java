@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.bus.dao;
 
 import cn.gwssi.ecloudbpm.bus.model.BusColumnCtrl;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.base.dao.BaseDao;
 import java.util.List;
 import org.mybatis.spring.annotation.MapperScan;
 

@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.core.manager.impl;
+/*    */ package com.dstz.bpm.plugin.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmLeaderOptionLogDao;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmLeaderOptionLogManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmLeaderOptionLog;
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
+/*    */ import com.dstz.bpm.plugin.core.dao.BpmLeaderOptionLogDao;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmLeaderOptionLogManager;
+/*    */ import com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 

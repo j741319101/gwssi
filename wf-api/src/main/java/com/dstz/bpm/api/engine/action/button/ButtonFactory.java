@@ -211,7 +211,9 @@ import org.apache.commons.lang3.StringUtils;
 /* 210 */           if (MapUtil.isEmpty(beanMap)) {
 /* 211 */             actionDisplayHandlerMap = Collections.emptyMap();
 /*     */           } else {
-/* 213 */             actionDisplayHandlerMap = (Map<String, ActionDisplayHandler<? extends ActionCmd>>)beanMap.values().stream().filter(o -> o.isDefault().booleanValue()).collect(Collectors.toMap(o -> o.getActionType().getKey(), o -> o));
+/* 213 */             actionDisplayHandlerMap = (Map)beanMap.values().
+                            stream().filter(o -> o.isDefault().booleanValue()).
+                            collect(Collectors.toMap(o -> o.getActionType().getKey(), o -> o));
 /*     */           } 
 /*     */         } 
 /*     */       } 

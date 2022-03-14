@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.api.service;
+package com.dstz.sys.api.service;
 
-import cn.gwssi.ecloudframework.sys.api.constant.RightsObjectConstants;
+import com.dstz.sys.api.constant.RightsObjectConstants;
 import java.util.Map;
 import java.util.Set;
 

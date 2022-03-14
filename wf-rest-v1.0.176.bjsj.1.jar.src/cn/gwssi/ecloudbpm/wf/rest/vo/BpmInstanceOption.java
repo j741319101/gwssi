@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.rest.vo;
+/*     */ package com.dstz.bpm.rest.vo;
 /*     */ 
 /*     */ 
 /*     */ 

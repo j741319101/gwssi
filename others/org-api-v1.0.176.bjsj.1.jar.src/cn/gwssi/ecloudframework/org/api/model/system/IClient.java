@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.org.api.model.system;
+package com.dstz.org.api.model.system;
 
 import java.util.List;
 

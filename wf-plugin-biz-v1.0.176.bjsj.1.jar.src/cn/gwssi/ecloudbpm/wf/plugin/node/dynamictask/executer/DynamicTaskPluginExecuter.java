@@ -1,13 +1,13 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.executer;
+/*    */ package com.dstz.bpm.plugin.node.dynamictask.executer;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.BpmPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.runtime.abstact.AbstractBpmExecutionPlugin;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.context.DynamicTaskPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.def.DynamicTaskPluginDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.node.recrease.executer.SuperviseTaskExecuter;
+/*    */ import com.dstz.bpm.api.constant.EventType;
+/*    */ import com.dstz.bpm.api.engine.plugin.context.BpmPluginContext;
+/*    */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*    */ import com.dstz.bpm.engine.plugin.runtime.abstact.AbstractBpmExecutionPlugin;
+/*    */ import com.dstz.bpm.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
+/*    */ import com.dstz.bpm.plugin.node.dynamictask.context.DynamicTaskPluginContext;
+/*    */ import com.dstz.bpm.plugin.node.dynamictask.def.DynamicTaskPluginDef;
+/*    */ import com.dstz.bpm.plugin.node.recrease.executer.SuperviseTaskExecuter;
 /*    */ import java.util.concurrent.atomic.AtomicReference;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Component;
@@ -71,7 +71,7 @@
 /*    */     
 /* 72 */     if (!((Boolean)isParallel.get()).booleanValue()) {
 /* 73 */       BpmNodeDef subProcessNodeDef = bpmNodeDef.getParentBpmNodeDef();
-/* 74 */       if (subProcessNodeDef != null && subProcessNodeDef instanceof cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.SubProcessNodeDef) {
+/* 74 */       if (subProcessNodeDef != null && subProcessNodeDef instanceof com.dstz.bpm.api.model.nodedef.impl.SubProcessNodeDef) {
 /* 75 */         subProcessNodeDef.getBpmPluginContexts().forEach(bpmPluginContext -> {
 /*    */               if (bpmPluginContext instanceof DynamicTaskPluginContext) {
 /*    */                 isParallel.set(((DynamicTaskPluginDef)((DynamicTaskPluginContext)bpmPluginContext).getBpmPluginDef()).getIsParallel());

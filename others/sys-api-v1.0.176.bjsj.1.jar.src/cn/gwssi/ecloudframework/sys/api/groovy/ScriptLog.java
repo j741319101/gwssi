@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.groovy;
+/*    */ package com.dstz.sys.api.groovy;
 /*    */ 
 /*    */ import org.slf4j.Logger;
 /*    */ import org.slf4j.LoggerFactory;

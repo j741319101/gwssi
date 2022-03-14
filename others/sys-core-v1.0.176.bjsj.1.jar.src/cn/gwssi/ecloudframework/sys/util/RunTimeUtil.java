@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.sys.util;
+/*    */ package com.dstz.sys.util;
 /*    */ 
 /*    */ import java.lang.management.ManagementFactory;
 /*    */ import java.lang.management.RuntimeMXBean;

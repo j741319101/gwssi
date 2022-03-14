@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmReminderTriggerDao">
-	<resultMap id="BpmReminderTrigger" type="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderTrigger">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.BpmReminderTriggerDao">
+	<resultMap id="BpmReminderTrigger" type="com.dstz.bpm.plugin.core.model.BpmReminderTrigger">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
 		<result property="reminderDesc" column="reminder_desc_" jdbcType="VARCHAR"/>
@@ -17,7 +17,7 @@
 		<result property="duedate" column="duedate_" jdbcType="TIMESTAMP"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderTrigger">
+	<insert id="create" parameterType="com.dstz.bpm.plugin.core.model.BpmReminderTrigger">
 		INSERT INTO bpm_plugin_reminder_trigger
 		(id_,task_id_,reminder_desc_,before_script_,msg_type_,html_msg_,text_msg_,is_calc_workday_,is_urgent_,max_reminder_times,reminder_times_,reminder_cycle_,duedate_)
 		VALUES 
@@ -45,7 +45,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderTrigger">
+	<update id="update" parameterType="com.dstz.bpm.plugin.core.model.BpmReminderTrigger">
 		UPDATE bpm_plugin_reminder_trigger SET
 		task_id_=#{taskId,jdbcType=VARCHAR},
 		reminder_desc_=#{reminderDesc,jdbcType=VARCHAR},

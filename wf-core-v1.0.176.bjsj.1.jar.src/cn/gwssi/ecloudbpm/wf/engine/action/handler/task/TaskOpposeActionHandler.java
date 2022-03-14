@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.action.handler.task;
+/*    */ package com.dstz.bpm.engine.action.handler.task;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.NodeType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.BaseActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefualtTaskActionCmd;
+/*    */ import com.dstz.bpm.api.constant.ActionType;
+/*    */ import com.dstz.bpm.api.constant.NodeType;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.BaseActionCmd;
+/*    */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*    */ import com.dstz.bpm.engine.action.cmd.DefualtTaskActionCmd;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 
 /*    */ 

@@ -1,12 +1,12 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.node.sign.executer;
+/*    */ package com.dstz.bpm.plugin.node.sign.executer;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.TaskType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.action.handler.DefaultExtendTaskAction;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.node.sign.context.SignTaskPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.node.sign.def.SignTaskPluginDef;
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
+/*    */ import com.dstz.bpm.api.constant.TaskType;
+/*    */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*    */ import com.dstz.bpm.api.model.task.IBpmTask;
+/*    */ import com.dstz.bpm.engine.action.handler.DefaultExtendTaskAction;
+/*    */ import com.dstz.bpm.plugin.node.sign.context.SignTaskPluginContext;
+/*    */ import com.dstz.bpm.plugin.node.sign.def.SignTaskPluginDef;
+/*    */ import com.dstz.base.api.exception.BusinessException;
 /*    */ import org.apache.commons.lang3.StringUtils;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 

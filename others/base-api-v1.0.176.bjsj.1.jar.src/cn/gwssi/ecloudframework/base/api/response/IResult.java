@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api.response;
+package com.dstz.base.api.response;
 
 import java.io.Serializable;
 

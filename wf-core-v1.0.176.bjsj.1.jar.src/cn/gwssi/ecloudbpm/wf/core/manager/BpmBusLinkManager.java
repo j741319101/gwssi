@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.core.manager;
+package com.dstz.bpm.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.core.model.BpmBusLink;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.core.model.BpmBusLink;
+import com.dstz.base.manager.Manager;
 import java.util.List;
 
 public interface BpmBusLinkManager extends Manager<String, BpmBusLink> {

@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.model.overallview;
+/*    */ package com.dstz.bpm.core.model.overallview;
 /*    */ 
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.List;

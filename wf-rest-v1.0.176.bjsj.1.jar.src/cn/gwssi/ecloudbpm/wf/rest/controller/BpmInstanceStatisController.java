@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.rest.controller;
+/*    */ package com.dstz.bpm.rest.controller;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmInstanceManager;
-/*    */ import cn.gwssi.ecloudframework.base.api.response.impl.ResultMsg;
-/*    */ import cn.gwssi.ecloudframework.base.rest.ControllerTools;
+/*    */ import com.dstz.bpm.core.manager.BpmInstanceManager;
+/*    */ import com.dstz.base.api.response.impl.ResultMsg;
+/*    */ import com.dstz.base.rest.ControllerTools;
 /*    */ import io.swagger.annotations.Api;
 /*    */ import io.swagger.annotations.ApiImplicitParam;
 /*    */ import io.swagger.annotations.ApiImplicitParams;

@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.global.carboncopy.executor;
+/*    */ package com.dstz.bpm.plugin.global.carboncopy.executor;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.action.handler.DefaultExtendTaskAction;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmCarbonCopyReceiveManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmCarbonCopyRecordManager;
+/*    */ import com.dstz.bpm.engine.action.handler.DefaultExtendTaskAction;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmCarbonCopyReceiveManager;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmCarbonCopyRecordManager;
 /*    */ import org.springframework.beans.factory.annotation.Autowired;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 

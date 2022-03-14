@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.plugin.context;
+package com.dstz.bpm.api.engine.plugin.context;
 
 import com.alibaba.fastjson.JSON;
 
-public interface PluginParse<T extends cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmPluginDef> {
+public interface PluginParse<T extends com.dstz.bpm.api.engine.plugin.def.BpmPluginDef> {
   T parse(JSON paramJSON);
   
   T parse(String paramString);

@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.sys.groovy;
+/*    */ package com.dstz.sys.groovy;
 /*    */ 
 /*    */ import groovy.lang.Binding;
 /*    */ import java.util.HashMap;

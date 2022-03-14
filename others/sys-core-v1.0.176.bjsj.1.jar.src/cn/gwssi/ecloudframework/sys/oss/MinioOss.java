@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.sys.oss;
+/*    */ package com.dstz.sys.oss;
 /*    */ 
 /*    */ import io.minio.MinioClient;
 /*    */ import java.io.InputStream;

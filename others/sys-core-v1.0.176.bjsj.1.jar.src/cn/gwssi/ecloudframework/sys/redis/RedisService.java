@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.sys.redis;
+/*     */ package com.dstz.sys.redis;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.util.SerializeUtil;
-/*     */ import cn.gwssi.ecloudframework.sys.api.redis.IRedisService;
+/*     */ import com.dstz.base.core.util.SerializeUtil;
+/*     */ import com.dstz.sys.api.redis.IRedisService;
 /*     */ import java.io.Serializable;
 /*     */ import java.io.UnsupportedEncodingException;
 /*     */ import java.util.Set;

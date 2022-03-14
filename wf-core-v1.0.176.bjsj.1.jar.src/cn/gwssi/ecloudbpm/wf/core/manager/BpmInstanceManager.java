@@ -1,13 +1,13 @@
-package cn.gwssi.ecloudbpm.wf.core.manager;
+package com.dstz.bpm.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.api.model.def.IBpmDefinition;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmInstance;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskApprove;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTypeTreeCountVO;
-import cn.gwssi.ecloudbpm.wf.core.vo.BpmInstanceVO;
-import cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskApproveVO;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.api.model.def.IBpmDefinition;
+import com.dstz.bpm.core.model.BpmInstance;
+import com.dstz.bpm.core.model.BpmTaskApprove;
+import com.dstz.bpm.core.model.BpmTypeTreeCountVO;
+import com.dstz.bpm.core.vo.BpmInstanceVO;
+import com.dstz.bpm.core.vo.BpmTaskApproveVO;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.manager.Manager;
 import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;

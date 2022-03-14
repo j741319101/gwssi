@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api.executor.checker;
+package com.dstz.base.api.executor.checker;
 
 public interface ExecutorChecker {
   String getKey();

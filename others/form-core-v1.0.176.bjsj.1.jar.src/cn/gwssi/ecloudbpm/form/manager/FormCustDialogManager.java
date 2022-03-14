@@ -1,10 +1,10 @@
 package cn.gwssi.ecloudbpm.form.manager;
 
 import cn.gwssi.ecloudbpm.form.model.FormCustDialog;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.db.model.table.Column;
-import cn.gwssi.ecloudframework.base.db.model.table.Table;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.db.model.table.Column;
+import com.dstz.base.db.model.table.Table;
+import com.dstz.base.manager.Manager;
 import java.util.List;
 import java.util.Map;
 

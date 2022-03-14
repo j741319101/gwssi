@@ -1,33 +1,33 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.node.recrease.executer;
+/*     */ package com.dstz.bpm.plugin.node.recrease.executer;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.TaskType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.BaseActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.context.BpmContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.inst.BpmExecutionStack;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmTaskManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmTaskStackManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmTask;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskStack;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.TaskIdentityLink;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.global.leaderTask.context.LeaderTaskPluginContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.global.leaderTask.def.LeaderTaskPluginDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.context.DynamicTaskPluginContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.def.DynamicTaskPluginDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.sign.context.SignTaskPluginContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.sign.def.SignTaskPluginDef;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryOP;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*     */ import cn.gwssi.ecloudframework.base.db.model.query.DefaultQueryFilter;
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IUser;
-/*     */ import cn.gwssi.ecloudframework.org.api.model.dto.UserDTO;
-/*     */ import cn.gwssi.ecloudframework.org.api.service.LeaderService;
-/*     */ import cn.gwssi.ecloudframework.sys.api.model.DefaultIdentity;
-/*     */ import cn.gwssi.ecloudframework.sys.util.ContextUtil;
+/*     */ import com.dstz.bpm.api.constant.TaskType;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.BaseActionCmd;
+/*     */ import com.dstz.bpm.api.engine.context.BpmContext;
+/*     */ import com.dstz.bpm.api.model.inst.BpmExecutionStack;
+/*     */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*     */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*     */ import com.dstz.bpm.core.manager.BpmTaskManager;
+/*     */ import com.dstz.bpm.core.manager.BpmTaskStackManager;
+/*     */ import com.dstz.bpm.core.model.BpmTask;
+/*     */ import com.dstz.bpm.core.model.BpmTaskStack;
+/*     */ import com.dstz.bpm.core.model.TaskIdentityLink;
+/*     */ import com.dstz.bpm.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
+/*     */ import com.dstz.bpm.plugin.global.leaderTask.context.LeaderTaskPluginContext;
+/*     */ import com.dstz.bpm.plugin.global.leaderTask.def.LeaderTaskPluginDef;
+/*     */ import com.dstz.bpm.plugin.node.dynamictask.context.DynamicTaskPluginContext;
+/*     */ import com.dstz.bpm.plugin.node.dynamictask.def.DynamicTaskPluginDef;
+/*     */ import com.dstz.bpm.plugin.node.sign.context.SignTaskPluginContext;
+/*     */ import com.dstz.bpm.plugin.node.sign.def.SignTaskPluginDef;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.api.query.QueryFilter;
+/*     */ import com.dstz.base.api.query.QueryOP;
+/*     */ import com.dstz.base.core.util.AppUtil;
+/*     */ import com.dstz.base.db.model.query.DefaultQueryFilter;
+/*     */ import com.dstz.org.api.model.IUser;
+/*     */ import com.dstz.org.api.model.dto.UserDTO;
+/*     */ import com.dstz.org.api.service.LeaderService;
+/*     */ import com.dstz.sys.api.model.DefaultIdentity;
+/*     */ import com.dstz.sys.util.ContextUtil;
 /*     */ import cn.hutool.core.collection.CollectionUtil;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.Arrays;
@@ -109,7 +109,7 @@
 /*     */       }
 /* 110 */       DynamicTaskPluginContext dynamicTaskPluginContext = (DynamicTaskPluginContext)superviseNode.getPluginContext(DynamicTaskPluginContext.class);
 /* 111 */       DynamicTaskPluginDef dynamicTaskPluginDef = null;
-/* 112 */       if (subProcessNodeDef != null && subProcessNodeDef instanceof cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.SubProcessNodeDef) {
+/* 112 */       if (subProcessNodeDef != null && subProcessNodeDef instanceof com.dstz.bpm.api.model.nodedef.impl.SubProcessNodeDef) {
 /* 113 */         dynamicTaskPluginContext = (DynamicTaskPluginContext)subProcessNodeDef.getPluginContext(DynamicTaskPluginContext.class);
 /*     */       }
 /* 115 */       if (dynamicTaskPluginContext != null) {

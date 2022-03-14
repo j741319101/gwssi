@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api;
+package com.dstz.base.api;
 
 public interface Page {
   public static final int DEFAULT_PAGE_SIZE = 10;

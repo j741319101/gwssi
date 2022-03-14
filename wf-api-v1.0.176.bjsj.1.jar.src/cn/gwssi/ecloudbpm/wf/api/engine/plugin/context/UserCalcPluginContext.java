@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.plugin.context;
+package com.dstz.bpm.api.engine.plugin.context;
 
 public interface UserCalcPluginContext extends PluginContext {
   String getDescription();

@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.util;
+/*     */ package com.dstz.base.core.util;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
+/*     */ import com.dstz.base.core.model.BaseModel;
 /*     */ import java.util.HashSet;
 /*     */ import java.util.List;
 /*     */ import java.util.Map;

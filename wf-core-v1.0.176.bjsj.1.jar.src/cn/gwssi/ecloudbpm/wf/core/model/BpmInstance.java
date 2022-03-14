@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.core.model;
+/*     */ package com.dstz.bpm.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-/*     */ import cn.gwssi.ecloudframework.base.api.model.IBaseModel;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*     */ import com.dstz.bpm.api.model.inst.IBpmInstance;
+/*     */ import com.dstz.base.api.model.IBaseModel;
+/*     */ import com.dstz.base.core.util.StringUtil;
 /*     */ import com.alibaba.fastjson.annotation.JSONField;
 /*     */ import java.util.Date;
 /*     */ import org.apache.commons.lang3.StringUtils;

@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.action.handler;
+package com.dstz.bpm.api.engine.action.handler;
 
-import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
+import com.dstz.bpm.api.constant.ActionType;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
+import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
 
 public interface InstanceDetailHandler {
   boolean isDisplay(BpmNodeDef paramBpmNodeDef, IBpmInstance paramIBpmInstance);

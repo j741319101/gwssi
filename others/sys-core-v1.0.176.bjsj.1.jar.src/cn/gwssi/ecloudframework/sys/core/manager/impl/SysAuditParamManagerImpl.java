@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudframework.sys.core.manager.impl;
+package com.dstz.sys.core.manager.impl;
 
-import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
-import cn.gwssi.ecloudframework.sys.core.manager.SysAuditParamManager;
-import cn.gwssi.ecloudframework.sys.core.model.SysAuditParam;
+import com.dstz.base.manager.impl.BaseManager;
+import com.dstz.sys.core.manager.SysAuditParamManager;
+import com.dstz.sys.core.model.SysAuditParam;
 import org.springframework.stereotype.Service;
 
 @Service("sysAuditParamManager")

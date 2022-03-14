@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.org.core.manager;
+package com.dstz.org.core.manager;
 
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.org.core.model.Role;
+import com.dstz.base.manager.Manager;
+import com.dstz.org.core.model.Role;
 import java.util.List;
 
 public interface RoleManager extends Manager<String, Role> {

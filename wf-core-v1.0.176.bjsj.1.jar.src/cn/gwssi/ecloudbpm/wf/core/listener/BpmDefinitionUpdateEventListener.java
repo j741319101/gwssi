@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.listener;
+/*    */ package com.dstz.bpm.core.listener;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.act.cache.ActivitiDefCache;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.event.BpmDefinitionUpdateEvent;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.bpm.act.cache.ActivitiDefCache;
+/*    */ import com.dstz.bpm.api.engine.event.BpmDefinitionUpdateEvent;
+/*    */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*    */ import com.dstz.bpm.core.model.BpmDefinition;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.context.ApplicationEvent;
 /*    */ import org.springframework.context.ApplicationListener;

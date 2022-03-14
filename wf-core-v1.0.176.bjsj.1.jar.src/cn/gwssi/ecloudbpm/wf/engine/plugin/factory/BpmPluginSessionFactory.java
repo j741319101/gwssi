@@ -1,18 +1,18 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.plugin.factory;
+/*    */ package com.dstz.bpm.engine.plugin.factory;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.InstanceActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.TaskActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.context.BpmContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefaultInstanceActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefualtTaskActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.BpmExecutionPluginSession;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.BpmPluginSession;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.BpmUserCalcPluginSession;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.impl.DefaultBpmExecutionPluginSession;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.impl.DefaultBpmUserCalcPluginSession;
+/*    */ import com.dstz.bpm.api.constant.EventType;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.InstanceActionCmd;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.TaskActionCmd;
+/*    */ import com.dstz.bpm.api.engine.context.BpmContext;
+/*    */ import com.dstz.bpm.engine.action.cmd.DefaultInstanceActionCmd;
+/*    */ import com.dstz.bpm.engine.action.cmd.DefualtTaskActionCmd;
+/*    */ import com.dstz.bpm.engine.plugin.session.BpmExecutionPluginSession;
+/*    */ import com.dstz.bpm.engine.plugin.session.BpmPluginSession;
+/*    */ import com.dstz.bpm.engine.plugin.session.BpmUserCalcPluginSession;
+/*    */ import com.dstz.bpm.engine.plugin.session.impl.DefaultBpmExecutionPluginSession;
+/*    */ import com.dstz.bpm.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
+/*    */ import com.dstz.bpm.engine.plugin.session.impl.DefaultBpmUserCalcPluginSession;
 /*    */ import org.activiti.engine.delegate.VariableScope;
 /*    */ 
 /*    */ 

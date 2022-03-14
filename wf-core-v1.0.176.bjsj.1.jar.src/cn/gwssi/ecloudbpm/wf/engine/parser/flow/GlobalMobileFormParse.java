@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.parser.flow;
+/*    */ package com.dstz.bpm.engine.parser.flow;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.form.BpmForm;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.form.DefaultForm;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmDef;
+/*    */ import com.dstz.bpm.api.model.form.BpmForm;
+/*    */ import com.dstz.bpm.api.model.form.DefaultForm;
+/*    */ import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 
 /*    */ @Component

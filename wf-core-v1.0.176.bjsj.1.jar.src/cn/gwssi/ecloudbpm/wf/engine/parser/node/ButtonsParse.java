@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.parser.node;
+/*    */ package com.dstz.bpm.engine.parser.node;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.Button;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.BaseBpmNodeDef;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmDef;
+/*    */ import com.dstz.bpm.api.model.nodedef.Button;
+/*    */ import com.dstz.bpm.api.model.nodedef.impl.BaseBpmNodeDef;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import cn.hutool.core.collection.CollectionUtil;
 /*    */ import cn.hutool.core.map.MapUtil;
 /*    */ import cn.hutool.core.util.ArrayUtil;

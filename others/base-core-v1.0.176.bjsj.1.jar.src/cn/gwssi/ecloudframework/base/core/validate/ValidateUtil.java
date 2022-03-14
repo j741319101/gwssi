@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.validate;
+/*    */ package com.dstz.base.core.validate;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.BaseStatusCode;
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessMessage;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.base.api.constant.BaseStatusCode;
+/*    */ import com.dstz.base.api.exception.BusinessMessage;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import java.util.Set;
 /*    */ import javax.validation.ConstraintViolation;
 /*    */ import javax.validation.Validation;

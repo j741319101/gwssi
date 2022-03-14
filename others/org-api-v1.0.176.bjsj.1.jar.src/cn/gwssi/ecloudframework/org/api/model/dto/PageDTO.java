@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.org.api.model.dto;
+/*    */ package com.dstz.org.api.model.dto;
 /*    */ 
 /*    */ 
 /*    */ 

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.core.model;
+/*    */ package com.dstz.bpm.plugin.core.model;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
+/*    */ import com.dstz.base.core.model.BaseModel;
 /*    */ 
 /*    */ 
 /*    */ public class BpmLeaderOptionLog

@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.util;
+/*     */ package com.dstz.base.core.util;
 /*     */ 
 /*     */ import net.sourceforge.pinyin4j.PinyinHelper;
 /*     */ import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;

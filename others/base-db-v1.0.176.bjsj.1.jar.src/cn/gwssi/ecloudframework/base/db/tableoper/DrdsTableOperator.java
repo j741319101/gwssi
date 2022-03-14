@@ -1,11 +1,11 @@
-/*     */ package cn.gwssi.ecloudframework.base.db.tableoper;
+/*     */ package com.dstz.base.db.tableoper;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.ColumnType;
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.DbType;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
-/*     */ import cn.gwssi.ecloudframework.base.db.model.table.Column;
-/*     */ import cn.gwssi.ecloudframework.base.db.model.table.Table;
+/*     */ import com.dstz.base.api.constant.ColumnType;
+/*     */ import com.dstz.base.api.constant.DbType;
+/*     */ import com.dstz.base.core.util.AppUtil;
+/*     */ import com.dstz.base.core.util.StringUtil;
+/*     */ import com.dstz.base.db.model.table.Column;
+/*     */ import com.dstz.base.db.model.table.Table;
 /*     */ import java.util.List;
 /*     */ import org.springframework.jdbc.core.JdbcTemplate;
 /*     */ 

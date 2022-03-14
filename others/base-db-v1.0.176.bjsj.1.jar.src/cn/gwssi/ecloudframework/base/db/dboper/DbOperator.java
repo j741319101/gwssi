@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.base.db.dboper;
+/*     */ package com.dstz.base.db.dboper;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.db.model.table.Column;
-/*     */ import cn.gwssi.ecloudframework.base.db.model.table.Table;
+/*     */ import com.dstz.base.db.model.table.Column;
+/*     */ import com.dstz.base.db.model.table.Table;
 /*     */ import java.util.List;
 /*     */ import java.util.Map;
 /*     */ import org.slf4j.Logger;

@@ -1,5 +1,5 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.usercalc.samenode.def;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractUserCalcPluginDef;
+/*    */ package com.dstz.bpm.plugin.usercalc.samenode.def;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractUserCalcPluginDef;
 /*    */ import org.hibernate.validator.constraints.NotEmpty;
 /*    */ 
 /*    */ public class SameNodePluginDef extends AbstractUserCalcPluginDef {

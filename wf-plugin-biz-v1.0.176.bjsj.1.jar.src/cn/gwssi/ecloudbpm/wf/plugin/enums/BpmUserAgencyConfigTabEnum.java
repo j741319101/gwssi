@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.enums;
+/*    */ package com.dstz.bpm.plugin.enums;
 /*    */ 
 /*    */ 
 /*    */ 

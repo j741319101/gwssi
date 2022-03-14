@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.base.api.exception;
+/*    */ package com.dstz.base.api.exception;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.BaseStatusCode;
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.IStatusCode;
+/*    */ import com.dstz.base.api.constant.BaseStatusCode;
+/*    */ import com.dstz.base.api.constant.IStatusCode;
 /*    */ 
 /*    */ 
 /*    */ 

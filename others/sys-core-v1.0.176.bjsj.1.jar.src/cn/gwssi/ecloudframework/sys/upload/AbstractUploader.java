@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.sys.upload;
+package com.dstz.sys.upload;
 
 public abstract class AbstractUploader implements IUploader {}
 

@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.api.model.nodedef;
+/*     */ package com.dstz.bpm.api.model.nodedef;
 /*     */ 
 /*     */ import io.swagger.annotations.ApiModel;
 /*     */ import io.swagger.annotations.ApiModelProperty;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.SysTreeDao">
-    <resultMap id="SysTree" type="cn.gwssi.ecloudframework.sys.core.model.SysTree">
+<mapper namespace="com.dstz.sys.core.dao.SysTreeDao">
+    <resultMap id="SysTree" type="com.dstz.sys.core.model.SysTree">
         <id property="id" column="id_" jdbcType="VARCHAR"/>
         <result property="key" column="key_" jdbcType="VARCHAR"/>
         <result property="name" column="name_" jdbcType="VARCHAR"/>
@@ -19,7 +19,7 @@
         <result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysTree">
+    <insert id="create" parameterType="com.dstz.sys.core.model.SysTree">
         INSERT INTO sys_tree
         (id_, key_, name_, desc_, system_, multi_select, leaf_store, icon_show, enable_edit, drag,type_id_,create_time_,create_by_,update_time_,update_by_)
         VALUES ( #{id,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}
@@ -50,7 +50,7 @@
         </if>
     </select>
 
-    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysTree">
+    <update id="update" parameterType="com.dstz.sys.core.model.SysTree">
         UPDATE sys_tree
         SET key_=#{key,jdbcType=VARCHAR},
             name_=#{name,jdbcType=VARCHAR},

@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.spring;
+/*     */ package com.dstz.base.core.spring;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.aop.annotion.ECloudScheduled;
+/*     */ import com.dstz.base.api.aop.annotion.ECloudScheduled;
 /*     */ import cn.hutool.core.collection.CollUtil;
 /*     */ import cn.hutool.cron.CronUtil;
 /*     */ import cn.hutool.cron.task.Task;

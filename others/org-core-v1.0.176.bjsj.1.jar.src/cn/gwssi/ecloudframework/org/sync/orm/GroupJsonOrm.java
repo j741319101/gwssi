@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.org.sync.orm;
+/*    */ package com.dstz.org.sync.orm;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import com.alibaba.fastjson.annotation.JSONField;
 /*    */ 
 /*    */ 

@@ -180,7 +180,7 @@ import org.apache.commons.lang3.StringUtils;
 /*     */     }
 /*     */     
 /* 181 */     DefualtTaskActionCmd taskModel = (DefualtTaskActionCmd)BpmContext.getActionModel();
-/* 182 */     List<String> taskIds = (List<String>)ThreadMapUtil.remove("SKIP_TASKIDS");
+/* 182 */     List<String> taskIds = (List<String>)ThreadMapUtil.removeGet("SKIP_TASKIDS");
 /* 183 */     if (CollUtil.isNotEmpty(taskIds)) {
 /* 184 */       for (String id : taskIds) {
 /* 185 */         BpmTask task = (BpmTask)this.bpmTaskManager.get(id);

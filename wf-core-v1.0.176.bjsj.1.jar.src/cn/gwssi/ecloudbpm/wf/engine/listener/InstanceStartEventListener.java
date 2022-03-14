@@ -1,30 +1,30 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.engine.listener;
+/*     */ package com.dstz.bpm.engine.listener;
 /*     */ 
 /*     */ import cn.gwssi.ecloudbpm.bus.api.model.IBusinessData;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.ScriptType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.BaseActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.InstanceActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.context.BpmContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.exception.BpmStatusCode;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.def.BpmVariableDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.def.IBpmDefinition;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.test.BpmSystemTestService;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmDefinitionManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmInstanceManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmTaskOpinionManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmInstance;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefaultInstanceActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IUser;
-/*     */ import cn.gwssi.ecloudframework.sys.util.ContextUtil;
+/*     */ import com.dstz.bpm.api.constant.ActionType;
+/*     */ import com.dstz.bpm.api.constant.EventType;
+/*     */ import com.dstz.bpm.api.constant.ScriptType;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.BaseActionCmd;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.InstanceActionCmd;
+/*     */ import com.dstz.bpm.api.engine.context.BpmContext;
+/*     */ import com.dstz.bpm.api.exception.BpmStatusCode;
+/*     */ import com.dstz.bpm.api.model.def.BpmVariableDef;
+/*     */ import com.dstz.bpm.api.model.def.IBpmDefinition;
+/*     */ import com.dstz.bpm.api.model.inst.IBpmInstance;
+/*     */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*     */ import com.dstz.bpm.api.test.BpmSystemTestService;
+/*     */ import com.dstz.bpm.core.manager.BpmDefinitionManager;
+/*     */ import com.dstz.bpm.core.manager.BpmInstanceManager;
+/*     */ import com.dstz.bpm.core.manager.BpmTaskOpinionManager;
+/*     */ import com.dstz.bpm.core.model.BpmDefinition;
+/*     */ import com.dstz.bpm.core.model.BpmInstance;
+/*     */ import com.dstz.bpm.engine.action.cmd.DefaultInstanceActionCmd;
+/*     */ import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.core.util.StringUtil;
+/*     */ import com.dstz.org.api.model.IUser;
+/*     */ import com.dstz.sys.util.ContextUtil;
 /*     */ import cn.hutool.core.collection.CollectionUtil;
 /*     */ import cn.hutool.core.date.DateUtil;
 /*     */ import com.alibaba.fastjson.JSONArray;
@@ -233,7 +233,7 @@
 /*     */     
 /* 234 */     ExecutionEntity callActivityNode = excutionEntity.getSuperExecution();
 /*     */     
-/* 236 */     if (preAction instanceof cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.TaskActionCmd && (
+/* 236 */     if (preAction instanceof com.dstz.bpm.api.engine.action.cmd.TaskActionCmd && (
 /* 237 */       callActivityNode == null || !preAction.getBpmInstance().getActInstId().equals(callActivityNode.getProcessInstanceId()))) {
 /* 238 */       baseActionCmd = BpmContext.getActionModel(callActivityNode.getProcessInstanceId());
 /* 239 */       if (baseActionCmd == null) {

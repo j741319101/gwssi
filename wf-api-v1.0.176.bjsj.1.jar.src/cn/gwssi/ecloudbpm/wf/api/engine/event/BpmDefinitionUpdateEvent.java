@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.engine.event;
+/*    */ package com.dstz.bpm.api.engine.event;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.def.IBpmDefinition;
+/*    */ import com.dstz.bpm.api.model.def.IBpmDefinition;
 /*    */ import org.springframework.context.ApplicationEvent;
 /*    */ 
 /*    */ public class BpmDefinitionUpdateEvent extends ApplicationEvent {

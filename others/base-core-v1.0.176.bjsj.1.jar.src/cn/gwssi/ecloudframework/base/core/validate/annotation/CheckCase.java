@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.base.core.validate.annotation;
+package com.dstz.base.core.validate.annotation;
 
-import cn.gwssi.ecloudframework.base.core.validate.constant.CaseMode;
-import cn.gwssi.ecloudframework.base.core.validate.validator.CheckCaseValidator;
+import com.dstz.base.core.validate.constant.CaseMode;
+import com.dstz.base.core.validate.validator.CheckCaseValidator;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

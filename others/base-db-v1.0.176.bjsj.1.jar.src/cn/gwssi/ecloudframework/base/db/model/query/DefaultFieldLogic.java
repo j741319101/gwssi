@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.base.db.model.query;
+/*    */ package com.dstz.base.db.model.query;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.query.FieldLogic;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.FieldRelation;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.WhereClause;
+/*    */ import com.dstz.base.api.query.FieldLogic;
+/*    */ import com.dstz.base.api.query.FieldRelation;
+/*    */ import com.dstz.base.api.query.WhereClause;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.List;
 /*    */ 

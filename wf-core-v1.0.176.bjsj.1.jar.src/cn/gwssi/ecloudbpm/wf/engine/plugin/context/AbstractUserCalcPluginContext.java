@@ -1,12 +1,12 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.plugin.context;
+/*    */ package com.dstz.bpm.engine.plugin.context;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.ExtractType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.constant.LogicType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.PluginParse;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.UserCalcPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmPluginDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmUserCalcPluginDef;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.bpm.api.constant.ExtractType;
+/*    */ import com.dstz.bpm.api.engine.constant.LogicType;
+/*    */ import com.dstz.bpm.api.engine.plugin.context.PluginParse;
+/*    */ import com.dstz.bpm.api.engine.plugin.context.UserCalcPluginContext;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmPluginDef;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmUserCalcPluginDef;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import com.alibaba.fastjson.JSON;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ 

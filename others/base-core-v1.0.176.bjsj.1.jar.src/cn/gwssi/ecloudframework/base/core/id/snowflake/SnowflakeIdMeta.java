@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.id.snowflake;
+/*    */ package com.dstz.base.core.id.snowflake;
 /*    */ 
 /*    */ 
 /*    */ 

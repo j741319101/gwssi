@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.core.manager.impl;
+/*    */ package com.dstz.bpm.plugin.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmReminderTriggerDao;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmReminderTriggerManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderTrigger;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
+/*    */ import com.dstz.bpm.plugin.core.dao.BpmReminderTriggerDao;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmReminderTriggerManager;
+/*    */ import com.dstz.bpm.plugin.core.model.BpmReminderTrigger;
+/*    */ import com.dstz.base.core.util.StringUtil;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
 /*    */ import java.util.Date;
 /*    */ import java.util.List;
 /*    */ import javax.annotation.Resource;

@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.jms.model.msg;
+/*    */ package com.dstz.sys.api.jms.model.msg;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.org.api.model.IUser;
-/*    */ import cn.gwssi.ecloudframework.sys.api.model.SysIdentity;
+/*    */ import com.dstz.org.api.model.IUser;
+/*    */ import com.dstz.sys.api.model.SysIdentity;
 /*    */ import java.io.Serializable;
 /*    */ import java.util.HashMap;
 /*    */ import java.util.List;

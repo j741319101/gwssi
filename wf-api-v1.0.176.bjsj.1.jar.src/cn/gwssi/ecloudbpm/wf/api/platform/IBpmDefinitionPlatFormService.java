@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.api.platform;
+package com.dstz.bpm.api.platform;
 
-import cn.gwssi.ecloudbpm.wf.api.model.def.IBpmDefinition;
-import cn.gwssi.ecloudframework.base.db.model.page.PageResult;
+import com.dstz.bpm.api.model.def.IBpmDefinition;
+import com.dstz.base.db.model.page.PageResult;
 import java.util.List;
 
 public interface IBpmDefinitionPlatFormService {

@@ -1,9 +1,9 @@
 package cn.gwssi.ecloudbpm.bus.manager;
 
 import cn.gwssi.ecloudbpm.bus.model.BusinessTable;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.db.tableoper.TableOperator;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.db.tableoper.TableOperator;
+import com.dstz.base.manager.Manager;
 import java.util.List;
 
 public interface BusinessTableManager extends Manager<String, BusinessTable> {

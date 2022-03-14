@@ -1,31 +1,31 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.executer;
+/*     */ package com.dstz.bpm.plugin.node.dynamictask.executer;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.NodeType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.context.BpmContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.DynamicTaskIdentitys;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.inst.BpmExecutionStack;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmTaskManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmTaskStackManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmInstance;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmTask;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefualtTaskActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.DynamicTaskManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.core.model.DynamicTask;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.def.DynamicTaskPluginDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.recrease.executer.SuperviseTaskExecuter;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessMessage;
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryOP;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
-/*     */ import cn.gwssi.ecloudframework.base.db.model.query.DefaultQueryFilter;
-/*     */ import cn.gwssi.ecloudframework.sys.api.groovy.IGroovyScriptEngine;
-/*     */ import cn.gwssi.ecloudframework.sys.api.model.SysIdentity;
+/*     */ import com.dstz.bpm.api.constant.ActionType;
+/*     */ import com.dstz.bpm.api.constant.NodeType;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*     */ import com.dstz.bpm.api.engine.context.BpmContext;
+/*     */ import com.dstz.bpm.api.engine.plugin.def.DynamicTaskIdentitys;
+/*     */ import com.dstz.bpm.api.model.inst.BpmExecutionStack;
+/*     */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*     */ import com.dstz.bpm.api.model.task.IBpmTask;
+/*     */ import com.dstz.bpm.core.manager.BpmTaskManager;
+/*     */ import com.dstz.bpm.core.manager.BpmTaskStackManager;
+/*     */ import com.dstz.bpm.core.model.BpmInstance;
+/*     */ import com.dstz.bpm.core.model.BpmTask;
+/*     */ import com.dstz.bpm.engine.action.cmd.DefualtTaskActionCmd;
+/*     */ import com.dstz.bpm.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
+/*     */ import com.dstz.bpm.plugin.core.manager.DynamicTaskManager;
+/*     */ import com.dstz.bpm.plugin.core.model.DynamicTask;
+/*     */ import com.dstz.bpm.plugin.node.dynamictask.def.DynamicTaskPluginDef;
+/*     */ import com.dstz.bpm.plugin.node.recrease.executer.SuperviseTaskExecuter;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.api.exception.BusinessMessage;
+/*     */ import com.dstz.base.api.query.QueryFilter;
+/*     */ import com.dstz.base.api.query.QueryOP;
+/*     */ import com.dstz.base.core.util.StringUtil;
+/*     */ import com.dstz.base.db.model.query.DefaultQueryFilter;
+/*     */ import com.dstz.sys.api.groovy.IGroovyScriptEngine;
+/*     */ import com.dstz.sys.api.model.SysIdentity;
 /*     */ import cn.hutool.core.collection.CollectionUtil;
 /*     */ import com.alibaba.fastjson.JSON;
 /*     */ import java.util.ArrayList;
@@ -138,7 +138,7 @@
 /*     */     }
 /* 139 */     if (isParallel) {
 /* 140 */       String nodeId = task.getNodeId();
-/* 141 */       if (isInstDy && instBpmNodeDef instanceof cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.CallActivityNodeDef) {
+/* 141 */       if (isInstDy && instBpmNodeDef instanceof com.dstz.bpm.api.model.nodedef.impl.CallActivityNodeDef) {
 /* 142 */         nodeId = superNodeId;
 /*     */       }
 /* 144 */       Integer currentIndex = DynamicInstTaskAction.popDynamictaskIndex(nodeId);

@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.plugin.usercalc.approver.def;
+package com.dstz.bpm.plugin.usercalc.approver.def;
 
-import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractUserCalcPluginDef;
+import com.dstz.bpm.engine.plugin.plugindef.AbstractUserCalcPluginDef;
 
 public class ApproverPluginDef extends AbstractUserCalcPluginDef {}
 

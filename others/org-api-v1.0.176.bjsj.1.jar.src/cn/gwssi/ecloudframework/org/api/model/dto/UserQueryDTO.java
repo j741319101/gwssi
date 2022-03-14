@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.org.api.model.dto;
+/*     */ package com.dstz.org.api.model.dto;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryOP;
+/*     */ import com.dstz.base.api.query.QueryOP;
 /*     */ import java.io.Serializable;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.List;

@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.util.sm3;
+/*     */ package com.dstz.base.core.util.sm3;
 /*     */ 
 /*     */ import org.apache.commons.codec.binary.Hex;
 /*     */ 

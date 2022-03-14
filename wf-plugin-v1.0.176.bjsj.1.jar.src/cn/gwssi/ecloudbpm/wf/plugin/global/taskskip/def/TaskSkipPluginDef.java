@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.global.taskskip.def;
+/*    */ package com.dstz.bpm.plugin.global.taskskip.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*    */ 
 /*    */ 
 /*    */ 

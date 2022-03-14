@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.base.manager;
+package com.dstz.base.manager;
 
-import cn.gwssi.ecloudframework.base.api.Page;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
+import com.dstz.base.api.Page;
+import com.dstz.base.api.query.QueryFilter;
 import java.util.List;
 
 public interface Manager<PK extends java.io.Serializable, T> {

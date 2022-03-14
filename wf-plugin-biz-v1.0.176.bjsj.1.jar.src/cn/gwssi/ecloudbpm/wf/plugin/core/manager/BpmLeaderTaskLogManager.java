@@ -1,11 +1,11 @@
-package cn.gwssi.ecloudbpm.wf.plugin.core.manager;
+package com.dstz.bpm.plugin.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskApprove;
-import cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskVO;
-import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmLeaderTaskLog;
-import cn.gwssi.ecloudbpm.wf.plugin.vo.BpmUserReceiveCarbonCopyRecordVO;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.core.model.BpmTaskApprove;
+import com.dstz.bpm.core.vo.BpmTaskVO;
+import com.dstz.bpm.plugin.core.model.BpmLeaderTaskLog;
+import com.dstz.bpm.plugin.vo.BpmUserReceiveCarbonCopyRecordVO;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.manager.Manager;
 import java.util.List;
 
 public interface BpmLeaderTaskLogManager extends Manager<String, BpmLeaderTaskLog> {

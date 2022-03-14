@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.api.model.def;
+package com.dstz.bpm.api.model.def;
 
-import cn.gwssi.ecloudframework.base.api.model.IBaseModel;
+import com.dstz.base.api.model.IBaseModel;
 import java.util.Date;
 
 public interface IBpmDefinition extends IBaseModel {

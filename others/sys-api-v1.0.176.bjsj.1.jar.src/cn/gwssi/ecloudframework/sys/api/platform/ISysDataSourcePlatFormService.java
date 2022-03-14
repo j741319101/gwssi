@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.api.platform;
+package com.dstz.sys.api.platform;
 
-import cn.gwssi.ecloudframework.sys.api.model.ISysDataSource;
+import com.dstz.sys.api.model.ISysDataSource;
 import java.util.List;
 
 public interface ISysDataSourcePlatFormService {

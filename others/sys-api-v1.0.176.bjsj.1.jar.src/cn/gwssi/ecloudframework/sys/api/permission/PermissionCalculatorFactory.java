@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.permission;
+/*    */ package com.dstz.sys.api.permission;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
+/*    */ import com.dstz.base.api.exception.BusinessException;
+/*    */ import com.dstz.base.core.util.AppUtil;
 /*    */ import com.alibaba.fastjson.JSONArray;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import java.util.HashMap;

@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.encrypt;
+/*     */ package com.dstz.base.core.encrypt;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessError;
+/*     */ import com.dstz.base.api.exception.BusinessError;
 /*     */ import java.security.MessageDigest;
 /*     */ import java.security.SecureRandom;
 /*     */ import javax.crypto.Cipher;

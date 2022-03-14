@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.util;
+/*     */ package com.dstz.base.core.util;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.core.spring.IProperty;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.core.spring.IProperty;
 /*     */ import java.util.HashSet;
 /*     */ import java.util.Locale;
 /*     */ import java.util.Set;

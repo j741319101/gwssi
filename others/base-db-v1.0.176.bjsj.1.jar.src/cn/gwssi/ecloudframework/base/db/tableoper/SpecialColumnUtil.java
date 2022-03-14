@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.db.tableoper;
+package com.dstz.base.db.tableoper;
 
 public interface SpecialColumnUtil {}
 

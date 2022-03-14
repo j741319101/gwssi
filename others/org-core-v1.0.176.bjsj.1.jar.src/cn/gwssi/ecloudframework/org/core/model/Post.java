@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudframework.org.core.model;
+/*     */ package com.dstz.org.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
-/*     */ import cn.gwssi.ecloudframework.org.api.constant.GroupTypeConstant;
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IGroup;
+/*     */ import com.dstz.base.core.model.BaseModel;
+/*     */ import com.dstz.org.api.constant.GroupTypeConstant;
+/*     */ import com.dstz.org.api.model.IGroup;
 /*     */ 
 /*     */ 
 /*     */ 

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.act.id;
+/*    */ package com.dstz.bpm.act.id;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.id.IdGenerator;
+/*    */ import com.dstz.base.core.id.IdGenerator;
 /*    */ import org.activiti.engine.impl.cfg.IdGenerator;
 /*    */ 
 /*    */ 

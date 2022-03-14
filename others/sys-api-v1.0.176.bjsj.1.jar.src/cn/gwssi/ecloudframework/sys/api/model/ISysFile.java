@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.sys.api.model;
+package com.dstz.sys.api.model;
 
 public interface ISysFile {
   String getId();

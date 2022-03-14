@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.SysPropertiesDao">
-    <resultMap id="SysProperties" type="cn.gwssi.ecloudframework.sys.core.model.SysProperties">
+<mapper namespace="com.dstz.sys.core.dao.SysPropertiesDao">
+    <resultMap id="SysProperties" type="com.dstz.sys.core.model.SysProperties">
         <id property="id" column="id_" jdbcType="VARCHAR"/>
         <result property="name" column="name_" jdbcType="VARCHAR"/>
         <result property="alias" column="alias_" jdbcType="VARCHAR"/>
@@ -16,7 +16,7 @@
         <result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysProperties">
+    <insert id="create" parameterType="com.dstz.sys.core.model.SysProperties">
 		INSERT INTO SYS_PROPERTIES
 		(id_,name_,alias_,group_,value_,encrypt_,description_,environment_,create_time_,update_time_,create_by_,update_by_)
 		VALUES 
@@ -46,7 +46,7 @@
         </if>
     </select>
 
-    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysProperties">
+    <update id="update" parameterType="com.dstz.sys.core.model.SysProperties">
 		UPDATE SYS_PROPERTIES SET
 		name_=#{name,jdbcType=VARCHAR},
 		alias_=#{alias,jdbcType=VARCHAR},
@@ -82,7 +82,7 @@
         </if>
     </select>
 
-    <update id="updateByAlias" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysProperties">
+    <update id="updateByAlias" parameterType="com.dstz.sys.core.model.SysProperties">
 		UPDATE SYS_PROPERTIES SET
 		value_=#{value,jdbcType=VARCHAR}
 		WHERE

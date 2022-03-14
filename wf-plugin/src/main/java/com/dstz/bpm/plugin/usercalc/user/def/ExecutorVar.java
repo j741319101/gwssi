@@ -1,113 +1,83 @@
-/*     */ package com.dstz.bpm.plugin.usercalc.user.def;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ public class ExecutorVar
-/*     */ {
-/*     */   public static final String SOURCE_BO = "BO";
-/*     */   public static final String SOURCE_FLOW_VAR = "flowVar";
-/*     */   public static final String EXECUTOR_TYPE_USER = "user";
-/*     */   public static final String EXECUTOR_TYPE_GROUP = "group";
-/*  15 */   private String source = "";
-/*     */ 
-/*     */   
-/*  18 */   private String name = "";
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
-/*  23 */   private String executorType = "";
-/*     */ 
-/*     */   
-/*  26 */   private String userValType = "";
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
-/*  31 */   private String groupValType = "";
-/*  32 */   private String dimension = "";
-/*     */ 
-/*     */   
-/*     */   private String value;
-/*     */ 
-/*     */ 
-/*     */   
-/*     */   public ExecutorVar() {}
-/*     */ 
-/*     */ 
-/*     */   
-/*     */   public ExecutorVar(String source, String name, String executorType, String userValType, String groupValType, String dimension) {
-/*  44 */     this.source = source;
-/*  45 */     this.name = name;
-/*  46 */     this.executorType = executorType;
-/*  47 */     this.userValType = userValType;
-/*  48 */     this.groupValType = groupValType;
-/*  49 */     this.dimension = dimension;
-/*     */   }
-/*     */   
-/*     */   public String getSource() {
-/*  53 */     return this.source;
-/*     */   }
-/*     */   
-/*     */   public void setSource(String source) {
-/*  57 */     this.source = source;
-/*     */   }
-/*     */   
-/*     */   public String getName() {
-/*  61 */     return this.name;
-/*     */   }
-/*     */   
-/*     */   public void setName(String name) {
-/*  65 */     this.name = name;
-/*     */   }
-/*     */   
-/*     */   public String getExecutorType() {
-/*  69 */     return this.executorType;
-/*     */   }
-/*     */   
-/*     */   public void setExecutorType(String executorType) {
-/*  73 */     this.executorType = executorType;
-/*     */   }
-/*     */   
-/*     */   public String getUserValType() {
-/*  77 */     return this.userValType;
-/*     */   }
-/*     */   
-/*     */   public void setUserValType(String userValType) {
-/*  81 */     this.userValType = userValType;
-/*     */   }
-/*     */   
-/*     */   public String getGroupValType() {
-/*  85 */     return this.groupValType;
-/*     */   }
-/*     */   
-/*     */   public void setGroupValType(String groupValType) {
-/*  89 */     this.groupValType = groupValType;
-/*     */   }
-/*     */   
-/*     */   public String getDimension() {
-/*  93 */     return this.dimension;
-/*     */   }
-/*     */   
-/*     */   public void setDimension(String dimension) {
-/*  97 */     this.dimension = dimension;
-/*     */   }
-/*     */   
-/*     */   public String getValue() {
-/* 101 */     return this.value;
-/*     */   }
-/*     */   
-/*     */   public void setValue(String value) {
-/* 105 */     this.value = value;
-/*     */   }
-/*     */ }
+package com.dstz.bpm.plugin.usercalc.user.def;
 
+public class ExecutorVar {
+   public static final String SOURCE_BO = "BO";
+   public static final String SOURCE_FLOW_VAR = "flowVar";
+   public static final String EXECUTOR_TYPE_USER = "user";
+   public static final String EXECUTOR_TYPE_GROUP = "group";
+   private String source = "";
+   private String name = "";
+   private String executorType = "";
+   private String userValType = "";
+   private String groupValType = "";
+   private String dimension = "";
+   private String value;
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloudbpm/wf-plugin/0.2-SNAPSHOT/wf-plugin-0.2-SNAPSHOT.jar!/cn/gwssi/ecloudbpm/bpm/plugin/usercalc/user/def/ExecutorVar.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+   public ExecutorVar() {
+   }
+
+   public ExecutorVar(String source, String name, String executorType, String userValType, String groupValType, String dimension) {
+      this.source = source;
+      this.name = name;
+      this.executorType = executorType;
+      this.userValType = userValType;
+      this.groupValType = groupValType;
+      this.dimension = dimension;
+   }
+
+   public String getSource() {
+      return this.source;
+   }
+
+   public void setSource(String source) {
+      this.source = source;
+   }
+
+   public String getName() {
+      return this.name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public String getExecutorType() {
+      return this.executorType;
+   }
+
+   public void setExecutorType(String executorType) {
+      this.executorType = executorType;
+   }
+
+   public String getUserValType() {
+      return this.userValType;
+   }
+
+   public void setUserValType(String userValType) {
+      this.userValType = userValType;
+   }
+
+   public String getGroupValType() {
+      return this.groupValType;
+   }
+
+   public void setGroupValType(String groupValType) {
+      this.groupValType = groupValType;
+   }
+
+   public String getDimension() {
+      return this.dimension;
+   }
+
+   public void setDimension(String dimension) {
+      this.dimension = dimension;
+   }
+
+   public String getValue() {
+      return this.value;
+   }
+
+   public void setValue(String value) {
+      this.value = value;
+   }
+}

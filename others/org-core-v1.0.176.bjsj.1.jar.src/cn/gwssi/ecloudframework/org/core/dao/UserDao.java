@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.org.core.dao;
+package com.dstz.org.core.dao;
 
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
-import cn.gwssi.ecloudframework.org.core.model.User;
+import com.dstz.base.dao.BaseDao;
+import com.dstz.org.core.model.User;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;

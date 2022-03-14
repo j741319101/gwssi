@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.core.model;
+package com.dstz.base.core.model;
 
 public interface EnumExtraData {
   String getName();

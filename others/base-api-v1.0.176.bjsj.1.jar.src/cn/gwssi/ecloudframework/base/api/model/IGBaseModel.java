@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api.model;
+package com.dstz.base.api.model;
 
 public interface IGBaseModel extends CreateInfoModel, IDModel {
   void setCreateUser(String paramString);

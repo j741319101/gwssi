@@ -10,15 +10,15 @@
 
     <context:annotation-config/>
 
-    <bean id="idUtil" class="cn.gwssi.ecloudframework.base.core.id.IdUtil">
+    <bean id="idUtil" class="com.dstz.base.core.id.IdUtil">
         <property name="idGenerator" ref="idGenerator"></property>
     </bean>
 
-    <bean id="commonColumn" class="cn.gwssi.ecloudframework.base.db.tableoper.CommonColumn"></bean>
+    <bean id="commonColumn" class="com.dstz.base.db.tableoper.CommonColumn"></bean>
 
-    <bean id="idGenerator" class="cn.gwssi.ecloudframework.base.core.id.snowflake.SnowflakeIdGenerator">
+    <bean id="idGenerator" class="com.dstz.base.core.id.snowflake.SnowflakeIdGenerator">
         <constructor-arg>
-            <bean class="cn.gwssi.ecloudframework.base.core.id.snowflake.SnowflakeIdMeta">
+            <bean class="com.dstz.base.core.id.snowflake.SnowflakeIdMeta">
                 <constructor-arg name="machine" type="long" value="${id.machineid}"/>
                 <constructor-arg name="machineBits" type="byte" value="3"/>
                 <constructor-arg name="sequenceBits" type="byte" value="15"/>
@@ -67,7 +67,7 @@
     </bean>
 
     <!-- 动态数据源配置 -->
-    <bean id="dataSource" class="cn.gwssi.ecloudframework.base.db.datasource.DynamicDataSource">
+    <bean id="dataSource" class="com.dstz.base.db.datasource.DynamicDataSource">
         <property name="targetDataSources">
             <map>
                 <entry key="dataSourceDefault" value-ref="dataSourceDefault"/>
@@ -109,12 +109,12 @@
                         </value>
                     </property>
                 </bean>
-                <bean class="cn.gwssi.ecloudframework.base.dao.baseinterceptor.QueryInterceptor"></bean>
-                <bean class="cn.gwssi.ecloudframework.base.dao.baseinterceptor.SaveInterceptor"></bean>
+                <bean class="com.dstz.base.dao.baseinterceptor.QueryInterceptor"></bean>
+                <bean class="com.dstz.base.dao.baseinterceptor.SaveInterceptor"></bean>
             </array>
         </property>
         <property name="databaseIdProvider">
-            <bean class="cn.gwssi.ecloudframework.base.db.datasource.EbDatabaseIdProvider">
+            <bean class="com.dstz.base.db.datasource.EbDatabaseIdProvider">
                 <property name="properties">
                     <props>
                         <prop key="MySQL">mysql</prop>
@@ -128,7 +128,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.gwssi.ecloudframework.**.dao,cn.gwssi.ecloudbpm.**.dao,cn.gwssi.ecloud.**.dao"/>
+        <property name="basePackage" value="com.dstz.**.dao,cn.gwssi.ecloudbpm.**.dao,cn.gwssi.ecloud.**.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

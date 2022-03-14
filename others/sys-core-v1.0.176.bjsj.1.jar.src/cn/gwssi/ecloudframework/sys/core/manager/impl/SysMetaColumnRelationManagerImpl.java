@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudframework.sys.core.manager.impl;
+package com.dstz.sys.core.manager.impl;
 
-import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
-import cn.gwssi.ecloudframework.sys.core.manager.SysMetaColumnRelationManager;
-import cn.gwssi.ecloudframework.sys.core.model.MetaColumnRelation;
+import com.dstz.base.manager.impl.BaseManager;
+import com.dstz.sys.core.manager.SysMetaColumnRelationManager;
+import com.dstz.sys.core.model.MetaColumnRelation;
 import org.springframework.stereotype.Service;
 
 @Service("sysMetaColumnRelationManager")

@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.org.core.manager;
+package com.dstz.org.core.manager;
 
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.org.core.model.OrgRelation;
+import com.dstz.base.manager.Manager;
+import com.dstz.org.core.model.OrgRelation;
 import java.util.List;
 
 public interface OrgRelationManager extends Manager<String, OrgRelation> {

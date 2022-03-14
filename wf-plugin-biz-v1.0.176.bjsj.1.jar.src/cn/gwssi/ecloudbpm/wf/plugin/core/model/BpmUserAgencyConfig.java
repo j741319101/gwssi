@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.core.model;
+/*     */ package com.dstz.bpm.plugin.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.model.IBaseModel;
+/*     */ import com.dstz.base.api.model.IBaseModel;
 /*     */ import java.util.Date;
 /*     */ 
 /*     */ 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmReminderLogDao">
-	<resultMap id="BpmReminderLog" type="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderLog">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.BpmReminderLogDao">
+	<resultMap id="BpmReminderLog" type="com.dstz.bpm.plugin.core.model.BpmReminderLog">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="instanceId" column="instance_id_" jdbcType="VARCHAR"/>
 		<result property="reminderTitle" column="reminder_title_" jdbcType="VARCHAR"/>
@@ -21,7 +21,7 @@
 		<result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderLog">
+	<insert id="create" parameterType="com.dstz.bpm.plugin.core.model.BpmReminderLog">
 		INSERT INTO bpm_plugin_reminder_log
 		(id_,instance_id_,reminder_title_,subject_,node_id_,node_name_,msg_type_,reminder_users_,
 		   reminder_userids_,reminder_date_,extend_,from_users_,from_userids_,is_urgent_,task_id_)
@@ -55,7 +55,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderLog">
+	<update id="update" parameterType="com.dstz.bpm.plugin.core.model.BpmReminderLog">
 		UPDATE bpm_plugin_reminder_log
 		<set>
 			<if test="instanceId != null">

@@ -1,6 +1,6 @@
 package cn.gwssi.ecloudbpm.bus.executor.assemblyval;
 
-import cn.gwssi.ecloudframework.base.core.executor.AbstractExecuteChain;
+import com.dstz.base.core.executor.AbstractExecuteChain;
 
 public abstract class AssemblyValExecuteChain extends AbstractExecuteChain<AssemblyValParam> {}
 

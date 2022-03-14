@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.constant;
+package com.dstz.bpm.api.constant;
 
 public interface BpmPluginConstant {
   public static final String VAR_BPM_TASK = "bpmTask";

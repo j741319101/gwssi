@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.platform;
+package com.dstz.bpm.api.platform;
 
 public interface IBpmCarbonCopyPlatFormService {
   String updateRead(String paramString);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.ScheduleParticipantDao">
-	<resultMap id="ScheduleParticipant" type="cn.gwssi.ecloudframework.sys.api.model.calendar.ScheduleParticipant">
+<mapper namespace="com.dstz.sys.core.dao.ScheduleParticipantDao">
+	<resultMap id="ScheduleParticipant" type="com.dstz.sys.api.model.calendar.ScheduleParticipant">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="scheduleId" column="schedule_id_" jdbcType="VARCHAR"/>
 		<result property="participantorName" column="participantor_name_" jdbcType="VARCHAR"/>
@@ -14,7 +14,7 @@
 		<result property="completeTime" column="complete_time_" jdbcType="TIMESTAMP"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudframework.sys.api.model.calendar.ScheduleParticipant">
+	<insert id="create" parameterType="com.dstz.sys.api.model.calendar.ScheduleParticipant">
 		INSERT INTO c_schedule_participant
 		(id_,schedule_id_,participantor_name_,participantor_,rate_progress_,submit_comment_,create_time_,update_time_,actual_start_time_,complete_time_)
 		VALUES 
@@ -42,7 +42,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudframework.sys.api.model.calendar.ScheduleParticipant">
+	<update id="update" parameterType="com.dstz.sys.api.model.calendar.ScheduleParticipant">
 		UPDATE c_schedule_participant SET
 		schedule_id_=#{scheduleId,jdbcType=VARCHAR},
 		participantor_name_=#{participantorName,jdbcType=VARCHAR},

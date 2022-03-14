@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.eximport;
+/*    */ package com.dstz.bpm.core.eximport;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.bpmExpImport.BpmExpImport;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.DBImportUtil;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.base.api.bpmExpImport.BpmExpImport;
+/*    */ import com.dstz.base.core.util.DBImportUtil;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import com.alibaba.fastjson.JSON;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import com.alibaba.fastjson.serializer.SerializerFeature;

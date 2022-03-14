@@ -1,35 +1,23 @@
-/*    */ package com.dstz.bpm.act.id;
-/*    */ 
-/*    */ import com.dstz.base.core.id.IdGenerator;
-/*    */
-/*    */ 
-/*    */ public class ActivitiIdGenerator
-/*    */   implements IdGenerator
-/*    */ {
-/* 10 */   private IdGenerator idGenerator = null;
-/*    */   
-/*    */   public void setIdGenerator(IdGenerator idGenerator) {
-/* 13 */     this.idGenerator = idGenerator;
-/*    */   }
-/*    */ 
-/*    */   
-/*    */   public String getNextId() {
-/* 18 */     return this.idGenerator.getSuid();
-/*    */   }
+package com.dstz.bpm.act.id;
 
-    @Override
-    public Long getUId() {
-        return idGenerator.getUId();
+import org.activiti.engine.impl.cfg.IdGenerator;
+
+
+public class ActivitiIdGenerator implements IdGenerator {
+    private  com.dstz.base.core.id.IdGenerator idGenerator = null;
+
+    public ActivitiIdGenerator() {
     }
 
-    @Override
-    public String getSuid() {
-        return idGenerator.getSuid();
+    public void setIdGenerator(com.dstz.base.core.id.IdGenerator idGenerator) {
+        this.idGenerator = idGenerator;
     }
-    /*    */ }
 
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloud/wf-act/v1.0.176.bjsj.1/wf-act-v1.0.176.bjsj.1.jar!/cn/gwssi/ecloudbpm/wf/act/id/ActivitiIdGenerator.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+    public String getNextId() {
+        return this.idGenerator.getSuid();
+    }
+
+}
+
+ 

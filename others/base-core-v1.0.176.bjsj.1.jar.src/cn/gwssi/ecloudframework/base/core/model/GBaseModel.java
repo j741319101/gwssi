@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.model;
+/*     */ package com.dstz.base.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.model.IGBaseModel;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.ToStringUtil;
+/*     */ import com.dstz.base.api.model.IGBaseModel;
+/*     */ import com.dstz.base.core.util.ToStringUtil;
 /*     */ import com.alibaba.fastjson.JSONObject;
 /*     */ import java.util.Date;
 /*     */ 

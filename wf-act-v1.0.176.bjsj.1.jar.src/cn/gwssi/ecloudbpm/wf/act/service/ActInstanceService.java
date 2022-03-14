@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.act.service;
+package com.dstz.bpm.act.service;
 
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
 import java.util.Map;
 import org.activiti.engine.runtime.ProcessInstance;
 

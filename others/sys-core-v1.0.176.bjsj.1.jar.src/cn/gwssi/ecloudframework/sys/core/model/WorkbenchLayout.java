@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.sys.core.model;
+/*     */ package com.dstz.sys.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
+/*     */ import com.dstz.base.core.model.BaseModel;
 /*     */ import java.util.Date;
 /*     */ import org.apache.commons.lang3.builder.ToStringBuilder;
 /*     */ 

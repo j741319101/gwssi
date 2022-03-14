@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.sys.api.platform;
+package com.dstz.sys.api.platform;
 
 import java.util.Map;
 

@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.action.handler;
+package com.dstz.bpm.api.engine.action.handler;
 
-import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
+import com.dstz.bpm.api.constant.ActionType;
+import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
 
-public interface ActionHandler<T extends cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd> {
+public interface ActionHandler<T extends com.dstz.bpm.api.engine.action.cmd.ActionCmd> {
   void execute(T paramT);
   
   ActionType getActionType();

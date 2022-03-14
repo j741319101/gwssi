@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.engine.action.batchHandler;
+package com.dstz.bpm.engine.action.batchHandler;
 
-import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.FlowBatchRequestParam;
+import com.dstz.bpm.api.engine.action.cmd.FlowBatchRequestParam;
 
 public abstract class AbsActionBatchHandler {
   public abstract void execute(FlowBatchRequestParam paramFlowBatchRequestParam);

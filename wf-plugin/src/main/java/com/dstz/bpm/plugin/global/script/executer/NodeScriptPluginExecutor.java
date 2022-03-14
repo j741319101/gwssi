@@ -1,41 +1,33 @@
-/*    */ package com.dstz.bpm.plugin.global.script.executer;
-/*    */ 
-/*    */ import com.dstz.base.core.util.StringUtil;
-/*    */ import com.dstz.bpm.engine.plugin.runtime.abstact.AbstractBpmExecutionPlugin;
-/*    */ import com.dstz.bpm.engine.plugin.session.BpmExecutionPluginSession;
-/*    */ import com.dstz.bpm.plugin.global.script.def.NodeScriptPluginDef;
-/*    */ import com.dstz.sys.api.groovy.IGroovyScriptEngine;
-/*    */ import java.util.Map;
-/*    */ import javax.annotation.Resource;
-/*    */ import org.springframework.stereotype.Component;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ @Component
-/*    */ public class NodeScriptPluginExecutor
-/*    */   extends AbstractBpmExecutionPlugin<BpmExecutionPluginSession, NodeScriptPluginDef>
-/*    */ {
-/*    */   @Resource
-/*    */   IGroovyScriptEngine groovyScriptEngine;
-/*    */   
-/*    */   public Void execute(BpmExecutionPluginSession pluginSession, NodeScriptPluginDef pluginDef) {
-/* 27 */     String script = pluginDef.getEvnetnScript(pluginSession.getEventType());
-/* 28 */     if (StringUtil.isEmpty(script)) return null;
-/*    */     
-/* 30 */     this.groovyScriptEngine.execute(script, (Map)pluginSession);
-/*    */     
-/* 32 */     this.LOG.info("节点{}执行了{}事件脚本", pluginDef.getNodeId(), pluginSession.getEventType().getValue());
-/* 33 */     return null;
-/*    */   }
-/*    */ }
+package com.dstz.bpm.plugin.global.script.executer;
 
+import com.dstz.bpm.engine.plugin.runtime.abstact.AbstractBpmExecutionPlugin;
+import com.dstz.bpm.engine.plugin.session.BpmExecutionPluginSession;
+import com.dstz.bpm.plugin.global.script.def.NodeScriptPluginDef;
+import com.dstz.base.api.constant.BaseStatusCode;
+import com.dstz.base.api.exception.BusinessException;
+import com.dstz.base.core.util.StringUtil;
+import com.dstz.sys.api.groovy.IGroovyScriptEngine;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Component;
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloudbpm/wf-plugin/0.2-SNAPSHOT/wf-plugin-0.2-SNAPSHOT.jar!/cn/gwssi/ecloudbpm/bpm/plugin/global/script/executer/NodeScriptPluginExecutor.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+@Component
+public class NodeScriptPluginExecutor extends AbstractBpmExecutionPlugin<BpmExecutionPluginSession, NodeScriptPluginDef> {
+   @Resource
+   IGroovyScriptEngine groovyScriptEngine;
+
+   public Void execute(BpmExecutionPluginSession pluginSession, NodeScriptPluginDef pluginDef) {
+      String script = pluginDef.getEvnetnScript(pluginSession.getEventType());
+      if (StringUtil.isEmpty(script)) {
+         return null;
+      } else {
+         try {
+            this.groovyScriptEngine.execute(script, pluginSession);
+         } catch (Exception var5) {
+            throw new BusinessException(script + "脚本执行错误: " + var5.getMessage(), BaseStatusCode.SYSTEM_ERROR);
+         }
+
+         this.LOG.info("节点{}执行了{}事件脚本", pluginDef.getNodeId(), pluginSession.getEventType().getValue());
+         return null;
+      }
+   }
+}

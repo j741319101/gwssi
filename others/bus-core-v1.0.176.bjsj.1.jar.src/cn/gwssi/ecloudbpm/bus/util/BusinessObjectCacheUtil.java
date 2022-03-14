@@ -1,7 +1,7 @@
 /*    */ package cn.gwssi.ecloudbpm.bus.util;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.cache.ICache;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
+/*    */ import com.dstz.base.core.cache.ICache;
+/*    */ import com.dstz.base.core.util.AppUtil;
 /*    */ import java.util.HashMap;
 /*    */ import java.util.Map;
 /*    */ import java.util.Set;

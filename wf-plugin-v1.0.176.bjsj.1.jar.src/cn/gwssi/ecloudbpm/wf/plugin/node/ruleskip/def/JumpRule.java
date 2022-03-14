@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.node.ruleskip.def;
+/*    */ package com.dstz.bpm.plugin.node.ruleskip.def;
 /*    */ 
 /*    */ import java.io.Serializable;
 /*    */ import org.hibernate.validator.constraints.NotEmpty;

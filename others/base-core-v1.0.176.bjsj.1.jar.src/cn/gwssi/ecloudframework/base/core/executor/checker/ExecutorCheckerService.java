@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.executor.checker;
+/*    */ package com.dstz.base.core.executor.checker;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.executor.checker.ExecutorChecker;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
+/*    */ import com.dstz.base.api.executor.checker.ExecutorChecker;
+/*    */ import com.dstz.base.core.util.AppUtil;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.HashMap;
 /*    */ import java.util.List;

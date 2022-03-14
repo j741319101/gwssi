@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.sys.core.manager;
+package com.dstz.sys.core.manager;
 
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.sys.core.model.SysDataSource;
+import com.dstz.base.manager.Manager;
+import com.dstz.sys.core.model.SysDataSource;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 

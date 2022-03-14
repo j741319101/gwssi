@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.global.leaderTask.def;
+/*    */ package com.dstz.bpm.plugin.global.leaderTask.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*    */ 
 /*    */ public class LeaderTaskPluginDef extends AbstractBpmExecutionPluginDef {
 /*    */   private boolean signLeaderTask = false;

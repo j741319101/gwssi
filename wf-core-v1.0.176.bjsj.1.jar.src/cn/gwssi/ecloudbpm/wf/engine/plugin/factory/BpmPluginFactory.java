@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.plugin.factory;
+/*    */ package com.dstz.bpm.engine.plugin.factory;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.BpmPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.runtime.BpmExecutionPlugin;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
+/*    */ import com.dstz.bpm.api.constant.EventType;
+/*    */ import com.dstz.bpm.api.engine.plugin.context.BpmPluginContext;
+/*    */ import com.dstz.bpm.engine.plugin.runtime.BpmExecutionPlugin;
+/*    */ import com.dstz.base.core.util.AppUtil;
 /*    */ import cn.hutool.core.collection.CollectionUtil;
 /*    */ import org.slf4j.Logger;
 /*    */ import org.slf4j.LoggerFactory;

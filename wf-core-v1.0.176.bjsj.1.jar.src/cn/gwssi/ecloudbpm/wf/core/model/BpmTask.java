@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.core.model;
+/*     */ package com.dstz.bpm.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-/*     */ import cn.gwssi.ecloudframework.base.api.model.IBaseModel;
+/*     */ import com.dstz.bpm.api.model.task.IBpmTask;
+/*     */ import com.dstz.base.api.model.IBaseModel;
 /*     */ import io.swagger.annotations.ApiModel;
 /*     */ import io.swagger.annotations.ApiModelProperty;
 /*     */ import java.util.Date;

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.global.formulas.def;
+/*    */ package com.dstz.bpm.plugin.global.formulas.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*    */ import cn.hutool.core.collection.CollectionUtil;
 /*    */ import java.util.HashSet;
 /*    */ import java.util.List;

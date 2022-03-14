@@ -1,9 +1,9 @@
 /*    */ package cn.gwssi.ecloudbpm.platform;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTaskOpinion;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.platform.IBpmTaskOpinionPlatFormService;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmTaskOpinionManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskOpinionVO;
+/*    */ import com.dstz.bpm.api.model.task.IBpmTaskOpinion;
+/*    */ import com.dstz.bpm.api.platform.IBpmTaskOpinionPlatFormService;
+/*    */ import com.dstz.bpm.core.manager.BpmTaskOpinionManager;
+/*    */ import com.dstz.bpm.core.vo.BpmTaskOpinionVO;
 /*    */ import java.util.List;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;

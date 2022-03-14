@@ -1,8 +1,8 @@
-/*   */ package cn.gwssi.ecloudbpm.wf.engine.parser.node;
+/*   */ package com.dstz.bpm.engine.parser.node;
 /*   */ 
-/*   */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*   */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.BaseBpmNodeDef;
-/*   */ import cn.gwssi.ecloudbpm.wf.engine.parser.BaseBpmDefParser;
+/*   */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*   */ import com.dstz.bpm.api.model.nodedef.impl.BaseBpmNodeDef;
+/*   */ import com.dstz.bpm.engine.parser.BaseBpmDefParser;
 /*   */ 
 /*   */ public abstract class AbsNodeParse<T> extends BaseBpmDefParser<T, BaseBpmNodeDef> {
 /*   */   public boolean isSupport(BpmNodeDef nodeDef) {

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.sys.permission.impl.group;
+/*    */ package com.dstz.sys.permission.impl.group;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.permission.impl.GroupPermissionCalculator;
+/*    */ import com.dstz.sys.permission.impl.GroupPermissionCalculator;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 
 /*    */ 

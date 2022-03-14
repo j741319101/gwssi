@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.model;
+/*    */ package com.dstz.bpm.core.model;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
+/*    */ import com.dstz.base.core.model.BaseModel;
 /*    */ 
 /*    */ 
 /*    */ 

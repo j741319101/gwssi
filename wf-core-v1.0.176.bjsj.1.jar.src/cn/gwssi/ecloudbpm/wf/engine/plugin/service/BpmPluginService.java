@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.engine.plugin.service;
+package com.dstz.bpm.engine.plugin.service;
 
 public interface BpmPluginService {
   Boolean isSkipFirstNode(String paramString);

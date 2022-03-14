@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudframework.sys.core.model;
+/*     */ package com.dstz.sys.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.encrypt.EncryptUtil;
-/*     */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
-/*     */ import cn.gwssi.ecloudframework.sys.api.constant.EnvironmentConstant;
+/*     */ import com.dstz.base.core.encrypt.EncryptUtil;
+/*     */ import com.dstz.base.core.model.BaseModel;
+/*     */ import com.dstz.sys.api.constant.EnvironmentConstant;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.List;
 /*     */ 

@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.plugin.core.dao;
+package com.dstz.bpm.plugin.core.dao;
 
-import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderTrigger;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.bpm.plugin.core.model.BpmReminderTrigger;
+import com.dstz.base.dao.BaseDao;
 import java.util.Date;
 import java.util.List;
 

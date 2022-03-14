@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.action.cmd;
+package com.dstz.bpm.api.engine.action.cmd;
 
-import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-import cn.gwssi.ecloudbpm.wf.api.constant.TaskSkipType;
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
+import com.dstz.bpm.api.constant.ActionType;
+import com.dstz.bpm.api.constant.TaskSkipType;
+import com.dstz.bpm.api.model.task.IBpmTask;
 
 public interface TaskActionCmd extends ActionCmd {
   ActionType getActionType();

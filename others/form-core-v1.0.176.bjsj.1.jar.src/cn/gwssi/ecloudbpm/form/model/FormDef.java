@@ -1,8 +1,8 @@
 /*     */ package cn.gwssi.ecloudbpm.form.model;
 /*     */ 
 /*     */ import cn.gwssi.ecloudbpm.form.api.model.IFormDef;
-/*     */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*     */ import com.dstz.base.core.model.BaseModel;
+/*     */ import com.dstz.base.core.util.StringUtil;
 /*     */ import java.util.Date;
 /*     */ import org.hibernate.validator.constraints.NotEmpty;
 /*     */ 

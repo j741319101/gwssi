@@ -1,11 +1,11 @@
-package cn.gwssi.ecloudbpm.wf.api.model.nodedef;
+package com.dstz.bpm.api.model.nodedef;
 
-import cn.gwssi.ecloudbpm.wf.api.constant.NodeType;
-import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.BpmPluginContext;
-import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmDef;
-import cn.gwssi.ecloudbpm.wf.api.model.def.BpmProcessDef;
-import cn.gwssi.ecloudbpm.wf.api.model.def.NodeProperties;
-import cn.gwssi.ecloudbpm.wf.api.model.form.BpmForm;
+import com.dstz.bpm.api.constant.NodeType;
+import com.dstz.bpm.api.engine.plugin.context.BpmPluginContext;
+import com.dstz.bpm.api.engine.plugin.def.BpmDef;
+import com.dstz.bpm.api.model.def.BpmProcessDef;
+import com.dstz.bpm.api.model.def.NodeProperties;
+import com.dstz.bpm.api.model.form.BpmForm;
 import java.io.Serializable;
 import java.util.List;
 

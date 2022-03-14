@@ -931,14 +931,14 @@
 /*  931 */     f[21] = new Field("SOURCE_DATA_TYPE", 21);
 /*  932 */     f[22] = new Field("IS_AUTOINCREMENT", 1043);
 /*  933 */     f[23] = new Field("IS_GENERATEDCOLUMN", 1043);
-/*      */     
+/*      */     String sql;
 /*  935 */     if (this.connection.haveMinimumServerVersion((Version)ServerVersion.v8_4)) {
 /*  936 */       sql = "SELECT * FROM (";
 /*      */     } else {
 /*  938 */       sql = "";
 /*      */     } 
 /*      */     
-/*  941 */     String sql = sql + "SELECT n.nspname,c.relname,a.attname,a.atttypid,a.attnotnull OR (t.typtype = 'd' AND t.typnotnull) AS attnotnull,a.atttypmod,a.attlen,t.typtypmod,";
+/*  941 */     sql = sql + "SELECT n.nspname,c.relname,a.attname,a.atttypid,a.attnotnull OR (t.typtype = 'd' AND t.typnotnull) AS attnotnull,a.atttypmod,a.attlen,t.typtypmod,";
 /*  942 */     if (this.connection.haveMinimumServerVersion((Version)ServerVersion.v8_4)) {
 /*  943 */       sql = sql + "row_number() OVER (PARTITION BY a.attrelid ORDER BY a.attnum) AS attnum, ";
 /*      */     } else {
@@ -1125,7 +1125,7 @@
 /* 1125 */           Map.Entry<String, List<String[]>> userToGrantable = var23.next();
 /* 1126 */           List<String[]> grantor = userToGrantable.getValue();
 /* 1127 */           String grantee = userToGrantable.getKey();
-/* 1128 */           Iterator<String> var27 = grantor.iterator();
+/* 1128 */           Iterator<String[]> var27 = grantor.iterator();
 /*      */           
 /* 1130 */           while (var27.hasNext()) {
 /* 1131 */             String[] grants = (String[])var27.next();
@@ -1186,7 +1186,7 @@
 /* 1186 */           Map.Entry<String, List<String[]>> userToGrantable = var21.next();
 /* 1187 */           List<String[]> grants = userToGrantable.getValue();
 /* 1188 */           String granteeUser = userToGrantable.getKey();
-/* 1189 */           Iterator<String> var25 = grants.iterator();
+/* 1189 */           Iterator<String[]> var25 = grants.iterator();
 /*      */           
 /* 1191 */           while (var25.hasNext()) {
 /* 1192 */             String[] grantTuple = (String[])var25.next();
@@ -1615,7 +1615,8 @@
 /*      */ 
 /*      */   
 /*      */   public ResultSet getIndexInfo(String catalog, String schema, String tableName, boolean unique, boolean approximate) throws SQLException {
-/* 1618 */     if (this.connection.haveMinimumServerVersion((Version)ServerVersion.v8_3)) {
+/* 1618 */     String sql;
+                if (this.connection.haveMinimumServerVersion((Version)ServerVersion.v8_3)) {
 /* 1619 */       sql = "SELECT NULL AS TABLE_CAT, n.nspname AS TABLE_SCHEM,   ct.relname AS TABLE_NAME, NOT i.indisunique AS NON_UNIQUE,   NULL AS INDEX_QUALIFIER, ci.relname AS INDEX_NAME,   CASE i.indisclustered     WHEN true THEN 1    ELSE CASE am.amname       WHEN 'hash' THEN 2      ELSE 3    END   END AS TYPE,   (information_schema._pg_expandarray(i.indkey)).n AS ORDINAL_POSITION,   ci.reltuples AS CARDINALITY,   ci.relpages AS PAGES,   pg_catalog.pg_get_expr(i.indpred, i.indrelid) AS FILTER_CONDITION,   ci.oid AS CI_OID,   i.indoption AS I_INDOPTION, " + (this.connection.haveMinimumServerVersion((Version)ServerVersion.v9_6) ? "  am.amname AS AM_NAME " : "  am.amcanorder AS AM_CANORDER ") + "FROM pg_catalog.pg_class ct   JOIN pg_catalog.pg_namespace n ON (ct.relnamespace = n.oid)   JOIN pg_catalog.pg_index i ON (ct.oid = i.indrelid)   JOIN pg_catalog.pg_class ci ON (ci.oid = i.indexrelid)   JOIN pg_catalog.pg_am am ON (ci.relam = am.oid) WHERE true ";
 /* 1620 */       if (schema != null && !schema.isEmpty()) {
 /* 1621 */         sql = sql + " AND n.nspname = " + escapeQuotes(schema);
@@ -1643,7 +1644,7 @@
 /*      */       }
 /*      */     } 
 /*      */     
-/* 1646 */     String sql = sql + " ORDER BY NON_UNIQUE, TYPE, INDEX_NAME, ORDINAL_POSITION ";
+/* 1646 */     sql = sql + " ORDER BY NON_UNIQUE, TYPE, INDEX_NAME, ORDINAL_POSITION ";
 /* 1647 */     return createMetaDataStatement().executeQuery(sql);
 /*      */   }
 /*      */   

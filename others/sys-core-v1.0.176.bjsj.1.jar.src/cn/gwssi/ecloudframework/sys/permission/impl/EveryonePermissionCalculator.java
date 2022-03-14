@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.sys.permission.impl;
+/*    */ package com.dstz.sys.permission.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.api.permission.IPermissionCalculator;
+/*    */ import com.dstz.sys.api.permission.IPermissionCalculator;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 

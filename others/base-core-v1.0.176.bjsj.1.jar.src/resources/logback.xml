@@ -7,7 +7,7 @@
         </layout>
     </appender>
 
-    <logger name="cn.gwssi.ecloudframework.base" level="TRACE"/>
+    <logger name="com.dstz.base" level="TRACE"/>
 
 
     <root level="debug">

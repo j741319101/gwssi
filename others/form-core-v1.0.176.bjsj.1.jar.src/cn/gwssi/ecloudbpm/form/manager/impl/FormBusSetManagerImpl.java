@@ -3,7 +3,7 @@
 /*    */ import cn.gwssi.ecloudbpm.form.dao.FormBusSetDao;
 /*    */ import cn.gwssi.ecloudbpm.form.manager.FormBusSetManager;
 /*    */ import cn.gwssi.ecloudbpm.form.model.FormBusSet;
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 

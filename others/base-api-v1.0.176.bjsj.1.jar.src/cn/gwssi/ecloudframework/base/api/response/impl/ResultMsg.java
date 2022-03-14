@@ -1,9 +1,9 @@
-/*     */ package cn.gwssi.ecloudframework.base.api.response.impl;
+/*     */ package com.dstz.base.api.response.impl;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.BaseStatusCode;
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.IStatusCode;
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.StatusCode;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.api.constant.BaseStatusCode;
+/*     */ import com.dstz.base.api.constant.IStatusCode;
+/*     */ import com.dstz.base.api.constant.StatusCode;
+/*     */ import com.dstz.base.api.exception.BusinessException;
 /*     */ import io.swagger.annotations.ApiModel;
 /*     */ import io.swagger.annotations.ApiModelProperty;
 /*     */ import java.util.HashMap;

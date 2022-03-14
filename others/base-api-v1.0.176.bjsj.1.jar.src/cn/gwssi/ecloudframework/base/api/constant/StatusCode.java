@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.api.constant;
+/*    */ package com.dstz.base.api.constant;
 /*    */ 
 /*    */ public class StatusCode
 /*    */   implements IStatusCode {

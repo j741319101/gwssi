@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.DataDictDao">
-	<resultMap id="DataDict" type="cn.gwssi.ecloudframework.sys.core.model.DataDict">
+<mapper namespace="com.dstz.sys.core.dao.DataDictDao">
+	<resultMap id="DataDict" type="com.dstz.sys.core.model.DataDict">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="parentId" column="parent_id_" jdbcType="VARCHAR"/>
 		<result property="key" column="key_" jdbcType="VARCHAR"/>
@@ -17,7 +17,7 @@
 		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.DataDict">
+	<insert id="create" parameterType="com.dstz.sys.core.model.DataDict">
 		INSERT INTO sys_data_dict
 		(id_,parent_id_,key_,name_,dict_key_,type_id_,sn_,dict_type_,delete_flag_,create_time_,create_by_,update_time_,update_by_)
 		VALUES 
@@ -46,7 +46,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.DataDict">
+	<update id="update" parameterType="com.dstz.sys.core.model.DataDict">
 		UPDATE sys_data_dict SET
 		parent_id_=#{parentId,jdbcType=VARCHAR},
 		key_=#{key,jdbcType=VARCHAR},

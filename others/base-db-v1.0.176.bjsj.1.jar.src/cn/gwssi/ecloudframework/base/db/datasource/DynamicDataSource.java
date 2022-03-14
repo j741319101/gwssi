@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.base.db.datasource;
+/*     */ package com.dstz.base.db.datasource;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.api.exception.BusinessException;
 /*     */ import java.lang.reflect.Field;
 /*     */ import java.util.Map;
 /*     */ import javax.sql.DataSource;

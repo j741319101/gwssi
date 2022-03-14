@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.rest.controller;
+/*    */ package com.dstz.bpm.plugin.rest.controller;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmLeaderOptionLog;
-/*    */ import cn.gwssi.ecloudframework.base.rest.BaseController;
+/*    */ import com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog;
+/*    */ import com.dstz.base.rest.BaseController;
 /*    */ import org.springframework.web.bind.annotation.RequestMapping;
 /*    */ import org.springframework.web.bind.annotation.RestController;
 /*    */ 

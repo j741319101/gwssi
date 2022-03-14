@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.api.platform;
+package com.dstz.sys.api.platform;
 
-import cn.gwssi.ecloudframework.sys.api.model.IDataDict;
+import com.dstz.sys.api.model.IDataDict;
 import java.util.List;
 import java.util.Map;
 

@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.api.engine.data.result;
+/*     */ package com.dstz.bpm.api.engine.data.result;
 /*     */ 
 /*     */ import cn.gwssi.ecloudbpm.bus.api.model.IBusinessData;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.form.BpmForm;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.Button;
+/*     */ import com.dstz.bpm.api.model.form.BpmForm;
+/*     */ import com.dstz.bpm.api.model.nodedef.Button;
 /*     */ import com.alibaba.fastjson.JSONObject;
 /*     */ import io.swagger.annotations.ApiModel;
 /*     */ import io.swagger.annotations.ApiModelProperty;

@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.core.model;
+/*     */ package com.dstz.bpm.core.model;
 /*     */ 
 /*     */ import cn.gwssi.ecloudbpm.bus.model.BusinessPermission;
-/*     */ import cn.gwssi.ecloudframework.sys.core.model.SysAuthorization;
+/*     */ import com.dstz.sys.core.model.SysAuthorization;
 /*     */ import java.io.Serializable;
 /*     */ import java.util.List;
 /*     */ 

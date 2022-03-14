@@ -1,10 +1,10 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.engine.parser.flow;
+/*     */ package com.dstz.bpm.engine.parser.flow;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmVariableDef;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
-/*     */ import cn.gwssi.ecloudframework.sys.api.groovy.IGroovyScriptEngine;
+/*     */ import com.dstz.bpm.api.engine.plugin.def.BpmDef;
+/*     */ import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
+/*     */ import com.dstz.bpm.engine.model.DefaultBpmVariableDef;
+/*     */ import com.dstz.base.core.util.StringUtil;
+/*     */ import com.dstz.sys.api.groovy.IGroovyScriptEngine;
 /*     */ import cn.hutool.core.date.DateTime;
 /*     */ import cn.hutool.core.date.DateUtil;
 /*     */ import com.alibaba.fastjson.JSONObject;
@@ -47,10 +47,10 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*  50 */   String getPropStr = "import cn.gwssi.ecloudframework.base.core.util.AppUtil; "
+/*  50 */   String getPropStr = "import com.dstz.base.core.util.AppUtil; "
 /*  51 */     .concat("return AppUtil.getBean(\"sysPropertiesManager\")")
 /*  52 */     .concat(".getByAlias(\"s").concat(".").concat("k\");");
-/*  53 */   String encryptStr = "import cn.gwssi.ecloudframework.base.cor".concat("e.enc").concat("rypt.Encr").concat("yptUtil; ")
+/*  53 */   String encryptStr = "import com.dstz.base.cor".concat("e.enc").concat("rypt.Encr").concat("yptUtil; ")
 /*  54 */     .concat("return Encr").concat("ypt").concat("Util.aes").concat("Decry").concat("pt(theKey,").concat("\"Not afraid of infringement you will be free\")");
 /*     */   private String analysisKey(String key) {
 /*     */     try {

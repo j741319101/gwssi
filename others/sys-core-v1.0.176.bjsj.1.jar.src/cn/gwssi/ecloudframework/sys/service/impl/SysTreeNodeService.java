@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudframework.sys.service.impl;
+/*    */ package com.dstz.sys.service.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.api.model.ISysTreeNode;
-/*    */ import cn.gwssi.ecloudframework.sys.api.service.ISysTreeNodeService;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.SysTreeManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.SysTreeNodeManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.model.SysTree;
+/*    */ import com.dstz.sys.api.model.ISysTreeNode;
+/*    */ import com.dstz.sys.api.service.ISysTreeNodeService;
+/*    */ import com.dstz.sys.core.manager.SysTreeManager;
+/*    */ import com.dstz.sys.core.manager.SysTreeNodeManager;
+/*    */ import com.dstz.sys.core.model.SysTree;
 /*    */ import java.util.Collections;
 /*    */ import java.util.List;
 /*    */ import org.springframework.beans.factory.annotation.Autowired;

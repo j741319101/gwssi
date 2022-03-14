@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudframework.base.db.model.query;
+/*     */ package com.dstz.base.db.model.query;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryField;
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryOP;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*     */ import com.dstz.base.api.query.QueryField;
+/*     */ import com.dstz.base.api.query.QueryOP;
+/*     */ import com.dstz.base.core.util.StringUtil;
 /*     */ import cn.hutool.core.collection.CollectionUtil;
 /*     */ import java.util.Arrays;
 /*     */ import java.util.List;

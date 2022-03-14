@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.api.test;
+package com.dstz.bpm.api.test;
 
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.sys.core.model;
+/*    */ package com.dstz.sys.core.model;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.model.IDModel;
+/*    */ import com.dstz.base.api.model.IDModel;
 /*    */ import org.apache.commons.lang3.builder.ToStringBuilder;
 /*    */ 
 /*    */ 

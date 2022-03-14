@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl;
+/*    */ package com.dstz.bpm.api.model.nodedef.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.def.BpmVariableDef;
+/*    */ import com.dstz.bpm.api.model.def.BpmVariableDef;
 /*    */ import java.util.List;
 /*    */ 
 /*    */ 

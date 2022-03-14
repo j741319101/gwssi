@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.core.cache;
+package com.dstz.base.core.cache;
 
 import java.util.Collection;
 

@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.action.button;
+package com.dstz.bpm.api.engine.action.button;
 
-import cn.gwssi.ecloudbpm.wf.api.model.nodedef.Button;
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
+import com.dstz.bpm.api.model.nodedef.Button;
+import com.dstz.bpm.api.model.task.IBpmTask;
 import java.util.List;
 
 public interface ButtonUserChecker {

@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.api.service;
+package com.dstz.bpm.api.service;
 
-import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
+import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+import com.dstz.bpm.api.model.task.IBpmTask;
 import java.util.Map;
 
 public interface BpmTaskService {

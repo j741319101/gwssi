@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api.executor;
+package com.dstz.base.api.executor;
 
 public interface Executor<T> extends Comparable<Executor<T>> {
   String getKey();

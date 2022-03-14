@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.sys.oss;
+/*    */ package com.dstz.sys.oss;
 /*    */ 
 /*    */ import cn.hutool.core.date.DateUtil;
 /*    */ import java.io.InputStream;

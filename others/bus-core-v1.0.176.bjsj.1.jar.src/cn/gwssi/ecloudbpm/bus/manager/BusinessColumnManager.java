@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.bus.manager;
 
 import cn.gwssi.ecloudbpm.bus.model.BusinessColumn;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 import java.util.List;
 
 public interface BusinessColumnManager extends Manager<String, BusinessColumn> {

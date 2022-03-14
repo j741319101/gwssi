@@ -1,11 +1,11 @@
-package cn.gwssi.ecloudframework.org.api.service;
+package com.dstz.org.api.service;
 
-import cn.gwssi.ecloudframework.base.api.response.impl.PageResultDto;
-import cn.gwssi.ecloudframework.org.api.model.IUser;
-import cn.gwssi.ecloudframework.org.api.model.IUserRole;
-import cn.gwssi.ecloudframework.org.api.model.dto.BpmUserDTO;
-import cn.gwssi.ecloudframework.org.api.model.dto.UserDTO;
-import cn.gwssi.ecloudframework.org.api.model.dto.UserQueryDTO;
+import com.dstz.base.api.response.impl.PageResultDto;
+import com.dstz.org.api.model.IUser;
+import com.dstz.org.api.model.IUserRole;
+import com.dstz.org.api.model.dto.BpmUserDTO;
+import com.dstz.org.api.model.dto.UserDTO;
+import com.dstz.org.api.model.dto.UserQueryDTO;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.base.db.datasource;
+/*    */ package com.dstz.base.db.datasource;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import java.sql.Connection;
 /*    */ import java.sql.DatabaseMetaData;
 /*    */ import java.sql.SQLException;

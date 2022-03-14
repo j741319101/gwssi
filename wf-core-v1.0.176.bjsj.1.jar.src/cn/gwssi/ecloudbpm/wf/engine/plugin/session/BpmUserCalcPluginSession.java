@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.engine.plugin.session;
+package com.dstz.bpm.engine.plugin.session;
 
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
+import com.dstz.bpm.api.model.task.IBpmTask;
 
 public interface BpmUserCalcPluginSession extends BpmPluginSession {
   Boolean isPreViewModel();

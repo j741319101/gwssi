@@ -1,14 +1,14 @@
-package cn.gwssi.ecloudbpm.wf.core.manager;
+package com.dstz.bpm.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.api.constant.OpinionStatus;
-import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.InstanceActionCmd;
-import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.TaskActionCmd;
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskOpinion;
-import cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskOpinionVO;
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.sys.api.model.SysIdentity;
+import com.dstz.bpm.api.constant.OpinionStatus;
+import com.dstz.bpm.api.engine.action.cmd.InstanceActionCmd;
+import com.dstz.bpm.api.engine.action.cmd.TaskActionCmd;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
+import com.dstz.bpm.api.model.task.IBpmTask;
+import com.dstz.bpm.core.model.BpmTaskOpinion;
+import com.dstz.bpm.core.vo.BpmTaskOpinionVO;
+import com.dstz.base.manager.Manager;
+import com.dstz.sys.api.model.SysIdentity;
 import java.util.Collection;
 import java.util.List;
 

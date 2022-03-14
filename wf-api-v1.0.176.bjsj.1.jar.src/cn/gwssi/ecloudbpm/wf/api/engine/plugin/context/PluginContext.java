@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.plugin.context;
+package com.dstz.bpm.api.engine.plugin.context;
 
-import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmPluginDef;
-import cn.gwssi.ecloudbpm.wf.api.engine.plugin.runtime.RunTimePlugin;
+import com.dstz.bpm.api.engine.plugin.def.BpmPluginDef;
+import com.dstz.bpm.api.engine.plugin.runtime.RunTimePlugin;
 import java.io.Serializable;
 
 public interface PluginContext extends Serializable {

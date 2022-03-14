@@ -1,6 +1,7 @@
 /*     */ package com.dstz.bpm.engine.listener;
-/*     */ 
-/*     */ import com.dstz.bus.api.model.IBusinessData;
+/*     */
+/*     */ import com.dstz.bpm.api.engine.action.cmd.TaskActionCmd;
+import com.dstz.bus.api.model.IBusinessData;
 /*     */ import com.dstz.bpm.api.constant.ActionType;
 /*     */ import com.dstz.bpm.api.constant.EventType;
 /*     */ import com.dstz.bpm.api.constant.ScriptType;
@@ -41,11 +42,11 @@
 import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 /*     */ import org.apache.commons.lang3.StringUtils;
 /*     */ import org.springframework.stereotype.Component;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ @Component
 /*     */ public class InstanceStartEventListener
 /*     */   extends AbstractInstanceListener
@@ -60,61 +61,61 @@ import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 /*     */ BpmDefinitionManager bpmDefinitionMananger;
 /*     */   @Resource
 /*     */   private BpmSystemTestService bpmSystemTestService;
-/*     */   
+/*     */
 /*     */   public EventType getBeforeTriggerEventType() {
 /*  64 */     return EventType.START_EVENT;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public EventType getAfterTriggerEventType() {
 /*  69 */     return EventType.START_POST_EVENT;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void beforePluginExecute(InstanceActionCmd instanceActionModel) {
 /*  74 */     this.LOG.debug("流程实例【{}】执行启动过程 instanceID:[{}]", instanceActionModel.getBpmInstance().getSubject(), instanceActionModel.getBpmInstance().getId());
-/*     */     
+/*     */
 /*  76 */     Map<String, Object> actionVariables = instanceActionModel.getActionVariables();
 /*  77 */     if (CollectionUtil.isEmpty(actionVariables)) {
 /*     */       return;
 /*     */     }
-/*     */     
+/*     */
 /*  81 */     for (String key : actionVariables.keySet()) {
 /*  82 */       instanceActionModel.addVariable(key, actionVariables.get(key));
 /*     */     }
 /*  84 */     this.LOG.debug("设置流程变量【{}】", actionVariables.keySet().toString());
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   public void triggerExecute(InstanceActionCmd instanceActionModel) {
 /*  90 */     this.bpmTaskOpinionManager.createOpinionByInstance(instanceActionModel, true);
-/*     */     
+/*     */
 /*  92 */     handleInstanceSubject((DefaultInstanceActionCmd)instanceActionModel);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void afterPluginExecute(InstanceActionCmd instanceActionModel) {
 /*  97 */     this.LOG.debug("流程实例【{}】完成创建过程   instanceID：{}", instanceActionModel.getBpmInstance().getSubject(), instanceActionModel.getBpmInstance().getId());
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected ScriptType getScriptType() {
 /* 102 */     return ScriptType.START;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   protected InstanceActionCmd getInstanceActionModel(ExecutionEntity executionEntity) {
 /* 108 */     if (StringUtil.isNotEmpty(executionEntity.getActivityId()) && (executionEntity
 /* 109 */       .getActivityId().startsWith("StartSignal") || executionEntity
 /* 110 */       .getActivityId().startsWith("StartTimer"))) {
 /* 111 */       initActionModelByActivitiEvent(executionEntity);
 /*     */     }
-/*     */     
+/*     */
 /* 114 */     ActionCmd actionCmd = BpmContext.getActionModel();
 /* 115 */     handlerSubProcess(executionEntity, actionCmd);
-/*     */     
+/*     */
 /* 117 */     DefaultInstanceActionCmd actionModel = (DefaultInstanceActionCmd)BpmContext.getActionModel();
 /* 118 */     actionModel.setExecutionEntity(executionEntity);
 /* 119 */     actionModel.setApproveOrgId(actionModel.getApproveOrgId());
@@ -122,8 +123,8 @@ import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 /* 121 */     if (StringUtil.isEmpty(instance.getActInstId())) {
 /* 122 */       instance.setActDefId(executionEntity.getProcessDefinitionId());
 /* 123 */       instance.setActInstId(executionEntity.getProcessInstanceId());
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 126 */     DefaultBpmProcessDef bpmProcessDef = (DefaultBpmProcessDef)this.bpmProcessDefService.getBpmProcessDef(instance.getDefId());
 /* 127 */     List<BpmVariableDef> bpmVariableDefs = bpmProcessDef.getVariableList();
 /* 128 */     Map<String, Object> variables = new HashMap<>();
@@ -133,16 +134,16 @@ import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 /* 132 */     actionModel.setActionVariables(variables);
 /* 133 */     return (InstanceActionCmd)actionModel;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   private void handleInstanceSubject(DefaultInstanceActionCmd data) {
 /* 138 */     BpmInstance instance = (BpmInstance)data.getBpmInstance();
-/*     */     
+/*     */
 /* 140 */     DefaultBpmProcessDef processDef = (DefaultBpmProcessDef)this.bpmProcessDefService.getBpmProcessDef(instance.getDefId());
 /* 141 */     String subjectRule = processDef.getExtProperties().getSubjectRule();
-/*     */     
+/*     */
 /* 143 */     if (StringUtil.isEmpty(subjectRule))
-/*     */       return; 
+/*     */       return;
 /* 145 */     Map<String, Object> ruleVariables = new HashMap<>();
 /* 146 */     ruleVariables.put("title", processDef.getName());
 /* 147 */     IUser user = ContextUtil.getCurrentUser();
@@ -150,34 +151,34 @@ import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 /* 149 */       ruleVariables.put("startorName", user.getFullname());
 /*     */     } else {
 /* 151 */       ruleVariables.put("startorName", "系统");
-/*     */     } 
+/*     */     }
 /* 153 */     ruleVariables.put("startDate", DateUtil.format(new Date(), "yyyy-MM-dd"));
 /* 154 */     ruleVariables.put("startTime", DateUtil.now());
 /* 155 */     ruleVariables.putAll(data.getVariables());
-/*     */ 
-/*     */     
+/*     */
+/*     */
 /* 158 */     Map<String, IBusinessData> boMap = data.getBizDataMap();
 /* 159 */     if (CollectionUtil.isNotEmpty(boMap)) {
 /* 160 */       Set<String> bocodes = boMap.keySet();
 /* 161 */       for (String bocode : bocodes) {
 /* 162 */         IBusinessData bizData = boMap.get(bocode);
-/*     */         
+/*     */
 /* 164 */         Map<String, Object> dataMap = bizData.getData();
 /* 165 */         for (Map.Entry<String, Object> entry : dataMap.entrySet()) {
 /* 166 */           ruleVariables.put(bocode + "." + (String)entry.getKey(), entry.getValue());
 /*     */         }
-/*     */       } 
-/*     */     } 
-/*     */     
+/*     */       }
+/*     */     }
+/*     */
 /* 171 */     String subject = getTitleByVariables(subjectRule, ruleVariables);
-/*     */     
+/*     */
 /* 173 */     instance.setSubject(subject);
 /* 174 */     this.LOG.debug("更新流程标题:{}", subject);
 /*     */   }
-/*     */   
+/*     */
 /*     */   private String getTitleByVariables(String subject, Map<String, Object> variables) {
 /* 178 */     if (StringUtils.isEmpty(subject))
-/* 179 */       return ""; 
+/* 179 */       return "";
 /* 180 */     Pattern regex = Pattern.compile("\\{(.*?)\\}", 98);
 /* 181 */     Matcher matcher = regex.matcher(subject);
 /* 182 */     while (matcher.find()) {
@@ -189,7 +190,7 @@ import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 /* 188 */         name = rule;
 /*     */       } else {
 /* 190 */         name = aryRule[1];
-/*     */       } 
+/*     */       }
 /* 192 */       if (variables.containsKey(name)) {
 /* 193 */         Object obj = variables.get(name);
 /* 194 */         if (obj != null) {
@@ -198,25 +199,25 @@ import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 /* 197 */           } catch (Exception e) {
 /* 198 */             subject = subject.replace(tag, "");
 /*     */           }  continue;
-/*     */         } 
+/*     */         }
 /* 201 */         subject = subject.replace(tag, "");
 /*     */         continue;
-/*     */       } 
+/*     */       }
 /* 204 */       subject = subject.replace(tag, "");
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 207 */     return subject;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */   private void handlerSubProcess(ExecutionEntity excutionEntity, ActionCmd preAction) {
-/*     */     BaseActionCmd baseActionCmd;
+/*     */     BaseActionCmd baseActionCmd = null;
 /* 217 */     String preActionDefKey = preAction.getBpmInstance().getDefKey();
-/*     */     
+/*     */
 /* 219 */     JSONArray startSubProcessKey = null;
 /* 220 */     JSONObject extendConf = ((BaseActionCmd)preAction).getExtendConf();
 /* 221 */     if (extendConf != null) {
@@ -229,35 +230,30 @@ import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 /*     */         }
 /*     */       } else {
 /*     */         return;
-/*     */       } 
+/*     */       }
 /*     */     }
-/*     */     
+/*     */
 /* 234 */     ExecutionEntity callActivityNode = excutionEntity.getSuperExecution();
-/*     */     
-/* 236 */     if (preAction instanceof com.dstz.bpm.api.engine.action.cmd.TaskActionCmd && (
-/* 237 */       callActivityNode == null || !preAction.getBpmInstance().getActInstId().equals(callActivityNode.getProcessInstanceId()))) {
-/* 238 */       baseActionCmd = BpmContext.getActionModel(callActivityNode.getProcessInstanceId());
+/*     */
+/* 236 */     if (preAction instanceof TaskActionCmd && (
+                    callActivityNode == null || !preAction.getBpmInstance().getActInstId().equals(callActivityNode.getProcessInstanceId()))) {
+                     baseActionCmd = BpmContext.getActionModel(callActivityNode.getProcessInstanceId());
 /* 239 */       if (baseActionCmd == null) {
 /* 240 */         throw new BusinessException(BpmStatusCode.ACTIONCMD_ERROR);
 /*     */       }
-/*     */     } 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */     
+/*     */     }
+
 /* 249 */     BpmDefinition subDefinition = this.bpmDefinitionMananger.getByKey(excutionEntity.getProcessDefinitionKey());
 /* 250 */     BpmInstance subInstance = this.bpmInstanceManager.genInstanceByDefinition((IBpmDefinition)subDefinition);
-/*     */     
+/*     */
 /* 252 */     subInstance.setActInstId(excutionEntity.getProcessInstanceId());
 /* 253 */     if (!baseActionCmd.getBpmInstance().getActInstId().equals(callActivityNode.getProcessInstanceId())) {
 /* 254 */       subInstance.setParentInstId(baseActionCmd.getBpmInstance().getParentInstId());
 /*     */     } else {
 /* 256 */       subInstance.setParentInstId(baseActionCmd.getBpmInstance().getId());
-/*     */     } 
+/*     */     }
 /* 258 */     subInstance.setSuperNodeId(callActivityNode.getActivityId());
-/*     */     
+/*     */
 /* 260 */     DefaultInstanceActionCmd startAction = new DefaultInstanceActionCmd();
 /* 261 */     startAction.setBpmDefinition((IBpmDefinition)subDefinition);
 /* 262 */     startAction.setBpmInstance((IBpmInstance)subInstance);
@@ -269,45 +265,45 @@ import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 /* 268 */     startAction.setDynamicSubmitTaskName(baseActionCmd.getDynamicSubmitTaskName());
 /* 269 */     startAction.setExecutionStack(baseActionCmd.getExecutionStack());
 /* 270 */     startAction.setApproveOrgId(baseActionCmd.getApproveOrgId());
-/*     */     
+/*     */
 /* 272 */     BpmContext.setActionModel((ActionCmd)startAction);
-/*     */ 
-/*     */     
+/*     */
+/*     */
 /* 275 */     handleInstanceSubject(startAction);
 /* 276 */     subInstance.setCreateOrgId(startAction.getApproveOrgId());
 /* 277 */     this.bpmSystemTestService.saveBpmInstance((IBpmInstance)subInstance);
 /* 278 */     this.bpmInstanceManager.create(subInstance);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   private void initActionModelByActivitiEvent(ExecutionEntity executionEntity) {
 /* 283 */     if (BpmContext.getActionModel() != null) {
 /* 284 */       IBpmInstance iBpmInstance = BpmContext.getActionModel().getBpmInstance();
-/* 285 */       if ((iBpmInstance != null && 
-/* 286 */         StringUtils.equals(iBpmInstance.getActInstId(), executionEntity.getProcessInstanceId())) || 
+/* 285 */       if ((iBpmInstance != null &&
+/* 286 */         StringUtils.equals(iBpmInstance.getActInstId(), executionEntity.getProcessInstanceId())) ||
 /* 287 */         StringUtils.equals(BpmContext.getActionModel().getActionName(), ActionType.START.getKey())) {
 /*     */         return;
 /*     */       }
-/*     */     } 
-/*     */ 
-/*     */ 
-/*     */     
+/*     */     }
+/*     */
+/*     */
+/*     */
 /* 294 */     BpmInstance instance = this.bpmInstanceManager.createInstanceByExecution(executionEntity);
-/*     */     
+/*     */
 /* 296 */     DefaultInstanceActionCmd instanceCmd = new DefaultInstanceActionCmd();
-/*     */     
+/*     */
 /* 298 */     instanceCmd.setActionName(ActionType.START.getKey());
-/*     */     
+/*     */
 /* 300 */     instanceCmd.setBpmInstance((IBpmInstance)instance);
 /* 301 */     instanceCmd.setBpmDefinition(this.bpmProcessDefService.getDefinitionById(instance.getDefId()));
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */     
+/*     */
+/*     */
+/*     */
+/*     */
 /* 306 */     instanceCmd.setOpinion("流程事件启动");
-/*     */ 
-/*     */ 
-/*     */     
+/*     */
+/*     */
+/*     */
 /* 310 */     BpmContext.setActionModel((ActionCmd)instanceCmd);
 /*     */   }
 /*     */ }

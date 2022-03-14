@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.vo;
+/*     */ package com.dstz.bpm.plugin.vo;
 /*     */ 
 /*     */ import java.io.Serializable;
 /*     */ import java.util.Date;

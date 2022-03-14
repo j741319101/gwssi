@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.vo;
+/*    */ package com.dstz.bpm.core.vo;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.form.BpmForm;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.BeanCopierUtils;
+/*    */ import com.dstz.bpm.api.model.form.BpmForm;
+/*    */ import com.dstz.bpm.core.model.BpmDefinition;
+/*    */ import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
+/*    */ import com.dstz.base.core.util.BeanCopierUtils;
 /*    */ import io.swagger.annotations.ApiModelProperty;
 /*    */ 
 /*    */ public class BpmDefinitionVO

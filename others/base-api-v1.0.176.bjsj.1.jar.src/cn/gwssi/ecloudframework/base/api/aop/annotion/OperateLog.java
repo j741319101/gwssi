@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.base.api.aop.annotion;
+package com.dstz.base.api.aop.annotion;
 
-import cn.gwssi.ecloudframework.base.api.handler.OperateLogHandler;
+import com.dstz.base.api.handler.OperateLogHandler;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,14 +1,14 @@
 /*    */ package cn.gwssi.ecloudbpm.platform;
 /*    */ 
 /*    */ import cn.gwssi.ecloudbpm.form.api.model.FormType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.data.BpmFlowDataAccessor;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.data.result.BpmFlowData;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.exception.BpmStatusCode;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.platform.IBpmFlowDataAccessorPlatFormSerice;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmDefinitionManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition;
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.bpm.api.engine.data.BpmFlowDataAccessor;
+/*    */ import com.dstz.bpm.api.engine.data.result.BpmFlowData;
+/*    */ import com.dstz.bpm.api.exception.BpmStatusCode;
+/*    */ import com.dstz.bpm.api.platform.IBpmFlowDataAccessorPlatFormSerice;
+/*    */ import com.dstz.bpm.core.manager.BpmDefinitionManager;
+/*    */ import com.dstz.bpm.core.model.BpmDefinition;
+/*    */ import com.dstz.base.api.exception.BusinessException;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 

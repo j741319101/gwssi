@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.global.nodemessage.def;
+/*    */ package com.dstz.bpm.plugin.global.nodemessage.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*    */ import java.util.List;
 /*    */ import javax.validation.Valid;
 /*    */ import org.hibernate.validator.constraints.NotEmpty;

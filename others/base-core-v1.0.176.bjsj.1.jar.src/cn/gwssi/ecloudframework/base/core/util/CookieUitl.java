@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.util;
+/*    */ package com.dstz.base.core.util;
 /*    */ 
 /*    */ import javax.servlet.http.Cookie;
 /*    */ import javax.servlet.http.HttpServletRequest;

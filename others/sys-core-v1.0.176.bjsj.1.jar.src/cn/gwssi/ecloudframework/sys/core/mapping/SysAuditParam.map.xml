@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.SysAuditParamDao">
-    <resultMap id="sysAuditParamMap" type="cn.gwssi.ecloudframework.sys.core.model.SysAuditParam">
+<mapper namespace="com.dstz.sys.core.dao.SysAuditParamDao">
+    <resultMap id="sysAuditParamMap" type="com.dstz.sys.core.model.SysAuditParam">
         <id property="id" column="id_" jdbcType="VARCHAR"/>
         <result property="name" column="name_" jdbcType="VARCHAR"/>
         <result property="remark" column="remark_" jdbcType="VARCHAR"/>
@@ -13,7 +13,7 @@
         <result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysAuditParam">
+    <insert id="create" parameterType="com.dstz.sys.core.model.SysAuditParam">
         INSERT INTO sys_audit_param
         (id_, name_, remark_, alias_, value_,create_time_,create_by_,update_time_,update_by_)
         VALUES ( #{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}
@@ -41,7 +41,7 @@
         </if>
     </select>
 
-    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysAuditParam">
+    <update id="update" parameterType="com.dstz.sys.core.model.SysAuditParam">
         UPDATE sys_audit_param
         SET
             name_=#{name,jdbcType=VARCHAR},

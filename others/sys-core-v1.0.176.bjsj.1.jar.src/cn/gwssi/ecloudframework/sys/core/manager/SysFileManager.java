@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.sys.core.manager;
+package com.dstz.sys.core.manager;
 
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.sys.core.model.SysFile;
+import com.dstz.base.manager.Manager;
+import com.dstz.sys.core.model.SysFile;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;

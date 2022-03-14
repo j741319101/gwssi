@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.core.model;
+/*     */ package com.dstz.bpm.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.model.Tree;
-/*     */ import cn.gwssi.ecloudframework.sys.api.constant.SysTreeTypeConstants;
-/*     */ import cn.gwssi.ecloudframework.sys.api.model.ISysTreeNode;
+/*     */ import com.dstz.base.api.model.Tree;
+/*     */ import com.dstz.sys.api.constant.SysTreeTypeConstants;
+/*     */ import com.dstz.sys.api.model.ISysTreeNode;
 /*     */ import io.swagger.annotations.ApiModel;
 /*     */ import io.swagger.annotations.ApiModelProperty;
 /*     */ import java.util.List;

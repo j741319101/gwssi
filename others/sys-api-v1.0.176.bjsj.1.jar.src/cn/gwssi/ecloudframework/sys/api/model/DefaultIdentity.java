@@ -1,10 +1,10 @@
-/*     */ package cn.gwssi.ecloudframework.sys.api.model;
+/*     */ package com.dstz.sys.api.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IGroup;
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IUser;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.core.util.AppUtil;
+/*     */ import com.dstz.base.core.util.StringUtil;
+/*     */ import com.dstz.org.api.model.IGroup;
+/*     */ import com.dstz.org.api.model.IUser;
 /*     */ import org.apache.commons.lang3.StringUtils;
 /*     */ import org.springframework.core.env.Environment;
 /*     */ 

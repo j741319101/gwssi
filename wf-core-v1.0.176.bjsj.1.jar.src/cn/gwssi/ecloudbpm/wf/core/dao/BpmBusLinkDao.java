@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.core.dao;
+package com.dstz.bpm.core.dao;
 
-import cn.gwssi.ecloudbpm.wf.core.model.BpmBusLink;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.bpm.core.model.BpmBusLink;
+import com.dstz.base.dao.BaseDao;
 import java.util.List;
 import org.mybatis.spring.annotation.MapperScan;
 

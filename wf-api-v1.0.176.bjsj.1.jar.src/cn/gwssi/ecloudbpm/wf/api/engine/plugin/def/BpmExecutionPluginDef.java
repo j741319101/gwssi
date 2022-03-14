@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.plugin.def;
+package com.dstz.bpm.api.engine.plugin.def;
 
 public interface BpmExecutionPluginDef extends BpmPluginDef {}
 

@@ -1,23 +1,26 @@
 /*      */ package org.activiti.engine.impl.cfg;
 /*      */ import com.fasterxml.jackson.databind.ObjectMapper;
 /*      */ import java.io.InputStream;
-/*      */ import java.io.Reader;
+/*      */ import java.io.InputStreamReader;
+import java.io.Reader;
 /*      */ import java.net.URL;
 /*      */ import java.sql.Connection;
 /*      */ import java.sql.DatabaseMetaData;
 /*      */ import java.sql.SQLException;
-/*      */ import java.util.ArrayList;
-/*      */ import java.util.Collection;
-/*      */ import java.util.Comparator;
-/*      */ import java.util.HashMap;
-/*      */ import java.util.List;
-/*      */ import java.util.Map;
-/*      */ import java.util.Properties;
-/*      */ import java.util.ServiceLoader;
-/*      */ import java.util.Set;
+/*      */ import java.util.*;
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */ import java.util.concurrent.BlockingQueue;
-/*      */ import java.util.concurrent.ConcurrentMap;
-/*      */ import javax.sql.DataSource;
+/*      */ import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+/*      */ import javax.naming.InitialContext;
+import javax.sql.DataSource;
 /*      */ import javax.xml.namespace.QName;
 /*      */ import org.activiti.bpmn.model.BpmnModel;
 /*      */ import org.activiti.engine.ActivitiException;
@@ -35,10 +38,14 @@
 /*      */ import org.activiti.engine.delegate.event.ActivitiEventDispatcher;
 /*      */ import org.activiti.engine.delegate.event.ActivitiEventListener;
 /*      */ import org.activiti.engine.delegate.event.ActivitiEventType;
-/*      */ import org.activiti.engine.form.AbstractFormType;
-/*      */ import org.activiti.engine.impl.asyncexecutor.DefaultAsyncJobExecutor;
+/*      */ import org.activiti.engine.delegate.event.impl.ActivitiEventDispatcherImpl;
+import org.activiti.engine.form.AbstractFormType;
+/*      */ import org.activiti.engine.impl.*;
+import org.activiti.engine.impl.asyncexecutor.AsyncExecutor;
+import org.activiti.engine.impl.asyncexecutor.DefaultAsyncJobExecutor;
 /*      */ import org.activiti.engine.impl.asyncexecutor.ExecuteAsyncRunnableFactory;
-/*      */ import org.activiti.engine.impl.bpmn.deployer.BpmnDeployer;
+/*      */ import org.activiti.engine.impl.bpmn.data.ItemInstance;
+import org.activiti.engine.impl.bpmn.deployer.BpmnDeployer;
 /*      */ import org.activiti.engine.impl.bpmn.parser.BpmnParseHandlers;
 /*      */ import org.activiti.engine.impl.bpmn.parser.BpmnParser;
 /*      */ import org.activiti.engine.impl.bpmn.parser.factory.AbstractBehaviorFactory;
@@ -46,61 +53,89 @@
 /*      */ import org.activiti.engine.impl.bpmn.parser.factory.DefaultActivityBehaviorFactory;
 /*      */ import org.activiti.engine.impl.bpmn.parser.factory.DefaultListenerFactory;
 /*      */ import org.activiti.engine.impl.bpmn.parser.factory.ListenerFactory;
-/*      */ import org.activiti.engine.impl.calendar.BusinessCalendar;
-/*      */ import org.activiti.engine.impl.calendar.BusinessCalendarManager;
-/*      */ import org.activiti.engine.impl.calendar.CycleBusinessCalendar;
-/*      */ import org.activiti.engine.impl.calendar.DurationBusinessCalendar;
-/*      */ import org.activiti.engine.impl.calendar.MapBusinessCalendarManager;
-/*      */ import org.activiti.engine.impl.db.DbIdGenerator;
+/*      */ import org.activiti.engine.impl.bpmn.parser.handler.*;
+import org.activiti.engine.impl.bpmn.webservice.MessageInstance;
+import org.activiti.engine.impl.calendar.*;
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */ import org.activiti.engine.impl.cfg.standalone.StandaloneMybatisTransactionContextFactory;
+import org.activiti.engine.impl.db.DbIdGenerator;
 /*      */ import org.activiti.engine.impl.db.DbSqlSessionFactory;
-/*      */ import org.activiti.engine.impl.el.ExpressionManager;
+/*      */ import org.activiti.engine.impl.db.IbatisVariableTypeHandler;
+import org.activiti.engine.impl.delegate.DefaultDelegateInterceptor;
+import org.activiti.engine.impl.el.ExpressionManager;
 /*      */ import org.activiti.engine.impl.event.CompensationEventHandler;
 /*      */ import org.activiti.engine.impl.event.EventHandler;
 /*      */ import org.activiti.engine.impl.event.MessageEventHandler;
 /*      */ import org.activiti.engine.impl.event.SignalEventHandler;
-/*      */ import org.activiti.engine.impl.form.FormEngine;
-/*      */ import org.activiti.engine.impl.form.FormTypes;
-/*      */ import org.activiti.engine.impl.form.JuelFormEngine;
-/*      */ import org.activiti.engine.impl.interceptor.CommandConfig;
-/*      */ import org.activiti.engine.impl.interceptor.CommandContextFactory;
-/*      */ import org.activiti.engine.impl.interceptor.CommandExecutor;
-/*      */ import org.activiti.engine.impl.interceptor.CommandInterceptor;
-/*      */ import org.activiti.engine.impl.interceptor.DelegateInterceptor;
-/*      */ import org.activiti.engine.impl.interceptor.SessionFactory;
-/*      */ import org.activiti.engine.impl.jobexecutor.AsyncContinuationJobHandler;
-/*      */ import org.activiti.engine.impl.jobexecutor.FailedJobCommandFactory;
-/*      */ import org.activiti.engine.impl.jobexecutor.JobHandler;
-/*      */ import org.activiti.engine.impl.jobexecutor.ProcessEventJobHandler;
-/*      */ import org.activiti.engine.impl.jobexecutor.RejectedJobsHandler;
-/*      */ import org.activiti.engine.impl.jobexecutor.TimerActivateProcessDefinitionHandler;
-/*      */ import org.activiti.engine.impl.jobexecutor.TimerCatchIntermediateEventJobHandler;
-/*      */ import org.activiti.engine.impl.jobexecutor.TimerExecuteNestedActivityJobHandler;
-/*      */ import org.activiti.engine.impl.jobexecutor.TimerStartEventJobHandler;
-/*      */ import org.activiti.engine.impl.jobexecutor.TimerSuspendProcessDefinitionHandler;
-/*      */ import org.activiti.engine.impl.persistence.GenericManagerFactory;
-/*      */ import org.activiti.engine.impl.persistence.deploy.DefaultDeploymentCache;
+/*      */ import org.activiti.engine.impl.event.logger.EventLogger;
+import org.activiti.engine.impl.form.*;
+/*      */
+/*      */
+/*      */
+import org.activiti.engine.impl.history.HistoryLevel;
+import org.activiti.engine.impl.history.parse.FlowNodeHistoryParseHandler;
+import org.activiti.engine.impl.history.parse.ProcessHistoryParseHandler;
+import org.activiti.engine.impl.history.parse.StartEventHistoryParseHandler;
+import org.activiti.engine.impl.history.parse.UserTaskHistoryParseHandler;
+import org.activiti.engine.impl.interceptor.*;
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */ import org.activiti.engine.impl.jobexecutor.*;
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */ import org.activiti.engine.impl.persistence.*;
+/*      */
+import org.activiti.engine.impl.persistence.deploy.DefaultDeploymentCache;
 /*      */ import org.activiti.engine.impl.persistence.deploy.Deployer;
 /*      */ import org.activiti.engine.impl.persistence.deploy.DeploymentCache;
 /*      */ import org.activiti.engine.impl.persistence.deploy.DeploymentManager;
 /*      */ import org.activiti.engine.impl.persistence.deploy.ProcessDefinitionInfoCache;
-/*      */ import org.activiti.engine.impl.persistence.entity.ProcessDefinitionEntity;
-/*      */ import org.activiti.engine.impl.scripting.ResolverFactory;
-/*      */ import org.activiti.engine.impl.scripting.ScriptingEngines;
-/*      */ import org.activiti.engine.impl.util.ReflectUtil;
-/*      */ import org.activiti.engine.impl.variable.CustomObjectType;
-/*      */ import org.activiti.engine.impl.variable.JPAEntityVariableType;
-/*      */ import org.activiti.engine.impl.variable.VariableType;
-/*      */ import org.activiti.engine.impl.variable.VariableTypes;
+/*      */ import org.activiti.engine.impl.persistence.entity.*;
+/*      */ import org.activiti.engine.impl.scripting.*;
+/*      */
+/*      */
+import org.activiti.engine.impl.util.DefaultClockImpl;
+import org.activiti.engine.impl.util.IoUtil;
+import org.activiti.engine.impl.util.ReflectUtil;
+/*      */ import org.activiti.engine.impl.variable.*;
+/*      */
+/*      */
+/*      */
 /*      */ import org.activiti.engine.parse.BpmnParseHandler;
-/*      */ import org.activiti.engine.runtime.ClockReader;
-/*      */ import org.activiti.validation.ProcessValidator;
-/*      */ import org.apache.ibatis.builder.xml.XMLConfigBuilder;
+/*      */ import org.activiti.engine.runtime.Clock;
+import org.activiti.engine.runtime.ClockReader;
+/*      */ import org.activiti.image.ProcessDiagramGenerator;
+import org.activiti.image.impl.DefaultProcessDiagramGenerator;
+import org.activiti.validation.ProcessValidator;
+/*      */ import org.activiti.validation.ProcessValidatorFactory;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.ibatis.builder.xml.XMLConfigBuilder;
 /*      */ import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 /*      */ import org.apache.ibatis.datasource.pooled.PooledDataSource;
 /*      */ import org.apache.ibatis.mapping.Environment;
 /*      */ import org.apache.ibatis.session.Configuration;
 /*      */ import org.apache.ibatis.session.SqlSessionFactory;
-/*      */ import org.apache.ibatis.transaction.TransactionFactory;
+/*      */ import org.apache.ibatis.session.defaults.DefaultSqlSessionFactory;
+import org.apache.ibatis.transaction.TransactionFactory;
+import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
+import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.TypeHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /*      */ 
 /*      */ public abstract class ProcessEngineConfigurationImpl extends ProcessEngineConfiguration {
 /*  106 */   private static Logger log = LoggerFactory.getLogger(ProcessEngineConfigurationImpl.class);
@@ -1145,20 +1180,19 @@
 /*      */ 
 /*      */     
 /* 1147 */     if (this.customDefaultBpmnParseHandlers != null) {
-/*      */       
 /* 1149 */       Map<Class<?>, BpmnParseHandler> customParseHandlerMap = new HashMap<>();
 /* 1150 */       for (BpmnParseHandler bpmnParseHandler : this.customDefaultBpmnParseHandlers) {
-/* 1151 */         for (Class<?> handledType : (Iterable<Class<?>>)bpmnParseHandler.getHandledTypes()) {
+/* 1151 */         for (Class<?> handledType : bpmnParseHandler.getHandledTypes()) {
 /* 1152 */           customParseHandlerMap.put(handledType, bpmnParseHandler);
 /*      */         }
-/*      */       } 
-/*      */       
+/*      */       }
+/*      */
 /* 1156 */       for (int i = 0; i < bpmnParserHandlers.size(); i++) {
 /*      */         
 /* 1158 */         BpmnParseHandler defaultBpmnParseHandler = bpmnParserHandlers.get(i);
 /* 1159 */         if (defaultBpmnParseHandler.getHandledTypes().size() != 1) {
 /* 1160 */           StringBuilder supportedTypes = new StringBuilder();
-/* 1161 */           for (Class<?> type : (Iterable<Class<?>>)defaultBpmnParseHandler.getHandledTypes()) {
+/* 1161 */           for (Class<?> type : defaultBpmnParseHandler.getHandledTypes()) {
 /* 1162 */             supportedTypes.append(" ").append(type.getCanonicalName()).append(" ");
 /*      */           }
 /* 1164 */           throw new ActivitiException("The default BPMN parse handlers should only support one type, but " + defaultBpmnParseHandler.getClass() + " supports " + supportedTypes

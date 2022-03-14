@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.plugin.core.dao;
+package com.dstz.bpm.plugin.core.dao;
 
-import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmLeaderOptionLog;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog;
+import com.dstz.base.dao.BaseDao;
 import org.apache.ibatis.annotations.Param;
 
 public interface BpmLeaderOptionLogDao extends BaseDao<String, BpmLeaderOptionLog> {

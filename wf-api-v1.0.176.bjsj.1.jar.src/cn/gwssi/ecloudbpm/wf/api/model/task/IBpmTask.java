@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.model.task;
+package com.dstz.bpm.api.model.task;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

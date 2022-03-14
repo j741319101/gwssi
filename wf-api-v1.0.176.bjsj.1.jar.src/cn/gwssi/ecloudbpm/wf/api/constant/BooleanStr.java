@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.constant;
+package com.dstz.bpm.api.constant;
 
 public class BooleanStr {
   public static final String TRUE = "Y";

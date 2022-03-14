@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.vo;
+/*    */ package com.dstz.bpm.core.vo;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskApprove;
+/*    */ import com.dstz.bpm.core.model.BpmTaskApprove;
 /*    */ 
 /*    */ public class BpmTaskApproveVO extends BpmTaskApprove {
 /*    */   protected String approveStatus;

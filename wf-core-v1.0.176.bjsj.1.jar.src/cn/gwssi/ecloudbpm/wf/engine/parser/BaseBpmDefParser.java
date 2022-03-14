@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.parser;
+/*    */ package com.dstz.bpm.engine.parser;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmDef;
-/*    */ import cn.gwssi.ecloudframework.base.core.validate.ValidateUtil;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmDef;
+/*    */ import com.dstz.base.core.validate.ValidateUtil;
 /*    */ import com.alibaba.fastjson.JSON;
 /*    */ import com.alibaba.fastjson.JSONArray;
 /*    */ import com.alibaba.fastjson.JSONObject;

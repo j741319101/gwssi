@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.api.service;
+package com.dstz.sys.api.service;
 
-import cn.gwssi.ecloudframework.sys.api.model.dto.SysFileDTO;
+import com.dstz.sys.api.model.dto.SysFileDTO;
 import java.io.InputStream;
 import java.util.List;
 

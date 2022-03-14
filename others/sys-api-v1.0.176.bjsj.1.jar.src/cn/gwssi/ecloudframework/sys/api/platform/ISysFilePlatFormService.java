@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.api.platform;
+package com.dstz.sys.api.platform;
 
-import cn.gwssi.ecloudframework.sys.api.model.ISysFile;
+import com.dstz.sys.api.model.ISysFile;
 import java.util.List;
 import java.util.Map;
 import org.springframework.http.ResponseEntity;

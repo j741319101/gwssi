@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.sys.service.impl;
+/*    */ package com.dstz.sys.service.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.api.model.mq.RocketTransactionMessageDto;
-/*    */ import cn.gwssi.ecloudframework.sys.api.service.ITransactionSendBusService;
+/*    */ import com.dstz.sys.api.model.mq.RocketTransactionMessageDto;
+/*    */ import com.dstz.sys.api.service.ITransactionSendBusService;
 /*    */ import java.util.concurrent.ConcurrentHashMap;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.apache.rocketmq.client.producer.LocalTransactionState;

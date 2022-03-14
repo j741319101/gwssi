@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl;
+package com.dstz.bpm.api.model.nodedef.impl;
 
 public class ServiceTaskNodeDef extends BaseBpmNodeDef {}
 

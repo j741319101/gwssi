@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.usercalc.user.def;
+/*    */ package com.dstz.bpm.plugin.usercalc.user.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractUserCalcPluginDef;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractUserCalcPluginDef;
 /*    */ 
 /*    */ 
 /*    */ 

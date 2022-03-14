@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.spring;
+/*    */ package com.dstz.base.core.spring;
 /*    */ 
 /*    */ import org.nustaq.serialization.FSTConfiguration;
 /*    */ import org.springframework.data.redis.serializer.RedisSerializer;

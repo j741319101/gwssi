@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudframework.sys.core.model;
+/*     */ package com.dstz.sys.core.model;
 /*     */ 
 /*     */ import java.util.Date;
 /*     */ 

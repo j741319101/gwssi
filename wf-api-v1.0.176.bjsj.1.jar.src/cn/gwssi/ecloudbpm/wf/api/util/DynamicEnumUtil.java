@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.api.util;
+/*     */ package com.dstz.bpm.api.util;
 /*     */ 
 /*     */ import java.lang.reflect.AccessibleObject;
 /*     */ import java.lang.reflect.Array;

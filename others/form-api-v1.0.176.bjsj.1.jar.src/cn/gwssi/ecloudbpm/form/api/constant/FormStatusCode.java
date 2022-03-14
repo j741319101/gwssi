@@ -1,6 +1,6 @@
 /*    */ package cn.gwssi.ecloudbpm.form.api.constant;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.IStatusCode;
+/*    */ import com.dstz.base.api.constant.IStatusCode;
 /*    */ 
 /*    */ 
 /*    */ 

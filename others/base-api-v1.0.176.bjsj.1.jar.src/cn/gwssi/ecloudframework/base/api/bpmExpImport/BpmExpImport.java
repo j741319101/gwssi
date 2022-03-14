@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api.bpmExpImport;
+package com.dstz.base.api.bpmExpImport;
 
 public interface BpmExpImport {
   void bpmExport(String paramString1, String paramString2) throws Exception;

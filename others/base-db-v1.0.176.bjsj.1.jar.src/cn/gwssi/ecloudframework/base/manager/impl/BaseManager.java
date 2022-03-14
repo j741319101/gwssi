@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudframework.base.manager.impl;
+/*    */ package com.dstz.base.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.Page;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-/*    */ import cn.gwssi.ecloudframework.base.dao.BaseDao;
-/*    */ import cn.gwssi.ecloudframework.base.manager.Manager;
+/*    */ import com.dstz.base.api.Page;
+/*    */ import com.dstz.base.api.query.QueryFilter;
+/*    */ import com.dstz.base.dao.BaseDao;
+/*    */ import com.dstz.base.manager.Manager;
 /*    */ import java.io.Serializable;
 /*    */ import java.util.List;
 /*    */ import org.springframework.beans.factory.annotation.Autowired;

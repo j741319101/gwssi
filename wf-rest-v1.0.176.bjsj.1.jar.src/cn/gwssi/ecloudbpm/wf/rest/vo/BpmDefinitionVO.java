@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.rest.vo;
+/*    */ package com.dstz.bpm.rest.vo;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition;
+/*    */ import com.dstz.bpm.core.model.BpmDefinition;
 /*    */ 
 /*    */ 
 /*    */ 

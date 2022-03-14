@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.SysConnectRecordDao">
-	<resultMap id="SysConnectRecord" type="cn.gwssi.ecloudframework.sys.core.model.SysConnectRecord">
+<mapper namespace="com.dstz.sys.core.dao.SysConnectRecordDao">
+	<resultMap id="SysConnectRecord" type="com.dstz.sys.core.model.SysConnectRecord">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="type" column="type_" jdbcType="VARCHAR"/>
 		<result property="sourceId" column="source_id_" jdbcType="VARCHAR"/>
@@ -9,7 +9,7 @@
 		<result property="notice" column="notice" jdbcType="VARCHAR"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysConnectRecord">
+	<insert id="create" parameterType="com.dstz.sys.core.model.SysConnectRecord">
 		INSERT INTO sys_connect_record
 		(id_,type_,source_id_,target_id_,notice)
 		VALUES 
@@ -37,7 +37,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysConnectRecord">
+	<update id="update" parameterType="com.dstz.sys.core.model.SysConnectRecord">
 		UPDATE sys_connect_record SET
 		type_=#{type,jdbcType=VARCHAR},
 		source_id_=#{sourceId,jdbcType=VARCHAR},
@@ -68,7 +68,7 @@
 		target_id_=#{targetId} AND type_ = #{type}
 	</select>
 	
-	 <insert id="bulkCreate" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysConnectRecord">
+	 <insert id="bulkCreate" parameterType="com.dstz.sys.core.model.SysConnectRecord">
        insert INTO sys_connect_record
         SELECT A.* FROM (
         <foreach collection="list" index="index" item="item" separator="UNION ALL">
@@ -77,7 +77,7 @@
         )A
 	  </insert>
 	
-	<insert id="bulkCreate" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysConnectRecord" databaseId="mysql">
+	<insert id="bulkCreate" parameterType="com.dstz.sys.core.model.SysConnectRecord" databaseId="mysql">
 		INSERT INTO sys_connect_record
 		(id_,type_,source_id_,target_id_,notice)
 		VALUES 

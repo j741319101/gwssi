@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudframework.org.api.context;
+package com.dstz.org.api.context;
 
-import cn.gwssi.ecloudframework.org.api.model.IGroup;
-import cn.gwssi.ecloudframework.org.api.model.IUser;
-import cn.gwssi.ecloudframework.org.api.model.IUserRole;
+import com.dstz.org.api.model.IGroup;
+import com.dstz.org.api.model.IUser;
+import com.dstz.org.api.model.IUserRole;
 import java.util.List;
 import java.util.Locale;
 

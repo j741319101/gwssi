@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.api.constant;
+/*     */ package com.dstz.bpm.api.constant;
 /*     */ 
 /*     */ import org.slf4j.Logger;
 /*     */ import org.slf4j.LoggerFactory;

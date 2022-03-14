@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.form.manager;
 
 import cn.gwssi.ecloudbpm.form.model.FormCombinateDialog;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 
 public interface FormCombinateDialogManager extends Manager<String, FormCombinateDialog> {
   FormCombinateDialog getByAlias(String paramString);

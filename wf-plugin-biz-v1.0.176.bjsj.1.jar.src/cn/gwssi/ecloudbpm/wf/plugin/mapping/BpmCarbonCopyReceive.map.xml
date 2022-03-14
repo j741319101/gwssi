@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmCarbonCopyReceiveDao">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.BpmCarbonCopyReceiveDao">
 
-    <resultMap id="BpmCarbonCopyReceive" type="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive">
+    <resultMap id="BpmCarbonCopyReceive" type="com.dstz.bpm.plugin.core.model.BpmCarbonCopyReceive">
         <id property="id" column="id_" jdbcType="VARCHAR"/>
         <result property="ccRecordId" column="cc_record_id" jdbcType="VARCHAR"/>
         <result property="receiveUserId" column="receive_user_id" jdbcType="VARCHAR"/>
@@ -16,7 +16,7 @@
         <result property="type" column="type_" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive">
+    <insert id="create" parameterType="com.dstz.bpm.plugin.core.model.BpmCarbonCopyReceive">
 		INSERT INTO bpm_plugin_carbon_copy_receive
 		(id_,cc_record_id,receive_user_id,read_,status_,create_by_,create_time_,update_by_,update_time_,version_,type_,receive_user_name_)
 		VALUES 
@@ -62,7 +62,7 @@
         </if>
     </select>
 
-    <update id="update" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive">
+    <update id="update" parameterType="com.dstz.bpm.plugin.core.model.BpmCarbonCopyReceive">
 		UPDATE bpm_plugin_carbon_copy_receive SET
 		cc_record_id=#{ccRecordId,jdbcType=VARCHAR},
 		receive_user_id=#{receiveUserId,jdbcType=VARCHAR},
@@ -89,7 +89,7 @@
             (select id_ from bpm_plugin_carbon_copy_record record where record.inst_id = #{instId})
 	</delete>
 
-    <insert id="createList" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive">
+    <insert id="createList" parameterType="com.dstz.bpm.plugin.core.model.BpmCarbonCopyReceive">
         INSERT INTO bpm_plugin_carbon_copy_receive
         (id_,cc_record_id,receive_user_id,read_,status_,create_by_,create_time_,update_by_,update_time_,version_,type_,receive_user_name_)
         VALUES
@@ -130,7 +130,7 @@
         WHERE receive_user_id = #{userId,jdbcType=VARCHAR}
     </update>
 	
-    <select id="listUserReceiveList" resultType="cn.gwssi.ecloudbpm.wf.plugin.vo.BpmUserReceiveCarbonCopyRecordVO">
+    <select id="listUserReceiveList" resultType="com.dstz.bpm.plugin.vo.BpmUserReceiveCarbonCopyRecordVO">
         SELECT
                 a.id_               AS id,
                 b.id_               AS recordId,

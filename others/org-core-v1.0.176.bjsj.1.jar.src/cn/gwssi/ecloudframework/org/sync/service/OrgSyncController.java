@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.org.sync.service;
+/*    */ package com.dstz.org.sync.service;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.aop.annotion.CatchErr;
-/*    */ import cn.gwssi.ecloudframework.base.api.response.impl.ResultMsg;
-/*    */ import cn.gwssi.ecloudframework.base.rest.ControllerTools;
+/*    */ import com.dstz.base.api.aop.annotion.CatchErr;
+/*    */ import com.dstz.base.api.response.impl.ResultMsg;
+/*    */ import com.dstz.base.rest.ControllerTools;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.web.bind.annotation.RequestMapping;
 /*    */ import org.springframework.web.bind.annotation.RestController;

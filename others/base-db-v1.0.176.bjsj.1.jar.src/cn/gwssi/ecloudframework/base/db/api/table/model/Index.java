@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.db.api.table.model;
+package com.dstz.base.db.api.table.model;
 
 import java.util.List;
 

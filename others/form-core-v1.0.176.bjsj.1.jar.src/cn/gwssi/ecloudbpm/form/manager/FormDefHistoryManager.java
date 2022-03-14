@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.form.manager;
 
 import cn.gwssi.ecloudbpm.form.model.FormDefHistory;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 
 public interface FormDefHistoryManager extends Manager<String, FormDefHistory> {
   FormDefHistory getWithoutHtml(String paramString);

@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.sys.api.groovy;
+package com.dstz.sys.api.groovy;
 
 public interface IScript {}
 

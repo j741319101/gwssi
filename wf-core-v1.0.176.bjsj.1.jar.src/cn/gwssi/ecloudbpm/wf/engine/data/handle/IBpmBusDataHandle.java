@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.engine.data.handle;
+package com.dstz.bpm.engine.data.handle;
 
 import cn.gwssi.ecloudbpm.bus.api.model.IBusinessData;
 import cn.gwssi.ecloudbpm.bus.api.model.IBusinessPermission;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmInstance;
+import com.dstz.bpm.core.model.BpmInstance;
 import java.util.Map;
 
 public interface IBpmBusDataHandle {

@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.org.core.model;
+/*     */ package com.dstz.org.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IRelation;
+/*     */ import com.dstz.base.core.model.BaseModel;
+/*     */ import com.dstz.org.api.model.IRelation;
 /*     */ import java.util.Date;
 /*     */ 
 /*     */ 

@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.rest.controller;
+/*    */ package com.dstz.bpm.plugin.rest.controller;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmReminderTriggerManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderTrigger;
-/*    */ import cn.gwssi.ecloudframework.base.rest.BaseController;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmReminderTriggerManager;
+/*    */ import com.dstz.bpm.plugin.core.model.BpmReminderTrigger;
+/*    */ import com.dstz.base.rest.BaseController;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.web.bind.annotation.RequestMapping;
 /*    */ import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.db.transaction;
+/*    */ package com.dstz.base.db.transaction;
 /*    */ 
 /*    */ import org.springframework.jdbc.datasource.ConnectionHolder;
 /*    */ import org.springframework.jdbc.datasource.JdbcTransactionObjectSupport;

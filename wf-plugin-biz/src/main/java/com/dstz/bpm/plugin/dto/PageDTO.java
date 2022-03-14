@@ -1,41 +1,24 @@
-/*    */ package com.dstz.bpm.plugin.dto;
-/*    */ 
-/*    */ import java.io.Serializable;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ public class PageDTO
-/*    */   implements Serializable
-/*    */ {
-/* 13 */   private Integer pageNo = Integer.valueOf(1);
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
-/* 18 */   private Integer pageSize = Integer.valueOf(20);
-/*    */   
-/*    */   public Integer getPageNo() {
-/* 21 */     return this.pageNo;
-/*    */   }
-/*    */   
-/*    */   public void setPageNo(Integer pageNo) {
-/* 25 */     this.pageNo = pageNo;
-/*    */   }
-/*    */   
-/*    */   public Integer getPageSize() {
-/* 29 */     return this.pageSize;
-/*    */   }
-/*    */   
-/*    */   public void setPageSize(Integer pageSize) {
-/* 33 */     this.pageSize = pageSize;
-/*    */   }
-/*    */ }
+package com.dstz.bpm.plugin.dto;
 
+import java.io.Serializable;
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloudbpm/wf-plugin-biz/0.2-SNAPSHOT/wf-plugin-biz-0.2-SNAPSHOT.jar!/cn/gwssi/ecloudbpm/bpm/plugin/dto/PageDTO.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+public class PageDTO implements Serializable {
+   private Integer pageNo = 1;
+   private Integer pageSize = 20;
+
+   public Integer getPageNo() {
+      return this.pageNo;
+   }
+
+   public void setPageNo(Integer pageNo) {
+      this.pageNo = pageNo;
+   }
+
+   public Integer getPageSize() {
+      return this.pageSize;
+   }
+
+   public void setPageSize(Integer pageSize) {
+      this.pageSize = pageSize;
+   }
+}

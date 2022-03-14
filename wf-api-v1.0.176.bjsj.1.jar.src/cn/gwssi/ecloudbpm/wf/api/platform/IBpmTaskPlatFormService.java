@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.api.platform;
+package com.dstz.bpm.api.platform;
 
-import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.FlowRequestParam;
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-import cn.gwssi.ecloudframework.base.db.model.page.PageResult;
-import cn.gwssi.ecloudframework.org.api.model.dto.PageDTO;
+import com.dstz.bpm.api.engine.action.cmd.FlowRequestParam;
+import com.dstz.bpm.api.model.task.IBpmTask;
+import com.dstz.base.db.model.page.PageResult;
+import com.dstz.org.api.model.dto.PageDTO;
 import java.util.List;
 import java.util.Map;
 

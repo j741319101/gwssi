@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.org.api.model.system.dto;
+package com.dstz.org.api.model.system.dto;
 
 public class SubsystemDto {}
 

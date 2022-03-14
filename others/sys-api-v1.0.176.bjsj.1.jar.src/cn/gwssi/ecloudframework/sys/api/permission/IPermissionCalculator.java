@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.sys.api.permission;
+package com.dstz.sys.api.permission;
 
 import com.alibaba.fastjson.JSONObject;
 

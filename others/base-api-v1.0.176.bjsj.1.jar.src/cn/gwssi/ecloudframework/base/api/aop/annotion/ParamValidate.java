@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api.aop.annotion;
+package com.dstz.base.api.aop.annotion;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

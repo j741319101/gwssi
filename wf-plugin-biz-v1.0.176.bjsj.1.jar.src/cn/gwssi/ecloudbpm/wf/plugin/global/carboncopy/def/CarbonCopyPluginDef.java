@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.global.carboncopy.def;
+/*    */ package com.dstz.bpm.plugin.global.carboncopy.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*    */ import java.util.List;
 /*    */ import java.util.Map;
 /*    */ 

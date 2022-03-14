@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudframework.org.core.dao;
+package com.dstz.org.core.dao;
 
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.org.api.model.dto.BpmOrgDTO;
-import cn.gwssi.ecloudframework.org.api.model.dto.BpmUserDTO;
-import cn.gwssi.ecloudframework.org.core.model.User;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.org.api.model.dto.BpmOrgDTO;
+import com.dstz.org.api.model.dto.BpmUserDTO;
+import com.dstz.org.core.model.User;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;

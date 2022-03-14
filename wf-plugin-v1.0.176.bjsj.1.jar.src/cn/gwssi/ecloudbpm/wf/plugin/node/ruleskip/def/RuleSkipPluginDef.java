@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.node.ruleskip.def;
+/*    */ package com.dstz.bpm.plugin.node.ruleskip.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.List;
 /*    */ import javax.validation.Valid;

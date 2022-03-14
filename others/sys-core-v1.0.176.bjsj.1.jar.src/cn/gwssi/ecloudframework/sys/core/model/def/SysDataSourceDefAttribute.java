@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.sys.core.model.def;
+/*    */ package com.dstz.sys.core.model.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.api.model.ISysDataSourceDefAttribute;
+/*    */ import com.dstz.sys.api.model.ISysDataSourceDefAttribute;
 /*    */ 
 /*    */ 
 /*    */ 

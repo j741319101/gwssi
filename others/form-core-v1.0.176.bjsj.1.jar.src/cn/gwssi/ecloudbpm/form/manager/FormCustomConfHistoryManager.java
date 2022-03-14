@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.form.manager;
 
 import cn.gwssi.ecloudbpm.form.model.FormCustomConfHistory;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 
 public interface FormCustomConfHistoryManager extends Manager<String, FormCustomConfHistory> {
   void save(FormCustomConfHistory paramFormCustomConfHistory);

@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.engine.plugin.def;
+/*    */ package com.dstz.bpm.api.engine.plugin.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.UserCalcPluginContext;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.bpm.api.engine.plugin.context.UserCalcPluginContext;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import java.io.Serializable;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.List;

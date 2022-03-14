@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.engine.plugin.context;
+/*     */ package com.dstz.bpm.engine.plugin.context;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.BpmPluginContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmPluginDef;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*     */ import com.dstz.bpm.api.engine.plugin.context.BpmPluginContext;
+/*     */ import com.dstz.bpm.api.engine.plugin.def.BpmPluginDef;
+/*     */ import com.dstz.base.core.util.StringUtil;
 /*     */ import com.alibaba.fastjson.JSON;
 /*     */ import org.slf4j.Logger;
 /*     */ import org.slf4j.LoggerFactory;

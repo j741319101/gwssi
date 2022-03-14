@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.engine.plugin.session;
+package com.dstz.bpm.engine.plugin.session;
 
 import cn.gwssi.ecloudbpm.bus.api.model.IBusinessData;
-import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
+import com.dstz.bpm.api.constant.EventType;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
 import java.util.Map;
 import org.activiti.engine.delegate.VariableScope;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.core.dao.BpmInstanceDao">
-	<resultMap id="BpmInstance" type="cn.gwssi.ecloudbpm.wf.core.vo.BpmInstanceVO">
+<mapper namespace="com.dstz.bpm.core.dao.BpmInstanceDao">
+	<resultMap id="BpmInstance" type="com.dstz.bpm.core.vo.BpmInstanceVO">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="subject" column="subject_" jdbcType="VARCHAR"/>
 		<result property="defId" column="def_id_" jdbcType="VARCHAR"/>
@@ -33,7 +33,7 @@
 		<result property="isTestData" column="is_test_data_" jdbcType="NUMERIC"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmInstance">
+	<insert id="create" parameterType="com.dstz.bpm.core.model.BpmInstance">
 		INSERT INTO bpm_instance
 		(id_,subject_,def_id_,act_def_id_,def_key_,def_name_,biz_key_,status_,end_time_,duration_,
 			type_id_,act_inst_id_,create_by_,creator_,create_time_,create_org_id_,update_by_,update_time_,
@@ -186,7 +186,7 @@
 		</if>
 	</select>
 
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmInstance">
+	<update id="update" parameterType="com.dstz.bpm.core.model.BpmInstance">
 		UPDATE bpm_instance SET
 		subject_=#{subject,jdbcType=VARCHAR},
 		def_id_=#{defId,jdbcType=VARCHAR},
@@ -319,7 +319,7 @@
 		</if>
 	</select>
 
-	<select id="getApproveHistoryList" parameterType="java.util.Map" resultType="cn.gwssi.ecloudbpm.wf.core.model.BpmTaskApprove">
+	<select id="getApproveHistoryList" parameterType="java.util.Map" resultType="com.dstz.bpm.core.model.BpmTaskApprove">
 		select
 			inst.id_ id,
 			inst.subject_ subject,
@@ -356,7 +356,7 @@
 		</if>
 	</select>
 
-	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskApproveVO">
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="com.dstz.bpm.core.vo.BpmTaskApproveVO">
 		select
 		inst.id_ id,
 		inst.subject_ subject,
@@ -404,7 +404,7 @@
 		</if>
 	</select>
 
-	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskApproveVO" databaseId="mysql">
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="com.dstz.bpm.core.vo.BpmTaskApproveVO" databaseId="mysql">
 		select
 			inst.id_ id,
 			inst.subject_ subject,
@@ -452,7 +452,7 @@
 		</if>
 	</select>
 
-	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskApproveVO" databaseId="drds">
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="com.dstz.bpm.core.vo.BpmTaskApproveVO" databaseId="drds">
 		select
 			inst.id_ id,
 			inst.subject_ subject,
@@ -500,7 +500,7 @@
 		</if>
 	</select>
 
-	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskApproveVO" databaseId="kingbase">
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="com.dstz.bpm.core.vo.BpmTaskApproveVO" databaseId="kingbase">
 		select
 		inst.id_ id,
 		inst.subject_ subject,
@@ -548,7 +548,7 @@
 		</if>
 	</select>
 
-	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskApproveVO" databaseId="highgo">
+	<select id="getApproveInstHistoryList" parameterType="java.util.Map" resultType="com.dstz.bpm.core.vo.BpmTaskApproveVO" databaseId="highgo">
 		select
 			inst.id_ id,
 			inst.subject_ subject,
@@ -618,7 +618,7 @@
 		select * from BPM_BUS_LINK  where BIZ_ID_ = #{busId}
 	</select>
 
-	<select id="getApplyListTypeCount" parameterType="java.util.Map" resultType="cn.gwssi.ecloudbpm.wf.core.model.BpmTypeTreeCountVO">
+	<select id="getApplyListTypeCount" parameterType="java.util.Map" resultType="com.dstz.bpm.core.model.BpmTypeTreeCountVO">
 		SELECT  inst.def_key_ as id, min(def.type_id_) as parentId, min(def.name_) as name, count(*) as count FROM bpm_instance inst
 		inner join bpm_definition def on inst.def_id_ = def.id_ <if test="supportMobile"> and def.support_mobile_ = '1' </if>
 		<where>
@@ -632,7 +632,7 @@
 	</select>
 	
 	<!-- mysql低于1.5.8 移除min函数 ,若1.5.8 可以改为  any_value 函数-->
-	<select id="getApproveHistoryListTypeCount" parameterType="java.util.Map" resultType="cn.gwssi.ecloudbpm.wf.core.model.BpmTypeTreeCountVO">
+	<select id="getApproveHistoryListTypeCount" parameterType="java.util.Map" resultType="com.dstz.bpm.core.model.BpmTypeTreeCountVO">
 		SELECT  inst.def_key_ as id, min(def.type_id_) as parentId, min(def.name_) as name, count(*) as count FROM bpm_task_opinion o INNER JOIN bpm_instance inst on o.inst_id_ = inst.id_
 		inner join bpm_definition def on inst.def_id_ = def.id_ <if test="supportMobile"> and def.support_mobile_ = '1' </if>
 		where o.status_ not in ('start','skip','end') and o.approver_ = #{approver} and inst.is_test_data_ = 0

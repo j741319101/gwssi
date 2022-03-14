@@ -4,7 +4,7 @@
 /*    */ import cn.gwssi.ecloudbpm.bus.api.platform.IBusinessObjectPlatFormService;
 /*    */ import cn.gwssi.ecloudbpm.bus.manager.BusinessObjectManager;
 /*    */ import cn.gwssi.ecloudbpm.bus.model.BusinessObject;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 

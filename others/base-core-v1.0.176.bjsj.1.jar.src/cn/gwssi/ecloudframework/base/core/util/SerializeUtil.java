@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.util;
+/*    */ package com.dstz.base.core.util;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.SerializeException;
+/*    */ import com.dstz.base.api.exception.SerializeException;
 /*    */ import java.io.ByteArrayInputStream;
 /*    */ import java.io.ByteArrayOutputStream;
 /*    */ import java.io.IOException;

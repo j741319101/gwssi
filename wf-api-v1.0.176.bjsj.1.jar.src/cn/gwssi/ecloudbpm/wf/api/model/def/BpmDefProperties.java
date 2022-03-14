@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.api.model.def;
+/*     */ package com.dstz.bpm.api.model.def;
 /*     */ 
 /*     */ import java.io.Serializable;
 /*     */ import org.hibernate.validator.constraints.NotBlank;

@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.manager.impl;
+/*    */ package com.dstz.bpm.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.core.dao.BpmBusLinkDao;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmBusLinkManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmBusLink;
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
+/*    */ import com.dstz.bpm.core.dao.BpmBusLinkDao;
+/*    */ import com.dstz.bpm.core.manager.BpmBusLinkManager;
+/*    */ import com.dstz.bpm.core.model.BpmBusLink;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
 /*    */ import java.util.List;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;

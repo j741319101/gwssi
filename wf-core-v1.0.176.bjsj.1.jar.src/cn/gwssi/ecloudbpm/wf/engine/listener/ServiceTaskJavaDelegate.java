@@ -1,23 +1,23 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.engine.listener;
+/*     */ package com.dstz.bpm.engine.listener;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.InstanceActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.context.BpmContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.BpmPluginContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmPluginDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.exception.BpmStatusCode;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefaultInstanceActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.plugin.factory.BpmPluginFactory;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.plugin.factory.BpmPluginSessionFactory;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.plugin.runtime.BpmExecutionPlugin;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.BpmExecutionPluginSession;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessMessage;
+/*     */ import com.dstz.bpm.api.constant.EventType;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.InstanceActionCmd;
+/*     */ import com.dstz.bpm.api.engine.context.BpmContext;
+/*     */ import com.dstz.bpm.api.engine.plugin.context.BpmPluginContext;
+/*     */ import com.dstz.bpm.api.engine.plugin.def.BpmPluginDef;
+/*     */ import com.dstz.bpm.api.exception.BpmStatusCode;
+/*     */ import com.dstz.bpm.api.model.inst.IBpmInstance;
+/*     */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*     */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*     */ import com.dstz.bpm.engine.action.cmd.DefaultInstanceActionCmd;
+/*     */ import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
+/*     */ import com.dstz.bpm.engine.plugin.factory.BpmPluginFactory;
+/*     */ import com.dstz.bpm.engine.plugin.factory.BpmPluginSessionFactory;
+/*     */ import com.dstz.bpm.engine.plugin.runtime.BpmExecutionPlugin;
+/*     */ import com.dstz.bpm.engine.plugin.session.BpmExecutionPluginSession;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.api.exception.BusinessMessage;
 /*     */ import javax.annotation.Resource;
 /*     */ import org.activiti.engine.delegate.DelegateExecution;
 /*     */ import org.activiti.engine.delegate.JavaDelegate;
@@ -74,7 +74,7 @@
 /*  74 */     this.LOG.trace("============【ServiceTask 节点插件】========{}=========", Integer.valueOf(bpmNodeDef.getBpmPluginContexts().size()));
 /*  75 */     for (BpmPluginContext bpmPluginContext : bpmNodeDef.getBpmPluginContexts()) {
 /*  76 */       BpmPluginDef bpmPluginDef = bpmPluginContext.getBpmPluginDef();
-/*  77 */       if (bpmPluginDef instanceof cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmExecutionPluginDef) {
+/*  77 */       if (bpmPluginDef instanceof com.dstz.bpm.api.engine.plugin.def.BpmExecutionPluginDef) {
 /*     */         
 /*  79 */         BpmExecutionPlugin bpmTaskPlugin = BpmPluginFactory.buildExecutionPlugin(bpmPluginContext, eventType);
 /*  80 */         if (bpmTaskPlugin == null)

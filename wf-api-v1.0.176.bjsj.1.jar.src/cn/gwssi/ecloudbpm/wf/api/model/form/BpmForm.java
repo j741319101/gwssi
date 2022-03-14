@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.model.form;
+package com.dstz.bpm.api.model.form;
 
 import cn.gwssi.ecloudbpm.form.api.model.FormCategory;
 import io.swagger.annotations.ApiModel;

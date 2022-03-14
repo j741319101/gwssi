@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.plugin.context;
+package com.dstz.bpm.api.engine.plugin.context;
 
-import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
+import com.dstz.bpm.api.constant.EventType;
 import java.util.List;
 
-public interface BpmPluginContext<T extends cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmPluginDef> extends PluginContext, PluginParse<T>, Comparable<BpmPluginContext> {
+public interface BpmPluginContext<T extends com.dstz.bpm.api.engine.plugin.def.BpmPluginDef> extends PluginContext, PluginParse<T>, Comparable<BpmPluginContext> {
   List<EventType> getEventTypes();
   
   Integer getSn();

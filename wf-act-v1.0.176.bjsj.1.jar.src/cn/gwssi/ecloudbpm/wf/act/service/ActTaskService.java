@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.act.service;
+package com.dstz.bpm.act.service;
 
 import java.util.Map;
 import org.activiti.engine.delegate.DelegateTask;

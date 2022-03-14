@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.bus.manager;
 
 import cn.gwssi.ecloudbpm.bus.model.BusTableDiagram;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 
 public interface BusTableDiagramManager extends Manager<String, BusTableDiagram> {
   String save(BusTableDiagram paramBusTableDiagram);

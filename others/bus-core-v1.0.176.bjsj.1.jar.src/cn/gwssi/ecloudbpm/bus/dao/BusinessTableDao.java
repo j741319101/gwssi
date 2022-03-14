@@ -1,8 +1,8 @@
 package cn.gwssi.ecloudbpm.bus.dao;
 
 import cn.gwssi.ecloudbpm.bus.model.BusinessTable;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.dao.BaseDao;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;

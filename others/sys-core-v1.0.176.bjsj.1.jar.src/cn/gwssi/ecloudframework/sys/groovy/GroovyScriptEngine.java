@@ -1,10 +1,10 @@
-/*     */ package cn.gwssi.ecloudframework.sys.groovy;
+/*     */ package com.dstz.sys.groovy;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*     */ import cn.gwssi.ecloudframework.sys.api.groovy.IGroovyScriptEngine;
-/*     */ import cn.gwssi.ecloudframework.sys.api.groovy.IScript;
-/*     */ import cn.gwssi.ecloudframework.sys.api.groovy.ScriptLog;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.core.util.AppUtil;
+/*     */ import com.dstz.sys.api.groovy.IGroovyScriptEngine;
+/*     */ import com.dstz.sys.api.groovy.IScript;
+/*     */ import com.dstz.sys.api.groovy.ScriptLog;
 /*     */ import groovy.lang.GroovyShell;
 /*     */ import java.util.Arrays;
 /*     */ import java.util.List;

@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.api.constant;
+/*     */ package com.dstz.bpm.api.constant;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.exception.BpmStatusCode;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.util.DynamicEnumUtil;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
+/*     */ import com.dstz.bpm.api.exception.BpmStatusCode;
+/*     */ import com.dstz.bpm.api.util.DynamicEnumUtil;
+/*     */ import com.dstz.base.api.exception.BusinessException;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.List;
 /*     */ 

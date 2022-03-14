@@ -1,9 +1,9 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.core.model;
+/*     */ package com.dstz.bpm.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.inst.BpmExecutionStack;
-/*     */ import cn.gwssi.ecloudframework.base.api.model.IDModel;
+/*     */ import com.dstz.bpm.api.constant.ActionType;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*     */ import com.dstz.bpm.api.model.inst.BpmExecutionStack;
+/*     */ import com.dstz.base.api.model.IDModel;
 /*     */ import java.util.Date;
 /*     */ import java.util.Objects;
 /*     */ import org.apache.commons.lang3.builder.ToStringBuilder;

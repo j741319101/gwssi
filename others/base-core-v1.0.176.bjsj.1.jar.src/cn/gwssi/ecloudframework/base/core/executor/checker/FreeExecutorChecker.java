@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.executor.checker;
+/*    */ package com.dstz.base.core.executor.checker;
 /*    */ 
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 

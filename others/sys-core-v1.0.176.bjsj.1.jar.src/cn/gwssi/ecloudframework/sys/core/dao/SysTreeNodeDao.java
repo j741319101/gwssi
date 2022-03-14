@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudframework.sys.core.dao;
+package com.dstz.sys.core.dao;
 
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
-import cn.gwssi.ecloudframework.sys.api.model.SysNodeOrderParam;
-import cn.gwssi.ecloudframework.sys.core.model.SysTreeNode;
+import com.dstz.base.dao.BaseDao;
+import com.dstz.sys.api.model.SysNodeOrderParam;
+import com.dstz.sys.core.model.SysTreeNode;
 import org.mybatis.spring.annotation.MapperScan;
 
 @MapperScan

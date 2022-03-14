@@ -1,10 +1,10 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.action.handler;
+package com.dstz.bpm.api.engine.action.handler;
 
-import cn.gwssi.ecloudbpm.wf.api.model.def.BpmProcessDef;
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
+import com.dstz.bpm.api.model.def.BpmProcessDef;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
+import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+import com.dstz.bpm.api.model.task.IBpmTask;
+import com.dstz.base.api.query.QueryFilter;
 
 public interface IExtendTaskAction {
   void turnLeaderTask(IBpmTask paramIBpmTask);

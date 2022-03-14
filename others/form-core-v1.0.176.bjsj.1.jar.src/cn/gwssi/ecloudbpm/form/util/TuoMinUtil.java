@@ -1,7 +1,7 @@
 /*     */ package cn.gwssi.ecloudbpm.form.util;
 /*     */ 
 /*     */ import cn.gwssi.ecloudbpm.bus.model.BusinessColumn;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*     */ import com.dstz.base.core.util.StringUtil;
 /*     */ import cn.hutool.core.exceptions.UtilException;
 /*     */ import com.alibaba.fastjson.JSONArray;
 /*     */ import com.alibaba.fastjson.JSONObject;

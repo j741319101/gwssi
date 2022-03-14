@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.executor;
+/*    */ package com.dstz.base.core.executor;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.executor.Executor;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
+/*    */ import com.dstz.base.api.executor.Executor;
+/*    */ import com.dstz.base.core.util.AppUtil;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.Collections;
 /*    */ import java.util.HashMap;

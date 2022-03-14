@@ -1,4 +1,4 @@
-/*   */ package cn.gwssi.ecloudframework.base.core.validate.constant;
+/*   */ package com.dstz.base.core.validate.constant;
 /*   */ 
 /*   */ public enum CaseMode {
 /* 4 */   UPPER,

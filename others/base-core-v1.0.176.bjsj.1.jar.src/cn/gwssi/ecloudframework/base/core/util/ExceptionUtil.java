@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.util;
+/*    */ package com.dstz.base.core.util;
 /*    */ 
 /*    */ import java.io.PrintWriter;
 /*    */ import java.io.StringWriter;

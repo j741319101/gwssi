@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.usercalc.approver.context;
+/*    */ package com.dstz.bpm.plugin.usercalc.approver.context;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmUserCalcPluginDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.runtime.RunTimePlugin;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.context.AbstractUserCalcPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.usercalc.approver.def.ApproverPluginDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.usercalc.approver.executer.ApproverPluginExecutor;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmUserCalcPluginDef;
+/*    */ import com.dstz.bpm.api.engine.plugin.runtime.RunTimePlugin;
+/*    */ import com.dstz.bpm.engine.plugin.context.AbstractUserCalcPluginContext;
+/*    */ import com.dstz.bpm.plugin.usercalc.approver.def.ApproverPluginDef;
+/*    */ import com.dstz.bpm.plugin.usercalc.approver.executer.ApproverPluginExecutor;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import org.springframework.context.annotation.Scope;
 /*    */ import org.springframework.stereotype.Component;

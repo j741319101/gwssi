@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api.query;
+package com.dstz.base.api.query;
 
 public interface WhereClause {
   String getSql();

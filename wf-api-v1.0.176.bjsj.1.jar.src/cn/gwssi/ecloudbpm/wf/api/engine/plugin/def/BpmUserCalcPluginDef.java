@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.plugin.def;
+package com.dstz.bpm.api.engine.plugin.def;
 
-import cn.gwssi.ecloudbpm.wf.api.constant.ExtractType;
-import cn.gwssi.ecloudbpm.wf.api.engine.constant.LogicType;
+import com.dstz.bpm.api.constant.ExtractType;
+import com.dstz.bpm.api.engine.constant.LogicType;
 
 public interface BpmUserCalcPluginDef extends BpmPluginDef {
   ExtractType getExtract();

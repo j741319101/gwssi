@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.sys.api.model.calendar;
+/*     */ package com.dstz.sys.api.model.calendar;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.model.IDModel;
+/*     */ import com.dstz.base.api.model.IDModel;
 /*     */ import java.io.Serializable;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.Date;

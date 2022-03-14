@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.data;
+package com.dstz.bpm.api.engine.data;
 
 import cn.gwssi.ecloudbpm.bus.api.model.IBusinessData;
 import cn.gwssi.ecloudbpm.form.api.model.FormType;
-import cn.gwssi.ecloudbpm.wf.api.engine.data.result.BpmFlowData;
-import cn.gwssi.ecloudbpm.wf.api.engine.data.result.BpmFlowInstanceData;
+import com.dstz.bpm.api.engine.data.result.BpmFlowData;
+import com.dstz.bpm.api.engine.data.result.BpmFlowInstanceData;
 import java.util.Map;
 
 public interface BpmFlowDataAccessor {

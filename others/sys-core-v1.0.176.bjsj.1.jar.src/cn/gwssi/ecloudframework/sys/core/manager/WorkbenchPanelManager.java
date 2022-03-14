@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudframework.sys.core.manager;
+package com.dstz.sys.core.manager;
 
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.sys.core.model.WorkbenchPanel;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.manager.Manager;
+import com.dstz.sys.core.model.WorkbenchPanel;
 import com.alibaba.fastjson.JSON;
 import java.util.List;
 import java.util.Map;

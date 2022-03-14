@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.api.service;
+package com.dstz.bpm.api.service;
 
-import cn.gwssi.ecloudbpm.wf.api.constant.NodeType;
-import cn.gwssi.ecloudbpm.wf.api.model.def.BpmProcessDef;
-import cn.gwssi.ecloudbpm.wf.api.model.def.IBpmDefinition;
-import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
+import com.dstz.bpm.api.constant.NodeType;
+import com.dstz.bpm.api.model.def.BpmProcessDef;
+import com.dstz.bpm.api.model.def.IBpmDefinition;
+import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
 import java.util.List;
 
 public interface BpmProcessDefService {

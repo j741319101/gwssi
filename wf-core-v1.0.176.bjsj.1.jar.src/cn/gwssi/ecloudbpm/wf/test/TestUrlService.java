@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.test;
+/*    */ package com.dstz.bpm.test;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 

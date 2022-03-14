@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudframework.sys.core.manager.impl;
+/*    */ package com.dstz.sys.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.dao.HolidayConfDao;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.HolidayConfManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.WorkCalenDarManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.model.HolidayConf;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
+/*    */ import com.dstz.sys.core.dao.HolidayConfDao;
+/*    */ import com.dstz.sys.core.manager.HolidayConfManager;
+/*    */ import com.dstz.sys.core.manager.WorkCalenDarManager;
+/*    */ import com.dstz.sys.core.model.HolidayConf;
 /*    */ import java.io.Serializable;
 /*    */ import java.util.Date;
 /*    */ import javax.annotation.Resource;

@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.service;
+package com.dstz.bpm.api.service;
 
 import java.io.InputStream;
 

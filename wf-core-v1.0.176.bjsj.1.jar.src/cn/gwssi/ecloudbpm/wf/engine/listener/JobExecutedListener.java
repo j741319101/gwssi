@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.listener;
+/*    */ package com.dstz.bpm.engine.listener;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.act.listener.ActEventListener;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.context.BpmContext;
+/*    */ import com.dstz.bpm.act.listener.ActEventListener;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*    */ import com.dstz.bpm.api.engine.context.BpmContext;
 /*    */ import org.activiti.engine.delegate.event.ActivitiEvent;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 

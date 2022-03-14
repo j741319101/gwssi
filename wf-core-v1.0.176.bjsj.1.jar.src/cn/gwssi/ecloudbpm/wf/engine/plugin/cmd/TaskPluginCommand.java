@@ -1,19 +1,19 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.plugin.cmd;
+/*    */ package com.dstz.bpm.engine.plugin.cmd;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.TaskActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.cmd.TaskCommand;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.BpmPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.exception.BpmStatusCode;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.factory.BpmPluginFactory;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.factory.BpmPluginSessionFactory;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.runtime.BpmExecutionPlugin;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.BpmExecutionPluginSession;
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessMessage;
+/*    */ import com.dstz.bpm.api.constant.EventType;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.TaskActionCmd;
+/*    */ import com.dstz.bpm.api.engine.plugin.cmd.TaskCommand;
+/*    */ import com.dstz.bpm.api.engine.plugin.context.BpmPluginContext;
+/*    */ import com.dstz.bpm.api.exception.BpmStatusCode;
+/*    */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*    */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*    */ import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
+/*    */ import com.dstz.bpm.engine.plugin.factory.BpmPluginFactory;
+/*    */ import com.dstz.bpm.engine.plugin.factory.BpmPluginSessionFactory;
+/*    */ import com.dstz.bpm.engine.plugin.runtime.BpmExecutionPlugin;
+/*    */ import com.dstz.bpm.engine.plugin.session.BpmExecutionPluginSession;
+/*    */ import com.dstz.base.api.exception.BusinessException;
+/*    */ import com.dstz.base.api.exception.BusinessMessage;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.Collections;
 /*    */ import java.util.List;
@@ -47,7 +47,7 @@
 /* 47 */     List<BpmPluginContext> allPlugins = new ArrayList<>(bpmNodeDef.getBpmPluginContexts().size() + bpmProcessDef.getBpmPluginContexts().size());
 /*    */     
 /* 49 */     bpmNodeDef.getBpmPluginContexts().forEach(context -> {
-/*    */           if (context.getBpmPluginDef() instanceof cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmExecutionPluginDef) {
+/*    */           if (context.getBpmPluginDef() instanceof com.dstz.bpm.api.engine.plugin.def.BpmExecutionPluginDef) {
 /*    */             allPlugins.add(context);
 /*    */           }
 /*    */         });

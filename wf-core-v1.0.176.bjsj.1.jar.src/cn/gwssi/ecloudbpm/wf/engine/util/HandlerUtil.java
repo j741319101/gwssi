@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.util;
+/*    */ package com.dstz.bpm.engine.util;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
-/*    */ import cn.gwssi.ecloudframework.sys.api.groovy.IGroovyScriptEngine;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*    */ import com.dstz.base.core.util.AppUtil;
+/*    */ import com.dstz.base.core.util.StringUtil;
+/*    */ import com.dstz.sys.api.groovy.IGroovyScriptEngine;
 /*    */ import java.lang.reflect.Method;
 /*    */ import org.slf4j.Logger;
 /*    */ import org.slf4j.LoggerFactory;

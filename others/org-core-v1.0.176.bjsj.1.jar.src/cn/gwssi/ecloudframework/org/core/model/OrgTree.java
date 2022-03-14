@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.org.core.model;
+/*     */ package com.dstz.org.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.model.Tree;
+/*     */ import com.dstz.base.api.model.Tree;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.Collections;
 /*     */ import java.util.List;

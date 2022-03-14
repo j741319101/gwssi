@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.sys.upload;
+/*    */ package com.dstz.sys.upload;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.PropertyUtil;
+/*    */ import com.dstz.base.api.exception.BusinessException;
+/*    */ import com.dstz.base.core.util.AppUtil;
+/*    */ import com.dstz.base.core.util.PropertyUtil;
 /*    */ import java.util.Map;
 /*    */ 
 /*    */ 

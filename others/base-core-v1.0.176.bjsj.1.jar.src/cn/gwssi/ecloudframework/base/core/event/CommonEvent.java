@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.event;
+/*    */ package com.dstz.base.core.event;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.EventEnum;
+/*    */ import com.dstz.base.api.constant.EventEnum;
 /*    */ import org.springframework.context.ApplicationEvent;
 /*    */ 
 /*    */ 

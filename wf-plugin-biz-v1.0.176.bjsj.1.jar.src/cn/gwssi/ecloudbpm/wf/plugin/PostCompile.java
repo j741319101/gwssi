@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin;
+/*    */ package com.dstz.bpm.plugin;
 /*    */ import cn.hutool.core.io.IoUtil;
 /*    */ import java.io.BufferedReader;
 /*    */ import java.io.File;

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.constant;
+/*    */ package com.dstz.sys.api.constant;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ 
 /*    */ public enum EnvironmentConstant
 /*    */ {

@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.org.api.model.dto;
+/*     */ package com.dstz.org.api.model.dto;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IGroup;
+/*     */ import com.dstz.org.api.model.IGroup;
 /*     */ 
 /*     */ 
 /*     */ 

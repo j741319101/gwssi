@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.global.script.def;
+/*    */ package com.dstz.bpm.plugin.global.script.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*    */ import com.dstz.bpm.api.constant.EventType;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*    */ import java.util.HashMap;
 /*    */ import java.util.Map;
 /*    */ 

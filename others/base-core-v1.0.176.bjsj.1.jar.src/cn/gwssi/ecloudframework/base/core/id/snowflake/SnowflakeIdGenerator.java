@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.id.snowflake;
+/*    */ package com.dstz.base.core.id.snowflake;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.id.IdGenerator;
+/*    */ import com.dstz.base.core.id.IdGenerator;
 /*    */ import java.util.concurrent.atomic.AtomicReference;
 /*    */ import org.springframework.util.Assert;
 /*    */ 

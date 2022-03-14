@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.base.db.api.table;
+package com.dstz.base.db.api.table;
 
-import cn.gwssi.ecloudframework.base.api.query.FieldSort;
+import com.dstz.base.api.query.FieldSort;
 import java.util.List;
 
 public interface IDialect {

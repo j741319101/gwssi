@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.model.calendar.dto;
+/*    */ package com.dstz.sys.api.model.calendar.dto;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.org.api.model.IUser;
+/*    */ import com.dstz.org.api.model.IUser;
 /*    */ import java.io.Serializable;
 /*    */ import org.hibernate.validator.constraints.NotBlank;
 /*    */ 

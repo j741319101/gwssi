@@ -1,9 +1,9 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.engine.action.helper;
+/*     */ package com.dstz.bpm.engine.action.helper;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.org.api.model.IUser;
-/*     */ import cn.gwssi.ecloudframework.sys.util.ContextUtil;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.org.api.model.IUser;
+/*     */ import com.dstz.sys.util.ContextUtil;
 /*     */ import java.util.Map;
 /*     */ import java.util.concurrent.CountDownLatch;
 /*     */ import org.apache.commons.collections.MapUtils;

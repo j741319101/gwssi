@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.api.platform;
+package com.dstz.bpm.api.platform;
 
-import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.FlowRequestParam;
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTaskApprove;
-import cn.gwssi.ecloudframework.base.db.model.page.PageResult;
+import com.dstz.bpm.api.engine.action.cmd.FlowRequestParam;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
+import com.dstz.bpm.api.model.task.IBpmTaskApprove;
+import com.dstz.base.db.model.page.PageResult;
 import com.alibaba.fastjson.JSONObject;
 import java.util.List;
 import org.springframework.http.ResponseEntity;

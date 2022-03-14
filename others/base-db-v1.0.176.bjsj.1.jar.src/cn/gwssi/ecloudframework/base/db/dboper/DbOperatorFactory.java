@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.base.db.dboper;
+/*    */ package com.dstz.base.db.dboper;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.DbType;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*    */ import cn.gwssi.ecloudframework.base.db.datasource.DbContextHolder;
+/*    */ import com.dstz.base.api.constant.DbType;
+/*    */ import com.dstz.base.core.util.AppUtil;
+/*    */ import com.dstz.base.db.datasource.DbContextHolder;
 /*    */ import org.slf4j.Logger;
 /*    */ import org.slf4j.LoggerFactory;
 /*    */ import org.springframework.jdbc.core.JdbcTemplate;

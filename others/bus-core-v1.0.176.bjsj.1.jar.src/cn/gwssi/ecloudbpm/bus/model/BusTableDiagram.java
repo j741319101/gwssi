@@ -1,6 +1,6 @@
 /*     */ package cn.gwssi.ecloudbpm.bus.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.model.IBaseModel;
+/*     */ import com.dstz.base.api.model.IBaseModel;
 /*     */ import java.util.Date;
 /*     */ import org.hibernate.validator.constraints.NotEmpty;
 /*     */ 

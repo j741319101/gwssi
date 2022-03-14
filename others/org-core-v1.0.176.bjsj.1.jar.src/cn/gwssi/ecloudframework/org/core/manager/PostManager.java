@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.org.core.manager;
+package com.dstz.org.core.manager;
 
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.org.core.model.Post;
+import com.dstz.base.manager.Manager;
+import com.dstz.org.core.model.Post;
 import java.util.List;
 
 public interface PostManager extends Manager<String, Post> {

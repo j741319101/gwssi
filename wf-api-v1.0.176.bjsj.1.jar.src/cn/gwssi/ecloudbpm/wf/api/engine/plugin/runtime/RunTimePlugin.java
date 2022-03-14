@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.plugin.runtime;
+package com.dstz.bpm.api.engine.plugin.runtime;
 
 public interface RunTimePlugin<S, M, R> {
   R execute(S paramS, M paramM);

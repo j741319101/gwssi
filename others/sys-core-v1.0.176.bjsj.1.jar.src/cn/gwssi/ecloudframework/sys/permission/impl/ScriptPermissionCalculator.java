@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.sys.permission.impl;
+/*    */ package com.dstz.sys.permission.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.api.groovy.IGroovyScriptEngine;
-/*    */ import cn.gwssi.ecloudframework.sys.api.permission.IPermissionCalculator;
+/*    */ import com.dstz.sys.api.groovy.IGroovyScriptEngine;
+/*    */ import com.dstz.sys.api.permission.IPermissionCalculator;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;

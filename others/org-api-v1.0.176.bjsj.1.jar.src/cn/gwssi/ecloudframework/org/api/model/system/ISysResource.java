@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.org.api.model.system;
+package com.dstz.org.api.model.system;
 
-import cn.gwssi.ecloudframework.base.api.model.Tree;
+import com.dstz.base.api.model.Tree;
 import java.util.List;
 
 public interface ISysResource extends Tree {

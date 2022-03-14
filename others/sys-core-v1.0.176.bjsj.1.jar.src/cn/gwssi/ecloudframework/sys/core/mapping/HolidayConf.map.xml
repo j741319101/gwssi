@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.HolidayConfDao">
-	<resultMap id="HolidayConf" type="cn.gwssi.ecloudframework.sys.core.model.HolidayConf">
+<mapper namespace="com.dstz.sys.core.dao.HolidayConfDao">
+	<resultMap id="HolidayConf" type="com.dstz.sys.core.model.HolidayConf">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="name" column="name_" jdbcType="VARCHAR"/>
 		<result property="system" column="system_" jdbcType="VARCHAR"/>
@@ -12,7 +12,7 @@
 		<result property="remark" column="remark_" jdbcType="VARCHAR"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.HolidayConf">
+	<insert id="create" parameterType="com.dstz.sys.core.model.HolidayConf">
 		INSERT INTO c_holiday_conf
 		(id_,name_,system_,year_,startDay_,endDay_,type_,remark_)
 		VALUES 
@@ -40,7 +40,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.HolidayConf">
+	<update id="update" parameterType="com.dstz.sys.core.model.HolidayConf">
 		UPDATE c_holiday_conf SET
 		name_=#{name,jdbcType=VARCHAR},
 		system_=#{system,jdbcType=VARCHAR},

@@ -1,228 +1,225 @@
-/*     */ package com.dstz.bpm.plugin.core.manager.impl;
-/*     */ 
-/*     */ import com.dstz.base.api.query.FieldRelation;
-/*     */ import com.dstz.base.api.query.QueryFilter;
-/*     */ import com.dstz.base.api.query.QueryOP;
-/*     */ import com.dstz.base.api.query.WhereClause;
-/*     */ import com.dstz.base.core.util.StringUtil;
-/*     */ import com.dstz.base.db.model.query.DefaultFieldLogic;
-/*     */ import com.dstz.base.db.model.query.DefaultQueryField;
-/*     */ import com.dstz.base.db.model.query.DefaultQueryFilter;
-/*     */ import com.dstz.base.manager.impl.BaseManager;
-/*     */ import com.dstz.bpm.plugin.core.dao.BpmUserAgencyConfigDao;
-/*     */ import com.dstz.bpm.plugin.core.dao.BpmUserAgencyLogDao;
-/*     */ import com.dstz.bpm.plugin.core.manager.BpmUserAgencyConfigManager;
-/*     */
+package com.dstz.bpm.plugin.core.manager.impl;
+
+import com.dstz.bpm.plugin.core.dao.BpmUserAgencyConfigDao;
+import com.dstz.bpm.plugin.core.dao.BpmUserAgencyLogDao;
+import com.dstz.bpm.plugin.core.manager.BpmUserAgencyConfigManager;
 import com.dstz.bpm.plugin.core.model.BpmUserAgencyConfig;
-/*     */ import com.dstz.bpm.plugin.dto.BpmUserAgencyConfigTabDTO;
-/*     */ import com.dstz.bpm.plugin.enums.BpmUserAgencyConfigTabEnum;
-/*     */ import com.dstz.org.api.model.IUser;
-/*     */ import com.dstz.org.api.service.UserService;
-/*     */ import cn.hutool.core.date.DateUtil;
-/*     */ import com.github.pagehelper.Page;
-/*     */ import com.github.pagehelper.PageHelper;
-/*     */ import java.io.Serializable;
-/*     */ import java.util.ArrayList;
-/*     */ import java.util.Arrays;
-/*     */ import java.util.Date;
-/*     */ import java.util.HashSet;
-/*     */ import java.util.List;
-/*     */ import java.util.Set;
-/*     */ import java.util.stream.Collectors;
-/*     */ import javax.annotation.Resource;
-/*     */ import org.springframework.beans.factory.annotation.Autowired;
-/*     */ import org.springframework.stereotype.Service;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ @Service("bpmUserAgencyConfigManager")
-/*     */ public class BpmUserAgencyConfigManagerImpl
-/*     */   extends BaseManager<String, BpmUserAgencyConfig>
-/*     */   implements BpmUserAgencyConfigManager
-/*     */ {
-/*     */   @Autowired
-/*     */   private BpmUserAgencyConfigDao bpmUserAgencyConfigDao;
-/*     */   @Autowired
-/*     */   private BpmUserAgencyLogDao bpmUserAgencyLogDao;
-/*     */   @Resource
-/*     */   UserService UserService;
-/*     */   
-/*     */   public List<BpmUserAgencyConfig> selectTakeEffectingList(String configUserId, Date currentTime) {
-/*  50 */     return this.bpmUserAgencyConfigDao.selectTakeEffectingList(configUserId, DateUtil.format(currentTime, "yyyy-MM-dd HH:mm:ss"), null);
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   public Page<BpmUserAgencyConfig> selectTabList(BpmUserAgencyConfigTabDTO bpmUserAgencyConfigTabDTO) {
-/*     */     List<BpmUserAgencyConfig> bpmUserAgencyConfigList;
-/*  56 */     Date currentTime = new Date();
-/*  57 */     PageHelper.startPage(bpmUserAgencyConfigTabDTO.getPageNo().intValue(), bpmUserAgencyConfigTabDTO.getPageSize().intValue());
-/*  58 */     if (StringUtil.isNotEmpty(bpmUserAgencyConfigTabDTO.getName())) {
-/*  59 */       bpmUserAgencyConfigTabDTO.setName("%" + bpmUserAgencyConfigTabDTO.getName() + "%");
-/*     */     }
-/*  61 */     if (BpmUserAgencyConfigTabEnum.INVALID.name().equals(bpmUserAgencyConfigTabDTO.getTab())) {
-/*  62 */       bpmUserAgencyConfigList = this.bpmUserAgencyConfigDao.selectInvalidList(bpmUserAgencyConfigTabDTO.getConfigUserId(), DateUtil.format(currentTime, "yyyy-MM-dd HH:mm:ss"), bpmUserAgencyConfigTabDTO.getName());
-/*  63 */     } else if (BpmUserAgencyConfigTabEnum.TAKE_EFFECTING.name().equals(bpmUserAgencyConfigTabDTO.getTab())) {
-/*  64 */       bpmUserAgencyConfigList = this.bpmUserAgencyConfigDao.selectTakeEffectingList(bpmUserAgencyConfigTabDTO.getConfigUserId(), DateUtil.format(currentTime, "yyyy-MM-dd HH:mm:ss"), bpmUserAgencyConfigTabDTO.getName());
-/*  65 */     } else if (BpmUserAgencyConfigTabEnum.WAIT_EFFECT.name().equals(bpmUserAgencyConfigTabDTO.getTab())) {
-/*  66 */       bpmUserAgencyConfigList = this.bpmUserAgencyConfigDao.selectWaitEffectList(bpmUserAgencyConfigTabDTO.getConfigUserId(), DateUtil.format(currentTime, "yyyy-MM-dd HH:mm:ss"), bpmUserAgencyConfigTabDTO.getName());
-/*     */     } else {
-/*     */       
-/*  69 */       bpmUserAgencyConfigList = this.bpmUserAgencyConfigDao.selectAllList(bpmUserAgencyConfigTabDTO.getConfigUserId(), bpmUserAgencyConfigTabDTO.getName());
-/*     */     } 
-/*  71 */     return (Page<BpmUserAgencyConfig>)bpmUserAgencyConfigList;
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   public List<BpmUserAgencyConfig> selectTabListJson(String tab, String name, QueryFilter queryFilter) {
-/*  76 */     DefaultQueryFilter defaultQueryFilter = (DefaultQueryFilter)queryFilter;
-/*  77 */     String c = DateUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss");
-/*  78 */     List<WhereClause> whereClauses = defaultQueryFilter.getFieldLogic().getWhereClauses();
-/*     */ 
-/*     */     
-/*  81 */     if (BpmUserAgencyConfigTabEnum.TAKE_EFFECTING.name().equals(tab)) {
-/*  82 */       whereClauses.add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("LE"), c));
-/*  83 */       whereClauses.add(new DefaultQueryField("end_datetime_", QueryOP.getByVal("GE"), c));
-/*  84 */       whereClauses.add(new DefaultQueryField("enable_", QueryOP.getByVal("EQ"), Integer.valueOf(1)));
-/*  85 */     } else if (BpmUserAgencyConfigTabEnum.WAIT_EFFECT.name().equals(tab)) {
-/*  86 */       whereClauses.add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("GE"), c));
-/*  87 */       whereClauses.add(new DefaultQueryField("enable_", QueryOP.getByVal("EQ"), Integer.valueOf(1)));
-/*  88 */     } else if (BpmUserAgencyConfigTabEnum.INVALID.name().equals(tab)) {
-/*  89 */       DefaultFieldLogic orFieldLogic = new DefaultFieldLogic();
-/*  90 */       orFieldLogic.setFieldRelation(FieldRelation.OR);
-/*  91 */       orFieldLogic.getWhereClauses().add(new DefaultQueryField("end_datetime_", QueryOP.getByVal("LE"), c));
-/*  92 */       orFieldLogic.getWhereClauses().add(new DefaultQueryField("enable_", QueryOP.getByVal("EQ"), Integer.valueOf(0)));
-/*  93 */       whereClauses.add(orFieldLogic);
-/*     */     } 
-/*  95 */     if (StringUtil.isNotEmpty(name)) {
-/*  96 */       DefaultFieldLogic orFieldLogic = new DefaultFieldLogic();
-/*  97 */       orFieldLogic.setFieldRelation(FieldRelation.OR);
-/*  98 */       orFieldLogic.getWhereClauses().add(new DefaultQueryField("target_user_name_", QueryOP.getByVal("LK"), name));
-/*  99 */       orFieldLogic.getWhereClauses().add(new DefaultQueryField("agency_flow_name_", QueryOP.getByVal("LK"), name));
-/* 100 */       whereClauses.add(orFieldLogic);
-/*     */     } 
-/*     */     
-/* 103 */     return this.bpmUserAgencyConfigDao.selectTabListJson((QueryFilter)defaultQueryFilter);
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   public List<BpmUserAgencyConfig> selectTargetListJson(String tab, String name, QueryFilter queryFilter) {
-/* 108 */     List<BpmUserAgencyConfig> configVOS = selectTabListJson(tab, name, queryFilter);
-/* 109 */     configVOS.forEach(conf -> {
-/*     */           IUser user = this.UserService.getUserById(conf.getConfigUserId());
-/*     */           if (null == user) {
-/*     */             conf.setConfigUserName("用户丢失");
-/*     */           } else {
-/*     */             conf.setConfigUserName(user.getFullname());
-/*     */           } 
-/*     */         });
-/* 117 */     return configVOS;
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   public List<BpmUserAgencyConfig> checkTabListJson(QueryFilter queryFilter) throws Exception {
-/* 122 */     DefaultFieldLogic orFieldLogic = new DefaultFieldLogic();
-/* 123 */     orFieldLogic.setFieldRelation(FieldRelation.OR);
-/* 124 */     DefaultFieldLogic leftBegin = new DefaultFieldLogic();
-/* 125 */     String end_datetime_ = null, start_datetime_ = null;
-/* 126 */     List<WhereClause> whereClauses = queryFilter.getFieldLogic().getWhereClauses();
-/* 127 */     DefaultQueryField startDatetime = null;
-/* 128 */     DefaultQueryField endDatetime = null;
-/* 129 */     for (WhereClause clause : whereClauses) {
-/* 130 */       if (clause instanceof DefaultQueryField) {
-/* 131 */         DefaultQueryField defaultQueryField = (DefaultQueryField)clause;
-/* 132 */         if ("start_datetime_".equalsIgnoreCase(defaultQueryField.getField())) {
-/* 133 */           start_datetime_ = (defaultQueryField.getValue() == null) ? "" : defaultQueryField.getValue().toString();
-/* 134 */           startDatetime = defaultQueryField; continue;
-/* 135 */         }  if ("end_datetime_".equalsIgnoreCase(defaultQueryField.getField())) {
-/* 136 */           end_datetime_ = (defaultQueryField.getValue() == null) ? "" : defaultQueryField.getValue().toString();
-/* 137 */           endDatetime = defaultQueryField;
-/*     */         } 
-/*     */       } 
-/*     */     } 
-/* 141 */     if (StringUtil.isEmpty(end_datetime_) || StringUtil.isEmpty(start_datetime_)) {
-/* 142 */       throw new Exception("起始时间或结束时间为空");
-/*     */     }
-/* 144 */     whereClauses.remove(startDatetime);
-/* 145 */     whereClauses.remove(endDatetime);
-/* 146 */     leftBegin.getWhereClauses().add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("LT"), start_datetime_));
-/* 147 */     leftBegin.getWhereClauses().add(new DefaultQueryField("end_datetime_", QueryOP.getByVal("GT"), start_datetime_));
-/* 148 */     DefaultFieldLogic rightBegin = new DefaultFieldLogic();
-/* 149 */     rightBegin.getWhereClauses().add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("GT"), start_datetime_));
-/* 150 */     rightBegin.getWhereClauses().add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("LT"), end_datetime_));
-/*     */     
-/* 152 */     orFieldLogic.getWhereClauses().add(leftBegin);
-/* 153 */     orFieldLogic.getWhereClauses().add(rightBegin);
-/* 154 */     whereClauses.add(orFieldLogic);
-/*     */     
-/* 156 */     whereClauses.add(new DefaultQueryField("enable_", QueryOP.EQUAL, "1"));
-/*     */ 
-/*     */     
-/* 159 */     DefaultQueryField allField = new DefaultQueryField("agency_flow_key_", QueryOP.IS_NULL, "");
-/* 160 */     whereClauses.add(allField);
-/* 161 */     List<BpmUserAgencyConfig> allConfigs = selectTabListJson(null, null, queryFilter);
-/* 162 */     if (allConfigs.size() > 0) {
-/* 163 */       return allConfigs;
-/*     */     }
-/* 165 */     whereClauses.remove(allField);
-/* 166 */     DefaultQueryField flowKey = null;
-/* 167 */     for (WhereClause clause : whereClauses) {
-/* 168 */       if (clause instanceof DefaultQueryField) {
-/* 169 */         DefaultQueryField clauseField = (DefaultQueryField)clause;
-/* 170 */         if ("agency_flow_key_".equalsIgnoreCase(clauseField.getField())) {
-/* 171 */           flowKey = clauseField;
-/*     */           break;
-/*     */         } 
-/*     */       } 
-/*     */     } 
-/* 176 */     if (null != flowKey) {
-/* 177 */       String value = flowKey.getValue().toString();
-/* 178 */       if (value.indexOf(",") != -1) {
-/* 179 */         whereClauses.remove(flowKey);
-/* 180 */         List<BpmUserAgencyConfig> configs = new ArrayList<>();
-/* 181 */         for (String key : value.split(",")) {
-/* 182 */           DefaultQueryField keyField = new DefaultQueryField("agency_flow_key_", QueryOP.getByVal("LK"), key);
-/* 183 */           whereClauses.add(keyField);
-/* 184 */           configs.addAll(selectTabListJson(null, null, queryFilter));
-/* 185 */           whereClauses.remove(keyField);
-/* 186 */           if (configs.size() > 0) {
-/* 187 */             return configs;
-/*     */           }
-/*     */         } 
-/* 190 */         if (configs.size() == 0) {
-/* 191 */           return configs;
-/*     */         }
-/*     */       } 
-/*     */     } 
-/* 195 */     return selectTabListJson(null, null, queryFilter);
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   public int insertSelective(BpmUserAgencyConfig record) {
-/* 200 */     return this.bpmUserAgencyConfigDao.insertSelective(record);
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   public int updateByPrimaryKeySelective(BpmUserAgencyConfig record) {
-/* 205 */     return this.bpmUserAgencyConfigDao.updateByPrimaryKeySelective(record);
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   public void removeByIds(String... ids) {
-/* 210 */     this.bpmUserAgencyLogDao.removeByConfigIds((Set)Arrays.<String>stream(ids).collect(Collectors.toSet()));
-/* 211 */     super.removeByIds((Serializable[])ids);
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   public void remove(String entityId) {
-/* 216 */     HashSet<String> entityIds = new HashSet<>(1);
-/* 217 */     entityIds.add(entityId);
-/* 218 */     this.bpmUserAgencyLogDao.removeByConfigIds(entityIds);
-/* 219 */     super.remove(entityId);
-/*     */   }
-/*     */ }
+import com.dstz.bpm.plugin.dto.BpmUserAgencyConfigTabDTO;
+import com.dstz.bpm.plugin.enums.BpmUserAgencyConfigTabEnum;
+import com.dstz.base.api.query.FieldRelation;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.api.query.QueryOP;
+import com.dstz.base.api.query.WhereClause;
+import com.dstz.base.core.util.StringUtil;
+import com.dstz.base.db.model.query.DefaultFieldLogic;
+import com.dstz.base.db.model.query.DefaultQueryField;
+import com.dstz.base.manager.impl.BaseManager;
+import com.dstz.org.api.model.IUser;
+import com.dstz.org.api.service.UserService;
+import cn.hutool.core.date.DateUtil;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
+@Service("bpmUserAgencyConfigManager")
+public class BpmUserAgencyConfigManagerImpl extends BaseManager<String, BpmUserAgencyConfig> implements BpmUserAgencyConfigManager {
+   @Resource
+   private BpmUserAgencyConfigDao bpmUserAgencyConfigDao;
+   @Resource
+   private BpmUserAgencyLogDao bpmUserAgencyLogDao;
+   @Resource
+   private UserService userService;
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloudbpm/wf-plugin-biz/0.2-SNAPSHOT/wf-plugin-biz-0.2-SNAPSHOT.jar!/cn/gwssi/ecloudbpm/bpm/plugin/core/manager/impl/BpmUserAgencyConfigManagerImpl.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+   public List<BpmUserAgencyConfig> selectTakeEffectingList(String configUserId, Date currentTime) {
+      return this.bpmUserAgencyConfigDao.selectTakeEffectingList(configUserId, DateUtil.format(currentTime, "yyyy-MM-dd HH:mm:ss"), (String)null);
+   }
+
+   public Page<BpmUserAgencyConfig> selectTabList(BpmUserAgencyConfigTabDTO bpmUserAgencyConfigTabDTO) {
+      Date currentTime = new Date();
+      PageHelper.startPage(bpmUserAgencyConfigTabDTO.getPageNo(), bpmUserAgencyConfigTabDTO.getPageSize());
+      if (StringUtil.isNotEmpty(bpmUserAgencyConfigTabDTO.getName())) {
+         bpmUserAgencyConfigTabDTO.setName("%" + bpmUserAgencyConfigTabDTO.getName() + "%");
+      }
+
+      List bpmUserAgencyConfigList;
+      if (BpmUserAgencyConfigTabEnum.INVALID.name().equals(bpmUserAgencyConfigTabDTO.getTab())) {
+         bpmUserAgencyConfigList = this.bpmUserAgencyConfigDao.selectInvalidList(bpmUserAgencyConfigTabDTO.getConfigUserId(), DateUtil.format(currentTime, "yyyy-MM-dd HH:mm:ss"), bpmUserAgencyConfigTabDTO.getName());
+      } else if (BpmUserAgencyConfigTabEnum.TAKE_EFFECTING.name().equals(bpmUserAgencyConfigTabDTO.getTab())) {
+         bpmUserAgencyConfigList = this.bpmUserAgencyConfigDao.selectTakeEffectingList(bpmUserAgencyConfigTabDTO.getConfigUserId(), DateUtil.format(currentTime, "yyyy-MM-dd HH:mm:ss"), bpmUserAgencyConfigTabDTO.getName());
+      } else if (BpmUserAgencyConfigTabEnum.WAIT_EFFECT.name().equals(bpmUserAgencyConfigTabDTO.getTab())) {
+         bpmUserAgencyConfigList = this.bpmUserAgencyConfigDao.selectWaitEffectList(bpmUserAgencyConfigTabDTO.getConfigUserId(), DateUtil.format(currentTime, "yyyy-MM-dd HH:mm:ss"), bpmUserAgencyConfigTabDTO.getName());
+      } else {
+         bpmUserAgencyConfigList = this.bpmUserAgencyConfigDao.selectAllList(bpmUserAgencyConfigTabDTO.getConfigUserId(), bpmUserAgencyConfigTabDTO.getName());
+      }
+
+      return (Page)bpmUserAgencyConfigList;
+   }
+
+   public List<BpmUserAgencyConfig> selectTabListJson(String tab, String name, QueryFilter queryFilter) {
+      String c = DateUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss");
+      List<WhereClause> whereClauses = queryFilter.getFieldLogic().getWhereClauses();
+      DefaultFieldLogic orFieldLogic;
+      if (BpmUserAgencyConfigTabEnum.TAKE_EFFECTING.name().equals(tab)) {
+         whereClauses.add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("LE"), c));
+         whereClauses.add(new DefaultQueryField("end_datetime_", QueryOP.getByVal("GE"), c));
+         whereClauses.add(new DefaultQueryField("enable_", QueryOP.getByVal("EQ"), 1));
+      } else if (BpmUserAgencyConfigTabEnum.WAIT_EFFECT.name().equals(tab)) {
+         whereClauses.add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("GE"), c));
+         whereClauses.add(new DefaultQueryField("enable_", QueryOP.getByVal("EQ"), 1));
+      } else if (BpmUserAgencyConfigTabEnum.INVALID.name().equals(tab)) {
+         orFieldLogic = new DefaultFieldLogic();
+         orFieldLogic.setFieldRelation(FieldRelation.OR);
+         orFieldLogic.getWhereClauses().add(new DefaultQueryField("end_datetime_", QueryOP.getByVal("LE"), c));
+         orFieldLogic.getWhereClauses().add(new DefaultQueryField("enable_", QueryOP.getByVal("EQ"), 0));
+         whereClauses.add(orFieldLogic);
+      }
+
+      if (StringUtil.isNotEmpty(name)) {
+         orFieldLogic = new DefaultFieldLogic();
+         orFieldLogic.setFieldRelation(FieldRelation.OR);
+         orFieldLogic.getWhereClauses().add(new DefaultQueryField("target_user_name_", QueryOP.getByVal("LK"), name));
+         orFieldLogic.getWhereClauses().add(new DefaultQueryField("agency_flow_name_", QueryOP.getByVal("LK"), name));
+         whereClauses.add(orFieldLogic);
+      }
+
+      return this.bpmUserAgencyConfigDao.selectTabListJson(queryFilter);
+   }
+
+   public List<BpmUserAgencyConfig> selectTargetListJson(String tab, String name, QueryFilter queryFilter) {
+      List<BpmUserAgencyConfig> configVOS = this.selectTabListJson(tab, name, queryFilter);
+      configVOS.forEach((conf) -> {
+         IUser user = this.userService.getUserById(conf.getConfigUserId());
+         if (null == user) {
+            conf.setConfigUserName("用户丢失");
+         } else {
+            conf.setConfigUserName(user.getFullname());
+         }
+
+      });
+      return configVOS;
+   }
+
+   public List<BpmUserAgencyConfig> checkTabListJson(QueryFilter queryFilter) throws Exception {
+      DefaultFieldLogic orFieldLogic = new DefaultFieldLogic();
+      orFieldLogic.setFieldRelation(FieldRelation.OR);
+      DefaultFieldLogic leftBegin = new DefaultFieldLogic();
+      String end_datetime_ = null;
+      String start_datetime_ = null;
+      List<WhereClause> whereClauses = queryFilter.getFieldLogic().getWhereClauses();
+      DefaultQueryField startDatetime = null;
+      DefaultQueryField endDatetime = null;
+      Iterator var9 = whereClauses.iterator();
+
+      DefaultQueryField allField;
+      while(var9.hasNext()) {
+         WhereClause clause = (WhereClause)var9.next();
+         if (clause instanceof DefaultQueryField) {
+            allField = (DefaultQueryField)clause;
+            if ("start_datetime_".equalsIgnoreCase(allField.getField())) {
+               start_datetime_ = allField.getValue() == null ? "" : allField.getValue().toString();
+               startDatetime = allField;
+            } else if ("end_datetime_".equalsIgnoreCase(allField.getField())) {
+               end_datetime_ = allField.getValue() == null ? "" : allField.getValue().toString();
+               endDatetime = allField;
+            }
+         }
+      }
+
+      if (!StringUtil.isEmpty(end_datetime_) && !StringUtil.isEmpty(start_datetime_)) {
+         whereClauses.remove(startDatetime);
+         whereClauses.remove(endDatetime);
+         leftBegin.getWhereClauses().add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("LT"), start_datetime_));
+         leftBegin.getWhereClauses().add(new DefaultQueryField("end_datetime_", QueryOP.getByVal("GT"), start_datetime_));
+         DefaultFieldLogic rightBegin = new DefaultFieldLogic();
+         rightBegin.getWhereClauses().add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("GT"), start_datetime_));
+         rightBegin.getWhereClauses().add(new DefaultQueryField("start_datetime_", QueryOP.getByVal("LT"), end_datetime_));
+         orFieldLogic.getWhereClauses().add(leftBegin);
+         orFieldLogic.getWhereClauses().add(rightBegin);
+         whereClauses.add(orFieldLogic);
+         whereClauses.add(new DefaultQueryField("enable_", QueryOP.EQUAL, "1"));
+         DefaultQueryField flowKey = null;
+         Iterator var22 = whereClauses.iterator();
+
+         while(var22.hasNext()) {
+            WhereClause clause = (WhereClause)var22.next();
+            if (clause instanceof DefaultQueryField) {
+               DefaultQueryField clauseField = (DefaultQueryField)clause;
+               if ("agency_flow_key_".equalsIgnoreCase(clauseField.getField())) {
+                  flowKey = clauseField;
+                  whereClauses.remove(clauseField);
+                  break;
+               }
+            }
+         }
+
+         allField = new DefaultQueryField("agency_flow_key_", QueryOP.EQUAL, "");
+         whereClauses.add(allField);
+         List<BpmUserAgencyConfig> allConfigs = this.selectTabListJson((String)null, (String)null, queryFilter);
+         if (allConfigs.size() > 0) {
+            return allConfigs;
+         } else {
+            whereClauses.remove(allField);
+            if (null != flowKey) {
+               String value = flowKey.getValue().toString();
+               if (value.indexOf(",") != -1) {
+                  whereClauses.remove(flowKey);
+                  List<BpmUserAgencyConfig> configs = new ArrayList();
+                  String[] var15 = value.split(",");
+                  int var16 = var15.length;
+
+                  for(int var17 = 0; var17 < var16; ++var17) {
+                     String key = var15[var17];
+                     DefaultQueryField keyField = new DefaultQueryField("agency_flow_key_", QueryOP.getByVal("LK"), key);
+                     whereClauses.add(keyField);
+                     configs.addAll(this.selectTabListJson((String)null, (String)null, queryFilter));
+                     whereClauses.remove(keyField);
+                     if (configs.size() > 0) {
+                        return configs;
+                     }
+                  }
+
+                  if (configs.size() == 0) {
+                     return configs;
+                  }
+               } else {
+                  whereClauses.add(flowKey);
+               }
+            }
+
+            return this.selectTabListJson((String)null, (String)null, queryFilter);
+         }
+      } else {
+         throw new Exception("起始时间或结束时间为空");
+      }
+   }
+
+   public int insertSelective(BpmUserAgencyConfig record) {
+      return this.bpmUserAgencyConfigDao.insertSelective(record);
+   }
+
+   public int updateByPrimaryKeySelective(BpmUserAgencyConfig record) {
+      return this.bpmUserAgencyConfigDao.updateByPrimaryKeySelective(record);
+   }
+
+   public void removeByIds(String... ids) {
+      this.bpmUserAgencyLogDao.removeByConfigIds((Set)Arrays.stream(ids).collect(Collectors.toSet()));
+      super.removeByIds(ids);
+   }
+
+   public void remove(String entityId) {
+      HashSet<String> entityIds = new HashSet(1);
+      entityIds.add(entityId);
+      this.bpmUserAgencyLogDao.removeByConfigIds(entityIds);
+      super.remove(entityId);
+   }
+}

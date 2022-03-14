@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.util;
+/*     */ package com.dstz.base.core.util;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.model.Tree;
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryOP;
+/*     */ import com.dstz.base.api.model.Tree;
+/*     */ import com.dstz.base.api.query.QueryOP;
 /*     */ import cn.hutool.core.collection.CollectionUtil;
 /*     */ import cn.hutool.core.date.DateUtil;
 /*     */ import java.util.ArrayList;

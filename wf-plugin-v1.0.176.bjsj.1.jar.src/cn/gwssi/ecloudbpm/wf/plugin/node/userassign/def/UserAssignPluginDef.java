@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.node.userassign.def;
+/*    */ package com.dstz.bpm.plugin.node.userassign.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.UserAssignRule;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.UserAssignRule;
+/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.List;
 /*    */ import javax.validation.Valid;

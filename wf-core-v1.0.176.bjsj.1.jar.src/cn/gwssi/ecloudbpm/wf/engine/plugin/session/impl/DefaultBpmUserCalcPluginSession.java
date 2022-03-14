@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.plugin.session.impl;
+/*    */ package com.dstz.bpm.engine.plugin.session.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.BpmUserCalcPluginSession;
+/*    */ import com.dstz.bpm.api.model.task.IBpmTask;
+/*    */ import com.dstz.bpm.engine.plugin.session.BpmUserCalcPluginSession;
 /*    */ 
 /*    */ 
 /*    */ public class DefaultBpmUserCalcPluginSession

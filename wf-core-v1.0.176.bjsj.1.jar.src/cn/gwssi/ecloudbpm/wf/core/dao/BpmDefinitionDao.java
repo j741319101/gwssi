@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.core.dao;
+package com.dstz.bpm.core.dao;
 
-import cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition;
-import cn.gwssi.ecloudbpm.wf.core.vo.BpmDefinitionVO;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.bpm.core.model.BpmDefinition;
+import com.dstz.bpm.core.vo.BpmDefinitionVO;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.dao.BaseDao;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Param;

@@ -1,62 +1,72 @@
-/*    */ package com.dstz.bpm.plugin.core.manager.impl;
-/*    */ 
-/*    */ import com.dstz.base.api.query.QueryFilter;
-/*    */ import com.dstz.base.api.query.QueryOP;
-/*    */ import com.dstz.base.db.model.query.DefaultQueryFilter;
-/*    */ import com.dstz.base.manager.impl.BaseManager;
-/*    */ import com.dstz.bpm.plugin.core.dao.BpmCarbonCopyReceiveDao;
-/*    */ import com.dstz.bpm.plugin.core.manager.BpmCarbonCopyReceiveManager;
-/*    */
+package com.dstz.bpm.plugin.core.manager.impl;
+
+import com.dstz.bpm.plugin.core.dao.BpmCarbonCopyReceiveDao;
+import com.dstz.bpm.plugin.core.manager.BpmCarbonCopyReceiveManager;
 import com.dstz.bpm.plugin.core.model.BpmCarbonCopyReceive;
-/*    */ import com.dstz.bpm.plugin.vo.BpmUserReceiveCarbonCopyRecordVO;
-/*    */ import com.dstz.sys.util.ContextUtil;
-/*    */ import java.util.List;
-/*    */ import java.util.Set;
-/*    */ import org.springframework.beans.factory.annotation.Autowired;
-/*    */ import org.springframework.stereotype.Service;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ @Service("bpmCarbonCopyReceiveManager")
-/*    */ public class BpmCarbonCopyReceiveManagerImpl
-/*    */   extends BaseManager<String, BpmCarbonCopyReceive>
-/*    */   implements BpmCarbonCopyReceiveManager
-/*    */ {
-/*    */   @Autowired
-/*    */   private BpmCarbonCopyReceiveDao bpmCarbonCopyReceiveDao;
-/*    */   
-/*    */   public int createList(List<BpmCarbonCopyReceive> records) {
-/* 31 */     return this.bpmCarbonCopyReceiveDao.createList(records);
-/*    */   }
-/*    */ 
-/*    */   
-/*    */   public int updateRead(BpmCarbonCopyReceive record, Set<String> primaryKeys) {
-/* 36 */     return this.bpmCarbonCopyReceiveDao.updateRead(record, primaryKeys);
-/*    */   }
-/*    */ 
-/*    */   
-/*    */   public int updateReadByUser() {
-/* 41 */     return this.bpmCarbonCopyReceiveDao.updateReadByUser(ContextUtil.getCurrentUserId());
-/*    */   }
-/*    */ 
-/*    */   
-/*    */   public List<BpmUserReceiveCarbonCopyRecordVO> listUserReceive(QueryFilter queryFilter) {
-/* 46 */     return this.bpmCarbonCopyReceiveDao.listUserReceiveList(queryFilter);
-/*    */   }
-/*    */ 
-/*    */   
-/*    */   public void removeByInstId(String instId) {
-/* 51 */     DefaultQueryFilter defaultQueryFilter = new DefaultQueryFilter();
-/* 52 */     defaultQueryFilter.addFilter("b.inst_id", instId, QueryOP.EQUAL);
-/* 53 */     this.bpmCarbonCopyReceiveDao.listUserReceiveList((QueryFilter)defaultQueryFilter).forEach(bpmUserReceive -> this.bpmCarbonCopyReceiveDao.remove(bpmUserReceive.getId()));
-/*    */   }
-/*    */ }
+import com.dstz.bpm.plugin.vo.BpmUserReceiveCarbonCopyRecordVO;
+import com.dstz.base.api.Page;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.api.query.QueryOP;
+import com.dstz.base.core.util.StringUtil;
+import com.dstz.base.db.model.query.DefaultQueryFilter;
+import com.dstz.base.manager.impl.BaseManager;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
+@Service("bpmCarbonCopyReceiveManager")
+public class BpmCarbonCopyReceiveManagerImpl extends BaseManager<String, BpmCarbonCopyReceive> implements BpmCarbonCopyReceiveManager {
+   @Resource
+   private BpmCarbonCopyReceiveDao bpmCarbonCopyReceiveDao;
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloudbpm/wf-plugin-biz/0.2-SNAPSHOT/wf-plugin-biz-0.2-SNAPSHOT.jar!/cn/gwssi/ecloudbpm/bpm/plugin/core/manager/impl/BpmCarbonCopyReceiveManagerImpl.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+   public int createList(List<BpmCarbonCopyReceive> records) {
+      return this.bpmCarbonCopyReceiveDao.createList(records);
+   }
+
+   public int updateRead(BpmCarbonCopyReceive record, Set<String> primaryKeys) {
+      record.setRead(Boolean.TRUE);
+      record.setUpdateTime(new Date());
+      return this.bpmCarbonCopyReceiveDao.updateRead(record, primaryKeys);
+   }
+
+   public int updateReadByUser(String userId) {
+      return this.bpmCarbonCopyReceiveDao.updateReadByUser(userId);
+   }
+
+   public List<BpmUserReceiveCarbonCopyRecordVO> listUserReceive(QueryFilter queryFilter) {
+      return this.bpmCarbonCopyReceiveDao.listUserReceiveList(queryFilter);
+   }
+
+   public void removeByInstId(String instId) {
+      QueryFilter queryFilter = new DefaultQueryFilter();
+      queryFilter.addFilter("b.inst_id", instId, QueryOP.EQUAL);
+      this.bpmCarbonCopyReceiveDao.listUserReceiveList(queryFilter).forEach((bpmUserReceive) -> {
+         this.bpmCarbonCopyReceiveDao.remove(bpmUserReceive.getId());
+      });
+   }
+
+   public List<BpmCarbonCopyReceive> query2(QueryFilter queryFilter) {
+      return this.bpmCarbonCopyReceiveDao.query2(queryFilter);
+   }
+
+   public List<BpmCarbonCopyReceive> getByParam(String instId, String receiveUserId, String nodeId) {
+      QueryFilter filter = new DefaultQueryFilter();
+      filter.setPage((Page)null);
+      if (StringUtil.isNotEmpty(receiveUserId)) {
+         filter.addFilter("a.receive_user_id", receiveUserId, QueryOP.EQUAL);
+      }
+
+      if (StringUtil.isNotEmpty(instId)) {
+         filter.addFilter("b.inst_id", instId, QueryOP.EQUAL);
+      }
+
+      if (StringUtil.isNotEmpty(nodeId)) {
+         filter.addFilter("b.node_id", nodeId, QueryOP.EQUAL);
+      }
+
+      return this.query2(filter);
+   }
+}

@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.org.api.service;
+package com.dstz.org.api.service;
 
-import cn.gwssi.ecloudframework.org.api.model.IUser;
+import com.dstz.org.api.model.IUser;
 
 public interface LeaderService {
   IUser getUserBySecretaryId(String paramString);

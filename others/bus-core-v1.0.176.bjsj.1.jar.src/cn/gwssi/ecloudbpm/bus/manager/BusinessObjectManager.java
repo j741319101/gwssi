@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.bus.manager;
 
 import cn.gwssi.ecloudbpm.bus.model.BusinessObject;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 import com.alibaba.fastjson.JSONObject;
 import java.util.List;
 

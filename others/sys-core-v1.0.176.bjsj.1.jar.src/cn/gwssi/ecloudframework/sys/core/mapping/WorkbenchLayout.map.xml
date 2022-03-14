@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.WorkbenchLayoutDao">
-    <resultMap id="WorkbenchLayout" type="cn.gwssi.ecloudframework.sys.core.model.WorkbenchLayout">
+<mapper namespace="com.dstz.sys.core.dao.WorkbenchLayoutDao">
+    <resultMap id="WorkbenchLayout" type="com.dstz.sys.core.model.WorkbenchLayout">
         <id property="id" column="id_" jdbcType="VARCHAR"/>
         <result property="panelId" column="panel_id_" jdbcType="VARCHAR"/>
         <result property="custWidth" column="cust_width_" jdbcType="NUMERIC"/>
@@ -11,7 +11,7 @@
         <result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.WorkbenchLayout">
+    <insert id="create" parameterType="com.dstz.sys.core.model.WorkbenchLayout">
 		INSERT INTO sys_workbench_layout
 		(id_,panel_id_,cust_width_,cust_height_,sn_,user_id_,create_time_)
 		VALUES 
@@ -39,7 +39,7 @@
         </if>
     </select>
 
-    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.WorkbenchLayout">
+    <update id="update" parameterType="com.dstz.sys.core.model.WorkbenchLayout">
 		UPDATE sys_workbench_layout SET
 		panel_id_=#{panelId,jdbcType=VARCHAR},
 		cust_width_=#{custWidth,jdbcType=NUMERIC},

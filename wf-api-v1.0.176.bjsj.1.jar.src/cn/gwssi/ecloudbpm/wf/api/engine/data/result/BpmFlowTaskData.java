@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.engine.data.result;
+/*    */ package com.dstz.bpm.api.engine.data.result;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
+/*    */ import com.dstz.bpm.api.model.task.IBpmTask;
 /*    */ import io.swagger.annotations.ApiModelProperty;
 /*    */ 
 /*    */ public class BpmFlowTaskData

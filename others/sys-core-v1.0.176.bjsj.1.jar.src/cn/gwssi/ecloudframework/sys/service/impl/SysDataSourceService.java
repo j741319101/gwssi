@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.sys.service.impl;
+/*    */ package com.dstz.sys.service.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.api.model.ISysDataSource;
-/*    */ import cn.gwssi.ecloudframework.sys.api.service.ISysDataSourceService;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.SysDataSourceManager;
+/*    */ import com.dstz.sys.api.model.ISysDataSource;
+/*    */ import com.dstz.sys.api.service.ISysDataSourceService;
+/*    */ import com.dstz.sys.core.manager.SysDataSourceManager;
 /*    */ import javax.sql.DataSource;
 /*    */ import org.springframework.beans.factory.annotation.Autowired;
 /*    */ import org.springframework.jdbc.core.JdbcTemplate;

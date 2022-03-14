@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.model.remote;
+/*    */ package com.dstz.bpm.api.model.remote;
 /*    */ 
 /*    */ import io.swagger.annotations.ApiModel;
 /*    */ import io.swagger.annotations.ApiModelProperty;

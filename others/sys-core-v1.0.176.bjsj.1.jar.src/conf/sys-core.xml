@@ -7,11 +7,11 @@
     <import resource="base-db.xml"/>
 
     <!-- 缓存配置实现 -->
-    <!-- cn.gwssi.ecloudframework.sys.redis.RedisCache  可切换为redis 的实现-->
-<!--    <bean id="iCache" class="cn.gwssi.ecloudframework.base.core.cache.impl.MemoryCache"/>-->
+    <!-- com.dstz.sys.redis.RedisCache  可切换为redis 的实现-->
+<!--    <bean id="iCache" class="com.dstz.base.core.cache.impl.MemoryCache"/>-->
 
 	<!-- jwtService -->
-	<bean id="jWTService" class="cn.gwssi.ecloudframework.base.core.jwt.JWTService"/>
+	<bean id="jWTService" class="com.dstz.base.core.jwt.JWTService"/>
 
     <bean id="lettuceConnectionFactory" class="org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory">
         <constructor-arg index="0">
@@ -25,7 +25,7 @@
     </bean>
 
     <bean id="stringRedisSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
-    <bean id="fstRedisSerializer" class="cn.gwssi.ecloudframework.base.core.spring.FstRedisSerializer" />
+    <bean id="fstRedisSerializer" class="com.dstz.base.core.spring.FstRedisSerializer" />
 
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="lettuceConnectionFactory"/>
@@ -59,7 +59,7 @@
         <constructor-arg index="2" name="secretKey" value="${uploader.minio.secretKey}"/>
     </bean>
 
-    <bean id="minioOss" class="cn.gwssi.ecloudframework.sys.oss.MinioOss">
+    <bean id="minioOss" class="com.dstz.sys.oss.MinioOss">
         <property name="bucketName" value="${uploader.minio.bucketName}"/>
         <property name="path" value="${uploader.minio.path}"/>
     </bean>

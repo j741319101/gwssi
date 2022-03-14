@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.db.api;
+package com.dstz.base.db.api;
 
 public interface IDynamicDatasource {
   String getDbTypeByAlias(String paramString);

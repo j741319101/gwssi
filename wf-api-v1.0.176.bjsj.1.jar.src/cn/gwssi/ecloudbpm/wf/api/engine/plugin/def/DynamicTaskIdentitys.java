@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.engine.plugin.def;
+/*    */ package com.dstz.bpm.api.engine.plugin.def;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.api.model.SysIdentity;
+/*    */ import com.dstz.sys.api.model.SysIdentity;
 /*    */ import java.util.List;
 /*    */ 
 /*    */ 

@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.act.img;
+/*     */ package com.dstz.bpm.act.img;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.util.ThreadMapUtil;
+/*     */ import com.dstz.base.core.util.ThreadMapUtil;
 /*     */ import java.awt.Color;
 /*     */ import java.awt.Paint;
 /*     */ import java.awt.Stroke;

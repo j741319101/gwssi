@@ -1,13 +1,13 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.impl;
+/*    */ package com.dstz.bpm.plugin.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.TaskSkipType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.BpmPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.service.BpmPluginService;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.global.taskskip.context.TaskSkipPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.global.taskskip.def.TaskSkipPluginDef;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.bpm.api.constant.TaskSkipType;
+/*    */ import com.dstz.bpm.api.engine.plugin.context.BpmPluginContext;
+/*    */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*    */ import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
+/*    */ import com.dstz.bpm.engine.plugin.service.BpmPluginService;
+/*    */ import com.dstz.bpm.plugin.global.taskskip.context.TaskSkipPluginContext;
+/*    */ import com.dstz.bpm.plugin.global.taskskip.def.TaskSkipPluginDef;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import org.springframework.beans.factory.annotation.Autowired;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 

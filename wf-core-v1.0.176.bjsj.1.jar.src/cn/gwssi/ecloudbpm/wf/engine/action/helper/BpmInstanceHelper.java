@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.action.helper;
+/*    */ package com.dstz.bpm.engine.action.helper;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.InstanceStatus;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
+/*    */ import com.dstz.bpm.api.constant.InstanceStatus;
+/*    */ import com.dstz.bpm.api.model.inst.IBpmInstance;
 /*    */ import java.util.Objects;
 /*    */ 
 /*    */ 

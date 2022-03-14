@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.model.mq;
+/*    */ package com.dstz.sys.api.model.mq;
 /*    */ 
 /*    */ 
 /*    */ 

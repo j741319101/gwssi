@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.base.db.tableoper;
+package com.dstz.base.db.tableoper;
 
-import cn.gwssi.ecloudframework.base.db.model.table.Table;
+import com.dstz.base.db.model.table.Table;
 import java.util.Map;
 
 public interface GenerateSqlByDbType {

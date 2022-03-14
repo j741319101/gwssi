@@ -1,19 +1,19 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.executer;
+/*     */ package com.dstz.bpm.plugin.node.dynamictask.executer;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.context.BpmContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.inst.BpmExecutionStack;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.CallActivityNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmTaskStackManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmTask;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskStack;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefualtTaskActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.recrease.executer.SuperviseTaskExecuter;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.usercalc.util.UserCalcPreview;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.sys.api.model.SysIdentity;
+/*     */ import com.dstz.bpm.api.engine.context.BpmContext;
+/*     */ import com.dstz.bpm.api.model.inst.BpmExecutionStack;
+/*     */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*     */ import com.dstz.bpm.api.model.nodedef.impl.CallActivityNodeDef;
+/*     */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*     */ import com.dstz.bpm.core.manager.BpmTaskStackManager;
+/*     */ import com.dstz.bpm.core.model.BpmTask;
+/*     */ import com.dstz.bpm.core.model.BpmTaskStack;
+/*     */ import com.dstz.bpm.engine.action.cmd.DefualtTaskActionCmd;
+/*     */ import com.dstz.bpm.engine.plugin.session.impl.DefaultBpmTaskPluginSession;
+/*     */ import com.dstz.bpm.plugin.node.recrease.executer.SuperviseTaskExecuter;
+/*     */ import com.dstz.bpm.plugin.usercalc.util.UserCalcPreview;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.sys.api.model.SysIdentity;
 /*     */ import cn.hutool.core.bean.BeanUtil;
 /*     */ import cn.hutool.core.bean.copier.CopyOptions;
 /*     */ import cn.hutool.core.collection.CollectionUtil;
@@ -114,7 +114,7 @@
 /* 114 */         bpmTaskStack1.setInstId(task.getInstId());
 /*     */ 
 /*     */         
-/* 117 */         if (bpmNodeDef.getParentBpmNodeDef() != null && bpmNodeDef.getParentBpmNodeDef() instanceof cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.SubProcessNodeDef) {
+/* 117 */         if (bpmNodeDef.getParentBpmNodeDef() != null && bpmNodeDef.getParentBpmNodeDef() instanceof com.dstz.bpm.api.model.nodedef.impl.SubProcessNodeDef) {
 /* 118 */           bpmTaskStack1.setNodeId(bpmNodeDef.getParentBpmNodeDef().getNodeId());
 /* 119 */           BpmContext.setThreadDynamictaskStack(bpmNodeDef.getParentBpmNodeDef().getNodeId(), (BpmExecutionStack)bpmTaskStack1);
 /*     */         } else {

@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.base.db.model.table;
+/*     */ package com.dstz.base.db.model.table;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.ColumnType;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.EnumUtil;
+/*     */ import com.dstz.base.api.constant.ColumnType;
+/*     */ import com.dstz.base.core.util.EnumUtil;
 /*     */ import java.io.Serializable;
 /*     */ import org.hibernate.validator.constraints.NotEmpty;
 /*     */ 
@@ -163,7 +163,7 @@
 /*     */   }
 /*     */   
 /*     */   public static void main(String[] args) {
-/* 166 */     System.out.println(EnumUtil.toJSON("cn.gwssi.ecloudframework.base.db.model.Column$TYPE"));
+/* 166 */     System.out.println(EnumUtil.toJSON("com.dstz.base.db.model.Column$TYPE"));
 /*     */   }
 /*     */ }
 

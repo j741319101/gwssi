@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.api.response.impl;
+/*    */ package com.dstz.base.api.response.impl;
 /*    */ 
 /*    */ import java.util.List;
 /*    */ 

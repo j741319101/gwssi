@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.act.cache;
+/*     */ package com.dstz.bpm.act.cache;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.event.BpmActivitiDefCache;
-/*     */ import cn.gwssi.ecloudframework.base.core.cache.ICache;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
+/*     */ import com.dstz.bpm.api.engine.event.BpmActivitiDefCache;
+/*     */ import com.dstz.base.core.cache.ICache;
+/*     */ import com.dstz.base.core.util.AppUtil;
 /*     */ import cn.hutool.core.util.ObjectUtil;
 /*     */ import java.util.HashMap;
 /*     */ import java.util.Map;

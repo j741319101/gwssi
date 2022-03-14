@@ -1,8 +1,8 @@
 package cn.gwssi.ecloudbpm.form.dao;
 
 import cn.gwssi.ecloudbpm.form.model.FormDef;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.dao.BaseDao;
 import java.util.List;
 import java.util.Map;
 import org.mybatis.spring.annotation.MapperScan;

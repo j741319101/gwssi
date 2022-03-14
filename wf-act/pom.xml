@@ -167,6 +167,11 @@
 			<artifactId>mybatis</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency> <!--暂时添加  bus-form依赖-->
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>29.0-jre</version>
+		</dependency>
 	</dependencies>
 
 	<build>

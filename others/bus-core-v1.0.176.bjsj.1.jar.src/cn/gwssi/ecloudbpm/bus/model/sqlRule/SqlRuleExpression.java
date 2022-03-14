@@ -2,7 +2,7 @@
 /*    */ 
 /*    */ import cn.gwssi.ecloudbpm.bus.api.model.ISqlRuleParam;
 /*    */ import cn.gwssi.ecloudbpm.bus.constant.SqlRuleType;
-/*    */ import cn.gwssi.ecloudframework.base.core.id.IdUtil;
+/*    */ import com.dstz.base.core.id.IdUtil;
 /*    */ import java.util.Map;
 /*    */ import org.apache.commons.lang3.StringUtils;
 /*    */ 

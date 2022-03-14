@@ -1,10 +1,10 @@
-/*     */ package cn.gwssi.ecloudframework.base.db.dboper;
+/*     */ package com.dstz.base.db.dboper;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.ColumnType;
-/*     */ import cn.gwssi.ecloudframework.base.api.constant.DbType;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.db.model.table.Column;
-/*     */ import cn.gwssi.ecloudframework.base.db.model.table.Table;
+/*     */ import com.dstz.base.api.constant.ColumnType;
+/*     */ import com.dstz.base.api.constant.DbType;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.db.model.table.Column;
+/*     */ import com.dstz.base.db.model.table.Table;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.HashSet;
 /*     */ import java.util.LinkedHashMap;

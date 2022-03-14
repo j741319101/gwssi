@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.sys.api.jms.producer;
+package com.dstz.sys.api.jms.producer;
 
-import cn.gwssi.ecloudframework.sys.api.jms.MessageQueueSendException;
-import cn.gwssi.ecloudframework.sys.api.jms.model.JmsDTO;
+import com.dstz.sys.api.jms.MessageQueueSendException;
+import com.dstz.sys.api.jms.model.JmsDTO;
 import java.util.List;
 
 public interface JmsProducer {

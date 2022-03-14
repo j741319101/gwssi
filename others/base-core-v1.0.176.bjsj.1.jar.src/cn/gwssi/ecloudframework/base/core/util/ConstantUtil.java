@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.util;
+/*    */ package com.dstz.base.core.util;
 /*    */ 
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import java.lang.reflect.Field;

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.model.overallview;
+/*    */ package com.dstz.bpm.core.model.overallview;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.core.model.BpmDefinition;
+/*    */ import com.dstz.bpm.core.model.BpmDefinition;
 /*    */ import com.alibaba.fastjson.JSONArray;
 /*    */ import javax.xml.bind.annotation.XmlAccessType;
 /*    */ import javax.xml.bind.annotation.XmlAccessorType;

@@ -1,7 +1,7 @@
 /*    */ package cn.gwssi.ecloudbpm.form.model.design;
 /*    */ 
 /*    */ import cn.gwssi.ecloudbpm.bus.api.model.IBusTableRel;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.List;
 /*    */ 

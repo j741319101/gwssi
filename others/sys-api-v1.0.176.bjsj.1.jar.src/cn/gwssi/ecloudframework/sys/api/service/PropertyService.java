@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.sys.api.service;
+package com.dstz.sys.api.service;
 
 public interface PropertyService {
   String getByAlias(String paramString);

@@ -1,6 +1,6 @@
 package cn.gwssi.ecloudbpm.form.api.platform;
 
-import cn.gwssi.ecloudframework.base.api.response.impl.BaseResult;
+import com.dstz.base.api.response.impl.BaseResult;
 
 public interface IFormCustDialogPlatFormService {
   BaseResult listData(Integer paramInteger1, Integer paramInteger2, String paramString);

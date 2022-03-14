@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.core.dao.TaskIdentityLinkDao">
-    <resultMap id="TaskIdentityLink" type="cn.gwssi.ecloudbpm.wf.core.model.TaskIdentityLink">
+<mapper namespace="com.dstz.bpm.core.dao.TaskIdentityLinkDao">
+    <resultMap id="TaskIdentityLink" type="com.dstz.bpm.core.model.TaskIdentityLink">
         <id property="id" column="id_" jdbcType="VARCHAR"/>
         <result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
         <result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
@@ -15,7 +15,7 @@
         <result property="orgId" column="org_id_" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.core.model.TaskIdentityLink">
+    <insert id="create" parameterType="com.dstz.bpm.core.model.TaskIdentityLink">
 		INSERT INTO bpm_task_identitylink
 		(id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
 		VALUES 
@@ -24,7 +24,7 @@
 		    #{permissionCode,jdbcType=VARCHAR}, #{taskType,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR})
 	</insert>
 
-    <insert id="bulkCreate" parameterType="cn.gwssi.ecloudbpm.wf.core.model.TaskIdentityLink" databaseId="mysql">
+    <insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.TaskIdentityLink" databaseId="mysql">
         insert into bpm_task_identitylink (id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
         values
         <foreach collection="list" item="identityLink" index="index" separator=",">
@@ -40,7 +40,7 @@
         </foreach>
     </insert>
 
-    <insert id="bulkCreate" parameterType="cn.gwssi.ecloudbpm.wf.core.model.TaskIdentityLink" databaseId="drds">
+    <insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.TaskIdentityLink" databaseId="drds">
         insert into bpm_task_identitylink (id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
         values
         <foreach collection="list" item="identityLink" index="index" separator=",">
@@ -56,7 +56,7 @@
         </foreach>
     </insert>
 
-    <insert id="bulkCreate" parameterType="cn.gwssi.ecloudbpm.wf.core.model.TaskIdentityLink" databaseId="kingbase">
+    <insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.TaskIdentityLink" databaseId="kingbase">
         insert into bpm_task_identitylink (id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
         values
         <foreach collection="list" item="identityLink" index="index" separator=",">
@@ -72,7 +72,7 @@
         </foreach>
     </insert>
 
-    <insert id="bulkCreate" parameterType="cn.gwssi.ecloudbpm.wf.core.model.TaskIdentityLink">
+    <insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.TaskIdentityLink">
         insert into bpm_task_identitylink (id_,task_id_,inst_id_,type_,identity_name_,identity_,permission_code_,task_type_,org_id_)
         SELECT A.* FROM (
         <foreach collection="list" index="index" item="identityLink" separator="UNION ALL">
@@ -110,7 +110,7 @@
         </if>
     </select>
 
-    <update id="update" parameterType="cn.gwssi.ecloudbpm.wf.core.model.TaskIdentityLink">
+    <update id="update" parameterType="com.dstz.bpm.core.model.TaskIdentityLink">
 		UPDATE bpm_task_identitylink SET
 		task_id_=#{taskId,jdbcType=VARCHAR},
 		type_=#{type,jdbcType=VARCHAR},

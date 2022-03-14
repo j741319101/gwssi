@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api.context;
+package com.dstz.base.api.context;
 
 public interface ICurrentContext {
   String getCurrentUserId();

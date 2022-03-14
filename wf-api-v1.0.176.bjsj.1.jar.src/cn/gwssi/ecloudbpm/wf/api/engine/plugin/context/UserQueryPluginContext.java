@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.plugin.context;
+package com.dstz.bpm.api.engine.plugin.context;
 
-import cn.gwssi.ecloudbpm.wf.api.engine.plugin.runtime.RunTimePlugin;
+import com.dstz.bpm.api.engine.plugin.runtime.RunTimePlugin;
 
 public interface UserQueryPluginContext {
   Class<? extends RunTimePlugin> getUserQueryPluginClass();

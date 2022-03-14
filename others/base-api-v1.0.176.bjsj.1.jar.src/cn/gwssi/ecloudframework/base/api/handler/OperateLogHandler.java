@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.api.handler;
+package com.dstz.base.api.handler;
 
 public interface OperateLogHandler {
   Object getLogConfig(Object... paramVarArgs);

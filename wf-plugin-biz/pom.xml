@@ -10,15 +10,20 @@
     <artifactId>wf-plugin-biz</artifactId>
     <description>工作流插件-商业版</description>
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.dstz.agilebpm</groupId>
             <artifactId>wf-core</artifactId>
             <classifier></classifier>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.dstz.agilebpm</groupId>
             <artifactId>base-rest</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.dstz.agilebpm</groupId>
+            <artifactId>sys-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -31,6 +36,12 @@
             <groupId>com.dstz.agilebpm</groupId>
             <artifactId>wf-plugin</artifactId>
             <classifier></classifier>
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>com.dstz.agilebpm</groupId>-->
+                    <!--<artifactId>wf-api</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.xuxueli</groupId>-->

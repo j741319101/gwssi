@@ -1,8 +1,8 @@
 package cn.gwssi.ecloudbpm.form.manager;
 
 import cn.gwssi.ecloudbpm.form.model.FormDef;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.manager.Manager;
 import com.alibaba.fastjson.JSONArray;
 import java.io.File;
 import java.io.InputStream;

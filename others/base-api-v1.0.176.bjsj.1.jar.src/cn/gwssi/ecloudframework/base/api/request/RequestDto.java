@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.api.request;
+/*    */ package com.dstz.base.api.request;
 /*    */ 
 /*    */ 
 /*    */ 

@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.global.reminder.executer;
+/*    */ package com.dstz.bpm.plugin.global.reminder.executer;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.action.handler.DefaultExtendTaskAction;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmReminderLogManager;
+/*    */ import com.dstz.bpm.engine.action.handler.DefaultExtendTaskAction;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmReminderLogManager;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 

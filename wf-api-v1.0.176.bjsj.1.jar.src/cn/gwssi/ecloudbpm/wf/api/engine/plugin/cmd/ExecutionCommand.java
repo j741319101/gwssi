@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.plugin.cmd;
+package com.dstz.bpm.api.engine.plugin.cmd;
 
-import cn.gwssi.ecloudbpm.wf.api.constant.EventType;
-import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.InstanceActionCmd;
+import com.dstz.bpm.api.constant.EventType;
+import com.dstz.bpm.api.engine.action.cmd.InstanceActionCmd;
 
 public interface ExecutionCommand {
   void execute(EventType paramEventType, InstanceActionCmd paramInstanceActionCmd);

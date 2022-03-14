@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.sys.upload;
+/*    */ package com.dstz.sys.upload;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*    */ import cn.gwssi.ecloudframework.base.core.id.IdUtil;
-/*    */ import cn.gwssi.ecloudframework.sys.core.model.SysFile;
+/*    */ import com.dstz.base.api.exception.BusinessException;
+/*    */ import com.dstz.base.core.id.IdUtil;
+/*    */ import com.dstz.sys.core.model.SysFile;
 /*    */ import java.io.ByteArrayInputStream;
 /*    */ import java.io.IOException;
 /*    */ import java.io.InputStream;

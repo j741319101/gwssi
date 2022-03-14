@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.db.datasource;
+/*    */ package com.dstz.base.db.datasource;
 /*    */ 
 /*    */ 
 /*    */ 

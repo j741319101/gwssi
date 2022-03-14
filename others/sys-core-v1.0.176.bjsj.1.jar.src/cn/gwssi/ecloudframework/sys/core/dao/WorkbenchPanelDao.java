@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudframework.sys.core.dao;
+package com.dstz.sys.core.dao;
 
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
-import cn.gwssi.ecloudframework.sys.core.model.WorkbenchPanel;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.dao.BaseDao;
+import com.dstz.sys.core.model.WorkbenchPanel;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Param;

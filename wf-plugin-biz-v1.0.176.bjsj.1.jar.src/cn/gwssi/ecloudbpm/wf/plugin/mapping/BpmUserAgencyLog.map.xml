@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmUserAgencyLogDao">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.BpmUserAgencyLogDao">
 
-    <resultMap id="BpmUserAgencyLog" type="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmUserAgencyLog">
+    <resultMap id="BpmUserAgencyLog" type="com.dstz.bpm.plugin.core.model.BpmUserAgencyLog">
         <id column="id_" jdbcType="VARCHAR" property="id" />
         <result column="config_id_" jdbcType="VARCHAR" property="configId" />
         <result column="flow_instance_id_" jdbcType="VARCHAR" property="flowInstanceId" />
@@ -22,7 +22,7 @@
       create_time_, create_org_id_, update_by_, update_time_, rev_
     </sql>
 
-    <insert id="insertSelective" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmUserAgencyLog">
+    <insert id="insertSelective" parameterType="com.dstz.bpm.plugin.core.model.BpmUserAgencyLog">
         insert into bpm_user_agency_log
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -102,7 +102,7 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmUserAgencyLog">
+    <update id="updateByPrimaryKeySelective" parameterType="com.dstz.bpm.plugin.core.model.BpmUserAgencyLog">
         update bpm_user_agency_log
         <set>
             <if test="configId != null">
@@ -174,7 +174,7 @@
         </if>
     </select>
     
-    <select id="selectBpmUserAgencyLogList" resultType="cn.gwssi.ecloudbpm.wf.plugin.vo.BpmUserAgencyLogVO">
+    <select id="selectBpmUserAgencyLogList" resultType="com.dstz.bpm.plugin.vo.BpmUserAgencyLogVO">
       SELECT
              bual.id_                   AS  id,
              bual.flow_instance_id_     AS  flowInstanceId,

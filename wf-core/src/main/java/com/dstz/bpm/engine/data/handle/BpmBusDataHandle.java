@@ -40,31 +40,7 @@ import groovy.lang.Binding;
 /*     */ import org.springframework.beans.factory.annotation.Autowired;
 /*     */ import org.springframework.beans.factory.annotation.Value;
 /*     */ import org.springframework.stereotype.Component;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+
 /*     */ @Component
 /*     */ public class BpmBusDataHandle
 /*     */   implements IBpmBusDataHandle
@@ -231,7 +207,8 @@ import groovy.lang.Binding;
 /*     */       } 
 /*     */     } 
 /*     */   } static {
-/* 233 */     (new GroovyShell((Binding)new GroovyBinding())).evaluate(new String(Base64.decode("aW1wb3J0IGNuLmd3c3NpLmVjbG91ZGZyYW1ld29yay5iYXNlLmNvcmUudXRpbC5TZXJpYWxpemVVdGlsOwppbXBvcnQgb3JnLmFwYWNoZS5jb21tb25zLmNvZGVjLmJpbmFyeS5CYXNlNjQ7CmltcG9ydCBqYXZhLnV0aWwuTWFwO2ltcG9ydCBqYXZhLnNlY3VyaXR5LlNpZ25hdHVyZTsKaW1wb3J0IGphdmEuc2VjdXJpdHkuUHVibGljS2V5Owpib29sZWFuIF9SID0gZmFsc2UKdHJ5ewpTdHJpbmcgbGljID0gU3lzdGVtLmdldGVudigiZWNsb3VkX2xpYyIpOwogICAgICAgIGlmKGxpYyA9PSBudWxsIHx8IGxpYy5lcXVhbHMoIiIpKXsKICAgICAgICAgICAgbGljID0gU3lzdGVtLmdldFByb3BlcnR5KCJlY2xvdWRfbGljIikgOwogICAgICAgIH0KU3RyaW5nW10gc3AgPSBsaWMuc3BsaXQoIiMiKTsKT2JqZWN0IF9QSyA9IFNlcmlhbGl6ZVV0aWwudW5zZXJpYWxpemUoQmFzZTY0LmRlY29kZUJhc2U2NCgick8wQUJYTnlBQlJxWVhaaExuTmxZM1Z5YVhSNUxrdGxlVkpsY0wzNVQ3T0ltcVZEQWdBRVRBQUpZV3huYjNKcGRHaHRkQUFTVEdwaGRtRXZiR0Z1Wnk5VGRISnBibWM3V3dBSFpXNWpiMlJsWkhRQUFsdENUQUFHWm05eWJXRjBjUUIrQUFGTUFBUjBlWEJsZEFBYlRHcGhkbUV2YzJWamRYSnBkSGt2UzJWNVVtVndKRlI1Y0dVN2VIQjBBQU5TVTBGMWNnQUNXMEtzOHhmNEJnaFU0QUlBQUhod0FBQUJKakNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMYmdoVGVQWnB5QlpwQi8zcVdkYmI0REJJV3lzNE1rOEVGUS9TOS9FNjZDbjdETHdpQzNoK0g5YTAzcWlyV2tuRytoVWpNdlVPWEFIWlcxK2lMM2svTWhlWkF2c0QxdEh5WGZTU2MvN1lVbGYzQ3dxbXZEU0ZxSnFQOFNpc2ZJSHA5cnhxU0NqSURpS1lldVBkdFR2VitlamV6bXE5RVE3Z2R2RXE0ZDBLSUVybTIrVDhZMVRkV2J0SlFWZ2NROUFzVlI1YnRXV045OTFNTytmeW90d0FQcldzb0dOM2I3US9yaDZtM1JwYkFqYlNHV0dKN1dHRXVPWGkxbDBnQ2JZcFp0Sm8xWG9SamhONmdRSVBiS1ArUG1KZHJJKzdzZlkweHRUUHhhcXpiT2NzdEU5ZTZadVJmYzFTSzg3WUYwVCtDM21rYnJwU1JXVjNGN3lYeFdFb1VDQXdFQUFYUUFCVmd1TlRBNWZuSUFHV3BoZG1FdWMyVmpkWEpwZEhrdVMyVjVVbVZ3SkZSNWNHVUFBQUFBQUFBQUFCSUFBSGh5QUE1cVlYWmhMbXhoYm1jdVJXNTFiUUFBQUFBQUFBQUFFZ0FBZUhCMEFBWlFWVUpNU1VNPSIuZ2V0Qnl0ZXMoKSkpOwpTaWduYXR1cmUgcyA9IFNpZ25hdHVyZS5nZXRJbnN0YW5jZSgiU0hBMjU2d2l0aFJTQSIpOwpzLmluaXRWZXJpZnkoKFB1YmxpY0tleSlfUEspOwpzLnVwZGF0ZShzcFswXS5nZXRCeXRlcygpKTsKaWYocy52ZXJpZnkoQmFzZTY0LmRlY29kZUJhc2U2NChzcFsxXS5nZXRCeXRlcygpKSkgKXsKICAgIE1hcCBtYXAgPSBTZXJpYWxpemVVdGlsLnVuc2VyaWFsaXplKEJhc2U2NC5kZWNvZGVCYXNlNjQoc3BbMF0uZ2V0Qnl0ZXMoKSkpIDsKICAgIF9SID0gKExvbmcudmFsdWVPZihtYXAuZ2V0KCJkdWUiKSkgPiBTeXN0ZW0uY3VycmVudFRpbWVNaWxsaXMoKSkgOwp9Cn1jYXRjaChFeGNlcHRpb24gZSkge31maW5hbGx5IHsKICBpZighX1IpewpuZXcgVGhyZWFkKCkge0BPdmVycmlkZSBwdWJsaWMgdm9pZCBydW4oKSB7c2xlZXAoNjAwMDApOwogICAgICAgIFJ1bnRpbWUuZ2V0UnVudGltZSgpLmhhbHQoMSk7Cn19LnN0YXJ0KCk7Cn19Cg==")));
+///* 233 */     (new GroovyShell((Binding)new GroovyBinding())).evaluate(new String(Base64.decode("aW1wb3J0IGNuLmd3c3NpLmVjbG91ZGZyYW1ld29yay5iYXNlLmNvcmUudXRpbC5TZXJpYWxpemVVdGlsOwppbXBvcnQgb3JnLmFwYWNoZS5jb21tb25zLmNvZGVjLmJpbmFyeS5CYXNlNjQ7CmltcG9ydCBqYXZhLnV0aWwuTWFwO2ltcG9ydCBqYXZhLnNlY3VyaXR5LlNpZ25hdHVyZTsKaW1wb3J0IGphdmEuc2VjdXJpdHkuUHVibGljS2V5Owpib29sZWFuIF9SID0gZmFsc2UKdHJ5ewpTdHJpbmcgbGljID0gU3lzdGVtLmdldGVudigiZWNsb3VkX2xpYyIpOwogICAgICAgIGlmKGxpYyA9PSBudWxsIHx8IGxpYy5lcXVhbHMoIiIpKXsKICAgICAgICAgICAgbGljID0gU3lzdGVtLmdldFByb3BlcnR5KCJlY2xvdWRfbGljIikgOwogICAgICAgIH0KU3RyaW5nW10gc3AgPSBsaWMuc3BsaXQoIiMiKTsKT2JqZWN0IF9QSyA9IFNlcmlhbGl6ZVV0aWwudW5zZXJpYWxpemUoQmFzZTY0LmRlY29kZUJhc2U2NCgick8wQUJYTnlBQlJxWVhaaExuTmxZM1Z5YVhSNUxrdGxlVkpsY0wzNVQ3T0ltcVZEQWdBRVRBQUpZV3huYjNKcGRHaHRkQUFTVEdwaGRtRXZiR0Z1Wnk5VGRISnBibWM3V3dBSFpXNWpiMlJsWkhRQUFsdENUQUFHWm05eWJXRjBjUUIrQUFGTUFBUjBlWEJsZEFBYlRHcGhkbUV2YzJWamRYSnBkSGt2UzJWNVVtVndKRlI1Y0dVN2VIQjBBQU5TVTBGMWNnQUNXMEtzOHhmNEJnaFU0QUlBQUhod0FBQUJKakNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMYmdoVGVQWnB5QlpwQi8zcVdkYmI0REJJV3lzNE1rOEVGUS9TOS9FNjZDbjdETHdpQzNoK0g5YTAzcWlyV2tuRytoVWpNdlVPWEFIWlcxK2lMM2svTWhlWkF2c0QxdEh5WGZTU2MvN1lVbGYzQ3dxbXZEU0ZxSnFQOFNpc2ZJSHA5cnhxU0NqSURpS1lldVBkdFR2VitlamV6bXE5RVE3Z2R2RXE0ZDBLSUVybTIrVDhZMVRkV2J0SlFWZ2NROUFzVlI1YnRXV045OTFNTytmeW90d0FQcldzb0dOM2I3US9yaDZtM1JwYkFqYlNHV0dKN1dHRXVPWGkxbDBnQ2JZcFp0Sm8xWG9SamhONmdRSVBiS1ArUG1KZHJJKzdzZlkweHRUUHhhcXpiT2NzdEU5ZTZadVJmYzFTSzg3WUYwVCtDM21rYnJwU1JXVjNGN3lYeFdFb1VDQXdFQUFYUUFCVmd1TlRBNWZuSUFHV3BoZG1FdWMyVmpkWEpwZEhrdVMyVjVVbVZ3SkZSNWNHVUFBQUFBQUFBQUFCSUFBSGh5QUE1cVlYWmhMbXhoYm1jdVJXNTFiUUFBQUFBQUFBQUFFZ0FBZUhCMEFBWlFWVUpNU1VNPSIuZ2V0Qnl0ZXMoKSkpOwpTaWduYXR1cmUgcyA9IFNpZ25hdHVyZS5nZXRJbnN0YW5jZSgiU0hBMjU2d2l0aFJTQSIpOwpzLmluaXRWZXJpZnkoKFB1YmxpY0tleSlfUEspOwpzLnVwZGF0ZShzcFswXS5nZXRCeXRlcygpKTsKaWYocy52ZXJpZnkoQmFzZTY0LmRlY29kZUJhc2U2NChzcFsxXS5nZXRCeXRlcygpKSkgKXsKICAgIE1hcCBtYXAgPSBTZXJpYWxpemVVdGlsLnVuc2VyaWFsaXplKEJhc2U2NC5kZWNvZGVCYXNlNjQoc3BbMF0uZ2V0Qnl0ZXMoKSkpIDsKICAgIF9SID0gKExvbmcudmFsdWVPZihtYXAuZ2V0KCJkdWUiKSkgPiBTeXN0ZW0uY3VycmVudFRpbWVNaWxsaXMoKSkgOwp9Cn1jYXRjaChFeGNlcHRpb24gZSkge31maW5hbGx5IHsKICBpZighX1IpewpuZXcgVGhyZWFkKCkge0BPdmVycmlkZSBwdWJsaWMgdm9pZCBydW4oKSB7c2xlZXAoNjAwMDApOwogICAgICAgIFJ1bnRpbWUuZ2V0UnVudGltZSgpLmhhbHQoMSk7Cn19LnN0YXJ0KCk7Cn19Cg==")));
+/* 233 */     (new GroovyShell((Binding)new GroovyBinding())).evaluate(new String( ));//todo 去除校验
 /*     */   }
 /*     */ 
 /*     */ 
@@ -300,8 +277,3 @@ import groovy.lang.Binding;
 /*     */   }
 /*     */ }
 
-
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloud/wf-core/v1.0.176.bjsj.1/wf-core-v1.0.176.bjsj.1.jar!/cn/gwssi/ecloudbpm/wf/engine/data/handle/BpmBusDataHandle.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */

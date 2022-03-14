@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.core.manager.impl;
+/*    */ package com.dstz.bpm.plugin.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmCarbonCopyRecordDao;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmCarbonCopyRecordManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyRecord;
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
+/*    */ import com.dstz.bpm.plugin.core.dao.BpmCarbonCopyRecordDao;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmCarbonCopyRecordManager;
+/*    */ import com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
 /*    */ import java.util.List;
 /*    */ import org.springframework.beans.factory.annotation.Autowired;
 /*    */ import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.form.manager;
 
 import cn.gwssi.ecloudbpm.form.model.FormTemplate;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 import com.alibaba.fastjson.JSONArray;
 
 public interface FormTemplateManager extends Manager<String, FormTemplate> {

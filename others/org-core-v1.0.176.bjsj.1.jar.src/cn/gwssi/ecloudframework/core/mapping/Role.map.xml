@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.org.core.dao.RoleDao">
-    <resultMap id="Role" type="cn.gwssi.ecloudframework.org.core.model.Role">
+<mapper namespace="com.dstz.org.core.dao.RoleDao">
+    <resultMap id="Role" type="com.dstz.org.core.model.Role">
         <id property="id" column="id_" jdbcType="VARCHAR"/>
         <result property="name" column="name_" jdbcType="VARCHAR"/>
         <result property="alias" column="alias_" jdbcType="VARCHAR"/>
@@ -46,7 +46,7 @@
         </if>
     </sql>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudframework.org.core.model.Role">
+    <insert id="create" parameterType="com.dstz.org.core.model.Role">
         INSERT INTO
         <include refid="tableName"/>
         (id_,name_,alias_,enabled_,description,org_id_,create_time_,create_by_,update_time_,update_by_,sn_)
@@ -110,7 +110,7 @@
         </if>
     </select>
 
-    <update id="update" parameterType="cn.gwssi.ecloudframework.org.core.model.Role">
+    <update id="update" parameterType="com.dstz.org.core.model.Role">
         UPDATE
         <include refid="tableName"/>
         SET
@@ -133,7 +133,7 @@
         id_=#{id}
     </delete>
 
-    <update id="updateByPrimaryKeySelective" parameterType="cn.gwssi.ecloudframework.org.core.model.Role">
+    <update id="updateByPrimaryKeySelective" parameterType="com.dstz.org.core.model.Role">
         update
         <include refid="tableName"/>
         <set>

@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudframework.sys.core.manager.impl;
+/*    */ package com.dstz.sys.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.dao.WorkbenchLayoutDao;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.WorkbenchLayoutManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.model.WorkbenchLayout;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
+/*    */ import com.dstz.sys.core.dao.WorkbenchLayoutDao;
+/*    */ import com.dstz.sys.core.manager.WorkbenchLayoutManager;
+/*    */ import com.dstz.sys.core.model.WorkbenchLayout;
 /*    */ import cn.hutool.core.collection.CollectionUtil;
 /*    */ import java.util.List;
 /*    */ import javax.annotation.Resource;

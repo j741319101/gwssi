@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.base.dao;
+/*    */ package com.dstz.base.dao;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.Page;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-/*    */ import cn.gwssi.ecloudframework.base.db.model.query.DefaultQueryFilter;
+/*    */ import com.dstz.base.api.Page;
+/*    */ import com.dstz.base.api.query.QueryFilter;
+/*    */ import com.dstz.base.db.model.query.DefaultQueryFilter;
 /*    */ import java.util.HashMap;
 /*    */ import java.util.List;
 /*    */ import java.util.Map;
@@ -28,7 +28,7 @@
 /*    */ {
 /*    */   @Resource(name = "abSqlSessionTemplate")
 /*    */   protected SqlSessionTemplate sqlSessionTemplate;
-/*    */   private static final String NAME_SPACE = "cn.gwssi.ecloudframework.sql.common";
+/*    */   private static final String NAME_SPACE = "com.dstz.sql.common";
 /*    */   
 /*    */   public int execute(String sql) {
 /* 34 */     Map<String, String> map = new HashMap<>();
@@ -67,7 +67,7 @@
 /*    */   }
 /*    */   
 /*    */   private String getNameSpace(String sqlKey) {
-/* 70 */     return "cn.gwssi.ecloudframework.sql.common." + sqlKey;
+/* 70 */     return "com.dstz.sql.common." + sqlKey;
 /*    */   }
 /*    */ 
 /*    */ 

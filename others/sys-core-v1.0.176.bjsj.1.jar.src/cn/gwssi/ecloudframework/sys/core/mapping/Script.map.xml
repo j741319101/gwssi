@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.ScriptDao">
-    <resultMap id="Script" type="cn.gwssi.ecloudframework.sys.core.model.Script">
+<mapper namespace="com.dstz.sys.core.dao.ScriptDao">
+    <resultMap id="Script" type="com.dstz.sys.core.model.Script">
         <id property="id" column="ID_" jdbcType="VARCHAR"/>
         <result property="name" column="NAME_" jdbcType="VARCHAR"/>
         <result property="script" column="SCRIPT_" jdbcType="CLOB"/>
@@ -13,7 +13,7 @@
 		ID_,NAME_,SCRIPT_,CATEGORY_,MEMO_
 	</sql>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.Script">
+    <insert id="create" parameterType="com.dstz.sys.core.model.Script">
         INSERT INTO sys_script
         (<include refid="columns"/>)
         VALUES
@@ -48,7 +48,7 @@
 		ID_=#{id}
 	</delete>
 
-    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.Script">
+    <update id="update" parameterType="com.dstz.sys.core.model.Script">
 		UPDATE sys_script SET
 		NAME_=#{name,jdbcType=VARCHAR} , 
 		SCRIPT_=#{script,jdbcType=CLOB} , 

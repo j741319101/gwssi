@@ -1,83 +1,92 @@
-/*    */ package com.dstz.bpm.plugin;
-/*    */ import cn.hutool.core.io.IoUtil;
-/*    */ import java.io.BufferedReader;
-/*    */ import java.io.File;
-/*    */ import java.io.FileOutputStream;
-/*    */ import java.io.InputStream;
-/*    */ import java.io.OutputStream;
-/*    */ 
-/*    */ public class PostCompile {
-/* 10 */   private static String separator = File.separator;
-/*    */ 
-/*    */   
-/*    */   public static void main(String[] args) throws Exception {
-/* 14 */     File file = (new File(PreCompile.class.getResource("").getPath())).getParentFile().getParentFile().getParentFile().getParentFile().getParentFile().getParentFile().getParentFile().getParentFile();
-/* 15 */     System.out.println("处理 wf-core 包");
-/* 16 */     String path = file.getAbsolutePath();
-/* 17 */     String oldClass = path + "/wf-core/target/classes/cn";
-/* 18 */     String newClass = path + "/wf-plugin-biz/target/classes/cn";
-/* 19 */     String targetCoreClass = path + "/wf-plugin-biz/target/wf-core";
-/* 20 */     File targetCoreClassf = new File(targetCoreClass);
-/* 21 */     if (!targetCoreClassf.exists()) {
-/* 22 */       targetCoreClassf.mkdirs();
-/*    */     }
-/* 24 */     FileUtil.moveTargetFolderFromNewResource(oldClass, newClass, targetCoreClass + "/cn");
-/* 25 */     System.out.println("处理 wf-plugin 包");
-/* 26 */     oldClass = path + "/wf-plugin/target/classes/cn";
-/* 27 */     String targetPluginClass = path + "/wf-plugin-biz/target/wf-plugin";
-/* 28 */     File targetPluginClassf = new File(targetPluginClass);
-/* 29 */     if (!targetPluginClassf.exists()) {
-/* 30 */       targetPluginClassf.mkdirs();
-/*    */     }
-/* 32 */     FileUtil.moveTargetFolderFromNewResource(oldClass, newClass, targetPluginClass + "/cn");
-/*    */     
-/* 34 */     File wfCoreDir = new File(path + "/wf-core/target");
-/*    */     
-/* 36 */     File wfCoreJar = Arrays.<File>asList(wfCoreDir.listFiles()).stream().filter(f -> f.getName().endsWith("jar")).findFirst().get();
-/* 37 */     File copyWfCoreJar = new File(targetCoreClass + separator + wfCoreJar.getName());
-/* 38 */     OutputStream out = new FileOutputStream(copyWfCoreJar);
-/* 39 */     InputStream in = new FileInputStream(wfCoreJar);
-/* 40 */     IoUtil.copy(in, out);
-/* 41 */     out.flush();
-/* 42 */     in.close();
-/* 43 */     out.close();
-/*    */     
-/* 45 */     String[] cmd = { "cmd", "/c", "cd " + copyWfCoreJar.getParent() + " && jar uf " + copyWfCoreJar.getName() + " ." + separator + "cn" };
-/* 46 */     Process process = Runtime.getRuntime().exec(cmd);
-/* 47 */     BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream(), "GBK"));
-/*    */     String errorLine;
-/* 49 */     while ((errorLine = reader.readLine()) != null) {
-/* 50 */       System.out.println(errorLine);
-/*    */     }
-/* 52 */     reader.close();
-/* 53 */     process.getOutputStream().close();
-/*    */     
-/* 55 */     File wfPluginDir = new File(path + "/wf-plugin/target");
-/*    */     
-/* 57 */     File wfPluginJar = Arrays.<File>asList(wfPluginDir.listFiles()).stream().filter(f -> f.getName().endsWith("jar")).findFirst().get();
-/* 58 */     File copyWfPluginJar = new File(targetPluginClass + separator + wfPluginJar.getName());
-/* 59 */     out = new FileOutputStream(copyWfPluginJar);
-/* 60 */     in = new FileInputStream(wfPluginJar);
-/* 61 */     IoUtil.copy(in, out);
-/* 62 */     out.flush();
-/* 63 */     in.close();
-/* 64 */     out.close();
-/* 65 */     cmd = new String[] { "cmd", "/c", "cd " + copyWfPluginJar.getParent() + " && jar uf " + copyWfPluginJar.getName() + " ." + separator + "cn" };
-/* 66 */     process = Runtime.getRuntime().exec(cmd);
-/* 67 */     reader = new BufferedReader(new InputStreamReader(process.getErrorStream(), "GBK"));
-/* 68 */     while ((errorLine = reader.readLine()) != null) {
-/* 69 */       System.out.println(errorLine);
-/*    */     }
-/* 71 */     reader.close();
-/* 72 */     process.getOutputStream().close();
-/* 73 */     IoUtil.copy(new FileInputStream(wfPluginDir.getParent() + separator + "pom.xml"), new FileOutputStream(targetPluginClass + separator + "pom.xml"));
-/*    */     
-/* 75 */     IoUtil.copy(new FileInputStream(wfCoreDir.getParent() + separator + "pom.xml"), new FileOutputStream(targetCoreClass + separator + "pom.xml"));
-/*    */   }
-/*    */ }
+package com.dstz.bpm.plugin;
 
+//import com.dstz.base.core.util.FileUtil;
+import cn.hutool.core.io.IoUtil;
+import com.dstz.bpm.plugin.util.FileUtil;
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloudbpm/wf-plugin-biz/0.2-SNAPSHOT/wf-plugin-biz-0.2-SNAPSHOT.jar!/cn/gwssi/ecloudbpm/bpm/plugin/PostCompile.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.function.Predicate;
+
+public class PostCompile {
+   private static String separator;
+
+   public static void main(String[] args) throws Exception {
+      File file = (new File(PreCompile.class.getResource("").getPath())).getParentFile().getParentFile().getParentFile().getParentFile().getParentFile().getParentFile().getParentFile().getParentFile();
+      System.out.println("处理 wf-core 包");
+      String path = file.getAbsolutePath();
+      String oldClass = path + "/wf-core/target/classes/cn";
+      String newClass = path + "/wf-plugin-biz/target/classes/cn";
+      String targetCoreClass = path + "/wf-plugin-biz/target/wf-core";
+      File targetCoreClassf = new File(targetCoreClass);
+      if (!targetCoreClassf.exists()) {
+         targetCoreClassf.mkdirs();
+      }
+
+      FileUtil.moveTargetFolderFromNewResource(oldClass, newClass, targetCoreClass + "/cn");
+      System.out.println("处理 wf-plugin 包");
+      oldClass = path + "/wf-plugin/target/classes/cn";
+      String targetPluginClass = path + "/wf-plugin-biz/target/wf-plugin";
+      File targetPluginClassf = new File(targetPluginClass);
+      if (!targetPluginClassf.exists()) {
+         targetPluginClassf.mkdirs();
+      }
+
+      FileUtil.moveTargetFolderFromNewResource(oldClass, newClass, targetPluginClass + "/cn");
+      File wfCoreDir = new File(path + "/wf-core/target");
+      File wfCoreJar = (File)Arrays.asList(wfCoreDir.listFiles()).stream().filter((f) -> {
+         return f.getName().endsWith("jar");
+      }).findFirst().get();
+      File copyWfCoreJar = new File(targetCoreClass + separator + wfCoreJar.getName());
+      OutputStream out = new FileOutputStream(copyWfCoreJar);
+      InputStream in = new FileInputStream(wfCoreJar);
+      IoUtil.copy(in, out);
+      out.flush();
+      in.close();
+      out.close();
+      String[] cmd = new String[]{"cmd", "/c", "cd " + copyWfCoreJar.getParent() + " && jar uf " + copyWfCoreJar.getName() + " ." + separator + "cn"};
+      Process process = Runtime.getRuntime().exec(cmd);
+      BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream(), "GBK"));
+
+      String errorLine;
+      while((errorLine = reader.readLine()) != null) {
+         System.out.println(errorLine);
+      }
+
+      reader.close();
+      process.getOutputStream().close();
+      File wfPluginDir = new File(path + "/wf-plugin/target");
+      File wfPluginJar = (File)Arrays.asList(wfPluginDir.listFiles()).stream().filter((f) -> {
+         return f.getName().endsWith("jar");
+      }).findFirst().get();
+      File copyWfPluginJar = new File(targetPluginClass + separator + wfPluginJar.getName());
+      out = new FileOutputStream(copyWfPluginJar);
+      in = new FileInputStream(wfPluginJar);
+      IoUtil.copy(in, out);
+      out.flush();
+      in.close();
+      out.close();
+      cmd = new String[]{"cmd", "/c", "cd " + copyWfPluginJar.getParent() + " && jar uf " + copyWfPluginJar.getName() + " ." + separator + "cn"};
+      process = Runtime.getRuntime().exec(cmd);
+      reader = new BufferedReader(new InputStreamReader(process.getErrorStream(), "GBK"));
+
+      while((errorLine = reader.readLine()) != null) {
+         System.out.println(errorLine);
+      }
+
+      reader.close();
+      process.getOutputStream().close();
+      IoUtil.copy(new FileInputStream(wfPluginDir.getParent() + separator + "pom.xml"), new FileOutputStream(targetPluginClass + separator + "pom.xml"));
+      IoUtil.copy(new FileInputStream(wfCoreDir.getParent() + separator + "pom.xml"), new FileOutputStream(targetCoreClass + separator + "pom.xml"));
+   }
+
+   static {
+      separator = File.separator;
+   }
+}

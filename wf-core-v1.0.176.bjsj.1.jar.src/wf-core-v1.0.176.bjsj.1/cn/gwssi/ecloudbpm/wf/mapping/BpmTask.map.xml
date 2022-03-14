@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.core.dao.BpmTaskDao">
-	<resultMap id="BpmTask" type="cn.gwssi.ecloudbpm.wf.core.model.BpmTask">
+<mapper namespace="com.dstz.bpm.core.dao.BpmTaskDao">
+	<resultMap id="BpmTask" type="com.dstz.bpm.core.model.BpmTask">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="name" column="name_" jdbcType="VARCHAR"/>
 		<result property="subject" column="subject_" jdbcType="VARCHAR"/>
@@ -24,7 +24,7 @@
 		<result property="supportMobile" column="support_mobile_" jdbcType="NUMERIC"/>
 		<result property="backNode" column="back_node_" jdbcType="VARCHAR"/>
 	</resultMap>
-	<resultMap id="BpmTaskVO" type="cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskVO">
+	<resultMap id="BpmTaskVO" type="com.dstz.bpm.core.vo.BpmTaskVO">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="name" column="name_" jdbcType="VARCHAR"/>
 		<result property="subject" column="subject_" jdbcType="VARCHAR"/>
@@ -60,7 +60,7 @@
 		<result property="linkIdentity" column="link_identity_" jdbcType="VARCHAR"/>
 		<result property="linkIdentityName" column="link_identity_name_" jdbcType="VARCHAR"/>
 	</resultMap>
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmTask">
+	<insert id="create" parameterType="com.dstz.bpm.core.model.BpmTask">
 		INSERT INTO bpm_task
 		(id_,name_,subject_,inst_id_,task_id_,node_id_,def_id_,assignee_id_,assignee_names_,status_,priority_,due_time_,task_type_,parent_id_,act_inst_id_,act_execution_id_,type_id_,create_time_,create_by_,support_mobile_)
 		VALUES 
@@ -99,7 +99,7 @@
 		</if>
 	</select>
 
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmTask">
+	<update id="update" parameterType="com.dstz.bpm.core.model.BpmTask">
 		UPDATE bpm_task SET
 		name_=#{name,jdbcType=VARCHAR},
 		subject_=#{subject,jdbcType=VARCHAR},
@@ -256,7 +256,7 @@
 			and exists (select 1 from bpm_instance inst where inst.id_ = task.inst_id_ and inst.is_test_data_ = 0)) toDoANum
 	</select>
 
-	<select id="getTodoListTypeCount" parameterType="java.util.Map" resultType="cn.gwssi.ecloudbpm.wf.core.model.BpmTypeTreeCountVO">
+	<select id="getTodoListTypeCount" parameterType="java.util.Map" resultType="com.dstz.bpm.core.model.BpmTypeTreeCountVO">
 		SELECT defKey  as id, count(*) as count,min(defName) as name ,min(typeId) as parentId from (
 		SELECT DISTINCT task.*, def.key_ as defKey,def.type_id_ as typeId,def.name_ as defName FROM bpm_task task LEFT JOIN bpm_task_identitylink link on task.id_ = link.task_id_
 		inner join bpm_definition def on task.def_id_ = def.id_  <if test="supportMobile"> and def.support_mobile_ = '1' </if>

@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.org.api.constant;
+/*    */ package com.dstz.org.api.constant;
 /*    */ 
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.List;

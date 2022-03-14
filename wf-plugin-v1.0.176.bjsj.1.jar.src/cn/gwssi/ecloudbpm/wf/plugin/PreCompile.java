@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin;
+/*    */ package com.dstz.bpm.plugin;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.util.FileUtil;
+/*    */ import com.dstz.base.core.util.FileUtil;
 /*    */ import java.io.File;
 /*    */ 
 /*    */ 

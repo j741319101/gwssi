@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.plugin.util;
+/*    */ package com.dstz.bpm.engine.plugin.util;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.org.api.model.IUser;
-/*    */ import cn.gwssi.ecloudframework.sys.api.model.SysIdentity;
+/*    */ import com.dstz.org.api.model.IUser;
+/*    */ import com.dstz.sys.api.model.SysIdentity;
 /*    */ import java.util.List;
 /*    */ 
 /*    */ public class IdentityUtil

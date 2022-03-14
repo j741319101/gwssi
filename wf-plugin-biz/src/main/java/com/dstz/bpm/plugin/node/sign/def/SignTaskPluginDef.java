@@ -1,86 +1,91 @@
-/*    */ package com.dstz.bpm.plugin.node.sign.def;
-/*    */ 
-/*    */ import com.dstz.bpm.api.constant.ActionType;
-/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
-/*    */ import javax.validation.constraints.Min;
-/*    */ import org.hibernate.validator.constraints.NotBlank;
-/*    */ import org.hibernate.validator.constraints.NotEmpty;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ public class SignTaskPluginDef
-/*    */   extends AbstractBpmExecutionPluginDef
-/*    */ {
-/*    */   private boolean signMultiTask = false;
-/* 26 */   private VoteType voteType = VoteType.PERCENT;
-/*    */ 
-/*    */   
-/*    */   private boolean needAllSign = false;
-/*    */ 
-/*    */   
-/*    */   @NotEmpty
-/*    */   @Min(1L)
-/* 34 */   private int voteAmount = 51;
-/*    */ 
-/*    */   
-/*    */   @NotBlank
-/* 38 */   private String opposedAction = ActionType.OPPOSE
-/* 39 */     .getKey();
-/*    */   
-/*    */   public boolean isSignMultiTask() {
-/* 42 */     return this.signMultiTask;
-/*    */   }
-/*    */   
-/*    */   public void setSignMultiTask(boolean signMultiTask) {
-/* 46 */     this.signMultiTask = signMultiTask;
-/*    */   }
-/*    */   
-/*    */   public VoteType getVoteType() {
-/* 50 */     return this.voteType;
-/*    */   }
-/*    */   
-/*    */   public void setVoteType(VoteType voteType) {
-/* 54 */     this.voteType = voteType;
-/*    */   }
-/*    */   
-/*    */   public boolean isNeedAllSign() {
-/* 58 */     return this.needAllSign;
-/*    */   }
-/*    */   
-/*    */   public void setNeedAllSign(boolean needAllSign) {
-/* 62 */     this.needAllSign = needAllSign;
-/*    */   }
-/*    */   
-/*    */   public int getVoteAmount() {
-/* 66 */     return this.voteAmount;
-/*    */   }
-/*    */   
-/*    */   public void setVoteAmount(int voteAmount) {
-/* 70 */     this.voteAmount = voteAmount;
-/*    */   }
-/*    */   
-/*    */   public String getOpposedAction() {
-/* 74 */     return this.opposedAction;
-/*    */   }
-/*    */   
-/*    */   public void setOpposedAction(String opposedAction) {
-/* 78 */     this.opposedAction = opposedAction;
-/*    */   }
-/*    */ }
+package com.dstz.bpm.plugin.node.sign.def;
 
+import com.dstz.bpm.api.constant.ActionType;
+import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloudbpm/wf-plugin-biz/0.2-SNAPSHOT/wf-plugin-biz-0.2-SNAPSHOT.jar!/cn/gwssi/ecloudbpm/bpm/plugin/node/sign/def/SignTaskPluginDef.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+public class SignTaskPluginDef extends AbstractBpmExecutionPluginDef {
+   private boolean signMultiTask = false;
+   private VoteType voteType;
+   private boolean needAllSign;
+   private boolean needSupervise;
+   @Range(
+      message = "投票数/百分比必须位于 1~100 之间",
+      max = 100L,
+      min = 1L
+   )
+   @NotNull(
+      message = "投票数/百分比 不能为空"
+   )
+   private Integer voteAmount;
+   @NotBlank
+   private String opposedAction;
+   private boolean reset;
+
+   public SignTaskPluginDef() {
+      this.voteType = VoteType.PERCENT;
+      this.needAllSign = false;
+      this.needSupervise = false;
+      this.voteAmount = 51;
+      this.opposedAction = ActionType.OPPOSE.getKey();
+      this.reset = true;
+   }
+
+   public boolean isSignMultiTask() {
+      return this.signMultiTask;
+   }
+
+   public void setSignMultiTask(boolean signMultiTask) {
+      this.signMultiTask = signMultiTask;
+   }
+
+   public VoteType getVoteType() {
+      return this.voteType;
+   }
+
+   public void setVoteType(VoteType voteType) {
+      this.voteType = voteType;
+   }
+
+   public boolean isNeedAllSign() {
+      return this.needAllSign;
+   }
+
+   public Integer getVoteAmount() {
+      return this.voteAmount;
+   }
+
+   public void setVoteAmount(Integer voteAmount) {
+      this.voteAmount = voteAmount;
+   }
+
+   public void setNeedAllSign(boolean needAllSign) {
+      this.needAllSign = needAllSign;
+   }
+
+   public String getOpposedAction() {
+      return this.opposedAction;
+   }
+
+   public void setOpposedAction(String opposedAction) {
+      this.opposedAction = opposedAction;
+   }
+
+   public boolean isNeedSupervise() {
+      return this.needSupervise;
+   }
+
+   public void setNeedSupervise(boolean needSupervise) {
+      this.needSupervise = needSupervise;
+   }
+
+   public boolean isReset() {
+      return this.reset;
+   }
+
+   public void setReset(boolean reset) {
+      this.reset = reset;
+   }
+}

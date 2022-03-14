@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.bus.dao;
 
 import cn.gwssi.ecloudbpm.bus.model.BusTableDiagram;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.base.dao.BaseDao;
 
 public interface BusTableDiagramDao extends BaseDao<String, BusTableDiagram> {}
 

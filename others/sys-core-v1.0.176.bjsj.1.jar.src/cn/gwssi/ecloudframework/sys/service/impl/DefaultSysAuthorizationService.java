@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.sys.service.impl;
+/*    */ package com.dstz.sys.service.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.api.constant.RightsObjectConstants;
-/*    */ import cn.gwssi.ecloudframework.sys.api.service.SysAuthorizationService;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.SysAuthorizationManager;
+/*    */ import com.dstz.sys.api.constant.RightsObjectConstants;
+/*    */ import com.dstz.sys.api.service.SysAuthorizationService;
+/*    */ import com.dstz.sys.core.manager.SysAuthorizationManager;
 /*    */ import java.util.Map;
 /*    */ import java.util.Set;
 /*    */ import javax.annotation.Resource;

@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.base.api.request;
+/*     */ package com.dstz.base.api.request;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessMessage;
+/*     */ import com.dstz.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.api.exception.BusinessMessage;
 /*     */ import java.math.BigDecimal;
 /*     */ import java.text.DateFormat;
 /*     */ import java.text.SimpleDateFormat;

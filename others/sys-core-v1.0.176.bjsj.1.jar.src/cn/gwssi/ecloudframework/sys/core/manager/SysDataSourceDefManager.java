@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudframework.sys.core.manager;
+package com.dstz.sys.core.manager;
 
-import cn.gwssi.ecloudframework.base.manager.Manager;
-import cn.gwssi.ecloudframework.sys.core.model.SysDataSourceDef;
-import cn.gwssi.ecloudframework.sys.core.model.def.SysDataSourceDefAttribute;
+import com.dstz.base.manager.Manager;
+import com.dstz.sys.core.model.SysDataSourceDef;
+import com.dstz.sys.core.model.def.SysDataSourceDefAttribute;
 import java.util.List;
 
 public interface SysDataSourceDefManager extends Manager<String, SysDataSourceDef> {

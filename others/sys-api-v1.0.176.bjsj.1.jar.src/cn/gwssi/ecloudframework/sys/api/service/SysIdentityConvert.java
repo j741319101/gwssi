@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.sys.api.service;
+package com.dstz.sys.api.service;
 
-import cn.gwssi.ecloudframework.org.api.model.IUser;
-import cn.gwssi.ecloudframework.sys.api.model.SysIdentity;
+import com.dstz.org.api.model.IUser;
+import com.dstz.sys.api.model.SysIdentity;
 import java.util.List;
 
 public interface SysIdentityConvert {

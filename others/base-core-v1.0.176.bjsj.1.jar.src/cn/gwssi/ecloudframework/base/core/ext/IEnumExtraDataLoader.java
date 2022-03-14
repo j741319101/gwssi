@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.base.core.ext;
+package com.dstz.base.core.ext;
 
-import cn.gwssi.ecloudframework.base.core.model.EnumExtraData;
+import com.dstz.base.core.model.EnumExtraData;
 import java.util.List;
 
 public interface IEnumExtraDataLoader {

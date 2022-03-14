@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.executor.checker;
+/*    */ package com.dstz.base.core.executor.checker;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.executor.checker.ExecutorChecker;
+/*    */ import com.dstz.base.api.executor.checker.ExecutorChecker;
 /*    */ 
 /*    */ 
 /*    */ 

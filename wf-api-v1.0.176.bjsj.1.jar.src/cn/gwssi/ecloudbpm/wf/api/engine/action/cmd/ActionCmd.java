@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.action.cmd;
+package com.dstz.bpm.api.engine.action.cmd;
 
 import cn.gwssi.ecloudbpm.bus.api.model.IBusinessData;
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-import cn.gwssi.ecloudframework.sys.api.model.SysIdentity;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
+import com.dstz.sys.api.model.SysIdentity;
 import com.alibaba.fastjson.JSONObject;
 import java.util.List;
 import java.util.Map;

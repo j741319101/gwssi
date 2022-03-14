@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.form.manager;
 
 import cn.gwssi.ecloudbpm.form.model.FormCustomConf;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 
 public interface FormCustomConfManager extends Manager<String, FormCustomConf> {
   FormCustomConf getByFormKey(String paramString);

@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.base.db.api.table;
+package com.dstz.base.db.api.table;
 
-import cn.gwssi.ecloudframework.base.api.Page;
-import cn.gwssi.ecloudframework.base.db.api.table.model.Table;
+import com.dstz.base.api.Page;
+import com.dstz.base.db.api.table.model.Table;
 import java.sql.SQLException;
 import java.util.List;
 

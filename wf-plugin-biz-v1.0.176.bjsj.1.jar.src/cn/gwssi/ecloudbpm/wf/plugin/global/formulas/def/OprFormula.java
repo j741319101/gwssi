@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.global.formulas.def;
+/*    */ package com.dstz.bpm.plugin.global.formulas.def;
 /*    */ 
 /*    */ import java.io.Serializable;
 /*    */ import java.util.List;

@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.global.carboncopy.def;
+/*     */ package com.dstz.bpm.plugin.global.carboncopy.def;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.UserAssignRule;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*     */ import com.dstz.bpm.api.engine.plugin.def.UserAssignRule;
+/*     */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*     */ import java.util.List;
 /*     */ import org.hibernate.validator.constraints.NotBlank;
 /*     */ 

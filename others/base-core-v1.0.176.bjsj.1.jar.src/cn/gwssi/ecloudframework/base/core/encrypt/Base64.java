@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.encrypt;
+/*    */ package com.dstz.base.core.encrypt;
 /*    */ 
 /*    */ import java.io.UnsupportedEncodingException;
 /*    */ 

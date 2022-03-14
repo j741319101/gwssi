@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudframework.base.db.model.table;
+/*     */ package com.dstz.base.db.model.table;
 /*     */ 
 /*     */ import com.alibaba.fastjson.annotation.JSONType;
 /*     */ import com.alibaba.fastjson.serializer.SerializerFeature;

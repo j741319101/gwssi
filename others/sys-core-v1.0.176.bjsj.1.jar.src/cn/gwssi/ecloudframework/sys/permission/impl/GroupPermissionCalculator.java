@@ -1,11 +1,11 @@
-/*    */ package cn.gwssi.ecloudframework.sys.permission.impl;
+/*    */ package com.dstz.sys.permission.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.ThreadMapUtil;
-/*    */ import cn.gwssi.ecloudframework.org.api.model.IGroup;
-/*    */ import cn.gwssi.ecloudframework.org.api.service.GroupService;
-/*    */ import cn.gwssi.ecloudframework.sys.api.permission.IPermissionCalculator;
-/*    */ import cn.gwssi.ecloudframework.sys.util.ContextUtil;
+/*    */ import com.dstz.base.core.util.AppUtil;
+/*    */ import com.dstz.base.core.util.ThreadMapUtil;
+/*    */ import com.dstz.org.api.model.IGroup;
+/*    */ import com.dstz.org.api.service.GroupService;
+/*    */ import com.dstz.sys.api.permission.IPermissionCalculator;
+/*    */ import com.dstz.sys.util.ContextUtil;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import java.util.List;
 /*    */ import java.util.Map;
@@ -24,7 +24,7 @@
 /*    */ public abstract class GroupPermissionCalculator
 /*    */   implements IPermissionCalculator
 /*    */ {
-/* 27 */   private static String threadMapKey = "cn.gwssi.ecloudframework.sys.permission.impl.GroupPermission";
+/* 27 */   private static String threadMapKey = "com.dstz.sys.permission.impl.GroupPermission";
 /*    */ 
 /*    */   
 /*    */   public boolean haveRights(JSONObject json) {

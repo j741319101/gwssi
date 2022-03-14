@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudframework.sys.api.service;
+package com.dstz.sys.api.service;
 
-import cn.gwssi.ecloudframework.base.api.response.impl.ResultMsg;
-import cn.gwssi.ecloudframework.sys.api.model.calendar.Schedule;
-import cn.gwssi.ecloudframework.sys.api.model.calendar.dto.CompleteScheduleModel;
-import cn.gwssi.ecloudframework.sys.api.model.calendar.dto.CreateScheduleModel;
+import com.dstz.base.api.response.impl.ResultMsg;
+import com.dstz.sys.api.model.calendar.Schedule;
+import com.dstz.sys.api.model.calendar.dto.CompleteScheduleModel;
+import com.dstz.sys.api.model.calendar.dto.CreateScheduleModel;
 import java.util.Date;
 import java.util.List;
 

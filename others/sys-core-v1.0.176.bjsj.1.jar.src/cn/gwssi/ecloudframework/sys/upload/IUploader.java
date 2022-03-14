@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.upload;
+package com.dstz.sys.upload;
 
-import cn.gwssi.ecloudframework.sys.core.model.SysFile;
+import com.dstz.sys.core.model.SysFile;
 import java.io.InputStream;
 
 public interface IUploader {

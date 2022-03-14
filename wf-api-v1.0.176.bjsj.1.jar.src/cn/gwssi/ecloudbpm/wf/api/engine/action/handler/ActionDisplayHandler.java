@@ -1,10 +1,10 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.action.handler;
+package com.dstz.bpm.api.engine.action.handler;
 
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
+import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+import com.dstz.bpm.api.model.task.IBpmTask;
 
-public interface ActionDisplayHandler<T extends cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd> extends ActionHandler<T> {
+public interface ActionDisplayHandler<T extends com.dstz.bpm.api.engine.action.cmd.ActionCmd> extends ActionHandler<T> {
   boolean isDisplay(boolean paramBoolean, BpmNodeDef paramBpmNodeDef, IBpmInstance paramIBpmInstance, IBpmTask paramIBpmTask);
 }
 

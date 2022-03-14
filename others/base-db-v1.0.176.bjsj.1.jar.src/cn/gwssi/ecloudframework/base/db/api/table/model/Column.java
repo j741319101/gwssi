@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.db.api.table.model;
+package com.dstz.base.db.api.table.model;
 
 public interface Column {
   public static final String COLUMN_TYPE_VARCHAR = "varchar";

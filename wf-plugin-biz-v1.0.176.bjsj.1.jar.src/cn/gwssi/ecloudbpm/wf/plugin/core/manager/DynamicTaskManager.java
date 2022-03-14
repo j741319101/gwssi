@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.plugin.core.manager;
+package com.dstz.bpm.plugin.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskStack;
-import cn.gwssi.ecloudbpm.wf.plugin.core.model.DynamicTask;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.core.model.BpmTaskStack;
+import com.dstz.bpm.plugin.core.model.DynamicTask;
+import com.dstz.base.manager.Manager;
 import java.util.List;
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.model.calendar;
+/*    */ package com.dstz.sys.api.model.calendar;
 /*    */ 
 /*    */ import java.util.Date;
 /*    */ 

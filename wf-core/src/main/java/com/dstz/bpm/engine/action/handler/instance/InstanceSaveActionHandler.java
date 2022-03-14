@@ -64,7 +64,7 @@ import org.apache.commons.lang3.StringUtils;
 /*     */     
 /*  64 */     getInstance(data);
 /*     */     
-/*  66 */     parserBusinessData((BaseActionCmd)data);
+/*  66 */     parserBusinessData(data);
 /*     */     
 /*  68 */     boolean isStop = handelFormInit((BaseActionCmd)data, this.bpmProcessDefService.getStartEvent(data.getDefId()));
 /*  69 */     return isStop;

@@ -1,6 +1,6 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.engine.service;
+/*    */ package com.dstz.bpm.api.engine.service;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.org.api.service.UserService;
+/*    */ import com.dstz.org.api.service.UserService;
 /*    */ 
 /*    */ public class BpmEngineService {
 /*    */   private UserService userService;

@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.plugin.global.datalog.def;
+package com.dstz.bpm.plugin.global.datalog.def;
 
-import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 
 public class DataLogPluginDef extends AbstractBpmExecutionPluginDef {}
 

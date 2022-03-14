@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.constant;
+/*    */ package com.dstz.sys.api.constant;
 /*    */ 
 /*    */ 
 /*    */ 

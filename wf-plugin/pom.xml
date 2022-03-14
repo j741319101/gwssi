@@ -10,10 +10,10 @@
     <artifactId>wf-plugin</artifactId>
     <description>工作流插件</description>
     <dependencies>
-        <dependency>
-            <groupId>com.dstz.agilebpm</groupId>
-            <artifactId>wf-api</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.dstz.agilebpm</groupId>-->
+            <!--<artifactId>wf-api</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.dstz.agilebpm</groupId>
             <artifactId>wf-core</artifactId>

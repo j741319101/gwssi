@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.engine.model;
+/*     */ package com.dstz.bpm.engine.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.def.BpmVariableDef;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*     */ import com.dstz.bpm.api.model.def.BpmVariableDef;
+/*     */ import com.dstz.base.core.util.StringUtil;
 /*     */ import cn.hutool.core.date.DateUtil;
 /*     */ 
 /*     */ 

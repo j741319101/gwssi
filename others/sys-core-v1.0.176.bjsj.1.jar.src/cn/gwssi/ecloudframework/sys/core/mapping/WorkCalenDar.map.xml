@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.WorkCalenDarDao">
-	<resultMap id="WorkCalenDar" type="cn.gwssi.ecloudframework.sys.api.model.calendar.WorkCalenDar">
+<mapper namespace="com.dstz.sys.core.dao.WorkCalenDarDao">
+	<resultMap id="WorkCalenDar" type="com.dstz.sys.api.model.calendar.WorkCalenDar">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="day" column="day_" jdbcType="DATE"/>
 		<result property="isWorkDay" column="isWorkDay_" jdbcType="VARCHAR"/>
@@ -9,7 +9,7 @@
 		<result property="system" column="system_" jdbcType="VARCHAR"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudframework.sys.api.model.calendar.WorkCalenDar">
+	<insert id="create" parameterType="com.dstz.sys.api.model.calendar.WorkCalenDar">
 		INSERT INTO c_work_calendar
 		(id_,day_,isWorkDay_,type_,system_)
 		VALUES 
@@ -37,7 +37,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudframework.sys.api.model.calendar.WorkCalenDar">
+	<update id="update" parameterType="com.dstz.sys.api.model.calendar.WorkCalenDar">
 		UPDATE c_work_calendar SET
 		day_=#{day,jdbcType=DATE},
 		isWorkDay_=#{isWorkDay,jdbcType=VARCHAR},

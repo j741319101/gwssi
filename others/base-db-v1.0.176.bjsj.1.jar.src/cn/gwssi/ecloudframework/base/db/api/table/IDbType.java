@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.db.api.table;
+package com.dstz.base.db.api.table;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 

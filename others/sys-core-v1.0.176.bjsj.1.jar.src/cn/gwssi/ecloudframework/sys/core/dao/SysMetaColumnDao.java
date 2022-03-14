@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudframework.sys.core.dao;
+package com.dstz.sys.core.dao;
 
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
-import cn.gwssi.ecloudframework.sys.core.model.MetaColumn;
+import com.dstz.base.dao.BaseDao;
+import com.dstz.sys.core.model.MetaColumn;
 import org.apache.ibatis.annotations.Param;
 
 public interface SysMetaColumnDao extends BaseDao<String, MetaColumn> {

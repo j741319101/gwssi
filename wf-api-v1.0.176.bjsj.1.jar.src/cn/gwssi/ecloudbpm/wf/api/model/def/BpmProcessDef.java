@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.api.model.def;
+package com.dstz.bpm.api.model.def;
 
-import cn.gwssi.ecloudbpm.wf.api.engine.plugin.context.BpmPluginContext;
-import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmDef;
-import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
+import com.dstz.bpm.api.engine.plugin.context.BpmPluginContext;
+import com.dstz.bpm.api.engine.plugin.def.BpmDef;
+import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
 import java.util.List;
 
 public interface BpmProcessDef extends BpmDef {

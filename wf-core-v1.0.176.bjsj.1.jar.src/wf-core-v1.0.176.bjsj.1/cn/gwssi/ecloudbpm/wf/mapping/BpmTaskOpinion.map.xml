@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.core.dao.BpmTaskOpinionDao">
-	<resultMap id="BpmTaskOpinion" type="cn.gwssi.ecloudbpm.wf.core.model.BpmTaskOpinion">
+<mapper namespace="com.dstz.bpm.core.dao.BpmTaskOpinionDao">
+	<resultMap id="BpmTaskOpinion" type="com.dstz.bpm.core.model.BpmTaskOpinion">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
 		<result property="supInstId" column="sup_inst_id_" jdbcType="VARCHAR"/>
@@ -24,13 +24,13 @@
 		<result property="actExecutionId" column="act_execution_id_" jdbcType="VARCHAR"/>
 		<result property="taskOrgId" column="task_org_id_" jdbcType="VARCHAR"/>
 	</resultMap>
-	<resultMap id="BpmTaskOpinionVO" extends="BpmTaskOpinion" type="cn.gwssi.ecloudbpm.wf.core.vo.BpmTaskOpinionVO">
+	<resultMap id="BpmTaskOpinionVO" extends="BpmTaskOpinion" type="com.dstz.bpm.core.vo.BpmTaskOpinionVO">
 		<result property="parentNodeId" column="parentNodeId"/>
 		<result property="parentDefId" column="parentDefId"/>
 		<result property="defId" column="defId"/>
 		<result property="taskType" column="taskType"/>
 	</resultMap>
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmTaskOpinion">
+	<insert id="create" parameterType="com.dstz.bpm.core.model.BpmTaskOpinion">
 		INSERT INTO bpm_task_opinion
 		(id_,inst_id_,sup_inst_id_,task_id_,task_key_,task_name_,trace_,assign_info_,approver_,
 		  approver_name_,approve_time_,opinion_,status_,form_id_,create_by_,create_time_,dur_ms_,sign_id_,version_,act_execution_id_,task_org_id_)
@@ -65,7 +65,7 @@
 		</if>
 	</select>
 
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmTaskOpinion">
+	<update id="update" parameterType="com.dstz.bpm.core.model.BpmTaskOpinion">
 		UPDATE bpm_task_opinion SET
 		sup_inst_id_=#{supInstId,jdbcType=VARCHAR},
 		task_id_=#{taskId,jdbcType=VARCHAR},

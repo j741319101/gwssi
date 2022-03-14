@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.core.manager;
+package com.dstz.bpm.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.core.model.overallview.BpmOverallView;
+import com.dstz.bpm.core.model.overallview.BpmOverallView;
 import java.util.List;
 import java.util.Map;
 

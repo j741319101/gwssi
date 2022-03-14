@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.org.api.service;
+package com.dstz.org.api.service;
 
-import cn.gwssi.ecloudframework.org.api.model.ISSOUser;
+import com.dstz.org.api.model.ISSOUser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

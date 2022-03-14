@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.base.dao.baseinterceptor;
+/*    */ package com.dstz.base.dao.baseinterceptor;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.Page;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.FieldSort;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
+/*    */ import com.dstz.base.api.Page;
+/*    */ import com.dstz.base.api.query.FieldSort;
+/*    */ import com.dstz.base.api.query.QueryFilter;
 /*    */ import cn.hutool.core.util.ArrayUtil;
 /*    */ import com.github.pagehelper.PageHelper;
 /*    */ import java.util.Map;

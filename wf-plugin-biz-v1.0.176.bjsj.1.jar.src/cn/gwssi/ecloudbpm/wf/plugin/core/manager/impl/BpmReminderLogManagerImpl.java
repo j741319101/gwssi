@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.core.manager.impl;
+/*    */ package com.dstz.bpm.plugin.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmReminderLogDao;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmReminderLogManager;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmReminderLog;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
+/*    */ import com.dstz.bpm.plugin.core.dao.BpmReminderLogDao;
+/*    */ import com.dstz.bpm.plugin.core.manager.BpmReminderLogManager;
+/*    */ import com.dstz.bpm.plugin.core.model.BpmReminderLog;
+/*    */ import com.dstz.base.api.query.QueryFilter;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
 /*    */ import java.util.List;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;

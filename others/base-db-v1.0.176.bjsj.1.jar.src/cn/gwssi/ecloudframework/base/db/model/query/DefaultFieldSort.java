@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.base.db.model.query;
+/*    */ package com.dstz.base.db.model.query;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.query.Direction;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.FieldSort;
+/*    */ import com.dstz.base.api.query.Direction;
+/*    */ import com.dstz.base.api.query.FieldSort;
 /*    */ import java.io.Serializable;
 /*    */ 
 /*    */ 

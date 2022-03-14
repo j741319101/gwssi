@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.dto;
+/*    */ package com.dstz.bpm.plugin.dto;
 /*    */ 
 /*    */ import java.io.Serializable;
 /*    */ 

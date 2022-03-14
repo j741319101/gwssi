@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudframework.sys.util;
+/*    */ package com.dstz.sys.util;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.Page;
-/*    */ import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-/*    */ import cn.gwssi.ecloudframework.base.db.model.query.DefaultPage;
-/*    */ import cn.gwssi.ecloudframework.base.db.model.query.DefaultQueryFilter;
+/*    */ import com.dstz.base.api.Page;
+/*    */ import com.dstz.base.api.query.QueryFilter;
+/*    */ import com.dstz.base.db.model.query.DefaultPage;
+/*    */ import com.dstz.base.db.model.query.DefaultQueryFilter;
 /*    */ import org.apache.ibatis.session.RowBounds;
 /*    */ 
 /*    */ 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.core.dao.BpmExecutionLinkDao">
-	<resultMap id="BpmExecutionLink" type="cn.gwssi.ecloudbpm.wf.core.model.BpmExecutionLink">
+<mapper namespace="com.dstz.bpm.core.dao.BpmExecutionLinkDao">
+	<resultMap id="BpmExecutionLink" type="com.dstz.bpm.core.model.BpmExecutionLink">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="executionId" column="execution_id_" jdbcType="VARCHAR"/>
 		<result property="objId" column="obj_id_" jdbcType="VARCHAR"/>
@@ -14,7 +14,7 @@
 		<result property="version" column="version_" jdbcType="NUMERIC"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmExecutionLink">
+	<insert id="create" parameterType="com.dstz.bpm.core.model.BpmExecutionLink">
 		INSERT INTO bpm_execution_link
 		(id_,execution_id_,obj_id_,type_,remark_,create_time_,create_by_,update_time_,update_by_,version_)
 		VALUES 
@@ -42,7 +42,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmExecutionLink">
+	<update id="update" parameterType="com.dstz.bpm.core.model.BpmExecutionLink">
 		UPDATE bpm_execution_link SET
 		execution_id_=#{executionId,jdbcType=VARCHAR},
 		obj_id_=#{objId,jdbcType=VARCHAR},
@@ -63,7 +63,7 @@
 		id_=#{id}
 	</delete>
 
-	<insert id="bulkCreate" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmExecutionLink">
+	<insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.BpmExecutionLink">
 		INSERT INTO bpm_execution_link
 		(id_,execution_id_,obj_id_,type_,remark_,create_time_,create_by_,update_time_,update_by_,version_)
 		VALUES
@@ -82,7 +82,7 @@
 		</foreach>
 	</insert>
 	
-	<insert id="bulkCreate" parameterType="cn.gwssi.ecloudbpm.wf.core.model.BpmExecutionLink" databaseId="mysql">
+	<insert id="bulkCreate" parameterType="com.dstz.bpm.core.model.BpmExecutionLink" databaseId="mysql">
 		INSERT INTO bpm_execution_link
 		(id_,execution_id_,obj_id_,type_,remark_,create_time_,create_by_,update_time_,update_by_,version_)
 		VALUES 

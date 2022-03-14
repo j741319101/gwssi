@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.sys.api.freemark;
+package com.dstz.sys.api.freemark;
 
 public interface IFreemarkerEngine {
   String genFormByTemplateName(String paramString, Object paramObject);

@@ -1,9 +1,9 @@
 /*     */ package cn.gwssi.ecloudbpm.form.model;
 /*     */ 
 /*     */ import cn.gwssi.ecloudbpm.form.manager.FormCustDialogManager;
-/*     */ import cn.gwssi.ecloudframework.base.api.model.IDModel;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*     */ import com.dstz.base.api.model.IDModel;
+/*     */ import com.dstz.base.core.util.AppUtil;
+/*     */ import com.dstz.base.core.util.StringUtil;
 /*     */ 
 /*     */ 
 /*     */ 

@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.sys.util;
+/*    */ package com.dstz.sys.util;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*    */ import cn.gwssi.ecloudframework.sys.api.service.PropertyService;
+/*    */ import com.dstz.base.core.util.AppUtil;
+/*    */ import com.dstz.sys.api.service.PropertyService;
 /*    */ 
 /*    */ 
 /*    */ 

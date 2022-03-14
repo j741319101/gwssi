@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.base.core.util;
+/*     */ package com.dstz.base.core.util;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.ext.IEnumExtraDataLoader;
-/*     */ import cn.gwssi.ecloudframework.base.core.model.EnumExtraData;
+/*     */ import com.dstz.base.core.ext.IEnumExtraDataLoader;
+/*     */ import com.dstz.base.core.model.EnumExtraData;
 /*     */ import com.alibaba.fastjson.JSON;
 /*     */ import com.alibaba.fastjson.JSONArray;
 /*     */ import com.alibaba.fastjson.JSONObject;
@@ -169,7 +169,7 @@
 /*     */   }
 /*     */   
 /*     */   public static void main(String[] args) throws Exception {
-/* 172 */     System.out.println(toJSON("cn.gwssi.ecloudframework.bus.api.constant.BusinessObjectPersistenceType"));
+/* 172 */     System.out.println(toJSON("com.dstz.bus.api.constant.BusinessObjectPersistenceType"));
 /*     */   }
 /*     */ }
 

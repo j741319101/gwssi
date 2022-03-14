@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl;
+/*    */ package com.dstz.bpm.api.model.nodedef.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.NodeType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.def.BpmProcessDef;
+/*    */ import com.dstz.bpm.api.constant.NodeType;
+/*    */ import com.dstz.bpm.api.model.def.BpmProcessDef;
 /*    */ 
 /*    */ 
 /*    */ public class SubProcessNodeDef

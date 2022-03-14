@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.base.api.query;
+package com.dstz.base.api.query;
 
-import cn.gwssi.ecloudframework.base.api.Page;
+import com.dstz.base.api.Page;
 import java.util.List;
 import java.util.Map;
 

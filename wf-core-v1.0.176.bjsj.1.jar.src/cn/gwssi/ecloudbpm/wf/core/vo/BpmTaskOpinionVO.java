@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.core.vo;
+/*     */ package com.dstz.bpm.core.vo;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskOpinion;
+/*     */ import com.dstz.bpm.core.model.BpmTaskOpinion;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.List;
 /*     */ 

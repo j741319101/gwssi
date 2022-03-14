@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmCarbonCopyRecordDao">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.BpmCarbonCopyRecordDao">
 
-	<resultMap id="BpmCarbonCopyRecord" type="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyRecord">
+	<resultMap id="BpmCarbonCopyRecord" type="com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="instId" column="inst_id" jdbcType="VARCHAR"/>
 		<result property="taskId" column="task_id" jdbcType="VARCHAR"/>
@@ -21,7 +21,7 @@
 		<result property="version" column="version_" jdbcType="NUMERIC"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyRecord">
+	<insert id="create" parameterType="com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord">
 		INSERT INTO bpm_plugin_carbon_copy_record
 		(id_,inst_id,task_id,node_id,node_name,form_type,event_,trigger_user_id,trigger_user_name,subject,content,create_by_,create_time_,update_by_,update_time_,version_)
 		VALUES 
@@ -49,7 +49,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyRecord">
+	<update id="update" parameterType="com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord">
 		UPDATE bpm_plugin_carbon_copy_record SET
 		inst_id=#{instId,jdbcType=VARCHAR},
 		task_id=#{taskId,jdbcType=VARCHAR},
@@ -80,7 +80,7 @@
 		delete from bpm_plugin_carbon_copy_record where inst_id = #{instId}
 	</delete>
 
-	<insert id="createList" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyRecord">
+	<insert id="createList" parameterType="com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord">
 		INSERT INTO bpm_plugin_carbon_copy_record
 		(id_,inst_id,task_id,node_id,node_name,form_type,event_,trigger_user_id,trigger_user_name,subject,content,create_by_,create_time_,update_by_,update_time_,version_)
 		VALUES

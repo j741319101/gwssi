@@ -1,8 +1,8 @@
-package cn.gwssi.ecloudbpm.wf.api.service;
+package com.dstz.bpm.api.service;
 
 import cn.gwssi.ecloudbpm.bus.api.model.IBusinessPermission;
 import cn.gwssi.ecloudbpm.form.api.model.FormType;
-import cn.gwssi.ecloudbpm.wf.api.engine.data.result.BpmFlowData;
+import com.dstz.bpm.api.engine.data.result.BpmFlowData;
 import java.util.Set;
 
 public interface BpmRightsFormService {

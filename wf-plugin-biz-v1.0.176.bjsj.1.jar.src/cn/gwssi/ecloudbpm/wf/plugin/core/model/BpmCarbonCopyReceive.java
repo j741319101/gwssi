@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.core.model;
+/*     */ package com.dstz.bpm.plugin.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.CarbonCopyStatus;
-/*     */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
+/*     */ import com.dstz.bpm.api.constant.CarbonCopyStatus;
+/*     */ import com.dstz.base.core.model.BaseModel;
 /*     */ 
 /*     */ 
 /*     */ 

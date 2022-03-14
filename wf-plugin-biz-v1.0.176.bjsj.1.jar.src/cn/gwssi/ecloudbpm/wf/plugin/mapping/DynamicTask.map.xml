@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudbpm.wf.plugin.core.dao.DynamicTaskDao">
-	<resultMap id="DynamicTask" type="cn.gwssi.ecloudbpm.wf.plugin.core.model.DynamicTask">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.DynamicTaskDao">
+	<resultMap id="DynamicTask" type="com.dstz.bpm.plugin.core.model.DynamicTask">
 		<id property="id" column="id_" jdbcType="VARCHAR"/>
 		<result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
 		<result property="actExecutionId" column="act_execution_id_" jdbcType="VARCHAR"/>
@@ -18,7 +18,7 @@
 		<result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
 	</resultMap>
 	
-	<insert id="create" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.DynamicTask">
+	<insert id="create" parameterType="com.dstz.bpm.plugin.core.model.DynamicTask">
 		INSERT INTO bpm_plugin_dynamic_task
 		(id_,inst_id_,act_execution_id_,node_id_,current_index_,identity_node_,status_,is_parallel_,
 			ammount_,create_time_,update_time_,create_by_,update_by_,task_id_)
@@ -49,7 +49,7 @@
 		</if>
 	</select>
 	
-	<update id="update" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.DynamicTask">
+	<update id="update" parameterType="com.dstz.bpm.plugin.core.model.DynamicTask">
 		UPDATE bpm_plugin_dynamic_task SET
 		inst_id_=#{instId,jdbcType=VARCHAR},
 		act_execution_id_=#{actExecutionId,jdbcType=VARCHAR},
@@ -75,7 +75,7 @@
 	
 	
 	
-	<insert id="bulkCreate" parameterType="cn.gwssi.ecloudbpm.wf.plugin.core.model.DynamicTask">
+	<insert id="bulkCreate" parameterType="com.dstz.bpm.plugin.core.model.DynamicTask">
 		INSERT INTO bpm_plugin_dynamic_task
 		(id_,inst_id_,act_execution_id_,node_id_,current_index_,identity_node_,status_,is_parallel_,ammount_,create_time_,update_time_,create_by_,update_by_,task_id_)
 		VALUES

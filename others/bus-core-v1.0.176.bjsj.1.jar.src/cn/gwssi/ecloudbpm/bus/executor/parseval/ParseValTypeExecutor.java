@@ -1,7 +1,7 @@
 /*    */ package cn.gwssi.ecloudbpm.bus.executor.parseval;
 /*    */ 
 /*    */ import cn.gwssi.ecloudbpm.bus.model.BusinessColumn;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*    */ import com.dstz.base.core.util.StringUtil;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 
 /*    */ 

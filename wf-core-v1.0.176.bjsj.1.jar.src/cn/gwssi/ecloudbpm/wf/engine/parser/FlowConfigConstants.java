@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.engine.parser;
+package com.dstz.bpm.engine.parser;
 
 public final class FlowConfigConstants {
   public static final class GLOBAL {

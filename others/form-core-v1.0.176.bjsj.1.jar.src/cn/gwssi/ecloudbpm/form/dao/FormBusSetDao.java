@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.form.dao;
 
 import cn.gwssi.ecloudbpm.form.model.FormBusSet;
-import cn.gwssi.ecloudframework.base.dao.BaseDao;
+import com.dstz.base.dao.BaseDao;
 import org.mybatis.spring.annotation.MapperScan;
 
 @MapperScan

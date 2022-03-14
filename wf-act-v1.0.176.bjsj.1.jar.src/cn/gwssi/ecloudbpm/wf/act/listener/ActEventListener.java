@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.act.listener;
+package com.dstz.bpm.act.listener;
 
-import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
+import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
 import org.activiti.engine.delegate.event.ActivitiEvent;
 
 public interface ActEventListener {

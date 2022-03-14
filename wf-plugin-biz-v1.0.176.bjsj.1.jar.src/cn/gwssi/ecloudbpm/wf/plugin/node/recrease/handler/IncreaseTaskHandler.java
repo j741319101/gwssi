@@ -1,25 +1,25 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.node.recrease.handler;
+/*     */ package com.dstz.bpm.plugin.node.recrease.handler;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.action.handler.BuiltinActionHandler;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.engine.context.BpmContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-/*     */ import cn.gwssi.ecloudbpm.wf.api.service.BpmProcessDefService;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmInstanceManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.manager.BpmTaskStackManager;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmInstance;
-/*     */ import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskStack;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefualtTaskActionCmd;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.context.DynamicTaskPluginContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.dynamictask.def.DynamicTaskPluginDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.sign.context.SignTaskPluginContext;
-/*     */ import cn.gwssi.ecloudbpm.wf.plugin.node.sign.def.SignTaskPluginDef;
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-/*     */ import cn.gwssi.ecloudframework.base.api.query.QueryOP;
-/*     */ import cn.gwssi.ecloudframework.base.db.model.query.DefaultQueryFilter;
+/*     */ import com.dstz.bpm.api.constant.ActionType;
+/*     */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*     */ import com.dstz.bpm.api.engine.action.handler.BuiltinActionHandler;
+/*     */ import com.dstz.bpm.api.engine.context.BpmContext;
+/*     */ import com.dstz.bpm.api.model.inst.IBpmInstance;
+/*     */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*     */ import com.dstz.bpm.api.model.task.IBpmTask;
+/*     */ import com.dstz.bpm.api.service.BpmProcessDefService;
+/*     */ import com.dstz.bpm.core.manager.BpmInstanceManager;
+/*     */ import com.dstz.bpm.core.manager.BpmTaskStackManager;
+/*     */ import com.dstz.bpm.core.model.BpmInstance;
+/*     */ import com.dstz.bpm.core.model.BpmTaskStack;
+/*     */ import com.dstz.bpm.engine.action.cmd.DefualtTaskActionCmd;
+/*     */ import com.dstz.bpm.plugin.node.dynamictask.context.DynamicTaskPluginContext;
+/*     */ import com.dstz.bpm.plugin.node.dynamictask.def.DynamicTaskPluginDef;
+/*     */ import com.dstz.bpm.plugin.node.sign.context.SignTaskPluginContext;
+/*     */ import com.dstz.bpm.plugin.node.sign.def.SignTaskPluginDef;
+/*     */ import com.dstz.base.api.query.QueryFilter;
+/*     */ import com.dstz.base.api.query.QueryOP;
+/*     */ import com.dstz.base.db.model.query.DefaultQueryFilter;
 /*     */ import cn.hutool.core.bean.BeanUtil;
 /*     */ import cn.hutool.core.bean.copier.CopyOptions;
 /*     */ import com.alibaba.fastjson.JSONArray;
@@ -84,7 +84,7 @@
 /*  84 */         BpmNodeDef parentNodeDef = bpmNodeDef.getParentBpmNodeDef();
 /*  85 */         SignTaskPluginDef signTaskPluginDef = (SignTaskPluginDef)((SignTaskPluginContext)bpmNodeDef.getPluginContext(SignTaskPluginContext.class)).getBpmPluginDef();
 /*  86 */         DynamicTaskPluginDef dynamicTaskPluginDef = (DynamicTaskPluginDef)((DynamicTaskPluginContext)bpmNodeDef.getPluginContext(DynamicTaskPluginContext.class)).getBpmPluginDef();
-/*  87 */         if (parentNodeDef != null && parentNodeDef instanceof cn.gwssi.ecloudbpm.wf.api.model.nodedef.impl.SubProcessNodeDef) {
+/*  87 */         if (parentNodeDef != null && parentNodeDef instanceof com.dstz.bpm.api.model.nodedef.impl.SubProcessNodeDef) {
 /*  88 */           dynamicTaskPluginDef = (DynamicTaskPluginDef)((DynamicTaskPluginContext)parentNodeDef.getPluginContext(DynamicTaskPluginContext.class)).getBpmPluginDef();
 /*     */         }
 /*  90 */         if (signTaskPluginDef.isSignMultiTask()) {

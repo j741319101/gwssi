@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.action.cmd;
+package com.dstz.bpm.api.engine.action.cmd;
 
-import cn.gwssi.ecloudbpm.wf.api.model.inst.IBpmInstance;
+import com.dstz.bpm.api.model.inst.IBpmInstance;
 
 public interface InstanceActionCmd extends ActionCmd {
   String getSubject();

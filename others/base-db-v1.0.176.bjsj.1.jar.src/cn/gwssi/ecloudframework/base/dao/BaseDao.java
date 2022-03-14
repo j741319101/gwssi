@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.base.dao;
+package com.dstz.base.dao;
 
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
+import com.dstz.base.api.query.QueryFilter;
 import java.util.List;
 
 public interface BaseDao<PK extends java.io.Serializable, T> {

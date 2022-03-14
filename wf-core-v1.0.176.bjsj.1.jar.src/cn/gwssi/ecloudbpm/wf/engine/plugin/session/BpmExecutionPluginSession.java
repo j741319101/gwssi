@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.engine.plugin.session;
+package com.dstz.bpm.engine.plugin.session;
 
 public interface BpmExecutionPluginSession extends BpmPluginSession {}
 

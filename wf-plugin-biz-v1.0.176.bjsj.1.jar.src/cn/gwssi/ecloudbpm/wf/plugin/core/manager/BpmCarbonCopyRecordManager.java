@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.plugin.core.manager;
+package com.dstz.bpm.plugin.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyRecord;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord;
+import com.dstz.base.manager.Manager;
 import java.util.List;
 
 public interface BpmCarbonCopyRecordManager extends Manager<String, BpmCarbonCopyRecord> {

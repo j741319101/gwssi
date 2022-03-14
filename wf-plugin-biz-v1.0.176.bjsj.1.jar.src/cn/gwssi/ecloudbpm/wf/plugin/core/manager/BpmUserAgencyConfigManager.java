@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.plugin.core.manager;
+package com.dstz.bpm.plugin.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmUserAgencyConfig;
-import cn.gwssi.ecloudbpm.wf.plugin.dto.BpmUserAgencyConfigTabDTO;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.plugin.core.model.BpmUserAgencyConfig;
+import com.dstz.bpm.plugin.dto.BpmUserAgencyConfigTabDTO;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.manager.Manager;
 import com.github.pagehelper.Page;
 import java.util.Date;
 import java.util.List;

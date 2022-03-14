@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.base.core.id;
+package com.dstz.base.core.id;
 
 public interface IdGenerator {
   Long getUId();

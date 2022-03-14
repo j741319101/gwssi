@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.api.service;
+package com.dstz.sys.api.service;
 
-import cn.gwssi.ecloudframework.sys.api.model.ISysDataSource;
+import com.dstz.sys.api.model.ISysDataSource;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 

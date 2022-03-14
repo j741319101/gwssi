@@ -1,7 +1,7 @@
-package cn.gwssi.ecloudbpm.wf.plugin.core.manager;
+package com.dstz.bpm.plugin.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmLeaderOptionLog;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog;
+import com.dstz.base.manager.Manager;
 
 public interface BpmLeaderOptionLogManager extends Manager<String, BpmLeaderOptionLog> {
   void removeByInstId(String paramString);

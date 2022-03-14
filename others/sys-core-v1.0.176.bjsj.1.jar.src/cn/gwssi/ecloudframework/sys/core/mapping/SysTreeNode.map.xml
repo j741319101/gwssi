@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.SysTreeNodeDao">
-    <resultMap id="SysTreeNode" type="cn.gwssi.ecloudframework.sys.core.model.SysTreeNode">
+<mapper namespace="com.dstz.sys.core.dao.SysTreeNodeDao">
+    <resultMap id="SysTreeNode" type="com.dstz.sys.core.model.SysTreeNode">
         <id property="id" column="id_" jdbcType="VARCHAR"/>
         <result property="key" column="key_" jdbcType="VARCHAR"/>
         <result property="name" column="name_" jdbcType="VARCHAR"/>
@@ -16,7 +16,7 @@
 		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysTreeNode">
+    <insert id="create" parameterType="com.dstz.sys.core.model.SysTreeNode">
 		INSERT INTO sys_tree_node
 		(id_,key_,name_,desc_,tree_id_,parent_id_,path_,sn_,icon_,application_name_,create_by_,create_time_)
 		VALUES 
@@ -47,7 +47,7 @@
         </if>
     </select>
 
-    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.SysTreeNode">
+    <update id="update" parameterType="com.dstz.sys.core.model.SysTreeNode">
 		UPDATE sys_tree_node SET
 		key_=#{key,jdbcType=VARCHAR},
 		name_=#{name,jdbcType=VARCHAR},
@@ -82,7 +82,7 @@
 		path_ like #{path}
 	</delete>
 
-	<update id="chageOrder" parameterType="cn.gwssi.ecloudframework.sys.api.model.SysNodeOrderParam">
+	<update id="chageOrder" parameterType="com.dstz.sys.api.model.SysNodeOrderParam">
 		update sys_tree_node set sn_=#{sn,jdbcType=NUMERIC} where id_=#{id}
 	</update>
 

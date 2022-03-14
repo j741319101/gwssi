@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.base.db.tableoper;
+/*    */ package com.dstz.base.db.tableoper;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.DbType;
-/*    */ import cn.gwssi.ecloudframework.base.db.model.table.Table;
+/*    */ import com.dstz.base.api.constant.DbType;
+/*    */ import com.dstz.base.db.model.table.Table;
 /*    */ import org.springframework.jdbc.core.JdbcTemplate;
 /*    */ 
 /*    */ 

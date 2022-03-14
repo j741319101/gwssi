@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.api.engine.action.button;
+package com.dstz.bpm.api.engine.action.button;
 
-import cn.gwssi.ecloudbpm.wf.api.model.nodedef.Button;
+import com.dstz.bpm.api.model.nodedef.Button;
 import java.util.List;
 
 public interface ButtonChecker {

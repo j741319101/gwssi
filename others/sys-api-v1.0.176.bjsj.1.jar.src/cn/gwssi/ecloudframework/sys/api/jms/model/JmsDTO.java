@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.sys.api.jms.model;
+package com.dstz.sys.api.jms.model;
 
 import java.io.Serializable;
 

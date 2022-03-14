@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudframework.sys.freemark;
+/*    */ package com.dstz.sys.freemark;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessError;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.PropertyUtil;
-/*    */ import cn.gwssi.ecloudframework.sys.api.freemark.IFreemarkerEngine;
+/*    */ import com.dstz.base.api.exception.BusinessError;
+/*    */ import com.dstz.base.core.util.PropertyUtil;
+/*    */ import com.dstz.sys.api.freemark.IFreemarkerEngine;
 /*    */ import freemarker.cache.StringTemplateLoader;
 /*    */ import freemarker.cache.TemplateLoader;
 /*    */ import freemarker.template.Configuration;

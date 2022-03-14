@@ -35,7 +35,7 @@
         <dependency>
             <groupId>com.dstz.agilebpm</groupId>
             <artifactId>wf-plugin</artifactId>
-            <classifier></classifier> 
+            <classifier></classifier>
         </dependency>
         <dependency>
             <groupId>com.dstz.agilebpm</groupId>

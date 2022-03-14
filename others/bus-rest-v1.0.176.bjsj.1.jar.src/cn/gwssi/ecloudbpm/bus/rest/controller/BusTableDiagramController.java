@@ -2,10 +2,10 @@
 /*    */ 
 /*    */ import cn.gwssi.ecloudbpm.bus.manager.BusTableDiagramManager;
 /*    */ import cn.gwssi.ecloudbpm.bus.model.BusTableDiagram;
-/*    */ import cn.gwssi.ecloudframework.base.api.aop.annotion.CatchErr;
-/*    */ import cn.gwssi.ecloudframework.base.api.model.IDModel;
-/*    */ import cn.gwssi.ecloudframework.base.api.response.impl.ResultMsg;
-/*    */ import cn.gwssi.ecloudframework.base.rest.BaseController;
+/*    */ import com.dstz.base.api.aop.annotion.CatchErr;
+/*    */ import com.dstz.base.api.model.IDModel;
+/*    */ import com.dstz.base.api.response.impl.ResultMsg;
+/*    */ import com.dstz.base.rest.BaseController;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.web.bind.annotation.RequestBody;
 /*    */ import org.springframework.web.bind.annotation.RequestMapping;

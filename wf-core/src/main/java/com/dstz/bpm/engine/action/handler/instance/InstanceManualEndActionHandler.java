@@ -75,8 +75,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 /*     */     
 /*  75 */     BpmContext.setActionModel((ActionCmd)model);
 /*     */     
-/*  77 */     handelBusData((BaseActionCmd)model);
-/*     */     
+///*  77 */     handelBusData((BaseActionCmd)model);
+/*  77 */     handelBusData(model);
+/*     */
 /*  79 */     updateOpinionStatus(model);
 /*     */ 
 /*     */     

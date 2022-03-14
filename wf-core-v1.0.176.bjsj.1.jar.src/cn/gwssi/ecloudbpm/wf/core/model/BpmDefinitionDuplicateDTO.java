@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.core.model;
+/*    */ package com.dstz.bpm.core.model;
 /*    */ 
 /*    */ import io.swagger.annotations.ApiModelProperty;
 /*    */ import java.io.Serializable;

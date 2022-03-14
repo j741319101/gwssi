@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.constant;
+package com.dstz.bpm.api.constant;
 
 public interface BpmConstants {
   public static final String PROCDEF_PREFIX = "procdef_";

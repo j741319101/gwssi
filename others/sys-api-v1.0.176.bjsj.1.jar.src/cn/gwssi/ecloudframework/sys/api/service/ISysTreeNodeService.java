@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.api.service;
+package com.dstz.sys.api.service;
 
-import cn.gwssi.ecloudframework.sys.api.model.ISysTreeNode;
+import com.dstz.sys.api.model.ISysTreeNode;
 import java.util.List;
 
 public interface ISysTreeNodeService {

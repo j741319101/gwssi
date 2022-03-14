@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.global.multinst.def;
+/*     */ package com.dstz.bpm.plugin.global.multinst.def;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
+/*     */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
+/*     */ import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
 /*     */ import java.io.Serializable;
 /*     */ import java.util.HashSet;
 /*     */ import java.util.List;

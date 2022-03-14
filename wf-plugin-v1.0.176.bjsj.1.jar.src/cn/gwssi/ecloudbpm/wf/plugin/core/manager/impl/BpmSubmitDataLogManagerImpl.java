@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.plugin.core.manager.impl;
+package com.dstz.bpm.plugin.core.manager.impl;
 
-import cn.gwssi.ecloudbpm.wf.plugin.core.dao.BpmSubmitDataLogDao;
-import cn.gwssi.ecloudbpm.wf.plugin.core.manager.BpmSubmitDataLogManager;
-import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmSubmitDataLog;
-import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
+import com.dstz.bpm.plugin.core.dao.BpmSubmitDataLogDao;
+import com.dstz.bpm.plugin.core.manager.BpmSubmitDataLogManager;
+import com.dstz.bpm.plugin.core.model.BpmSubmitDataLog;
+import com.dstz.base.manager.impl.BaseManager;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 

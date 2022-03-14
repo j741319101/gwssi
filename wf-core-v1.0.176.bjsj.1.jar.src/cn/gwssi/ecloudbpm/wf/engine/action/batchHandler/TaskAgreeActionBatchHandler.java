@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.action.batchHandler;
+/*    */ package com.dstz.bpm.engine.action.batchHandler;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.BatchActionType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.FlowBatchRequestParam;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.FlowRequestParam;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.action.cmd.DefualtTaskActionCmd;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.JsonUtil;
+/*    */ import com.dstz.bpm.api.constant.BatchActionType;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.FlowBatchRequestParam;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.FlowRequestParam;
+/*    */ import com.dstz.bpm.engine.action.cmd.DefualtTaskActionCmd;
+/*    */ import com.dstz.base.core.util.JsonUtil;
 /*    */ import com.alibaba.fastjson.JSONArray;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import java.util.Map;

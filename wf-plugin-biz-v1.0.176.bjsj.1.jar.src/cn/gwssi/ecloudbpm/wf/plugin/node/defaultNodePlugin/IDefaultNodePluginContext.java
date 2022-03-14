@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.plugin.node.defaultNodePlugin;
+package com.dstz.bpm.plugin.node.defaultNodePlugin;
 
 public interface IDefaultNodePluginContext {
   boolean isEffective();

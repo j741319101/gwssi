@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.validate.aop;
+/*    */ package com.dstz.base.core.validate.aop;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.aop.annotion.ParamValidate;
-/*    */ import cn.gwssi.ecloudframework.base.api.response.impl.BaseResult;
-/*    */ import cn.gwssi.ecloudframework.base.api.response.impl.ResultMsg;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
-/*    */ import cn.gwssi.ecloudframework.base.core.validate.ValidateUtil;
+/*    */ import com.dstz.base.api.aop.annotion.ParamValidate;
+/*    */ import com.dstz.base.api.response.impl.BaseResult;
+/*    */ import com.dstz.base.api.response.impl.ResultMsg;
+/*    */ import com.dstz.base.core.util.StringUtil;
+/*    */ import com.dstz.base.core.validate.ValidateUtil;
 /*    */ import com.alibaba.fastjson.JSON;
 /*    */ import org.aspectj.lang.ProceedingJoinPoint;
 /*    */ import org.aspectj.lang.Signature;

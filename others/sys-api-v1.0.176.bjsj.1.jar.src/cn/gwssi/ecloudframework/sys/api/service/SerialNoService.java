@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.sys.api.service;
+package com.dstz.sys.api.service;
 
 public interface SerialNoService {
   String genNextNo(String paramString);

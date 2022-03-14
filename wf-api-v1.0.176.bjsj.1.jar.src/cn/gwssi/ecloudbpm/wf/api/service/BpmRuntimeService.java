@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudbpm.wf.api.service;
+package com.dstz.bpm.api.service;
 
 public interface BpmRuntimeService {
   String signalEventReceived(String paramString1, String paramString2, String paramString3);

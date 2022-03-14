@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.action.cmd;
+/*    */ package com.dstz.bpm.engine.action.cmd;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.BatchActionType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.FlowBatchRequestParam;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.action.batchHandler.AbsActionBatchHandler;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
+/*    */ import com.dstz.bpm.api.constant.BatchActionType;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.FlowBatchRequestParam;
+/*    */ import com.dstz.bpm.engine.action.batchHandler.AbsActionBatchHandler;
+/*    */ import com.dstz.base.core.util.AppUtil;
 /*    */ 
 /*    */ public class DefaultTaskActionBatchCmd {
 /*    */   public String executeCmd(FlowBatchRequestParam flowParam) {

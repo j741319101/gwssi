@@ -1,51 +1,50 @@
-/*    */ package com.dstz.bpm.plugin.usercalc.group.executer;
-/*    */ 
-/*    */ import com.dstz.base.core.util.StringUtil;
-/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmUserCalcPluginDef;
-/*    */ import com.dstz.bpm.engine.plugin.runtime.abstact.AbstractUserCalcPlugin;
-/*    */ import com.dstz.bpm.engine.plugin.session.BpmUserCalcPluginSession;
-/*    */ import com.dstz.bpm.plugin.usercalc.group.def.GroupPluginDef;
-/*    */ import com.dstz.org.api.model.IGroup;
-/*    */ import com.dstz.org.api.service.GroupService;
-/*    */ import com.dstz.sys.api.model.DefaultIdentity;
-/*    */ import com.dstz.sys.api.model.SysIdentity;
-/*    */ import java.util.ArrayList;
-/*    */ import java.util.List;
-/*    */ import javax.annotation.Resource;
-/*    */ import org.springframework.stereotype.Component;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ @Component
-/*    */ public class GroupPluginExecutor
-/*    */   extends AbstractUserCalcPlugin<GroupPluginDef>
-/*    */ {
-/*    */   @Resource
-/*    */   GroupService userGroupService;
-/*    */   
-/*    */   public List<SysIdentity> queryByPluginDef(BpmUserCalcPluginSession pluginSession, GroupPluginDef def) {
-/* 28 */     if (StringUtil.isEmpty(def.getGroupKey())) return null; 
-/* 29 */     String groupType = def.getType();
-/*    */     
-/* 31 */     List<SysIdentity> identityList = new ArrayList<>();
-/* 32 */     for (String key : def.getGroupKey().split(",")) {
-/* 33 */       if (!StringUtil.isEmpty(key)) {
-/* 34 */         IGroup group = this.userGroupService.getByCode(groupType, key);
-/* 35 */         if (group != null) {
-/* 36 */           DefaultIdentity identity = new DefaultIdentity(group.getGroupId(), group.getGroupName(), group.getGroupType());
-/* 37 */           if (group.getSn() != null) {
-/* 38 */             identity.setSn(group.getSn());
-/*    */           }
-/* 40 */           identityList.add(identity);
-/*    */         } 
-/*    */       } 
-/* 43 */     }  return identityList;
-/*    */   }
-/*    */ }
+package com.dstz.bpm.plugin.usercalc.group.executer;
 
+import com.dstz.bpm.engine.plugin.runtime.abstact.AbstractUserCalcPlugin;
+import com.dstz.bpm.engine.plugin.session.BpmUserCalcPluginSession;
+import com.dstz.bpm.plugin.usercalc.group.def.GroupPluginDef;
+import com.dstz.base.api.exception.BusinessException;
+import com.dstz.base.core.util.StringUtil;
+import com.dstz.org.api.model.IGroup;
+import com.dstz.org.api.service.GroupService;
+import com.dstz.sys.api.model.DefaultIdentity;
+import com.dstz.sys.api.model.SysIdentity;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Component;
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloudbpm/wf-plugin/0.2-SNAPSHOT/wf-plugin-0.2-SNAPSHOT.jar!/cn/gwssi/ecloudbpm/bpm/plugin/usercalc/group/executer/GroupPluginExecutor.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+@Component
+public class GroupPluginExecutor extends AbstractUserCalcPlugin<GroupPluginDef> {
+   @Resource
+   GroupService userGroupService;
+
+   public List<SysIdentity> queryByPluginDef(BpmUserCalcPluginSession pluginSession, GroupPluginDef def) {
+      if (StringUtil.isEmpty(def.getGroupKey())) {
+         throw new BusinessException("流程定义候选人配置错误：" + def.getGroupName());
+      } else {
+         String groupType = def.getType();
+         List<SysIdentity> identityList = new ArrayList();
+         String[] var5 = def.getGroupKey().split(",");
+         int var6 = var5.length;
+
+         for(int var7 = 0; var7 < var6; ++var7) {
+            String key = var5[var7];
+            if (!StringUtil.isEmpty(key)) {
+               IGroup group = this.userGroupService.getByCode(groupType, key);
+               if (group != null) {
+//                  DefaultIdentity identity = new DefaultIdentity(group.getGroupId(), group.getGroupName(), group.getGroupType(), group.getGroupId());// todo orgId -d
+                  DefaultIdentity identity = new DefaultIdentity(group.getGroupId(), group.getGroupName(), group.getGroupType());
+                  if (group.getSn() != null) {
+                     identity.setSn(group.getSn());
+                  }
+
+                  identityList.add(identity);
+               }
+            }
+         }
+
+         return identityList;
+      }
+   }
+}

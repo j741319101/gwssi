@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.parser.flow;
+/*    */ package com.dstz.bpm.engine.parser.flow;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.def.BpmVariableDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmProcessDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.model.DefaultBpmVariableDef;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmDef;
+/*    */ import com.dstz.bpm.api.model.def.BpmVariableDef;
+/*    */ import com.dstz.bpm.engine.model.DefaultBpmProcessDef;
+/*    */ import com.dstz.bpm.engine.model.DefaultBpmVariableDef;
 /*    */ import java.util.HashSet;
 /*    */ import java.util.List;
 /*    */ import java.util.Set;

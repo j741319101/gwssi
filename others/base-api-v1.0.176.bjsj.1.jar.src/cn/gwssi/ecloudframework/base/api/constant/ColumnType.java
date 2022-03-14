@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.base.api.constant;
+/*     */ package com.dstz.base.api.constant;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
+/*     */ import com.dstz.base.api.exception.BusinessException;
 /*     */ import java.util.Arrays;
 /*     */ 
 /*     */ 

@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.sys.api.jms;
+package com.dstz.sys.api.jms;
 
-import cn.gwssi.ecloudframework.sys.api.jms.model.JmsDTO;
+import com.dstz.sys.api.jms.model.JmsDTO;
 
 public interface JmsHandler<T extends java.io.Serializable> {
   String getType();

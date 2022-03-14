@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef;
+package com.dstz.bpm.engine.plugin.plugindef;
 
-import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmExecutionPluginDef;
+import com.dstz.bpm.api.engine.plugin.def.BpmExecutionPluginDef;
 
 public abstract class AbstractBpmExecutionPluginDef implements BpmExecutionPluginDef {}
 

@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.base.api.response.impl;
+/*    */ package com.dstz.base.api.response.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.BaseStatusCode;
-/*    */ import cn.gwssi.ecloudframework.base.api.response.IResult;
+/*    */ import com.dstz.base.api.constant.BaseStatusCode;
+/*    */ import com.dstz.base.api.response.IResult;
 /*    */ import io.swagger.annotations.ApiModelProperty;
 /*    */ 
 /*    */ 

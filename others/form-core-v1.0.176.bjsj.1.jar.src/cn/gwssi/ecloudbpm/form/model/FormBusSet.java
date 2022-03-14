@@ -1,6 +1,6 @@
 /*     */ package cn.gwssi.ecloudbpm.form.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.model.IDModel;
+/*     */ import com.dstz.base.api.model.IDModel;
 /*     */ import javax.xml.bind.annotation.XmlAttribute;
 /*     */ import javax.xml.bind.annotation.XmlElement;
 /*     */ import org.apache.commons.lang3.builder.ToStringBuilder;

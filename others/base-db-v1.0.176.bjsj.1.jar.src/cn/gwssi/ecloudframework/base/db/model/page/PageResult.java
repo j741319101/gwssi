@@ -1,6 +1,6 @@
-/*     */ package cn.gwssi.ecloudframework.base.db.model.page;
+/*     */ package com.dstz.base.db.model.page;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.api.response.impl.BaseResult;
+/*     */ import com.dstz.base.api.response.impl.BaseResult;
 /*     */ import com.github.pagehelper.Page;
 /*     */ import com.github.pagehelper.PageInfo;
 /*     */ import io.swagger.annotations.ApiModel;

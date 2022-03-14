@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudframework.sys.core.manager.impl;
+/*    */ package com.dstz.sys.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.dao.SysMetaColumnDao;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.SysMetaColumnManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.model.MetaColumn;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
+/*    */ import com.dstz.sys.core.dao.SysMetaColumnDao;
+/*    */ import com.dstz.sys.core.manager.SysMetaColumnManager;
+/*    */ import com.dstz.sys.core.model.MetaColumn;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 

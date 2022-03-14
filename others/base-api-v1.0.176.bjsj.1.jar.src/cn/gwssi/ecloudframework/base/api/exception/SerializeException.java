@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.base.api.exception;
+/*    */ package com.dstz.base.api.exception;
 /*    */ 
 /*    */ public class SerializeException extends RuntimeException {
 /*    */   private static final long serialVersionUID = 8847845622247770262L;

@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudbpm.wf.api.platform;
+package com.dstz.bpm.api.platform;
 
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTaskOpinion;
+import com.dstz.bpm.api.model.task.IBpmTaskOpinion;
 import java.util.List;
 
 public interface IBpmTaskOpinionPlatFormService {

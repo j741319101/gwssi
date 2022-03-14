@@ -1,46 +1,22 @@
-/*    */ package com.dstz.bpm.plugin.global.carboncopy.def;
-/*    */ 
-/*    */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
-/*    */ import java.util.List;
-/*    */ import java.util.Map;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ public class CarbonCopyPluginDef
-/*    */   extends AbstractBpmExecutionPluginDef
-/*    */ {
-/*    */   private static final long serialVersionUID = 4987507273918000937L;
-/*    */   private Map<String, List<BpmCarbonCopy>> nodeEventCarbonCopyMap;
-/*    */   
-/*    */   public Map<String, List<BpmCarbonCopy>> getNodeEventCarbonCopyMap() {
-/* 23 */     return this.nodeEventCarbonCopyMap;
-/*    */   }
-/*    */   
-/*    */   public void setNodeEventCarbonCopyMap(Map<String, List<BpmCarbonCopy>> nodeEventCarbonCopyMap) {
-/* 27 */     this.nodeEventCarbonCopyMap = nodeEventCarbonCopyMap;
-/*    */   }
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
-/*    */   public static String getMapKey(String nodeId, String event) {
-/* 38 */     return nodeId + "_" + event;
-/*    */   }
-/*    */ }
+package com.dstz.bpm.plugin.global.carboncopy.def;
 
+import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+import java.util.List;
+import java.util.Map;
 
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloudbpm/wf-plugin-biz/0.2-SNAPSHOT/wf-plugin-biz-0.2-SNAPSHOT.jar!/cn/gwssi/ecloudbpm/bpm/plugin/global/carboncopy/def/CarbonCopyPluginDef.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */
+public class CarbonCopyPluginDef extends AbstractBpmExecutionPluginDef {
+   private static final long serialVersionUID = 4987507273918000937L;
+   private Map<String, List<BpmCarbonCopy>> nodeEventCarbonCopyMap;
+
+   public Map<String, List<BpmCarbonCopy>> getNodeEventCarbonCopyMap() {
+      return this.nodeEventCarbonCopyMap;
+   }
+
+   public void setNodeEventCarbonCopyMap(Map<String, List<BpmCarbonCopy>> nodeEventCarbonCopyMap) {
+      this.nodeEventCarbonCopyMap = nodeEventCarbonCopyMap;
+   }
+
+   public static String getMapKey(String nodeId, String event) {
+      return nodeId + "_" + event;
+   }
+}

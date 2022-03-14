@@ -1,9 +1,9 @@
-package cn.gwssi.ecloudbpm.wf.plugin.core.manager;
+package com.dstz.bpm.plugin.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.plugin.core.model.BpmCarbonCopyReceive;
-import cn.gwssi.ecloudbpm.wf.plugin.vo.BpmUserReceiveCarbonCopyRecordVO;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.plugin.core.model.BpmCarbonCopyReceive;
+import com.dstz.bpm.plugin.vo.BpmUserReceiveCarbonCopyRecordVO;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.manager.Manager;
 import java.util.List;
 import java.util.Set;
 

@@ -1,6 +1,6 @@
-package cn.gwssi.ecloudframework.base.core.executor;
+package com.dstz.base.core.executor;
 
-import cn.gwssi.ecloudframework.base.api.executor.ExecuteChain;
+import com.dstz.base.api.executor.ExecuteChain;
 
 public abstract class AbstractExecuteChain<T> extends AbstractExecutor<T> implements ExecuteChain<T> {}
 

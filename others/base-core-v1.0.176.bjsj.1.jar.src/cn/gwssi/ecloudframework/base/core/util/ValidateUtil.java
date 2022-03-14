@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.base.core.util;
+/*    */ package com.dstz.base.core.util;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.BaseStatusCode;
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
+/*    */ import com.dstz.base.api.constant.BaseStatusCode;
+/*    */ import com.dstz.base.api.exception.BusinessException;
 /*    */ import java.lang.annotation.Annotation;
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.HashMap;

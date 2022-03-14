@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.action.handler.instance;
+/*    */ package com.dstz.bpm.engine.action.handler.instance;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.cmd.ActionCmd;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.action.handler.ActionHandler;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.model.nodedef.BpmNodeDef;
+/*    */ import com.dstz.bpm.api.constant.ActionType;
+/*    */ import com.dstz.bpm.api.engine.action.cmd.ActionCmd;
+/*    */ import com.dstz.bpm.api.engine.action.handler.ActionHandler;
+/*    */ import com.dstz.bpm.api.model.nodedef.BpmNodeDef;
 /*    */ import org.springframework.stereotype.Component;
 /*    */ 
 /*    */ 

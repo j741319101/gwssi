@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudframework.sys.core.model;
+/*     */ package com.dstz.sys.core.model;
 /*     */ 
-/*     */ import cn.gwssi.ecloudframework.base.core.model.BaseModel;
-/*     */ import cn.gwssi.ecloudframework.sys.api.model.IDataDict;
+/*     */ import com.dstz.base.core.model.BaseModel;
+/*     */ import com.dstz.sys.api.model.IDataDict;
 /*     */ 
 /*     */ 
 /*     */ 

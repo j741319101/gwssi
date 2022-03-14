@@ -1,8 +1,8 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef;
+/*    */ package com.dstz.bpm.engine.plugin.plugindef;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.constant.ExtractType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.constant.LogicType;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmUserCalcPluginDef;
+/*    */ import com.dstz.bpm.api.constant.ExtractType;
+/*    */ import com.dstz.bpm.api.engine.constant.LogicType;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmUserCalcPluginDef;
 /*    */ 
 /*    */ 
 /*    */ 

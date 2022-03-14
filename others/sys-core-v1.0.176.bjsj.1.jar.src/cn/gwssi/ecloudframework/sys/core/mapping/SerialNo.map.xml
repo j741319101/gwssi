@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gwssi.ecloudframework.sys.core.dao.SerialNoDao">
-    <resultMap id="SerialNo" type="cn.gwssi.ecloudframework.sys.core.model.SerialNo">
+<mapper namespace="com.dstz.sys.core.dao.SerialNoDao">
+    <resultMap id="SerialNo" type="com.dstz.sys.core.model.SerialNo">
         <id property="id" column="id_" jdbcType="VARCHAR"/>
         <result property="name" column="name_" jdbcType="VARCHAR"/>
         <result property="alias" column="alias_" jdbcType="VARCHAR"/>
@@ -23,7 +23,7 @@
 		id_,name_,alias_,regulation_,gen_type_,no_length_,cur_date_,init_value_,cur_value_,step_,type_id_,create_time_,create_by_,update_time_,update_by_
 	</sql>
 
-    <insert id="create" parameterType="cn.gwssi.ecloudframework.sys.core.model.SerialNo">
+    <insert id="create" parameterType="com.dstz.sys.core.model.SerialNo">
 		INSERT INTO sys_serialno
 		(id_,name_,alias_,regulation_,gen_type_,no_length_,cur_date_,init_value_,cur_value_,step_,type_id_,create_time_,create_by_,update_time_,update_by_)
 		VALUES 
@@ -52,7 +52,7 @@
         </if>
     </select>
 
-    <update id="update" parameterType="cn.gwssi.ecloudframework.sys.core.model.SerialNo">
+    <update id="update" parameterType="com.dstz.sys.core.model.SerialNo">
 		UPDATE sys_serialno SET
 		name_=#{name,jdbcType=VARCHAR},
 		alias_=#{alias,jdbcType=VARCHAR},
@@ -70,7 +70,7 @@
 		id_=#{id}
 	</update>
 
-    <update id="updByAlias" parameterType="cn.gwssi.ecloudframework.sys.core.model.SerialNo">
+    <update id="updByAlias" parameterType="com.dstz.sys.core.model.SerialNo">
 		UPDATE sys_serialno SET
 		cur_date_=#{curDate,jdbcType=VARCHAR},
 		cur_value_=#{newCurValue,jdbcType=NUMERIC}

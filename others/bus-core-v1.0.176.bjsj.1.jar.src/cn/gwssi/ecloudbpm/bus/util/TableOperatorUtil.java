@@ -1,12 +1,12 @@
 /*    */ package cn.gwssi.ecloudbpm.bus.util;
 /*    */ 
 /*    */ import cn.gwssi.ecloudbpm.bus.model.BusinessTable;
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.DbType;
-/*    */ import cn.gwssi.ecloudframework.base.core.util.AppUtil;
-/*    */ import cn.gwssi.ecloudframework.base.db.model.table.Table;
-/*    */ import cn.gwssi.ecloudframework.base.db.tableoper.MysqlTableOperator;
-/*    */ import cn.gwssi.ecloudframework.base.db.tableoper.TableOperator;
-/*    */ import cn.gwssi.ecloudframework.sys.api.service.ISysDataSourceService;
+/*    */ import com.dstz.base.api.constant.DbType;
+/*    */ import com.dstz.base.core.util.AppUtil;
+/*    */ import com.dstz.base.db.model.table.Table;
+/*    */ import com.dstz.base.db.tableoper.MysqlTableOperator;
+/*    */ import com.dstz.base.db.tableoper.TableOperator;
+/*    */ import com.dstz.sys.api.service.ISysDataSourceService;
 /*    */ import org.springframework.jdbc.core.JdbcTemplate;
 /*    */ 
 /*    */ 

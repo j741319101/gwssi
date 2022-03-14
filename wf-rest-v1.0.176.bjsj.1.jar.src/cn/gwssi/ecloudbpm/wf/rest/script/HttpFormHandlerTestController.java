@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.rest.script;
+/*    */ package com.dstz.bpm.rest.script;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.response.impl.ResultMsg;
-/*    */ import cn.gwssi.ecloudframework.base.rest.ControllerTools;
+/*    */ import com.dstz.base.api.response.impl.ResultMsg;
+/*    */ import com.dstz.base.rest.ControllerTools;
 /*    */ import java.util.HashMap;
 /*    */ import java.util.Map;
 /*    */ import org.springframework.web.bind.annotation.RequestBody;

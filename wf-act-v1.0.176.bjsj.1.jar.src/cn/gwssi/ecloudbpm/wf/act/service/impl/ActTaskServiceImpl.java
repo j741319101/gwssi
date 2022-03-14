@@ -1,8 +1,8 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.act.service.impl;
+/*     */ package com.dstz.bpm.act.service.impl;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.act.service.ActTaskService;
-/*     */ import cn.gwssi.ecloudbpm.wf.act.util.ActivitiUtil;
-/*     */ import cn.gwssi.ecloudframework.base.core.util.StringUtil;
+/*     */ import com.dstz.bpm.act.service.ActTaskService;
+/*     */ import com.dstz.bpm.act.util.ActivitiUtil;
+/*     */ import com.dstz.base.core.util.StringUtil;
 /*     */ import cn.hutool.core.collection.CollectionUtil;
 /*     */ import java.util.Map;
 /*     */ import javax.annotation.Resource;

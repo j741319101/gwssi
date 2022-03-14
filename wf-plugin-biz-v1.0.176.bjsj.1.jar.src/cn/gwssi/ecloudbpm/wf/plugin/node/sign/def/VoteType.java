@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.node.sign.def;
+/*    */ package com.dstz.bpm.plugin.node.sign.def;
 /*    */ 
 /*    */ public enum VoteType {
 /*  4 */   AMOUNT("amount", "投票数"),

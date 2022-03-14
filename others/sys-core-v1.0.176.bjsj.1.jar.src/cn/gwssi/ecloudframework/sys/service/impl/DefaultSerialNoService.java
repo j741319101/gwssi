@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudframework.sys.service.impl;
+/*    */ package com.dstz.sys.service.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.sys.api.service.SerialNoService;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.SerialNoManager;
+/*    */ import com.dstz.sys.api.service.SerialNoService;
+/*    */ import com.dstz.sys.core.manager.SerialNoManager;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;
 /*    */ 

@@ -1,7 +1,7 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.node.sign.def;
+/*     */ package com.dstz.bpm.plugin.node.sign.def;
 /*     */ 
-/*     */ import cn.gwssi.ecloudbpm.wf.api.constant.ActionType;
-/*     */ import cn.gwssi.ecloudbpm.wf.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
+/*     */ import com.dstz.bpm.api.constant.ActionType;
+/*     */ import com.dstz.bpm.engine.plugin.plugindef.AbstractBpmExecutionPluginDef;
 /*     */ import javax.validation.constraints.NotNull;
 /*     */ import org.hibernate.validator.constraints.NotBlank;
 /*     */ import org.hibernate.validator.constraints.Range;

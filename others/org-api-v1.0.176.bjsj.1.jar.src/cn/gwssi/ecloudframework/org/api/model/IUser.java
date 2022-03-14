@@ -1,4 +1,4 @@
-package cn.gwssi.ecloudframework.org.api.model;
+package com.dstz.org.api.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

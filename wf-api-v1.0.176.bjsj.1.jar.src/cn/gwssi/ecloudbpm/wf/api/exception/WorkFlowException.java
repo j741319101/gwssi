@@ -1,7 +1,7 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.api.exception;
+/*    */ package com.dstz.bpm.api.exception;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.api.constant.IStatusCode;
-/*    */ import cn.gwssi.ecloudframework.base.api.exception.BusinessException;
+/*    */ import com.dstz.base.api.constant.IStatusCode;
+/*    */ import com.dstz.base.api.exception.BusinessException;
 /*    */ 
 /*    */ public class WorkFlowException
 /*    */   extends BusinessException {

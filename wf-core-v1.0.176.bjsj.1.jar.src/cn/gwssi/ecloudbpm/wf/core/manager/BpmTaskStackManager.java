@@ -1,10 +1,10 @@
-package cn.gwssi.ecloudbpm.wf.core.manager;
+package com.dstz.bpm.core.manager;
 
-import cn.gwssi.ecloudbpm.wf.api.model.inst.BpmExecutionStack;
-import cn.gwssi.ecloudbpm.wf.api.model.task.IBpmTask;
-import cn.gwssi.ecloudbpm.wf.core.model.BpmTaskStack;
-import cn.gwssi.ecloudframework.base.api.query.QueryFilter;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.bpm.api.model.inst.BpmExecutionStack;
+import com.dstz.bpm.api.model.task.IBpmTask;
+import com.dstz.bpm.core.model.BpmTaskStack;
+import com.dstz.base.api.query.QueryFilter;
+import com.dstz.base.manager.Manager;
 import java.util.List;
 
 public interface BpmTaskStackManager extends Manager<String, BpmTaskStack> {

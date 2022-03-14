@@ -1,10 +1,10 @@
-/*    */ package cn.gwssi.ecloudbpm.wf.plugin.usercalc.user.context;
+/*    */ package com.dstz.bpm.plugin.usercalc.user.context;
 /*    */ 
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.def.BpmUserCalcPluginDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.api.engine.plugin.runtime.RunTimePlugin;
-/*    */ import cn.gwssi.ecloudbpm.wf.engine.plugin.context.AbstractUserCalcPluginContext;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.usercalc.user.def.UserPluginDef;
-/*    */ import cn.gwssi.ecloudbpm.wf.plugin.usercalc.user.executer.UserPluginExecutor;
+/*    */ import com.dstz.bpm.api.engine.plugin.def.BpmUserCalcPluginDef;
+/*    */ import com.dstz.bpm.api.engine.plugin.runtime.RunTimePlugin;
+/*    */ import com.dstz.bpm.engine.plugin.context.AbstractUserCalcPluginContext;
+/*    */ import com.dstz.bpm.plugin.usercalc.user.def.UserPluginDef;
+/*    */ import com.dstz.bpm.plugin.usercalc.user.executer.UserPluginExecutor;
 /*    */ import com.alibaba.fastjson.JSONObject;
 /*    */ import org.springframework.context.annotation.Scope;
 /*    */ import org.springframework.stereotype.Component;

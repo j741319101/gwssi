@@ -1,9 +1,9 @@
-/*    */ package cn.gwssi.ecloudframework.sys.core.manager.impl;
+/*    */ package com.dstz.sys.core.manager.impl;
 /*    */ 
-/*    */ import cn.gwssi.ecloudframework.base.manager.impl.BaseManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.dao.ScriptDao;
-/*    */ import cn.gwssi.ecloudframework.sys.core.manager.ScriptManager;
-/*    */ import cn.gwssi.ecloudframework.sys.core.model.Script;
+/*    */ import com.dstz.base.manager.impl.BaseManager;
+/*    */ import com.dstz.sys.core.dao.ScriptDao;
+/*    */ import com.dstz.sys.core.manager.ScriptManager;
+/*    */ import com.dstz.sys.core.model.Script;
 /*    */ import java.util.List;
 /*    */ import javax.annotation.Resource;
 /*    */ import org.springframework.stereotype.Service;

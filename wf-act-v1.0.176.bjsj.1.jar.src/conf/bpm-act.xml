@@ -25,7 +25,7 @@
         </property>
     </bean>
 		
-    <bean id="activitiIdGenerator" class="cn.gwssi.ecloudbpm.wf.act.id.ActivitiIdGenerator">
+    <bean id="activitiIdGenerator" class="com.dstz.bpm.act.id.ActivitiIdGenerator">
         <property name="idGenerator" ref="idGenerator"/>
     </bean>
 
@@ -41,7 +41,7 @@
     <bean id="objectMapper" factory-bean="processEngine" factory-method="getManagementService"/>
 
 
-    <bean id="globalEventListener" class="cn.gwssi.ecloudbpm.wf.act.listener.GlobalEventListener">
+    <bean id="globalEventListener" class="com.dstz.bpm.act.listener.GlobalEventListener">
         <property name="handlers">
             <map>
                 <entry key="TASK_CREATED" value="taskCreateListener"/>

@@ -1,7 +1,7 @@
 package cn.gwssi.ecloudbpm.bus.manager;
 
 import cn.gwssi.ecloudbpm.bus.model.BusColumnCtrl;
-import cn.gwssi.ecloudframework.base.manager.Manager;
+import com.dstz.base.manager.Manager;
 
 public interface BusColumnCtrlManager extends Manager<String, BusColumnCtrl> {
   void removeByTableId(String paramString);

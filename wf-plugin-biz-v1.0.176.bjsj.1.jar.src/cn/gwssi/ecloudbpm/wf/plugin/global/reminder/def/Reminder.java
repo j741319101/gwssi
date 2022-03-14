@@ -1,4 +1,4 @@
-/*     */ package cn.gwssi.ecloudbpm.wf.plugin.global.reminder.def;
+/*     */ package com.dstz.bpm.plugin.global.reminder.def;
 /*     */ 
 /*     */ import java.io.Serializable;
 /*     */ import javax.validation.constraints.Min;

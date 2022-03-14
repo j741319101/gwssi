@@ -1,4 +1,4 @@
-/*    */ package cn.gwssi.ecloudframework.sys.api.jms;
+/*    */ package com.dstz.sys.api.jms;
 /*    */ 
 /*    */ 
 /*    */ 
