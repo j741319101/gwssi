@@ -151,7 +151,7 @@ public class UserAssignRuleCalc {
          map.putAll(bpmUserCalcPluginSession.getBoDatas());
          map.put("bpmTask", bpmUserCalcPluginSession.getBpmTask());
          map.put("bpmInstance", bpmUserCalcPluginSession.getBpmInstance());
-         map.put("variableScope", bpmUserCalcPluginSession.getVariableScope()); //todo 报错 找不到org.activiti.engine.delegate.VariableScope的类文件
+         map.put("variableScope", bpmUserCalcPluginSession.getVariableScope());
          map.put("submitTaskName", bpmUserCalcPluginSession.get("submitTaskName"));
 
          try {

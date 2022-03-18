@@ -44,8 +44,8 @@ public class SameNodePluginExecutor extends AbstractUserCalcPlugin<SameNodePlugi
             }
 
             if (taskOpinion != null) {
-//               SysIdentity bpmIdentity = new DefaultIdentity(taskOpinion.getApprover(), taskOpinion.getApproverName(), "user", taskOpinion.getTaskOrgId());//todo orgId -d
-               SysIdentity bpmIdentity = new DefaultIdentity(taskOpinion.getApprover(), taskOpinion.getApproverName(), "user");
+               SysIdentity bpmIdentity = new DefaultIdentity(taskOpinion.getApprover(), taskOpinion.getApproverName(), "user", taskOpinion.getTaskOrgId());
+//               SysIdentity bpmIdentity = new DefaultIdentity(taskOpinion.getApprover(), taskOpinion.getApproverName(), "user");
                bpmIdentities.add(bpmIdentity);
             }
 

@@ -14,6 +14,8 @@ import com.dstz.bpm.plugin.usercalc.user.def.UserPluginDef;
 import com.dstz.base.api.exception.BusinessException;
 import com.dstz.base.core.util.StringUtil;
 import com.dstz.org.api.model.IUser;
+import com.dstz.org.api.model.dto.GroupDTO;
+import com.dstz.org.api.service.GroupService;
 import com.dstz.org.api.service.UserService;
 import com.dstz.sys.api.model.DefaultIdentity;
 import com.dstz.sys.api.model.SysIdentity;
@@ -33,6 +35,9 @@ public class UserPluginExecutor extends AbstractUserCalcPlugin<UserPluginDef> {
    private UserService userService;
    @Resource
    BpmProcessDefService bpmProcessDefService;
+
+   @Resource
+   GroupService groupService;
 
    public List<SysIdentity> queryByPluginDef(BpmUserCalcPluginSession pluginSession, UserPluginDef def) {
       List<SysIdentity> list = new ArrayList();
@@ -80,7 +85,16 @@ public class UserPluginExecutor extends AbstractUserCalcPlugin<UserPluginDef> {
             }
 
             SysIdentity bpmIdentity = new DefaultIdentity(user);
-            bpmIdentity.setOrgId(userInfo[1]);
+            if(StringUtils.isEmpty(userInfo[1])){ // todo 获取用户机构id 先测试
+                GroupDTO group = (GroupDTO)groupService.getMainGroup(user.getUserId());
+                if (group != null){
+                    bpmIdentity.setOrgId(group.getGroupId());
+                }else {
+                    bpmIdentity.setOrgId("1");
+                }
+            }else {
+                bpmIdentity.setOrgId(userInfo[1]);
+            }
             list.add(bpmIdentity);
          }
       }
