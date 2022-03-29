@@ -41,8 +41,9 @@ import java.util.function.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
-public class InstanceReminderActionHandler implements ActionDisplayHandler<DefaultInstanceActionCmd> {
+//@Component todo 暂时去掉催办功能
+//public class InstanceReminderActionHandler implements ActionDisplayHandler<DefaultInstanceActionCmd> {
+public class InstanceReminderActionHandler{
    @Autowired
    BpmTaskManager taskMananger;
    @Autowired
@@ -159,7 +160,8 @@ public class InstanceReminderActionHandler implements ActionDisplayHandler<Defau
 
    public Boolean isSupport(BpmNodeDef nodeDef) {
       System.out.println();
-      return nodeDef == null || nodeDef.getType() == null;
+//      return nodeDef == null || nodeDef.getType() == null;
+      return false;//todo 暂时去掉按钮
    }
 
    public Boolean isDefault() {

@@ -1,4 +1,5 @@
 package com.dstz.bpm.engine.action.handler.task;
+
 import javax.annotation.Resource;
 
 import com.dstz.base.api.constant.IStatusCode;
@@ -22,14 +23,15 @@ import com.dstz.bpm.core.model.TaskIdentityLink;
 import com.dstz.bpm.engine.action.cmd.DefualtTaskActionCmd;
 import com.dstz.bpm.engine.action.handler.AbsActionHandler;
 import org.apache.commons.lang3.StringUtils;
-public abstract class AbstractTaskActionHandler<T extends DefualtTaskActionCmd>  extends AbsActionHandler<T> {
+
+public abstract class AbstractTaskActionHandler<T extends DefualtTaskActionCmd> extends AbsActionHandler<T> {
     @Resource
     protected ActTaskService actTaskService;
     @Resource
     protected BpmTaskManager taskManager;
 
     public void doAction(T actionModel) {
-        BpmTask bpmTask = (BpmTask)actionModel.getBpmTask();
+        BpmTask bpmTask = (BpmTask) actionModel.getBpmTask();
 
         String taskId = bpmTask.getTaskId();
         String destinationNode = bpmTask.getBackNode();
@@ -38,7 +40,7 @@ public abstract class AbstractTaskActionHandler<T extends DefualtTaskActionCmd> 
         if (StringUtil.isEmpty(destinationNode)) {
             destinationNodes = actionModel.getDestinations();
         } else {
-            destinationNodes = new String[] { destinationNode };
+            destinationNodes = new String[]{destinationNode};
         }
 
         if (StringUtil.isEmpty(destinationNode)) {
@@ -51,32 +53,35 @@ public abstract class AbstractTaskActionHandler<T extends DefualtTaskActionCmd> 
             this.actTaskService.completeTask(taskId, actionModel.getActionVariables(), destinationNodes);
         }
     }
+
     @Resource
-    protected TaskCommand taskCommand; @Resource
+    protected TaskCommand taskCommand;
+    @Resource
     protected TaskIdentityLinkManager taskIdentityLinkManager;
+
     protected boolean prepareActionDatas(T data) {
         if (data.getBpmTask() != null) return false;
 
-        BpmTask task = (BpmTask)this.taskManager.get(data.getTaskId());
+        BpmTask task = (BpmTask) this.taskManager.get(data.getTaskId());
         if (task == null) {
             throw new BusinessException((IStatusCode) BpmStatusCode.TASK_NOT_FOUND);
         }
         if (StringUtils.isNotEmpty(data.getTaskLinkId())) {
-            TaskIdentityLink taskIdentityLink = (TaskIdentityLink)this.taskIdentityLinkManager.get(data.getTaskLinkId());
+            TaskIdentityLink taskIdentityLink = (TaskIdentityLink) this.taskIdentityLinkManager.get(data.getTaskLinkId());
             if (taskIdentityLink == null) {
                 throw new BusinessException("taskLinkId");
             }
             data.setTaskIdentityLink(taskIdentityLink);
         }
-        data.setBpmTask((IBpmTask)task);
+        data.setBpmTask((IBpmTask) task);
         data.setDefId(task.getDefId());
         data.setBpmDefinition(this.bpmProcessDefService.getDefinitionById(task.getDefId()));
-        data.setBpmInstance((IBpmInstance)this.bpmInstanceManager.get(task.getInstId()));
+        data.setBpmInstance((IBpmInstance) this.bpmInstanceManager.get(task.getInstId()));
 
 //        parserBusinessData((BaseActionCmd)data);
-        parserBusinessData( data);
+        parserBusinessData(data);
 
-        boolean isStopExecute = handelFormInit((BaseActionCmd)data, this.bpmProcessDefService.getBpmNodeDef(task.getDefId(), task.getNodeId()));
+        boolean isStopExecute = handelFormInit((BaseActionCmd) data, this.bpmProcessDefService.getBpmNodeDef(task.getDefId(), task.getNodeId()));
         return isStopExecute;
     }
 
@@ -91,10 +96,14 @@ public abstract class AbstractTaskActionHandler<T extends DefualtTaskActionCmd> 
         return Boolean.valueOf(false);
     }
 
+    public Boolean isDefault(){
+        return Boolean.valueOf(true);
+    }
 
-    protected void taskComplatePrePluginExecute(DefualtTaskActionCmd actionModel) { this.taskCommand.execute(EventType.TASK_PRE_COMPLETE_EVENT, (TaskActionCmd)actionModel); }
 
-
+    protected void taskComplatePrePluginExecute(DefualtTaskActionCmd actionModel) {
+        this.taskCommand.execute(EventType.TASK_PRE_COMPLETE_EVENT, (TaskActionCmd) actionModel);
+    }
 
 
     protected void toDoActionAfter(T actionModel) {
@@ -102,7 +111,7 @@ public abstract class AbstractTaskActionHandler<T extends DefualtTaskActionCmd> 
         doActionAfter(actionModel);
 
         if (actionModel.isSource()) {
-            BpmInstance instance = (BpmInstance)actionModel.getBpmInstance();
+            BpmInstance instance = (BpmInstance) actionModel.getBpmInstance();
             if (instance.isHasUpdate()) {
                 this.bpmInstanceManager.update(instance);
             }
@@ -110,9 +119,10 @@ public abstract class AbstractTaskActionHandler<T extends DefualtTaskActionCmd> 
     }
 
 
+    public String getDefaultGroovyScript() {
+        return "";
+    }
 
 
 
-
-    public String getDefaultGroovyScript() { return ""; }
 }

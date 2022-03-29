@@ -19,6 +19,7 @@ import com.dstz.bpm.core.model.TaskIdentityLink;
 import com.dstz.bpm.engine.action.cmd.DefualtTaskActionCmd;
 import com.dstz.base.api.exception.BusinessException;
 import com.dstz.base.core.util.StringUtil;
+import com.dstz.org.api.model.IGroup;
 import com.dstz.org.api.model.IUser;
 import com.dstz.org.api.model.dto.GroupDTO;
 import com.dstz.org.api.service.GroupService;
@@ -130,7 +131,7 @@ public class TaskCompleteListener
             orgId = taskIdentityLink.getOrgId();
         }
         if (StringUtils.isEmpty(orgId)) {//todo 暂时测试机构id
-            GroupDTO group = (GroupDTO) groupService.getMainGroup(user.getUserId());
+            IGroup group =  groupService.getMainGroup(user.getUserId());
             if (group != null) {
                 orgId = group.getGroupId();
             } else {

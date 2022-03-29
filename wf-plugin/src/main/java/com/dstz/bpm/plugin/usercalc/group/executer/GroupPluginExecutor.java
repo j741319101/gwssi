@@ -33,8 +33,8 @@ public class GroupPluginExecutor extends AbstractUserCalcPlugin<GroupPluginDef> 
             if (!StringUtil.isEmpty(key)) {
                IGroup group = this.userGroupService.getByCode(groupType, key);
                if (group != null) {
-//                  DefaultIdentity identity = new DefaultIdentity(group.getGroupId(), group.getGroupName(), group.getGroupType(), group.getGroupId());// todo orgId -d
-                  DefaultIdentity identity = new DefaultIdentity(group.getGroupId(), group.getGroupName(), group.getGroupType());
+                  DefaultIdentity identity = new DefaultIdentity(group.getGroupId(), group.getGroupName(), group.getGroupType(), group.getGroupId());// todo orgId -d
+//                  DefaultIdentity identity = new DefaultIdentity(group.getGroupId(), group.getGroupName(), group.getGroupType());
                   if (group.getSn() != null) {
                      identity.setSn(group.getSn());
                   }

@@ -88,8 +88,10 @@ public class BpmTaskShowUtil {
                 if (null != bpmUserDTOS && bpmUserDTOS.size() > 0) {
                     for (BpmUserDTO user : bpmUserDTOS) {
                         String finalCompareStr = compareStr;
-                        sysIdentities.stream().filter(sysIdentity -> (StringUtils.equals(sysIdentity.getType(), "user") && StringUtils.equals(sysIdentity.getId(), user.getUserId()) && StringUtils.equals(sysIdentity.getOrgId(), user.getOrgId())))
-
+                        sysIdentities.stream().filter(sysIdentity ->
+                                (StringUtils.equals(sysIdentity.getType(), "user")
+                                        && StringUtils.equals(sysIdentity.getId(), user.getUserId())
+                                        && StringUtils.equals(sysIdentity.getOrgId(), user.getOrgId())))
                                 .forEach(sysIdentity -> {
                                     if (StringUtils.equals(finalCompareStr, "user")) {
                                         ((DefaultIdentity) sysIdentity).setSn(Integer.valueOf(user.getUserSn()));

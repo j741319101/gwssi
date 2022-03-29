@@ -9,7 +9,7 @@ CREATE TABLE `sys_connect_record` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table bus_permission add column def_id_  varchar(64);
-
+drop table org_post;
 CREATE TABLE org_post (
 	ID_ VARCHAR(192 ) NOT NULL,
 	NAME_ VARCHAR(192 ) NULL,
@@ -24,7 +24,7 @@ CREATE TABLE org_post (
 	TYPE_ VARCHAR(192 ) NULL,
 	ORG_ID_ VARCHAR(192 ) NULL,
 	CONSTRAINT org_post_PKEY PRIMARY KEY (ID_)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='岗位表';
 
 alter table bpm_task_identitylink add column check_status_  varchar(2) default '1';
 alter table bpm_task_identitylink add column check_time_  TIMESTAMP(6);
@@ -337,4 +337,75 @@ CREATE TABLE `org_user_custom_column` (
 	`UPDATE_BY_` VARCHAR(192 ) NULL,
 	CONSTRAINT `SYS_C0012297` CHECK ((ID_ IS NOT NULL)),
 	CONSTRAINT `org_user_custom_column_PKEY` PRIMARY KEY (`ID_`)
+)
+ alter table c_holiday_conf change column id id_;
+
+
+drop table c_holiday_conf;
+CREATE TABLE `c_holiday_conf` (
+  `id_` varchar(64) NOT NULL,
+  `name_` varchar(255) DEFAULT NULL,
+  `system_` varchar(255) DEFAULT NULL,
+  `year_` int(255) DEFAULT NULL,
+  `startDay_` date DEFAULT NULL,
+  `endDay_` date DEFAULT NULL,
+  `type_` varchar(255) DEFAULT NULL,
+  `remark_` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE  `bpm_plugin_carbon_copy_receive` (
+	`id_` VARCHAR(64) NOT NULL,
+	`cc_record_id` VARCHAR(6000) NOT NULL,
+	`receive_user_id` VARCHAR(6000) NOT NULL,
+	`read_` NUMERIC(4) NOT NULL,
+	`create_by_` VARCHAR(64) NOT NULL,
+	`create_time_` TIMESTAMP(6) NOT NULL,
+	`update_by_` VARCHAR(64) NOT NULL,
+	`update_time_` TIMESTAMP(6) NOT NULL,
+	`version_` NUMERIC(11) NULL,
+	`type_` VARCHAR(10 ) NULL,
+	`STATUS_` VARCHAR(10 ) NULL,
+	`receive_user_name_` VARCHAR(64 ) NULL,
+	CONSTRAINT `SYS_C0012395` CHECK ((id_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012396` CHECK ((cc_record_id IS NOT NULL)),
+	CONSTRAINT `SYS_C0012397` CHECK ((receive_user_id IS NOT NULL)),
+	CONSTRAINT `SYS_C0012398` CHECK ((read_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012399` CHECK ((create_by_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012400` CHECK ((create_time_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012401` CHECK ((update_by_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012402` CHECK ((update_time_ IS NOT NULL))
+)
+
+
+CREATE TABLE  `bpm_plugin_carbon_copy_record` (
+	`id_` VARCHAR(64) NOT NULL,
+	`inst_id` VARCHAR(64) NOT NULL,
+	`task_id` VARCHAR(64) NULL,
+	`node_id` VARCHAR(64) NULL,
+	`node_name` VARCHAR(1000) NULL,
+	`form_type` VARCHAR(64) NOT NULL,
+	`event_` VARCHAR(64) NOT NULL,
+	`trigger_user_id` VARCHAR(600) NOT NULL,
+	`trigger_user_name` VARCHAR(600) NOT NULL,
+	`subject` VARCHAR(1000) NOT NULL,
+	`content` longtext NULL,
+	`create_by_` VARCHAR(64) NOT NULL,
+	`create_time_` TIMESTAMP(6) NOT NULL,
+	`update_by_` VARCHAR(64) NOT NULL,
+	`update_time_` TIMESTAMP(6) NOT NULL,
+	`version_` NUMERIC(11) NULL,
+	CONSTRAINT `SYS_C0012384` CHECK ((id_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012385` CHECK ((inst_id IS NOT NULL)),
+	CONSTRAINT `SYS_C0012386` CHECK ((form_type IS NOT NULL)),
+	CONSTRAINT `SYS_C0012387` CHECK ((event_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012388` CHECK ((trigger_user_id IS NOT NULL)),
+	CONSTRAINT `SYS_C0012389` CHECK ((trigger_user_name IS NOT NULL)),
+	CONSTRAINT `SYS_C0012390` CHECK ((subject IS NOT NULL)),
+	CONSTRAINT `SYS_C0012391` CHECK ((create_by_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012392` CHECK ((create_time_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012393` CHECK ((update_by_ IS NOT NULL)),
+	CONSTRAINT `SYS_C0012394` CHECK ((update_time_ IS NOT NULL))
 )

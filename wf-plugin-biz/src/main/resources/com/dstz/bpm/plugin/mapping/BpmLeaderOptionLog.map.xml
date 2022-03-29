@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.BpmLeaderOptionLogDao">
+	<resultMap id="BpmLeaderOptionLog" type="com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
+		<result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
+		<result property="leaderId" column="leader_id_" jdbcType="VARCHAR"/>
+		<result property="leaderName" column="leader_name_" jdbcType="VARCHAR"/>
+		<result property="secretaryId" column="secretary_id_" jdbcType="VARCHAR"/>
+		<result property="secretaryName" column="secretary_name_" jdbcType="VARCHAR"/>
+		<result property="type" column="type_" jdbcType="VARCHAR"/>
+		<result property="option" column="option_" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+		<result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+
+	</resultMap>
+	
+	<insert id="create" parameterType="com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog">
+		INSERT INTO bpm_leader_option_log
+		(id_,
+		task_id_,
+		inst_id_,
+		leader_id_,
+		leader_name_,
+		secretary_id_,
+		secretary_name_,
+		type_,
+		option_,
+		create_by_,
+		create_time_,
+		update_by_,
+		update_time_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR},
+		#{taskId,jdbcType=VARCHAR},
+		#{instId,jdbcType=VARCHAR},
+		#{leaderId,jdbcType=VARCHAR},
+		#{leaderName,jdbcType=VARCHAR},
+		#{secretaryId,jdbcType=VARCHAR},
+		#{secretaryName,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR},
+		#{option,jdbcType=VARCHAR},
+		#{createBy,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{updateBy,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmLeaderOptionLog">
+		SELECT * FROM bpm_leader_option_log
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BpmLeaderOptionLog">
+		SELECT * FROM bpm_leader_option_log
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+	
+	<update id="update" parameterType="com.dstz.bpm.plugin.core.model.BpmLeaderOptionLog">
+		UPDATE bpm_leader_option_log
+		<set>
+			<if test="taskId != null">
+				task_id_=#{taskId,jdbcType=VARCHAR},
+			</if>
+			<if test="instId != null">
+				inst_id_=#{instId,jdbcType=VARCHAR},
+			</if>
+			<if test="secretaryId != null">
+				secretary_id_=#{secretaryId,jdbcType=VARCHAR},
+			</if>
+			<if test="secretaryName != null">
+				secretary_name_=#{secretaryName,jdbcType=VARCHAR},
+			</if>
+			<if test="leaderId != null">
+				leader_id_=#{leaderId,jdbcType=VARCHAR},
+			</if>
+			<if test="leaderName != null">
+				leader_name_=#{leaderName,jdbcType=VARCHAR},
+			</if>
+			<if test="option != null">
+				option_=#{option,jdbcType=VARCHAR},
+			</if>
+			<if test="flag != null">
+				type_=#{type,jdbcType=VARCHAR},
+			</if>
+			<if test="createBy != null">
+				create_by_=#{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time_=#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateBy != null">
+				update_by_=#{updateBy,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				update_time_=#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		WHERE
+		id_=#{id}
+	</update>
+
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_leader_option_log
+		WHERE
+		id_=#{id}
+	</delete>
+	<delete id="removeByInstId" parameterType="java.lang.String">
+		DELETE FROM bpm_leader_option_log
+		WHERE
+		inst_id_ = #{instId}
+	</delete>
+</mapper>

@@ -147,7 +147,8 @@ public class CarbonInstCopyActionHandler extends AbsActionHandler<DefaultInstanc
    }
 
    public Boolean isSupport(BpmNodeDef nodeDef) {
-      return nodeDef == null || nodeDef.getNodeId() == null;
+//      return nodeDef == null || nodeDef.getNodeId() == null;//todo 暂时去掉按钮
+      return false;
    }
 
    public String getConfigPage() {

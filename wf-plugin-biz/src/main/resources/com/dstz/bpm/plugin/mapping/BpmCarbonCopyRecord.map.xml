@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.BpmCarbonCopyRecordDao">
+
+	<resultMap id="BpmCarbonCopyRecord" type="com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="instId" column="inst_id" jdbcType="VARCHAR"/>
+		<result property="taskId" column="task_id" jdbcType="VARCHAR"/>
+		<result property="nodeId" column="node_id" jdbcType="VARCHAR"/>
+		<result property="nodeName" column="node_name" jdbcType="VARCHAR"/>
+		<result property="formType" column="form_type" jdbcType="VARCHAR"/>
+		<result property="event" column="event_" jdbcType="VARCHAR" />
+		<result property="triggerUserId" column="trigger_user_id" jdbcType="VARCHAR"/>
+		<result property="triggerUserName" column="trigger_user_name" jdbcType="VARCHAR"/>
+		<result property="subject" column="subject" jdbcType="VARCHAR"/>
+		<result property="content" column="content" jdbcType="CLOB"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+		<result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+		<result property="version" column="version_" jdbcType="NUMERIC"/>
+	</resultMap>
+	
+	<insert id="create" parameterType="com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord">
+		INSERT INTO bpm_plugin_carbon_copy_record
+		(id_,inst_id,task_id,node_id,node_name,form_type,event_,trigger_user_id,trigger_user_name,subject,content,create_by_,create_time_,update_by_,update_time_,version_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{instId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{nodeId,jdbcType=VARCHAR}, #{nodeName,jdbcType=VARCHAR}, #{formType,jdbcType=VARCHAR}, #{formType,jdbcType=VARCHAR}, #{triggerUserId,jdbcType=VARCHAR}, #{triggerUserName,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{content,jdbcType=CLOB}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=NUMERIC})
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmCarbonCopyRecord">
+		SELECT * FROM bpm_plugin_carbon_copy_record 
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BpmCarbonCopyRecord">
+		SELECT * FROM bpm_plugin_carbon_copy_record
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+	
+	<update id="update" parameterType="com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord">
+		UPDATE bpm_plugin_carbon_copy_record SET
+		inst_id=#{instId,jdbcType=VARCHAR},
+		task_id=#{taskId,jdbcType=VARCHAR},
+		node_id=#{nodeId,jdbcType=VARCHAR},
+		node_name=#{nodeName,jdbcType=VARCHAR},
+		form_type=#{formType,jdbcType=VARCHAR},
+		event_ = #{event,jdbcType=VARCHAR},
+		trigger_user_id=#{triggerUserId,jdbcType=VARCHAR},
+		trigger_user_name=#{triggerUserName,jdbcType=VARCHAR},
+		subject=#{subject,jdbcType=VARCHAR},
+		content=#{content,jdbcType=CLOB},
+		create_by_=#{createBy,jdbcType=VARCHAR},
+		create_time_=#{createTime,jdbcType=TIMESTAMP},
+		update_by_=#{updateBy,jdbcType=VARCHAR},
+		update_time_=#{updateTime,jdbcType=TIMESTAMP},
+		version_=#{version,jdbcType=NUMERIC}
+		WHERE
+		id_=#{id}
+	</update>
+	
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_plugin_carbon_copy_record 
+		WHERE
+		id_=#{id}
+	</delete>
+
+	<delete id="removeByInstId" parameterType="java.lang.String">
+		delete from bpm_plugin_carbon_copy_record where inst_id = #{instId}
+	</delete>
+
+	<insert id="createList" parameterType="com.dstz.bpm.plugin.core.model.BpmCarbonCopyRecord">
+		INSERT INTO bpm_plugin_carbon_copy_record
+		(id_,inst_id,task_id,node_id,node_name,form_type,event_,trigger_user_id,trigger_user_name,subject,content,create_by_,create_time_,update_by_,update_time_,version_)
+		VALUES
+		<foreach collection="records" item="record" separator=",">
+		(#{record.id,jdbcType=VARCHAR}, #{record.instId,jdbcType=VARCHAR}, #{record.taskId,jdbcType=VARCHAR}, #{record.nodeId,jdbcType=VARCHAR},
+		#{record.nodeName,jdbcType=VARCHAR}, #{record.formType,jdbcType=VARCHAR}, #{record.event,jdbcType=VARCHAR}, #{record.triggerUserId,jdbcType=VARCHAR},
+		#{record.triggerUserName,jdbcType=VARCHAR}, #{record.subject,jdbcType=VARCHAR}, #{record.content,jdbcType=CLOB},
+		#{record.createBy,jdbcType=VARCHAR}, #{record.createTime,jdbcType=TIMESTAMP}, #{record.updateBy,jdbcType=VARCHAR},
+		#{record.updateTime,jdbcType=TIMESTAMP}, #{record.version,jdbcType=NUMERIC})
+		</foreach>
+	</insert>
+</mapper>

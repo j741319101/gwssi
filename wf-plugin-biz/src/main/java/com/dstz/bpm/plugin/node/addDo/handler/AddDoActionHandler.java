@@ -52,8 +52,13 @@ public class AddDoActionHandler extends AbstractTaskActionHandler<DefualtTaskAct
 
    public Boolean isSupport(BpmNodeDef nodeDef) {
       NodeType nodeType = nodeDef.getType();
-      return nodeType == NodeType.USERTASK;
+//      return nodeType == NodeType.USERTASK;
+      return false;//todo 暂时去掉按钮
    }
+   public Boolean isDefault(){
+      return Boolean.valueOf(false);
+   }
+
 
    private void handleCurentTask(DefualtTaskActionCmd actionModel) {
       BpmTask bpmTask = (BpmTask)actionModel.getBpmTask();

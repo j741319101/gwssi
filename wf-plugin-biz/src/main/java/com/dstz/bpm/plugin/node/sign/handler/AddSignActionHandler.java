@@ -71,6 +71,7 @@ public class AddSignActionHandler extends AbstractTaskActionHandler<DefualtTaskA
 
    public Boolean isSupport(BpmNodeDef nodeDef) {
       NodeType nodeType = nodeDef.getType();
-      return nodeType != NodeType.USERTASK && nodeType != NodeType.SIGNTASK ? false : true;
+//      return nodeType != NodeType.USERTASK && nodeType != NodeType.SIGNTASK ? false : true;
+      return false;//todo 暂时去掉按钮
    }
 }

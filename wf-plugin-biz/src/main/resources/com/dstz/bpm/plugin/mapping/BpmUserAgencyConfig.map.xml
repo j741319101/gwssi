@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dstz.bpm.plugin.core.dao.BpmUserAgencyConfigDao">
+
+    <resultMap id="BpmUserAgencyConfig" type="com.dstz.bpm.plugin.core.model.BpmUserAgencyConfig">
+        <id column="id_" jdbcType="VARCHAR" property="id"/>
+        <result column="start_datetime_" jdbcType="TIMESTAMP" property="startDatetime"/>
+        <result column="end_datetime_" jdbcType="TIMESTAMP" property="endDatetime"/>
+        <result column="agency_flow_key_" jdbcType="VARCHAR" property="agencyFlowKey"/>
+        <result column="agency_flow_name_" jdbcType="VARCHAR" property="agencyFlowName"/>
+        <result column="config_user_id_" jdbcType="VARCHAR" property="configUserId"/>
+        <result column="target_user_id_" jdbcType="VARCHAR" property="targetUserId"/>
+        <result column="target_user_name_" jdbcType="VARCHAR" property="targetUserName"/>
+        <result column="enable_" jdbcType="BIT" property="enable"/>
+        <result column="create_by_" jdbcType="VARCHAR" property="createBy"/>
+        <result column="create_time_" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_org_id_" jdbcType="VARCHAR" property="createOrgId"/>
+        <result column="update_by_" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="update_time_" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="rev_" jdbcType="INTEGER" property="rev"/>
+        <result column="comment_" jdbcType="VARCHAR" property="comment"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id_, start_datetime_, end_datetime_, agency_flow_key_, agency_flow_name_, config_user_id_,
+      target_user_id_, target_user_name_, enable_, create_by_, create_time_, create_org_id_,
+      update_by_, update_time_, rev_,comment_
+    </sql>
+
+    <insert id="insertSelective" parameterType="com.dstz.bpm.plugin.core.model.BpmUserAgencyConfig">
+        insert into bpm_user_agency_config
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id_,
+            </if>
+            <if test="startDatetime != null">
+                start_datetime_,
+            </if>
+            <if test="endDatetime != null">
+                end_datetime_,
+            </if>
+            <if test="agencyFlowKey != null">
+                agency_flow_key_,
+            </if>
+            <if test="agencyFlowName != null">
+                agency_flow_name_,
+            </if>
+            <if test="configUserId != null">
+                config_user_id_,
+            </if>
+            <if test="targetUserId != null">
+                target_user_id_,
+            </if>
+            <if test="targetUserName != null">
+                target_user_name_,
+            </if>
+            <if test="enable != null">
+                enable_,
+            </if>
+            <if test="createBy != null">
+                create_by_,
+            </if>
+            <if test="createTime != null">
+                create_time_,
+            </if>
+            <if test="createOrgId != null">
+                create_org_id_,
+            </if>
+            <if test="updateBy != null">
+                update_by_,
+            </if>
+            <if test="updateTime != null">
+                update_time_,
+            </if>
+            <if test="rev != null">
+                rev_,
+            </if>
+            <if test="comment != null">
+                comment_,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="startDatetime != null">
+                #{startDatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDatetime != null">
+                #{endDatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agencyFlowKey != null">
+                #{agencyFlowKey,jdbcType=VARCHAR},
+            </if>
+            <if test="agencyFlowName != null">
+                #{agencyFlowName,jdbcType=VARCHAR},
+            </if>
+            <if test="configUserId != null">
+                #{configUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="targetUserId != null">
+                #{targetUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="targetUserName != null">
+                #{targetUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="enable != null">
+                #{enable,jdbcType=BIT},
+            </if>
+            <if test="createBy != null">
+                #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createOrgId != null">
+                #{createOrgId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateBy != null">
+                #{updateBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rev != null">
+                #{rev,jdbcType=INTEGER},
+            </if>
+            <if test="comment != null">
+                #{comment,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dstz.bpm.plugin.core.model.BpmUserAgencyConfig">
+        update bpm_user_agency_config
+        <set>
+            <if test="startDatetime != null">
+                start_datetime_ = #{startDatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDatetime != null">
+                end_datetime_ = #{endDatetime,jdbcType=TIMESTAMP},
+            </if>
+            agency_flow_key_ = #{agencyFlowKey,jdbcType=VARCHAR},
+            <if test="agencyFlowName != null">
+                agency_flow_name_ = #{agencyFlowName,jdbcType=VARCHAR},
+            </if>
+            <if test="configUserId != null">
+                config_user_id_ = #{configUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="targetUserId != null">
+                target_user_id_ = #{targetUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="targetUserName != null">
+                target_user_name_ = #{targetUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="enable != null">
+                enable_ = #{enable,jdbcType=BIT},
+            </if>
+            <if test="createBy != null">
+                create_by_ = #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time_ = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createOrgId != null">
+                create_org_id_ = #{createOrgId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateBy != null">
+                update_by_ = #{updateBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time_ = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rev != null">
+                rev_ = #{rev,jdbcType=INTEGER},
+            </if>
+            <if test="comment != null">
+                comment_ = #{comment,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id_ = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectTakeEffectingList" resultMap="BpmUserAgencyConfig">
+        SELECT
+          <include refid="Base_Column_List" />
+        FROM
+          bpm_user_agency_config
+        WHERE config_user_id_ = #{configUserId,jdbcType=VARCHAR}
+          AND #{currentTime} &gt;= start_datetime_
+          AND #{currentTime} &lt;= end_datetime_
+          AND enable_ = 1
+          <if test="name != null">
+            AND (agency_flow_name_ like #{name} or target_user_name_ like #{name})
+          </if>
+    </select>
+
+    <select id="selectInvalidList" resultMap="BpmUserAgencyConfig">
+        SELECT
+          <include refid="Base_Column_List" />
+        FROM
+          bpm_user_agency_config
+        WHERE
+          config_user_id_ = #{configUserId}
+          AND (end_datetime_ &lt; #{currentTime} OR enable_ = 0 )
+          <if test="name != null">
+              AND (agency_flow_name_ like #{name} or target_user_name_ like #{name})
+          </if>
+    </select>
+
+    <select id="get" parameterType="string" resultMap="BpmUserAgencyConfig">
+        SELECT
+           <include refid="Base_Column_List" />
+        FROM
+           bpm_user_agency_config
+        WHERE id_ = #{id}
+    </select>
+    
+    <select id="selectWaitEffectList" resultMap="BpmUserAgencyConfig">
+        SELECT
+          *
+        FROM
+          bpm_user_agency_config
+        WHERE config_user_id_ = #{configUserId}
+        AND start_datetime_ &gt; #{currentTime}
+        AND enable_ = 1
+        <if test="name != null">
+            AND (agency_flow_name_ like #{name} or target_user_name_ like #{name})
+        </if>
+    </select>
+    <select id="selectAllList" resultMap="BpmUserAgencyConfig">
+        SELECT
+          *
+        FROM
+          bpm_user_agency_config
+        WHERE config_user_id_ = #{configUserId}
+        <if test="name != null">
+            AND (agency_flow_name_ like #{name} or target_user_name_ like #{name})
+        </if>
+    </select>
+    <select id="selectTabListJson" parameterType="java.util.Map" resultMap="BpmUserAgencyConfig">
+        SELECT
+        *
+        FROM
+        bpm_user_agency_config
+        <where>
+            <if test="whereSql != null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql != null">
+            ORDER BY ${orderBySql}
+        </if>
+    </select>
+
+    <delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_user_agency_config
+		WHERE
+		id_=#{id}
+	</delete>
+
+    <select id="query" parameterType="java.util.Map" resultMap="BpmUserAgencyConfig">
+        SELECT * FROM bpm_user_agency_config
+        <where>
+            <if test="whereSql!=null">
+                ${whereSql}
+            </if>
+        </where>
+        <if test="orderBySql!=null">
+            ORDER BY ${orderBySql}
+        </if>
+        <if test="orderBySql==null">
+            ORDER BY id_ DESC
+        </if>
+    </select>
+</mapper>

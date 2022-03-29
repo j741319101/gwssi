@@ -146,6 +146,7 @@ public class CarbonCopyActionHandler extends AbstractTaskActionHandler<DefualtTa
 
    public Boolean isSupport(BpmNodeDef nodeDef) {
       NodeType nodeType = nodeDef.getType();
-      return nodeType == NodeType.USERTASK;
+//      return nodeType == NodeType.USERTASK;
+      return false;//todo 暂时去掉按钮
    }
 }

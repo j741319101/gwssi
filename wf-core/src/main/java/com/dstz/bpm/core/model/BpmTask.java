@@ -7,74 +7,8 @@
 /*     */ import java.util.Date;
 /*     */ import org.apache.commons.lang3.builder.ToStringBuilder;
 /*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+/*
+/
 /*     */ @ApiModel(description = "流程任务信息")
 /*     */ public class BpmTask
 /*     */   implements IBaseModel, IBpmTask
@@ -118,6 +52,7 @@
 /*     */   @ApiModelProperty("驳回后返回至节点")
 /*     */   protected String backNode;
 /*     */   private String defKey;
+            private String taskLinkId;
 /*     */   
 /*     */   public String getTaskType() {
 /* 123 */     return this.taskType;
@@ -126,25 +61,17 @@
 /*     */   public void setTaskType(String taskType) {
 /* 127 */     this.taskType = taskType;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+/*     */
+
+    public String getTaskLinkId() {
+        return taskLinkId;
+    }
+
+    public void setTaskLinkId(String taskLinkId) {
+        this.taskLinkId = taskLinkId;
+    }
+
+    /*     */
 /*     */ 
 /*     */ 
 /*     */   
@@ -433,8 +360,3 @@
 /*     */   }
 /*     */ }
 
-
-/* Location:              /Users/wangchenliang/Documents/workspace/ecloud/cn_分卷/cn/gwssi/ecloud/wf-core/v1.0.176.bjsj.1/wf-core-v1.0.176.bjsj.1.jar!/cn/gwssi/ecloudbpm/wf/core/model/BpmTask.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */

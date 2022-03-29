@@ -11,4 +11,7 @@ import org.springframework.stereotype.Service;
 public class BpmSubmitDataLogManagerImpl extends BaseManager<String, BpmSubmitDataLog> implements BpmSubmitDataLogManager {
    @Resource
    BpmSubmitDataLogDao bpmSubmitDataLogDao;
+
+   public BpmSubmitDataLogManagerImpl() {
+   }
 }
